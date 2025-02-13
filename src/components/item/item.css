@@ -1,0 +1,183 @@
+.item {
+  width: 280px;
+  background: #f2d6cc;
+  border: 1px solid #AE7B37;
+  border-radius: 20px;
+  animation: fadeIn 0.5s;
+}
+
+.item-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.watchlist-icon {
+  position: absolute;
+  top: 10px;
+  font-size: 28px;
+  color: #fff;
+  right: 15px;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.item-card img {
+  width: 200px;
+  margin-top: -30px;
+}
+
+.item-price-name {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  font-family: Kumbh Sans;
+}
+
+.item-price-name .item-name {
+
+  font-size: 22px;
+  font-weight: 400;
+  /* line-height: 34.73px; */
+  text-align: left;
+
+}
+
+.old-new-price {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.old-item-price {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24.8px;
+  text-align: left;
+  text-decoration: line-through;
+  color: rgb(96, 96, 96);
+}
+
+
+.new-item-price {
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 34.73px;
+  text-align: left;
+}
+
+.item-addto-cart {
+  background: #FEA59F;
+  width: 100%;
+  border-radius: 0 0 20px 20px;
+  padding: 5px 0;
+  margin: auto;
+  text-align: center;
+  font-family: Kumbh Sans;
+  font-size: 18px;
+  font-weight: 400;
+  /* line-height: 34.73px; */
+  transition: 0.5s ease-in-out;
+
+  cursor: pointer;
+
+}
+
+.item:hover {
+  transform: scale(1.05);
+  transition: 0.6s;
+
+}
+
+.item-cart {
+  background: #FEA59F;
+  width: 100%;
+  border-radius: 0 0 20px 20px;
+  padding: 5px 0;
+}
+
+.item-addto-cart .add {
+  width: 35px;
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  cursor: pointer;
+  border-radius: 50%;
+  animation: fadeIn 0.5s;
+}
+
+.food-item-counter {
+  /* transform: translateX(-50%, -50%); */
+  /* position: absolute; */
+  /* margin-left: 35%; */
+  margin: auto;
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  gap: 45px;
+  padding: 3px;
+  border-radius: 50px;
+  background: #fff;
+  transition: 0.5s ease-in-out;
+
+}
+
+.cart-item-no {
+  /* margin-top: 0px; */
+  margin-top: 12px;
+  position: absolute;
+}
+
+.food-item-counter img {
+  padding-top: 30px;
+  width: 25px;
+  cursor: pointer;
+
+}
+
+
+/* Whishlist */
+.watchlist-icon {
+  font-size: 24px;
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+.watchlist-icon.wishlist-active {
+  color: red;
+}
+
+.whist_loader_main_div{
+  width: 100%;
+  /* background: yellow; */
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 20px;
+  padding-top: 10px;
+}
+
+.whislist_loader {
+  width: 15px;
+  aspect-ratio: 1.95;
+  --c: no-repeat linear-gradient(#000 0 0);
+  background: 
+    var(--c) 0%   100%,
+    var(--c) 50%  100%,
+    var(--c) 100% 100%;
+  background-size: 20% 45%;
+  animation: l5 1s infinite linear;
+  transition: all 0.7s ease-in-out;
+  z-index: 3;
+
+}
+@keyframes l5 {
+  20% {background-position: 0% 50% ,50% 100%,100% 100%}
+  40% {background-position: 0% 0%  ,50% 50% ,100% 100%}
+  60% {background-position: 0% 100%,50% 0%  ,100% 50% }
+  80% {background-position: 0% 100%,50% 100%,100% 0%  }
+}

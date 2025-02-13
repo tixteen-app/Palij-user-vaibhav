@@ -1,0 +1,130 @@
+.nav-search-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  max-height: 300px;
+  overflow-y: auto;
+  width: 250px;
+  margin-top: 5px;
+}
+
+.result-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: #333;
+  transition: background-color 0.2s ease;
+}
+
+.result-item:hover {
+  background-color: #f5f5f5;
+}
+
+.result-item img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-right: 12px;
+}
+
+.result-info {
+  flex: 1;
+  overflow: hidden;
+}
+
+.result-info h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.result-info p {
+  margin: 2px 0 0;
+  font-size: 12px;
+  color: #666;
+}
+
+.no-products {
+  padding: 12px;
+  text-align: center;
+  color: #666;
+  font-style: italic;
+  font-size: 14px;
+}
+
+/* Loader styles */
+.loader {
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #3498db;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.nav-search-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.nav-search-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.nav-search-list::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+.nav-search-list::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
+
+@media (max-width: 1100px) {
+  .nav-search-list {
+    display: none;
+  }
+}
+
+.nav-search-list {
+  /* position: relative; */
+}
+
+.close-btn {
+  position: absolute;
+  top: -15px;
+  right: 2px;
+  background: none;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+  color: var(--redPink);
+  z-index: 1;
+
+}
+
+.close-btn:hover {
+  color: red;
+  /* Optional hover effect */
+}

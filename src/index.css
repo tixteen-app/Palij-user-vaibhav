@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Aboreto&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* list-style-type: none; */
+}
+
+.main_admin_pages {
+  display: flex;
+}
+
+.admin_page_sidebar_div {
+  width: 23%;
+}
+
+.admin_page_main_div {
+  width: 100%;
+}
+
+:root {
+  --gay-bg-color: rgb(130, 130, 123);
+  --redPink: #EE5564;
+  --volite: #A95800
+}
+
+Link {
+  text-decoration: none;
+}
+
+
+
+::-webkit-scrollbar {
+  width: 0.7rem;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 1rem;
+  background: #797979;
+  transition: all 0.5s ease-in-out;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #222224;
+}
+
+::-webkit-scrollbar-track {
+  background: #f9f9f9;
+}
+
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+
+
+.sidebar_options option:hover {
+  background: #fff;
+}
+
+.sidebar_options:focus {
+  background: #fff;
+}
+
+.a_input_for_category_sidebar option:hover {
+  background: #fff;
+
+}
+
+
+@font-face {
+  font-family: 'Bodoni-bk';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Eina03-Light'), url('../src/assets/home/bodonbk.ttf') format('woff');
+}
+
+@font-face {
+  font-family: 'Boomer';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Eina03-Light'), url('../src/assets/home/Boomerfont.otf') format('woff');
+}
+
+
+@font-face {
+  font-family: 'Made light';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Eina03-Light'), url('../src/assets/fonts/MADELight.otf') format('woff');
+}
+
+@font-face {
+  font-family: 'Made medium';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Eina03-Light'), url('../src/assets/fonts/MADEMedium.otf') format('woff');
+}
+
+@font-face {
+  font-family: 'Made regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Eina03-Light'), url('../src/assets/fonts/MADERegular.otf') format('woff');
+}

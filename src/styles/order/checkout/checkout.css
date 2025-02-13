@@ -1,0 +1,136 @@
+.main_checkout_div {
+  display: flex;
+  padding: 30px 100px;
+  min-height: 100vh;
+
+}
+
+.Order_page_display_none {
+  /* display: none; */
+}
+
+/* address */
+.shipping-address-container {
+  width: 100%;
+}
+
+.shipping-address-title {
+  font-size: 30px;
+  color: var(--golden-color);
+  font-weight: 600;
+}
+
+.address-item {
+  display: flex;
+  padding: 10px 20px;
+  border: 1px solid var(--navy-blue-color);
+  border-radius: 10px;
+  width: 60%;
+  margin-top: 20px;
+  font-family: var(--Rhodium--Libre-font);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.address-radio {
+  width: 20px;
+}
+
+.address-label {
+  margin-left: 20px;
+}
+
+/* payment */
+.success-gif-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.success-gif {
+  width: 20%;
+}
+
+
+@media (max-width:1050px) {
+  .main_checkout_div {
+    display: flex;
+    padding: 20px 70px;
+  }
+
+  /* address */
+  .shipping-address-container {
+    width: 100%;
+  }
+
+  .shipping-address-title {
+    font-size: 28px;
+  }
+
+  .address-item {
+    padding: 18px;
+    width: 90%;
+    margin-top: 18px;
+  }
+
+  .address-radio {
+    width: 19px;
+  }
+
+  /* payment */
+  .success-gif {
+    width: 50%;
+  }
+}
+
+@media (max-width:800px) {
+  .main_checkout_div {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 70px;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* address */
+  .shipping-address-container {
+    width: 100%;
+  }
+
+  .shipping-address-title {
+    font-size: 28px;
+  }
+
+  .address-item {
+    padding: 18px;
+    width: 100%;
+    margin-top: 18px;
+  }
+
+  .address-radio {
+    width: 24px;
+  }
+
+  /* payment */
+  .success-gif {
+    width: 50%;
+  }
+}
+
+@media (max-width:500px) {
+  .main_checkout_div {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 30px;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .success-gif {
+    width: 80%;
+    min-height: 50vh;
+  }
+}

@@ -1,0 +1,339 @@
+.productDisplay {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 100px 80px 80px 80px;
+    min-height: 100vh;
+  }
+  
+  .product-display-left {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+  }
+  
+  .productdisplay-img-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    
+}
+
+
+.productdisplay-img-list img {
+      border: 1px solid var(--navy-blue-color);
+      border-radius: 20px;
+      margin: 10px 0px;
+    height: 123px;
+  }
+  
+  .productdisplay-main-img {
+    width: 450px;
+    height: 500px;
+    margin-top: -100px;
+  }
+  
+  .product-display-right {
+    display: flex;
+    gap: 20px;
+    /* width: 50%; */
+    flex-direction: column;
+  }
+  
+  .product-display-right h1 {
+    font-family: Kumbh Sans;
+    font-size: 64px;
+    font-weight: 600;
+    line-height: 79.38px;
+    text-align: left;
+    color: var(--golden-color);
+  
+  }
+  
+  .product-display-right h2 {
+    font-family: Kumbh Sans;
+    font-size: 20px;
+    margin-top: -30px;
+    font-weight: 300;
+    line-height: 29.77px;
+    text-align: left;
+    color: var(--golden-color);
+  }
+  
+  .product-display-right p {
+    width: 550px;
+    width: 100%;
+    font-family: Kumbh Sans;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 34.73px;
+    text-align: justified;
+    color: black;
+  }
+  
+  .product-display-right button, .productdisplay-item-addto-cart {
+    width: 60%;
+    /* height: 100px; */
+    margin: 0 auto;
+    gap: 0px;
+    border-radius: 50px;
+    font-family: Perpetua Titling MT;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 37.86px;
+    letter-spacing: 0.03em;
+    text-align: left;
+    color: #FFFFFF;
+    background: var(--navy-blue-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--golden-color);
+    padding: 10px 0;
+    cursor: pointer;
+    outline: 0;
+  
+  }
+  
+  .productdisplay-item-cart {
+    width: 100%;
+  
+  }
+  
+  .productdisplay-item-addto-cart {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+  }
+  
+  .productdisplay-whislist {
+    color: #fff;
+    font-size: 26px;
+    width: 25px;
+    height: 25px;
+  }
+  
+  
+  .productdisplay-food-item-counter {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    width: 60%;
+    height: 45px;
+    border-radius: 50px;
+    padding: 0px 10px;
+    gap: 20px;
+    border: 2px solid var(--navy-blue-color);
+  }
+  
+  .productdisplay-food-item-counter p {
+    /* margin-top: 12px; */
+    font-size: 20px;
+    /* margin-left: 6px; */
+    margin: auto;
+    margin-left: 20%;
+  }
+  
+  .productdisplay-food-item-counter img {
+    cursor: pointer;
+    width: 30px;
+  }
+  
+  @media (max-width:1250px) {
+    .productdisplay-img-list img {
+      height: 110px;
+    }
+  
+    .productDisplay {
+  
+  
+      padding: 150px 40px 80px 40px;
+  
+  
+    }
+  
+    .productdisplay-main-img {
+      width: 450px;
+      height: 500px;
+      margin-top: -100px;
+      margin-left: -20px;
+    }
+  
+    .product-display-right h1 {
+      font-family: Kumbh Sans;
+      font-size: 55px;
+      font-weight: 600;
+  
+  
+    }
+  
+  
+    .product-display-right p {
+      width: 100%;
+      font-family: Kumbh Sans;
+      font-size: 22px;
+  
+    }
+  }
+  
+  @media (max-width:1050px) {
+    .productdisplay-img-list img {
+      height: 100px;
+      line-height: 20px;
+    }
+  
+    .productDisplay {
+      padding: 10px 40px 80px 40px;
+    }
+  
+    .productdisplay-main-img {
+      width: 400px;
+      height: 450px;
+      margin-top: -100px;
+      margin-left: -20px;
+    }
+  
+    .product-display-right h1 {
+      font-family: Kumbh Sans;
+      font-size: 45px;
+      font-weight: 600;
+      line-height: 1.1;
+  
+    }
+  
+  
+    .product-display-right p {
+      width: 100%;
+      font-family: Kumbh Sans;
+      font-size: 20px;
+  
+    }
+  
+    .product-display-right button, .productdisplay-item-addto-cart {
+      font-size: 18px;
+      width: 70%;
+    }
+  }
+  
+  @media (max-width:850px) {
+    .productDisplay {
+      display: flex;
+      align-items: center;
+    }
+  
+    .product-display-left {
+      margin-top: -50px;
+    }
+  
+    .product-display-right h1 {
+      font-family: Kumbh Sans;
+      font-size: 35px;
+      margin-bottom: 5px;
+      font-weight: 600;
+      line-height: 1.1;
+  
+    }
+  
+    .product-display-right p {
+      width: 100%;
+      font-family: Kumbh Sans;
+      font-size: 18px;
+      text-align: justify;
+  
+    }
+  
+    .product-display-left {
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 0;
+    }
+  
+    .productdisplay-img-list {
+      display: flex;
+      flex-direction: row;
+      gap: -50px;
+      margin-left: -20px;
+    }
+  
+    .productdisplay-img-list img {
+      width: 80px;
+    }
+  
+    .product-display-right button, .productdisplay-item-addto-cart {
+      font-size: 17px;
+      width: 80%;
+      height: 50px;
+    }
+  
+    .productDisplay {
+      padding: 150px 20px 80px 20px;
+    }
+  }
+  
+  @media (max-width:650px) {
+    .productdisplay-main-img {
+      width: 350px;
+      height: 400px;
+      margin-top: -100px;
+      margin-left: -20px;
+    }
+  }
+  
+  @media (max-width:650px) {
+    .productdisplay-main-img {
+      width: 300px;
+      height: 350px;
+      margin-top: -100px;
+      margin-left: -20px;
+    }
+  
+    .productdisplay-img-list img {
+      height: 90px;
+      width: 70px;
+      line-height: 20px;
+    }
+  
+    .product-display-right button, .productdisplay-item-addto-cart {
+      font-size: 15px;
+      width: 80%;
+      height: 50px;
+      letter-spacing: 0.0em;
+    }
+  }
+  
+  @media (max-width:550px) {
+    .productDisplay {
+      padding-top: 25vh;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      gap: 25px;
+    }
+  
+    .product-display-left {
+      margin: auto;
+    }
+  
+  
+  
+    .productdisplay-img-list {
+      margin-top: -20px;
+    }
+  
+    .product-display-right {
+      align-items: start;
+      width: 100%;
+  
+    }
+  
+    .product-display-right button, .productdisplay-item-addto-cart {
+      font-size: 15px;
+      width: 70%;
+      height: 50px;
+      letter-spacing: 0.0em;
+    }
+  
+    .productdisplay-item-cart {
+      gap: 100px;
+    }
+  }

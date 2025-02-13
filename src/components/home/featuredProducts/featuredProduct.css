@@ -1,0 +1,153 @@
+.a_Our_collection_main_div {}
+
+.a_featured_products {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  background: #FEA59F;
+}
+
+.main_Best_Saller_swiper {
+  /* display: flex;
+  width: 90%;
+  justify-content: center;
+  align-items: center;
+  margin: auto; */
+}
+
+.a_main_our_collection_swiper_options {
+  border: 2px solid #fff;
+  height: 300px;
+  width: 300px;
+  background: #f7bbb8;
+  position: relative;
+  display: flex;
+  border-radius: 250px 20px 20px 20px;
+  margin: 0 auto;
+  gap: 20px;
+}
+
+.a_bestSaller_details {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.a_bestSaller_details_content {
+  display: flex;
+  /* justify-content: space-between; */
+  width: 100%;
+  align-items: center;
+  gap: 15px;
+  padding: 0 15px;
+  font-size: 22px;
+  position: absolute;
+  bottom: 30px;
+  line-height: 1.2;
+
+}
+
+.product_name {
+  width: 100%;
+}
+
+.a_Best_saller_slider_images {
+  /* width: 320px; */
+  width: 100%;
+  top: -10px;
+  position: absolute;
+}
+
+.a_Add_to_cart_and_watchlist_button {
+  position: absolute;
+  bottom: 0;
+  padding: 4px 8px;
+  font-size: 18px;
+  border-radius: 0 0 20px 20px;
+  width: 100%;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.a_cart_quantity img {
+  width: 35px;
+  /* padding: px; */
+  padding: 3px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.a_cart_quantity {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  border-radius: 20px;
+  background: #fff;
+}
+
+.a_Add_to_cart_button {
+  font-family: 22px;
+  cursor: pointer;
+}
+
+.a_view_more_button_div {
+  /* width: 100%; */
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  justify-content:
+    center;
+  margin-top: 80px;
+  margin-bottom: 30px;
+
+}
+
+.view_more_button_home_page {
+  margin: 0 auto;
+  width: 100%;
+  display: inline;
+  justify-content: center;
+  margin: 25px 0;
+  margin-top: 50px;
+  font-size: 24px;
+  padding: 15px 50px;
+  align-items: center;
+  background: #fff;
+  border-radius: 50px;
+}
+
+.a_Main_Home_heading {
+  margin: 30px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  color: #fff;
+}
+
+.a_Main_Home_heading h1 {
+  font-size: 50px;
+}
+
+.a_Main_Home_heading p {
+  font-size: 16px;
+}
+
+.swiper-button-next {
+  color: white !important;
+  /* Change to desired color */
+}
+
+.swiper-button-prev {
+  color: white !important;
+  /* Change to desired color */
+
+}
+
+@media(max-width:500px) {
+  .a_Main_Home_heading h1 {
+    font-size: 36px;
+  }
+}

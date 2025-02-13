@@ -1,0 +1,167 @@
+a.main_product_sidebar_top_parent_div {
+  display: flex;
+}
+
+.main_product_sidebar_div {
+  max-width: 300px;
+  min-width: 300px;
+  border-right: 2px solid var(--golden-color);
+  height: 100vh;
+  font-family: var(--sura-font);
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 10px;
+}
+
+.product_sliderbar_options {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* heading */
+.proudct_sidebar_heading {
+  color: var(--golden-color);
+  font-size: 24px;
+}
+
+/* search */
+.input_for_search_sidebar {
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 50px;
+  border: 1px solid var(--navy-blue-color);
+}
+
+/* drop down */
+.input_for_category_sidebar {
+  width: 100%;
+  text-align: center;
+  transition: all 0.5s ease;
+  border: 1px solid var(--navy-blue-color);
+  padding: 10px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.input_category_options {
+  text-align: center;
+  color: var(--golden-color);
+}
+
+.input_for_category_sidebar option :hover {
+  background-color: var(--navy-blue-color);
+}
+
+/* price range */
+.main_price_range_product_sidebar {
+  display: flex;
+}
+
+.input_for_max_price {
+  border-radius: 0px 100px 100px 0px;
+}
+
+.input_for_min_price {
+  border-radius: 100px 0px 0px 100px;
+}
+
+.input-ranges {
+  width: 100%;
+  -webkit-appearance: none;
+  background-color: var(--navy-blue-color);
+  height: 4px;
+  outline: none;
+  margin: 10px 0;
+  transition: all 0.5s ease;
+}
+
+.input-ranges::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background-color: var(--golden-color);
+  cursor: pointer;
+}
+
+@media (max-width: 800px) {
+  .main_product_sidebar_div {
+    max-width: 200px;
+    min-width: 200px;
+    padding: 20px;
+  }
+
+  .proudct_sidebar_heading {
+    font-size: 22px;
+  }
+}
+
+.more_icon_sidebar {
+  display: none;
+}
+
+@media (max-width: 500px) {
+  .main_product_sidebar_top_parent_div {
+    flex-direction: column;
+  }
+
+  .main_product_sidebar_div {
+    max-width: 100%;
+    border-right: none;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 0px;
+    padding: 10px 5px;
+    justify-content: center;
+  }
+
+  .proudct_sidebar_heading {
+    font-size: 16px;
+  }
+
+  /* price range */
+  .price_filter_sidebar_pc_sidebar {
+    display: none;
+  }
+
+  /* search */
+  .input_for_search_sidebar {
+    width: 90%;
+    padding: 10px 10px;
+    border-radius: 50px;
+    border: 1px solid var(--navy-blue-color);
+  }
+
+  /* drop down */
+  .input_for_category_sidebar {
+    width: 90%;
+    text-align: center;
+    transition: all 0.5s ease;
+    border: 1px solid var(--navy-blue-color);
+    padding: 10px;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+
+  .input_category_options {
+    text-align: center;
+    color: var(--golden-color);
+    width: 100%;
+  }
+
+  .more_icon_sidebar {
+    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .more_icon_sidebar_div {
+    padding: 10px 0px;
+  }
+}
+
+/* big screeens e icon remmove krna h */

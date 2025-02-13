@@ -1,0 +1,112 @@
+
+.order-summary {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 3fr 1.5fr 1fr 0.5fr;
+    padding: 0 10px;
+    align-items: center;
+    color: gray;
+    font-size: max(1vw, 12px);
+    font-family: Kumbh Sans;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 20.65px;
+    text-align: left;
+    color: var(--navy-blue-color);
+  }
+  
+  .order-summary2 {
+    margin: 10px 0;
+    color: var(--navy-blue-color);
+    font-size: 22px;
+    font-weight: 600;
+    background: #fff;
+    border-radius: 20px;
+  }
+  
+  .order-summary div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  
+  }
+  
+  .order-summary2 button {
+    background: var(--golden-color);
+    border: 0;
+    padding: 10px 20px ;
+    border-radius: 20px;
+    font-size: 18px;
+  }
+  
+  .order-summary2 img {
+    width: 120px;
+    margin-top: -20px;
+  }
+  
+  .myproduct-name {
+    /* font-size: 18px; */
+    /* font-weight: 500; */
+    position: relative;
+    padding-top: 30px;
+  }
+  
+  
+  
+  @media(max-width:1000px) {
+    .order-summary2 p {
+      font-size: 18px;
+      font-weight: 500;
+    }
+  
+    .myproduct-name {
+      /* font-size: 18px; */
+      font-weight: 500;
+      position: relative;
+      padding-top: 30px;
+    }
+  
+    .myproduct-name {
+      padding-right: px;
+    }
+  }
+  
+  @media(max-width:600px) {
+    .myproduct-name-heading {
+      display: none;
+    }
+  
+    .myproduct-name-heading1 {
+      margin-left: 30px;
+    }
+  
+    .myprice-product {
+      margin-right: 70px;
+    }
+  
+    .order-summary2 img {
+      width: 80px;
+      margin-top: -40px;
+    }
+  
+    .order-summary2 button {
+      margin-top: -20px;
+      margin-left: 10px;
+    }
+  
+    .order-summary2 {
+      height: 120px;
+    }
+  
+    .order-summary1 p {
+      font-size: 18px;
+      font-weight: 500;
+    }
+  
+    .myproduct-name {
+      font-size: 18px;
+      font-weight: 500;
+      position: absolute;
+      /* padding-top: -0px; */
+      margin-top: 12px;
+    }
+  }

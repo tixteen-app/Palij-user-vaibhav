@@ -1,0 +1,82 @@
+.login-signup {
+    width: 100%;
+    height: 100vh;
+    background: var(--bg-white-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  font-family: var(--sura-font);
+  }
+  
+  .login-signup form {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .login {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .login input {
+    border: 2px solid var(--navy-blue-color);
+    width: 100%;
+    outline: 0;
+    background: transparent;
+    padding: 10px;
+    color: var(--black-color);
+    font-size: 18px;
+    border-radius: 5px;
+  }
+  
+  ::placeholder {
+    color: var(--black-color);
+    opacity: 40%;
+  }
+  
+  .login button {
+    width: 100%;
+    padding: 10px;
+    font-size: 17px;
+    background: var(--navy-blue-color);
+    border: 0;
+    outline: 0;
+    color: var(--white-color);
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .login p {
+    margin-top: -10px;
+  }
+  
+  .login p span {
+    color: var(--golden-color);
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+ 
+  @media screen and (max-width: 1000px) {
+    .login-signup form {
+      width: 50%;
+    }
+  }
+  
+  @media screen and (max-width: 600px) {
+    .login-signup form {
+      width: 70%;
+    }
+  }
+  
+  @media screen and (max-width: 400px) {
+    .login-signup form {
+      width: 80%;
+    }
+  }

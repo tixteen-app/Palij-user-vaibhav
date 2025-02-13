@@ -1,0 +1,75 @@
+.categories div {
+  display: flex;
+  flex-direction: column;
+}
+
+.categories div p {
+  margin-top: -8px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.activeCategory {
+  color: #b5651d;
+}
+
+/* PriceFilter.module.css */
+
+.priceFilterOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* Space between each filter option */
+  margin-bottom: 20px;
+  /* Space below the filter options */
+}
+
+.priceFilterOption {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  /* Pointer cursor on hover */
+}
+
+.priceFilterOption input[type="radio"] {
+  margin-right: 10px;
+  /* Space between radio button and label */
+  cursor: pointer;
+  /* Pointer cursor on the radio button */
+}
+
+.priceFilterOption label {
+  font-size: 17px;
+  /* Adjust the font size */
+  cursor: pointer;
+  /* Pointer cursor on the label */
+  color: #333;
+
+  /* Darker color for better readability */
+}
+
+/* Style for the active (checked) state */
+.priceFilterOption input[type="radio"]:checked+label {
+  font-weight: bold;
+  /* Highlight selected option */
+  color: #b5651d;
+  /* Use a distinct color for the active option */
+}
+
+.allproducts {
+  width: 100%;
+}
+
+
+.subcategories {
+  margin-left: 20px;
+}
+
+.activeSubcategory {
+  font-weight: bold;
+  /* color: #your-accent-color; */
+}
+
+.sidebar_hr {
+  border: 1px solid #b5651d;
+}

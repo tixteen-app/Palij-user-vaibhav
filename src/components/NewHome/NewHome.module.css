@@ -1,0 +1,445 @@
+.container {
+  width: 100%;
+}
+
+.landing img {
+  width: 100%;
+}
+
+.about {
+  width: 100%;
+  display: flex;
+  padding: 50px 20px;
+  background: #EE5564;
+
+  justify-content: center;
+}
+
+.aboutContainer {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  align-items: center;
+}
+
+.about img {
+  min-width: 350px;
+  width: 35%;
+}
+
+.aboutContent {
+  display: flex;
+  flex-direction: column;
+  /* max-width: 750px; */
+  width: 100%;
+}
+
+.aboutContent h2 {
+  font-size: 4rem;
+  font-family: 'Boomer';
+  color: #fff;
+}
+
+.aboutContent p {
+  font-size: 1.4rem;
+  text-align: justify;
+  color: #fff;
+  font-family: 'Bodoni-bk';
+}
+
+/* +=============delight======= */
+
+.delight {
+  width: 100%;
+  position: relative;
+  padding: 100px 0;
+}
+
+.delightContainer {
+  width: 94%;
+  margin: auto;
+}
+
+.delightContainer .delightText {
+  width: 100%;
+}
+
+.delightContainer h2 {
+  font-size: 11vw;
+  font-family: 'Boomer';
+  color: #EE5564;
+}
+
+.delightcake {
+  position: absolute;
+  bottom: -8%;
+  width: 25%;
+  right: 0;
+}
+
+/* ========shopCategories========== */
+
+.shopCategories {
+  margin-top: 80px;
+}
+
+.shopCategoryContainer {
+  width: 94%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Bodoni-bk';
+}
+
+.shopCategoryTitle {
+  font-size: 4rem;
+  color: #EE5564;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.shopCategoryText {
+  font-size: 1.8rem;
+  font-family: 'Bodoni-bk';
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  margin-top: -50px;
+}
+
+.shopCategoryContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.shopCategoryContainer div {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.shopCategoryContainer div img {
+  width: 90%;
+  margin: auto;
+}
+
+.shopCategoryContainer div p {
+  font-size: 1.8rem;
+  font-family: 'Bodoni-bk';
+  width: 80%;
+  text-align: center;
+  margin: auto;
+}
+
+
+.categoryImgContainer {
+  position: relative;
+
+  /* You can adjust the width */
+}
+
+.categoryImg {
+  transition: transform 0.3s ease;
+}
+
+.textOverlay {
+  width: 95%;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Semi-transparent background */
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 80px;
+}
+
+.categoryImgContainer:hover .categoryImg {
+  /* Slight zoom effect */
+}
+
+.categoryImgContainer:hover .textOverlay {
+  opacity: 1;
+  /* Show text on hover */
+}
+
+
+/* =========freshly============ */
+
+.freshly {
+  width: 94%;
+  margin: auto;
+  margin-top: 80px;
+}
+
+.freshlyContainer .freshlyImages {
+  display: flex;
+  align-items: bottom;
+  justify-content: center;
+  gap: 5%;
+}
+
+.freshlyContainer .freshlyImages div {
+  z-index: 50;
+}
+
+.freshlyImages .img1 img {
+  height: 370px;
+  margin-top: -10px;
+
+}
+
+.freshlyImages .img2 img {
+  height: 410px;
+}
+
+.freshlyImages .img3 img {
+  height: 430px;
+  margin-top: -30px;
+}
+
+.freshlyContent {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.freshlyContent h1 {
+  text-align: center;
+  font-size: 21vw;
+  /* Adjust as needed */
+  color: transparent;
+  -webkit-text-stroke: 3px #EE5564;
+  /* Outline color and width */
+  text-transform: uppercase;
+  line-height: 0.7;
+  font-family: 'Boomer';
+}
+
+.freshlyContent {
+  margin-top: -60px;
+}
+
+.freshlyContent .baked {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+
+
+}
+
+.freshlyContent .baked h2 {
+  font-size: 15vw;
+  /* Adjust as needed */
+  color: transparent;
+  -webkit-text-stroke: 3px #EE5564;
+  /* Outline color and width */
+  text-transform: uppercase;
+  line-height: 1;
+  font-family: 'Boomer';
+}
+
+.freshlyContent .baked div {
+  border: 2px solid #EE5564;
+  padding: 6px;
+  border-radius: 60px;
+  margin-top: 0px;
+}
+
+.freshlyContent .baked div button {
+  border: 1px solid #EE5564;
+  padding: 0px 50px;
+  background: #EE5564;
+  border-radius: 60px;
+  font-size: 4vw;
+  color: #fff;
+  font-weight: 300;
+
+}
+
+
+
+@media(max-width:1300px) {
+
+  .aboutContainer {
+    width: 90%;
+  }
+
+  .freshlyContainer .freshlyImages {
+    gap: 1%;
+  }
+
+  .freshlyImages .img1 img {
+    height: 280px;
+    margin-top: -10px;
+
+  }
+
+  .freshlyImages .img2 img {
+    height: 310px;
+  }
+
+  .freshlyImages .img3 img {
+    height: 330px;
+    margin-top: -30px;
+  }
+}
+
+@media(max-width:1000px) {
+
+  .aboutContainer {
+    width: 100%;
+    gap: 30px;
+  }
+
+
+
+
+  .freshlyContainer .freshlyImages {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .freshlyImages .img1 img {
+    height: 280px;
+    margin-top: 0px;
+
+  }
+
+  .freshlyImages .img2 img {
+    height: 310px;
+    margin-top: 15px;
+  }
+
+  .freshlyImages .img3 img {
+    height: 330px;
+    margin-top: 0px;
+    margin-top: -50px;
+  }
+}
+
+
+@media(max-width:800px) {
+  .aboutContainer {
+
+    flex-direction: column;
+  }
+
+  .about img {
+    min-width: 320px;
+    width: 35%;
+  }
+
+
+  .aboutContent h2 {
+    font-size: 3.5rem;
+  }
+
+  .aboutContent p {
+    font-size: 1.3rem;
+    line-height: 1.3;
+  }
+
+  .delightcake {
+    bottom: -15%;
+    width: 40%;
+
+  }
+
+  .delight {
+    width: 100%;
+    position: relative;
+    padding: 100px 0;
+    padding-top: 50px;
+  }
+
+
+
+
+  .shopCategoryTitle {
+    font-size: 3rem;
+
+    letter-spacing: normal;
+  }
+
+  .shopCategoryText {
+    font-size: 1.4rem;
+    width: 100%;
+    line-height: 1.3;
+  }
+
+
+  .shopCategoryContainer div {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+  }
+
+  .shopCategoryContainer div img {
+    width: 95%;
+    margin: auto;
+  }
+
+  .shopCategoryContainer div p {
+    font-size: 1.4rem;
+    width: 100%;
+    line-height: 1.3;
+  }
+
+
+  .textOverlay {
+    width: 98%;
+
+  }
+
+  .categoryImgContainer:hover .categoryImg {
+    /* Slight zoom effect */
+  }
+
+  .categoryImgContainer:hover .textOverlay {
+    opacity: 1;
+    /* Show text on hover */
+  }
+
+  .freshlyContent {
+    margin-top: 20px;
+  }
+
+  .freshlyContent .baked div {
+    border: 2px solid #EE5564;
+    padding: 6px;
+    border-radius: 60px;
+    margin-top: 0px;
+  }
+
+  .freshlyContent .baked div button {
+    border: 1px solid #EE5564;
+    padding: 5px 30px;
+
+    font-size: 3.5vw;
+  }
+
+  .freshlyContent .baked {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+
+  }
+}

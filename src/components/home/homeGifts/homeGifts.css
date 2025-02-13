@@ -1,0 +1,63 @@
+.homeGifts {
+  background: #EFE2D7;
+  margin-top: -30px;
+  margin-bottom: -30px;
+}
+
+.a_Our_collection_main_div {
+  margin: 0;
+
+
+}
+
+.b_box-sq {
+  background: #f2d6cc;
+}
+
+.b_homegift_heading {
+  padding-top: 20px;
+}
+
+
+
+.b_homegift_heading p {
+  color: #000;
+  font-size: 18px;
+  letter-spacing: 1.4px;
+}
+
+.b_gift_image {
+  width: 180px;
+  left: 60px;
+}
+
+.b_homegift_heading h1 {
+
+  color: #E5087E;
+
+}
+
+.b_bestSaller_details_content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  gap: 15px;
+  padding: 0 15px;
+  font-size: 22px;
+  position: absolute;
+  bottom: 52px;
+  line-height: 1.2;
+
+}
+
+@media (max-width:500px) {
+  .exiting_range_hampers {
+    font-size: 18px;
+    color: #E5087E;
+  }
+
+  .b_homegift_heading h1 {
+    font-size: 28px;
+  }
+}

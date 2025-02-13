@@ -1,0 +1,144 @@
+.my-shipping-belling-address {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    background: var(--bg-white-color);
+    gap: 20px;
+    font-family: var(--Rhodium--Libre-font);
+  
+  }
+  
+  .address-form {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+  }
+  
+  .address-form h2 {
+    font-family: Kumbh Sans;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 44.65px;
+    text-align: left;
+    color: var(--golden-color);
+  }
+  
+  .address-form input  {
+    font-size: 17px;
+    height: 40px;
+    border: none;
+    border: 2px solid var(--navy-blue-color);
+    background: transparent;
+    border-radius: 4px;
+    padding: 12px;
+    outline: 0;
+  }
+  /* for textarea */
+  .address-form textarea {
+    font-size: 17px;
+    height: 90px;
+    border: none;
+    border: 2px solid var(--navy-blue-color);
+    background: transparent;
+    border-radius: 4px;
+    padding: 12px;
+    outline: 0;
+  }
+  
+  .add-pin-country {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .add-pin-country input {
+    width: 100%;
+  }
+  
+  .shipping-header {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .shipping-header button {
+    border: 0;
+    outline: 0;
+    background: var(--navy-blue-color);
+    height: 30px;
+    padding: 5px 15px;
+    color: #fff;
+    font-size: 15px;
+    border-radius: 15px;
+    cursor: pointer;
+  }
+  
+  .my-shipping-address {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .my-billing-address {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .same-add-checkbox {
+    display: flex;
+    gap: 0;
+    align-items: center;
+    width: 100%;
+    margin-top: -15px;
+  }
+  
+
+  .my-shipping-address div, .my-billing-address div {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .edit-address-btn {
+    font-size: 20px;
+    padding: 10px;
+    background: var(--navy-blue-color);
+    border: 0;
+    outline: 0;
+    border-radius: 5px;
+    color: #fff;
+    width: 100%;
+    margin: 30px auto;
+    cursor: pointer;
+  }
+  
+  @media(max-width:500px) {
+    .my-billing-address {
+      width: 100%;
+      padding: 0 20px;
+    }
+  
+    .my-billing-address input {
+      width: 100%;
+    }
+  
+    .same-add-checkbox {
+      display: flex;
+      gap: 0;
+      align-items: center;
+      width: 100%;
+      margin-left: -20px;
+      margin-top: -15px;
+    }
+  
+  
+    .same-add-checkbox p {
+      /* margin-left: 0px; */
+      width: 450%;
+      padding-top: 12px;
+      margin-left: -20px;
+    }
+  
+  
+  }

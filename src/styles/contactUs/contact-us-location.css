@@ -1,0 +1,30 @@
+.location-contact-us{
+    padding: 50px 15px;
+    text-align: center;
+   
+}
+.location-iframe{
+    border-radius: 10px;
+    width: 80%;
+    min-height: 200px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+@media (min-width:768px) {
+.location-iframe{
+    min-height: 300px;
+    padding: 5px;
+
+}
+}
+@media (min-width:1023px) {
+.location-iframe{
+    min-height: 450px;
+    padding: 10px;
+}
+}
+@media (min-width: 2000px) {
+    .location-iframe{
+        min-height: 550px;
+        padding: 10px;
+    }
+}

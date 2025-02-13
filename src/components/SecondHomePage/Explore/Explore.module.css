@@ -1,0 +1,111 @@
+.container {
+  font-family: "Aboreto", system-ui;
+  width: 90%;
+  margin: auto;
+  margin-top: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--volite);
+}
+
+.imageContainer {
+  width: 50%;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+}
+
+.imageContainer img {
+  width: 80%;
+}
+
+.contant {
+  width: 50%;
+  /* background: #000; */
+  margin-top: -50px;
+}
+
+.contant h2 {
+  font-size: 3rem;
+}
+
+.contant p {
+  color: black;
+  margin-top: -10px;
+  font-size: 1.2rem;
+}
+
+.contant button {
+  border: 2px solid var(--volite);
+  padding: 6px 10px;
+  font-size: 1.3rem;
+  color: var(--volite);
+  margin-top: 40px;
+}
+
+.contant button img {
+  width: 15px;
+  margin-left: 5px;
+}
+
+@media(max-width:1000px) {
+  .container {
+    width: 95%;
+  }
+
+  .contant {
+    width: 50%;
+    /* background: #000; */
+    margin-top: -50px;
+  }
+
+  .contant h2 {
+    font-size: 2.4rem;
+  }
+}
+
+@media(max-width:800px) {
+  .container {
+    flex-direction: column;
+    margin-top: 60px;
+  }
+
+  .contant {
+    width: 100%;
+    /* background: #000; */
+    margin-top: 0px;
+  }
+
+  .imageContainer {
+    width: 100%;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+  }
+
+  .imageContainer img {
+    width: 80%;
+  }
+}
+
+@media(max-width:500px) {
+  .contant h2 {
+    font-size: 2rem;
+    margin-top: 15px;
+  }
+
+  .contant p {
+    color: black;
+    margin-top: -5px;
+    font-size: 1.05rem;
+  }
+
+  .contant button {
+    border: 2px solid var(--volite);
+    padding: 6px 10px;
+    font-size: 1.3rem;
+    color: var(--volite);
+    margin-top: 20px;
+  }
+}

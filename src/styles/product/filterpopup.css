@@ -1,0 +1,150 @@
+.filter-popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    min-height: 450px;
+    max-height: 450px;
+    overflow-y: scroll;
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ccc;
+    background-color: #f0f0f0;
+    border-radius: 8px 8px 0 0;
+}
+
+.popup-header h2 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.close-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.sidebar {
+    width: 30%;
+    float: left;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar li {
+    cursor: pointer;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ccc;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar li:hover {
+    background-color: #f0f0f0;
+}
+
+.content {
+    width: 70%;
+    float: left;
+    padding: 20px;
+}
+
+.price-range-form,
+.category-menu {
+    display: none;
+}
+
+.active {
+    display: block;
+}
+
+.price-range-form label,
+.category-menu label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.price-range-form input[type="number"] {
+    width: calc(100% - 16px);
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.price-range-form button,
+.category-menu button {
+    width: 100%;
+    padding: 8px 0;
+    margin-top: 10px;
+    background-color: var(--navy-blue-color);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.price-range-form button:hover,
+.category-menu button:hover {
+    background-color: #344492;
+}
+
+.category-menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.category-menu li {
+    margin-bottom: 5px;
+}
+
+.category-menu {
+    display: none;
+    background-color: #fff;
+    padding: 0px 20px;
+}
+
+.category-menu.active {
+    display: block;
+}
+
+.category-menu h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.category-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.category-menu ul li {
+    margin-bottom: 10px;
+}
+
+.category-menu label {
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.category-menu input[type="radio"] {
+    margin-right: 5px;
+}

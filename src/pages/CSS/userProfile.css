@@ -1,0 +1,470 @@
+.userProfile {
+  width: 100%;
+  min-height: 100vh;
+  padding: 0 100px;
+  padding-top: 12vh;
+  background: white;
+
+  /* border-top: 2px solid black; */
+}
+
+.userprofile-hr {
+  margin-top: 50px;
+  display: none;
+}
+
+.user-sidebar-info {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  /* align-items: first baseline; */
+  position: relative;
+}
+
+.userProfile-sidebar {
+  margin-top: 30px;
+  /* width: 300px; */
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 10px;
+  position: -webkit-sticky;
+
+  position: sticky;
+  top: 100px;
+  height: 100%;
+}
+
+.userProfile-sidebar h1 {
+  font-family: Kumbh Sans;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 44.65px;
+  text-align: left;
+
+}
+
+.userprofile-name {
+  margin-top: 60px;
+}
+
+.user-flexcol {
+
+  background: white;
+  border: 1px solid #000;
+  /* width: 100%; */
+  display: flex;
+  align-items: start;
+  /* justify-content: center; */
+  border-radius: 10px;
+  gap: 35px;
+  cursor: pointer;
+}
+
+.user-flexcol p {
+  font-family: Kumbh Sans;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 29.77px;
+  letter-spacing: 0.1em;
+  flex: 1;
+  width: 170px;
+  text-align: left;
+  margin-top: 10px;
+  margin-left: -20px;
+
+}
+
+.user-flexcol img {
+  padding: 10px;
+  width: 75px;
+  padding-left: 25px;
+}
+
+.blackUserProfile {
+  width: 80px;
+  margin-top: 30px;
+}
+
+
+.userprofile-name {
+  /* display: flex;
+  align-items: left;
+  gap: 10px;
+  width: 100%;
+  background: #F2D6CC;
+  border-radius: 20px; */
+}
+
+.userprofile-name span {
+  font-family: Kumbh Sans;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 18.6px;
+  letter-spacing: 0.12em;
+  text-align: left;
+}
+
+.userprofile-name p {
+  font-family: Kumbh Sans;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 29.77px;
+  letter-spacing: 0.12em;
+  text-align: left;
+
+}
+
+
+.userprofile-h1 {
+  position: absolute;
+  display: flex;
+  margin-top: -10px;
+  align-items: center;
+  gap: 50px;
+}
+
+.myuser-profile-icon {
+  margin: auto 0;
+}
+
+
+.userProfile-info {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.userprofile-h1 img {
+  cursor: pointer;
+  display: none;
+}
+
+
+.logouy_btn {
+  display: flex;
+  align-items: center;
+  gap: 55px;
+}
+
+.logouy_btn .tb_logout {
+  font-size: 30px;
+  padding: 0px;
+  padding-left: 25px;
+  margin-bottom: 10px;
+  color: black;
+}
+
+@media(max-width:1100px) {
+  .userProfile {
+    width: 100%;
+    min-height: 100vh;
+    padding: 0 20px;
+    padding-top: 20vh;
+    /* background: #efe2d7; */
+
+    /* border-top: 2px solid black; */
+  }
+
+}
+
+
+@media(max-width:800px) {
+  .userProfile {
+    width: 100%;
+    min-height: 100vh;
+    padding: 0 10px;
+    padding-top: 10vh;
+    /* background: #efe2d7; */
+
+
+    /* border-top: 2px solid black; */
+  }
+
+  .myuser-profile-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+  }
+
+  .userProfile-sidebar img {
+    width: 60px;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .userprofile-name .myuser-profile-icon {
+    /* padding-right: 52px; */
+    width: 60px;
+    padding: 10px;
+
+  }
+
+  .userprofile-name {
+    /* display: flex;
+    align-items: start;
+    gap: 50px;
+    justify-content: center; */
+
+  }
+
+
+  .userprofile-h1 {
+    position: absolute;
+    display: flex;
+    margin-top: -10px;
+    align-items: center;
+    gap: 50px;
+  }
+
+
+  .userprofiele-menu {
+    /* height: 30px; */
+    display: block;
+    display: contents;
+    width: 40px;
+    height: 40px;
+  }
+
+  .userprofile-h1 img {
+    display: flex;
+    width: 40px;
+    height: 40px;
+    display: none;
+  }
+
+  .userProfile-info {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+  }
+
+  .userProfile-sidebar {
+    /* position: absolute; */
+    /* box-shadow: 0; */
+    /* padding-left: 10px; */
+    /* padding-right: 30px; */
+    /* padding: 10px; */
+    padding-bottom: 100px;
+    padding-right: 10px;
+    z-index: 100;
+  }
+
+  .userprofiele-menu-close {
+    background: #fff;
+
+  }
+
+  .userProfile-info {
+    margin-left: -20px;
+  }
+
+  .userProfile-sidebar img {
+    width: 45px;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .userprofile-name .myuser-profile-icon {
+    /* padding-right: 52px; */
+    width: 45px;
+    padding: 10px;
+
+  }
+
+  .userProfile-info {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+  }
+
+  .logouy_btn .tb_logout {
+    padding: 0px 10px;
+    font-size: 24px;
+  }
+
+  .userprofile-h1 h1 {
+    display: none;
+  }
+}
+
+
+@media(max-width:600px) {
+  .userProfile-sidebar h1 {
+    font-size: 23px;
+    margin-top: 5px;
+  }
+
+  .user-flexcol p {
+    font-family: Kumbh Sans;
+    font-size: 14px;
+
+    width: 150px;
+  }
+
+  .user-name {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .user-name span {
+    font-size: 14px;
+    padding-top: 10px;
+  }
+
+  .user-name p {
+    font-size: 20px;
+    margin-top: 0px;
+  }
+
+  .userprofile-h1 {
+    position: absolute;
+    display: flex;
+    margin-top: -20px;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .userProfile {
+    padding-top: 1vh;
+  }
+
+  .userProfile-sidebar {
+    margin-top: 30px;
+    /* width: 300px; */
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+    position: -webkit-sticky;
+
+    position: sticky;
+    top: 30px;
+    height: 100%;
+  }
+
+}
+
+
+.loading-name {
+  width: 150px;
+  height: 20px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+
+.logoutDialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Dark overlay */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.logoutDialog {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
+}
+
+.logoutDialog h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.logoutDialog p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.logoutDialog-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.confirm-button,
+.cancel-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.confirm-button {
+  background-color: #f44336;
+  color: white;
+}
+
+.confirm-button:hover {
+  background-color: #d32f2f;
+}
+
+.cancel-button {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.cancel-button:hover {
+  background-color: #bdbdbd;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .logoutDialog {
+    padding: 15px;
+    width: 90%;
+  }
+
+  .logoutDialog h2 {
+    font-size: 1.25rem;
+  }
+
+  .logoutDialog p {
+    font-size: 0.9rem;
+  }
+
+  .confirm-button,
+  .cancel-button {
+    font-size: 0.9rem;
+    padding: 8px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logoutDialog-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .confirm-button,
+  .cancel-button {
+    width: 100%;
+  }
+}

@@ -1,0 +1,218 @@
+.editUserProfile {
+    padding-top: 20vh;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    background: var(--bg-white-color);
+    font-family: var(--sura-font);
+  
+  }
+  
+  .edit-form {
+    /* width: 100%; */
+    /* width: 500px; */
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .edit-form h2 {
+    font-family: Kumbh Sans;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 44.65px;
+    text-align: left;
+    margin-bottom: -10px;
+    color: #AE7B37;
+  }
+  
+  .edit-form label {
+    font-family: Kumbh Sans;
+    font-size: 18px;
+    font-weight: 300;
+    /* line-height: 4px; */
+    text-align: left;
+    color: var(--golden-color);
+  
+  }
+  
+  .edit-form input {
+    width: 100%;
+    height: 25px;
+    border: none;
+    border: 2px solid var(--navy-blue-color);
+    background: transparent;
+    border-radius: 4px;
+    padding: 12px;
+    font-size: 17px;
+    outline: 0;
+  }
+  
+  .edit-about-section {
+    /* display: flex; */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .about-edit-btn {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .about-edit-btn button {
+    background: var(--navy-blue-color);
+    color: #fff;
+    border-radius: 20px;
+    padding: 5px 15px;
+    border: 0;
+    outline: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .edit-username {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .edit-gender {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .edit-gender div {
+    display: flex;
+    gap: 10px;
+    margin-left: 55px;
+    /* width: 80px; */
+  }
+  
+  .edit-gender input {
+    width: 85px;
+  }
+  
+  .edit-city, .edit-state, .edit-dob {
+    display: flex;
+    gap: 15px;
+  }
+  
+  
+  
+  .edit-city input, .edit-state input, .edit-dob input {
+    margin-left: 70px;
+    display: flex;
+  }
+  
+  .edit-dob input {
+    margin-left: 60px;
+  }
+  
+  .edit-city input {
+    margin-left: 75px;
+  }
+  
+  .edit-state input {
+    margin-left: 70px;
+  }
+  
+  .edit-contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .edit-contacts div {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+  
+  }
+  
+  .edit-email input {
+    margin-left: 60px;
+  }
+  
+  .edit-pno input {
+    margin-left: 25px;
+  }
+  
+  .edit-security {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: start;
+  }
+  
+  .edit-password {
+    display: flex;
+    gap: 56px;
+    align-items: center;
+  }
+  
+  .edit-username input {
+    height: 40px;
+  }
+  
+  .edit-save-btn {
+    font-size: 20px;
+    padding: 10px;
+    background: var(--navy-blue-color);
+    border: 0;
+    outline: 0;
+    border-radius: 5px;
+    color: #fff;
+    width: 250px;
+    margin: 30px auto;
+    cursor: pointer;
+  }
+  
+  .file-input {
+    display: flex;
+    align-items: center;
+  }
+  
+  .file-input input {
+    border: 0;
+    /* margin-bottom: 5px; */
+  }
+  
+  .file-input img {
+    width: 100px;
+  }
+  
+  input[type=file]::file-selector-button {
+    border: none;
+    padding: .2em .4em;
+    border-radius: .2em;
+    background-color: var(--navy-blue-color);
+    transition: 1s;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  
+  .input[type=file]::placeholder {
+    color: transparent;
+  }
+  
+  
+  @media (max-width:550px) {
+    .editUserProfile {
+        padding-top: 0vh;
+      }
+      
+    .edit-form {
+      width: 400px;
+      padding: 0 18px;
+    }
+  
+    .edit-pno input {
+      margin-left: 40px;
+    }
+  
+  }

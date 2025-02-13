@@ -1,0 +1,359 @@
+.aboutus {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  background: linear-gradient(to right,
+      #EFE2D7 0%,
+      #EFE2D7 50%,
+      #FEA59F 50%,
+      #FEA59F 100%)
+}
+
+.aboutus2 img {
+  width: 100%;
+  height: 100vh;
+  margin-top: 10vh;
+}
+
+.aboutus h1 {
+  font-family: Perpetua Titling MT;
+  font-size: 120px;
+  font-weight: 700;
+  line-height: 500px;
+  letter-spacing: 0.1em;
+  /* text-align: left; */
+  margin-left: -0px;
+
+}
+
+h1 span {
+  color: white;
+}
+
+.cup-cakes {
+  position: absolute;
+  bottom: 0px;
+}
+
+.cup-cakes img {
+  /* position: absolute; */
+  /* width: 900px; */
+}
+
+.company-history {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+  gap: 20px;
+  padding: 50px;
+}
+
+.company-history h1 {
+  text-transform: uppercase;
+  color: var(--redPink);
+  text-align: center;
+  font-family: Perpetua Titling MT;
+  font-size: 55px;
+  font-weight: 700;
+  line-height: 77px;
+  letter-spacing: 0.1em;
+  /* text-align: left; */
+
+
+}
+
+.company-history p {
+  font-family: Kumbh Sans;
+  font-size: 20px;
+  width: 90%;
+  font-weight: 400;
+  line-height: 30px;
+  letter-spacing: 0.1em;
+  text-align: justify;
+  color: #AE7B37;
+}
+
+.ours {
+  width: 100%;
+  /* height: 110vh; */
+
+  display: flex;
+  gap: 50px;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  /* background: linear-gradient(to top,
+      #EFE2D7 0%,
+      #EFE2D7 30%,
+      #FEA59F 30%,
+      #FEA59F 100%); */
+
+  background: var(--redPink);
+
+}
+
+.our-values,
+.our-mission {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.our-values h2,
+.our-mission h2 {
+  font-family: Perpetua Titling MT;
+  /* margin-top: 20px; */
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 77px;
+  letter-spacing: 0.1em;
+  text-align: left;
+
+}
+
+.our-values img {
+  width: 150px;
+}
+
+.our-mission {
+  /* background-image: url('../../assets/Rectangle with shadow 1.png'); */
+  /* height: 100%; */
+  background: var(--redPink);
+  background-position: bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-top: 50px;
+  padding-bottom: 60px;
+}
+
+.our-values .valued-features {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 50px;
+  align-items: center;
+}
+
+.our-values .valued-features div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.our-values .valued-features div p {
+  font-family: Perpetua Titling MT;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 30px;
+  letter-spacing: 0.1em;
+  text-align: center;
+  width: 150px;
+}
+
+.our-mission p {
+  font-family: Perpetua Titling MT;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 30px;
+  text-align: justify;
+  letter-spacing: 0.1em;
+  text-align: justified;
+  width: 80%;
+
+}
+
+@media screen and (max-width: 1000px) {
+  .our-values img {
+    width: 120px;
+  }
+
+  .our-values .valued-features div p {
+    font-size: 16px;
+    width: 130px;
+  }
+
+  .our-mission p {
+    font-size: 16px;
+  }
+
+  .aboutus2 img {
+    width: 100%;
+    height: 100%;
+    margin-top: 10vh;
+  }
+}
+
+@media screen and (max-width: 865px) {
+  .ours {
+    /* height: 150vh; */
+  }
+
+  .company-history h1 {
+    font-size: 50px;
+  }
+
+  .company-history {
+    padding: 50px 25px;
+  }
+
+
+  .aboutus h1 {
+    font-size: 100px;
+  }
+
+  .cup-cakes img {
+    width: 680px;
+  }
+
+}
+
+@media screen and (max-width: 700px) {
+  .aboutus h1 {
+    font-size: 70px;
+  }
+
+  .cup-cakes img {
+    width: 580px;
+    height: 450px;
+  }
+
+}
+
+@media screen and (max-width: 600px) {
+
+
+  .cup-cakes img {
+    width: 500px;
+    height: 400px;
+  }
+
+  .aboutus {
+    height: 70vh;
+  }
+
+  .aboutus h1 {
+    line-height: 350px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .ours {
+    /* height: 185vh; */
+  }
+
+  .company-history h1 {
+    font-size: 40px;
+    line-height: 1.3;
+  }
+
+  .company-history {
+    padding: 50px 10px;
+  }
+
+  .aboutus h1 {
+    font-size: 50px;
+  }
+
+  .cup-cakes img {
+    width: 400px;
+    height: 350px;
+  }
+
+  .aboutus2 img {
+    width: 100%;
+    height: 100%;
+    margin-top: 8vh;
+  }
+
+}
+
+@media screen and (max-width: 450px) {
+  .ours {
+    /* height: 170vh; */
+  }
+
+  .our-values h2,
+  .our-mission h2 {
+    font-size: 38px;
+  }
+
+  .our-values img {
+    width: 110px;
+  }
+
+  .our-values .valued-features div p {
+    font-size: 13px;
+    width: 110px;
+
+  }
+
+  .our-mission p {
+    font-weight: 500;
+  }
+
+  .cup-cakes img {
+    width: 380px;
+    height: 320px;
+  }
+
+  .company-history {
+    padding: 50px 0px;
+  }
+
+}
+
+@media screen and (max-width: 400px) {
+  .aboutus h1 {
+    font-size: 50px;
+  }
+
+  .cup-cakes img {
+    /* width: 600px; */
+    width: 330px;
+    height: 280px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+
+  .our-values h2,
+  .our-mission h2 {
+    font-size: 35px;
+  }
+
+  .our-values .valued-features div p {
+    font-size: 14px;
+    width: 110px;
+
+  }
+
+  .our-mission p {
+    font-weight: 500;
+    font-size: 15px;
+  }
+
+  .company-history h1 {
+    font-size: 40px;
+    line-height: 1.3;
+  }
+
+  .company-history {
+    padding: 40px 7px;
+  }
+
+  .aboutus h1 {
+    font-size: 45px;
+  }
+
+  .cup-cakes img {
+    width: 300px;
+    height: 250px;
+  }
+}

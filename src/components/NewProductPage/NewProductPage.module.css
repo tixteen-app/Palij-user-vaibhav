@@ -1,0 +1,111 @@
+.container {
+  display: flex;
+  width: 94%;
+  margin: auto;
+  margin-top: 16vh;
+  position: relative;
+  font-family: "Kumbh Sans";
+}
+
+.sidebar {
+  position: sticky;
+  height: 100vh;
+  top: 16vh;
+  min-width: 250px;
+}
+
+/* filer Price */
+
+
+
+.title,
+.categories h2 {
+  color: #b47d56;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.checkboxGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.checkbox {
+  margin-right: 10px;
+  accent-color: black;
+  /* For custom checkbox styling */
+}
+
+.checkbox:checked+label {
+  font-weight: bold;
+}
+
+
+/* ==========products======== */
+.productsContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.allProductsList {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  place-items: center;
+  margin-top: 50px;
+  row-gap: 50px;
+}
+
+.products {
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid #000; */
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.0.5), 1px 3px 3px rgba(0, 0, 0, 0.13);
+  padding: 15px;
+  padding-bottom: 10px;
+  gap: 15px;
+  color: black;
+  /* box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0px 1px 15px rgba(0, 0, 0, 0.1); */
+}
+
+.productName {
+  font-weight: 400;
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.productPrice {
+  font-weight: 400;
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.productPrice span {
+  font-size: 1rem;
+  margin-left: 5px;
+  text-decoration: line-through;
+  text-decoration-color: red;
+  text-decoration-thickness: 1.2px;
+  opacity: 0.7;
+}
+
+.productImg {
+  padding: 10px;
+}
+
+.productImg img {
+  width: 280px;
+  /* background: #000; */
+}

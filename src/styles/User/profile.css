@@ -1,0 +1,226 @@
+.myaccount {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .userprofile-heading {
+    /* background: #F2D6CC; */
+    margin-top: 85px;
+    width: 100%;
+    border-radius: 20px;
+    /* display: block; */
+  }
+  
+  
+  .userprofile-heading h1 {
+    font-family: Kumbh Sans;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 29.77px;
+    letter-spacing: 0.19em;
+    text-align: left;
+    padding: 10px;
+    padding-left: 30px;
+  
+  }
+  
+  .userprofile-info-css {
+    min-height: 55vh;
+    /* background: #F2D6CC; */
+    border-radius: 20px;
+  
+  }
+  
+  .myaccount-info {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    padding: 10px 30px;
+    padding-bottom: 30px;
+    align-items: start;
+  }
+  
+  .left-myaccount-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+ 
+  
+  .left-myaccount-info div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 300px;
+  }
+  
+  .left-myaccount-info div span {
+    padding-left: 8px;
+    font-family: Kumbh Sans;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19.84px;
+    letter-spacing: 0.12em;
+  
+    color: #AE7B37;
+  }
+  
+  .left-myaccount-info div p {
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 2px 10px;
+    font-family: Kumbh Sans;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 14.88px;
+    letter-spacing: 0.12em;
+  
+  
+  }
+  
+  .right-myaccount-info {
+    margin-top: 20px;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .right-myaccount-info div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+  }
+  
+  .right-myaccount-info div img {
+    width: 25px;
+  }
+  
+  .left-myaccount-info img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10%;
+    aspect-ratio: 1 / 1;
+  }
+  
+  .right-myaccount-info img {
+    margin-top: -15px;
+  
+  }
+  
+  @media(max-width:1000px) {
+    .myaccount-info {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 20px;
+      padding-bottom: 30px;
+      align-items: start;
+    }
+  
+  }
+  
+  @media(max-width:800px) {
+    .myaccount-info {
+      display: flex;
+      justify-content: space-around;
+      padding: 0px 0px 10px 0px;
+      padding-bottom: 30px;
+      align-items: start;
+    }
+  
+    .left-myaccount-info div {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      width: 250px;
+    }
+  
+    .right-myaccount-info {
+      margin-top: 20px;
+      margin-right: 0px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+  
+    .right-myaccount-info p {
+      font-size: 12px;
+    }
+  }
+  
+  @media(max-width:650px) {
+    .right-myaccount-info {
+      position: absolute;
+      margin-top: 20px;
+      margin-right: 0px;
+      right: 35px;
+      gap: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+  
+    .userprofile-heading {
+      background: #F2D6CC;
+      margin-top: 85px;
+      width: 100%;
+      border-radius: 20px;
+      /* display: block; */
+    }
+  
+  
+    .userprofile-heading h1 {
+  
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 25.77px;
+      letter-spacing: 0.17em;
+      text-align: left;
+      padding: 8px;
+      padding-left: 30px;
+  
+    }
+  
+  }
+  
+  @media(max-width:500px) {
+    .myaccount{
+      padding: 0px 0px 0px 30px;
+      min-height: 70vh;
+      display: flex;
+      justify-content: center;
+    }
+    .myaccount-info {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 30px;
+      padding-bottom: 30px;
+      align-items: start;
+    }
+    
+
+  .left-myaccount-info div p {
+    border: none;
+    border-bottom: 1px solid black;
+    border-radius: 0;
+
+  }
+  
+  
+    .userprofile-heading h1 {
+      font-size: 17px;
+      font-weight: 500;
+      line-height: 23.77px;
+      letter-spacing: 0.16em;
+      text-align: left;
+      padding: 7px;
+      padding-left: 30px;
+  
+    }
+  
+  }

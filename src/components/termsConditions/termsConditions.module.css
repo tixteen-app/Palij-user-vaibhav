@@ -1,0 +1,213 @@
+.termcontainer {}
+
+.termsection {
+  padding-top: 100px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: white;
+}
+
+.termsection img {
+  position: absolute;
+  width: 20%;
+  right: 0;
+  margin-top: 2%;
+}
+
+.termsection h1 {
+  font-size: 7.2rem;
+  text-align: center;
+  margin-bottom: 5%;
+  color: var(--redPink);
+  font-weight: 700;
+}
+
+.termContent {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  padding: 50px 280px;
+}
+
+.termIntroduce span {
+  color: #000;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 1.15px;
+}
+
+.termIntroduce p {
+  color: black;
+  margin-left: 30px;
+  font-size: 20px;
+}
+
+.alltermsAndConditions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 20px;
+}
+
+.alltermsAndConditions li {
+  color: #000;
+  font-weight: 700px;
+  margin-left: 30px;
+}
+
+.alltermsAndConditions span {
+  font-weight: 700;
+}
+
+.alltermsAndConditions div div {
+  display: flex;
+  flex-direction: column;
+  /* line-height: 1; */
+  gap: 0;
+}
+
+.termContectInfo {
+  margin-top: 30px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.termContectInfo p {
+  color: #fff;
+}
+
+.termContectInfo li {
+  color: #fff;
+  display: flex;
+  gap: 8px;
+}
+
+.termContectInfo li a {
+  color: #000;
+}
+
+.termContectInfo li br {
+  display: none;
+}
+
+@media(max-width:1200px) {
+  .termContent {
+    display: flex;
+    flex-direction: column;
+    background: var(--redPink);
+    padding: 50px 100px;
+  }
+
+  .termsection img {
+    position: absolute;
+    width: 20%;
+    right: 0;
+    margin-top: 5%;
+  }
+
+  .termsection h1 {
+    font-size: 4.2rem;
+    text-align: center;
+    margin-bottom: 5%;
+    color: var(--redPink);
+    font-weight: 700;
+    padding: 0 15px;
+  }
+}
+
+@media(max-width:700px) {
+
+  .termsection img {
+    position: absolute;
+    width: 60%;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 5%;
+  }
+
+  .termsection h1 {
+    font-size: 4.2rem;
+    text-align: center;
+    margin-bottom: 30%;
+    color: var(--redPink);
+    font-weight: 700;
+    padding: 0 15px;
+  }
+}
+
+@media(max-width:500px) {
+  .termsection {
+    padding-top: 100px;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: #efe2d7;
+  }
+
+  .termsection img {
+    position: absolute;
+    width: 50%;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 5%;
+  }
+
+  .termsection h1 {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 30%;
+    color: var(--redPink);
+    font-weight: 700;
+    padding: 0 15px;
+  }
+
+  .termContent {
+    display: flex;
+    flex-direction: column;
+    background: var(--redPink);
+    padding: 50px 15px;
+  }
+
+  .termIntroduce span {
+    font-size: 18px;
+  }
+
+  .termIntroduce p {
+    font-size: 18px;
+    margin-left: 10px;
+  }
+
+  .alltermsAndConditions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 18px;
+  }
+
+  .alltermsAndConditions li {
+
+    margin-left: 10px;
+  }
+
+  .termContectInfo {
+    margin-top: 30px;
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+
+}
+
+@media(max-width:410px) {
+  .termContectInfo li div br {
+    display: none;
+  }
+
+}

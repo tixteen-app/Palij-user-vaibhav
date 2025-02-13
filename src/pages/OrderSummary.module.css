@@ -1,0 +1,292 @@
+/* .orderSummary {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.orderDetailsContainer {
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  color: #333;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.orderDetails p {
+  margin: 10px 0;
+  line-height: 1.6;
+}
+
+.orderedProductsTitle {
+  margin-top: 30px;
+  color: #444;
+}
+
+.productItem {
+  display: flex;
+  border-bottom: 1px solid #eee;
+  padding: 15px 0;
+}
+
+.productImage {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 20px;
+  border-radius: 4px;
+}
+
+.productDetails {
+  flex-grow: 1;
+}
+
+.productDetails h3 {
+  margin: 0 0 10px;
+  color: #333;
+}
+
+.totalSection {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 2px solid #ddd;
+  font-weight: bold;
+}
+
+.loaderContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .orderSummary {
+    padding: 10px;
+  }
+
+  .productItem {
+    flex-direction: column;
+  }
+
+  .productImage {
+    width: 100%;
+    height: auto;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+} */
+
+
+
+
+.invoiceContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  margin-top: 100px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 150px;
+}
+
+.invoiceTitle {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+  color: var(--redPink);
+}
+
+.invoiceDetails {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.billingInfo,
+.invoiceInfo {
+  flex-basis: 48%;
+}
+
+.billingInfo p,
+.invoiceInfo p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.productTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+}
+
+.productTable th,
+.productTable td {
+  border-bottom: 1px solid #eee;
+  padding: 10px;
+  text-align: left;
+}
+
+.productTable th {
+  background-color: #f8f8f8;
+  font-weight: bold;
+}
+
+.productInfo {
+  display: flex;
+  align-items: center;
+}
+
+.productImage {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-right: 10px;
+  border-radius: 4px;
+}
+
+.totalSection {
+  text-align: right;
+}
+
+.totalSection p {
+  margin: 5px 0;
+}
+
+.loaderContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  width: 100%;
+}
+
+
+.totalSection {
+  margin-top: 20px;
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+}
+
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.totalRow span {
+  font-size: 14px;
+}
+
+.totalRow:last-child {
+  font-weight: bold;
+  margin-top: 10px;
+  border-top: 1px solid #eee;
+  padding-top: 5px;
+}
+
+
+
+
+
+
+/* ============last============ */
+.footerSection {
+  display: flex;
+  justify-content: end;
+}
+
+.totalSection {
+  margin-top: 20px;
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+  max-width: 400px;
+
+}
+
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  gap: 150px;
+}
+
+.totalRow span {
+  font-size: 17px;
+}
+
+.totalRow:last-child {
+  font-weight: bold;
+  margin-top: 10px;
+  border-top: 1px solid #eee;
+  padding-top: 5px;
+}
+
+.userupdatebackButton {
+  font-size: 30px;
+  position: absolute;
+  margin-top: 0px;
+  cursor: pointer;
+  z-index: 1;
+  margin-left: 100px;
+}
+
+@media(max-width:1000px) {
+  .userupdatebackButton {
+    margin-left: 10px;
+    font-size: 26px;
+  }
+}
+
+@media(max-width:900px) {
+  .userupdatebackButton {
+    margin-left: 10px;
+    font-size: 26px;
+    margin-top: -40px;
+  }
+
+  .invoiceContainer {
+    margin-top: 130px;
+  }
+}
+
+@media (max-width: 600px) {
+  .invoiceDetails {
+    flex-direction: column;
+  }
+
+  .billingInfo,
+  .invoiceInfo {
+    flex-basis: 100%;
+    margin-bottom: 20px;
+  }
+
+  .productTable th,
+  .productTable td {
+    font-size: 12px;
+  }
+
+  .productImage {
+    width: 40px;
+    height: 40px;
+  }
+
+  .footerSection {
+    display: flex;
+    justify-content: center;
+  }
+
+  .userupdatebackButton {
+    margin-left: 10px;
+    font-size: 26px;
+    margin-top: -50px;
+  }
+}

@@ -1,0 +1,118 @@
+.main_our_story_div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+/* main */
+.our_story_message_main_div {
+  display: flex;
+  border: 4px dashed var(--navy-blue-color);
+  position: relative;
+  margin-top: 30px;
+  margin-left: 15px;
+  border-radius: 20px 0px 0px 20px;
+  border-right: none;
+}
+/* text */
+.our_story_text_div {
+  width: 100%;
+  padding: 70px 140px;
+  color: var(--black-color);
+  font-size: 34px;
+  text-align: justify;
+  font-family: var(--Rhodium--Libre-font);
+}
+/* image */
+.our_story_image_div {
+  width: 45%;
+}
+.our_story_image {
+  position: absolute;
+  /* width: 400px; */
+  width: 30%;
+  right: 0;
+  top: -100px;
+}
+
+@media (max-width: 1024px) {
+  .our_story_message_main_div {
+    margin-top: 30px;
+    margin-left: 15px;
+    border-radius: 20px 0px 0px 20px;
+  }
+  /* text */
+  .our_story_text_div {
+    width: 100%;
+    padding: 50px 70px;
+    font-size: 30px;
+  }
+  /* image */
+  .our_story_image_div {
+    width: 42%;
+  }
+  .our_story_image {
+    width: 38%;
+    right: -20px;
+    top: -70px;
+  }
+}
+
+@media (max-width: 800px) {
+  .our_story_message_main_div {
+    margin-top: 30px;
+    margin-left: 15px;
+    border-radius: 20px 0px 0px 20px;
+  } 
+  /* text */
+  .our_story_text_div {
+    width: 100%;
+    padding: 30px 40px;
+    font-size: 24px;
+  }
+  /* image */
+  .our_story_image_div {
+    width: 45%;
+  }
+  .our_story_image {
+    width: 40%;
+    right: -20px;
+    top: -40px;
+  }
+}
+
+
+@media (max-width: 500px) {
+  .main_our_story_div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+  }
+  /* main */
+  .our_story_message_main_div {
+    display: flex;
+    border: 4px dashed var(--navy-blue-color);
+    position: relative;
+    margin-top: 30px;
+    margin-left: 15px;
+    border-radius: 20px 0px 0px 20px;
+    border-right:4px dashed var(--navy-blue-color);
+  }
+  /* text */
+  .our_story_text_div {
+    width: 100%;
+    padding: 50px 10px;
+    font-size: 20px;
+    text-align: justify;
+  }
+  /* image */
+  .our_story_image_div {
+    width: 45%;
+    display: none;
+  }
+}

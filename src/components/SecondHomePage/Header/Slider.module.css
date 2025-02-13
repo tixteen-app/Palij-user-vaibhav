@@ -1,0 +1,142 @@
+.slider {
+  position: relative;
+  width: 96%;
+  /* height: 0%; */
+  /* height: 90vh; */
+  /* max-width: 00px; */
+  margin: auto;
+  overflow: hidden;
+  /* background: #f5f5f5; */
+  padding-top: 14vh;
+  object-fit: cover;
+}
+
+.slideContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+
+  height: 84vh;
+  /* height: 100%; */
+  object-fit: cover;
+  border-radius: 30px;
+}
+
+.textOverlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #4a2d16;
+  /* Adjust as per design */
+  text-align: center;
+}
+
+.title {
+  font-size: 2rem;
+  font-family: 'Brush Script MT', cursive;
+  /* Similar to shown font */
+}
+
+.description {
+  font-size: 1.25rem;
+  margin-top: 5px;
+}
+
+.prevButton,
+.nextButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  background: transparent;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  transition: background 0.3s;
+}
+
+.prevButton {
+  left: 10px;
+}
+
+.nextButton {
+  right: 10px;
+}
+
+.prevButton:hover,
+.nextButton:hover {
+  /* background: rgba(0, 0, 0, 0.8); */
+}
+
+.indicators {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  gap: 5px;
+}
+
+.indicator {
+  width: 10px;
+  height: 10px;
+  background-color: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.active {
+  background-color: #4a2d16;
+  /* Adjust as per design */
+}
+
+@media(max-width:1000px) {
+  .image {
+    width: 100%;
+    height: auto;
+
+    /* height: 50vh; */
+    /* height: 100%; */
+    object-fit: cover;
+    border-radius: 30px;
+  }
+}
+
+@media(max-width:500px) {
+  .slider {
+    padding-top: 12vh;
+  }
+
+  .image {
+    width: 100%;
+    height: auto;
+    /* height: 30vh; */
+    border-radius: 30px;
+  }
+
+  .prevButton,
+  .nextButton {
+    position: absolute;
+    top: 60%;
+    padding: 0px;
+
+  }
+
+  .indicators {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    gap: 10px;
+  }
+
+
+}

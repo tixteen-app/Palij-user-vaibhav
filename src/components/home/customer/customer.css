@@ -1,0 +1,294 @@
+.customer {
+  background: #EFE2D7;
+}
+
+.customer-cards {
+  width: 100%;
+  /* height: 100vh; */
+
+  background-image: url('../../../assets/Rectangle with shadow 1.png');
+  background-position: bottom;
+  overflow: hidden;
+  background-size: 100% 50%;
+  background-repeat: no-repeat;
+}
+
+
+
+.cust-slides {
+  width: 100%;
+  /* display: flex; */
+  /* margin: auto; */
+  justify-content: center;
+  /* align-items: center; */
+}
+
+.cards img {
+  width: 100%;
+  box-shadow: 0px 12px 27px 0px #0000001A;
+
+  box-shadow: 0px 49px 49px 0px #00000017;
+
+  box-shadow: 0px 111px 67px 0px #0000000D;
+
+  box-shadow: 0px 198px 79px 0px #00000003;
+
+  box-shadow: 0px 309px 86px 0px #00000000;
+
+
+}
+
+.cust2 img {
+  width: 82%;
+  margin: auto;
+  margin-top: 8px;
+}
+
+.customer h1 {
+  font-family: Perpetua Titling MT;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 77px;
+  letter-spacing: 0.03em;
+  text-align: center;
+  padding-top: 50px;
+  margin-bottom: 50px;
+  color: #E5087E;
+  /* margin-bottom: 50px; */
+}
+
+.subscriber {
+  width: 100%;
+  padding: 10px 0;
+  padding-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.subscriber h1 {
+  font-family: Perpetua Titling MT;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 58px;
+  letter-spacing: 0.03em;
+  text-align: left;
+  /* background: #FAA39E; */
+
+}
+
+.subscribe-here {
+  border: 2px solid #E5087E;
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 4px 4px 25px;
+  width: 60%;
+  border-radius: 50px;
+}
+
+.subscribe-here input {
+  border: 0;
+  font-size: 20px;
+  width: 100%;
+  outline: 0;
+  background: transparent;
+
+}
+
+.subscribe-here img {
+  cursor: pointer;
+}
+
+.subscribe-here input::placeholder {
+  color: black;
+  opacity: 0.5;
+}
+
+.cust1, .cust2, .cust3 {
+  border: 0;
+  outline: 0;
+  display: block;
+}
+
+@media screen and (max-width: 1300px) {
+  .cust-slides {
+    width: 90%;
+    /* border: 0; */
+    display: flex;
+    justify-content: center;
+
+  }
+
+  .subscriber h1 {
+    font-size: 80px;
+    text-align: center;
+  }
+
+  .customer h1 {
+    font-size: 60px;
+  }
+
+  .subscribe-here img {
+    width: 180px;
+  }
+}
+
+
+
+@media screen and (max-width: 800px) {
+  .cust-slides {
+    width: 100%;
+    /* border: 0; */
+    display: flex;
+    /* margin: auto; */
+    justify-content: center;
+    /* padding: 0 20px; */
+  }
+
+  .cards img {
+    width: 100%;
+  }
+
+  .subscriber {
+    /* width: 95%; */
+    /* gap: -10px; */
+  }
+
+  .subscriber h1 {
+    /* font-size: 30px; */
+  }
+
+  .subscribe-here {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 0;
+    gap: 10px;
+  }
+
+  .subscribe-here input {
+    border: 2px solid #E5087E;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 5px 10px 25px;
+    width: 100%;
+    border-radius: 50px;
+  }
+
+  .customer h1 {
+    font-size: 50px;
+  }
+
+  .subscriber h1 {
+    font-size: 35px;
+  }
+
+  .cust2 img {
+    width: 82%;
+    margin: auto;
+    margin-top: 8px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .cust-slides {
+    width: 100%;
+    /* border: 0; */
+    display: flex;
+    /* margin: auto; */
+    justify-content: center;
+    /* padding: 0 20px; */
+  }
+
+  .cards img {
+    width: 100%;
+  }
+
+  .customer h1 {
+    font-size: 40px;
+    line-height: 1.5;
+  }
+
+  .cust2 img {
+    width: 82%;
+    margin: auto;
+    margin-top: 8px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .cust-slides {
+    width: 100%;
+    /* border: 0; */
+    display: flex;
+    /* margin: auto; */
+    justify-content: center;
+    /* padding: 0 20px; */
+  }
+
+  .cards img {
+    width: 100%;
+  }
+
+  .customer h1 {
+    font-size: 35px;
+    line-height: 1.4;
+  }
+
+  .subscribe-here input {
+
+    width: 150%;
+    border-radius: 50px;
+  }
+
+  .cust2 img {
+    width: 82%;
+    margin: auto;
+    margin-top: 8px;
+  }
+
+}
+
+@media screen and (max-width: 450px) {
+  .cust-slides {
+    width: 100%;
+    /* border: 0; */
+    display: flex;
+    /* margin: auto; */
+    justify-content: center;
+    /* padding: 0 20px; */
+  }
+
+  .cust1 img {}
+
+  .cards img {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    align-items: center;
+
+  }
+
+  .cards {
+    width: 140%;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    align-items: center;
+    margin-left: -20%;
+
+  }
+
+  .customer h1 {
+    font-size: 32px;
+    line-height: 1.4;
+  }
+
+  .cust2 img {
+    width: 82%;
+    margin: auto;
+    margin-top: 8px;
+  }
+}

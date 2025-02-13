@@ -1,0 +1,34 @@
+.cancellation-container {
+    max-width: 800px;
+    padding: 20px;
+    margin-top: 500px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+    
+  }
+  
+
+  
+  .section {
+    margin-bottom: 20px;
+  }
+  
+  .section h2 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .section ul {
+    padding-left: 20px;
+    list-style-type: disc;
+  }
+  
+  .section ul li {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 8px;
+  }
+  

@@ -1,0 +1,37 @@
+.knowmore_main_div {
+  background-image: url("../../Images/Home/knowMore/knowMoreBgImage.png");
+  background-size: 100% 100%;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 300px;
+  padding: 50px 0px;
+  gap: 20px;
+}
+.knowmore_heading {
+  color: var(--golden-color);
+  font-size: 60px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+@media (max-width: 1024px) {
+  .knowmore_heading {
+    font-size: 49px;
+  }
+}
+
+@media (max-width: 600px) {
+  .knowmore_heading {
+    font-size: 42px;
+  }
+}
+
+@media (max-width: 500px) {
+  .knowmore_heading {
+    font-size: 30px;
+    font-weight: 700;
+  }
+}

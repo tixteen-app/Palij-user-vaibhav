@@ -1,0 +1,144 @@
+.profile-dropdown {
+  position: absolute;
+  top: 8rem;
+  left: 2.3rem;
+  border: 1px solid gray;
+  width: 120px;
+  background: #FFF;
+  border-radius: 8px;
+}
+
+.profile-dropdown ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  gap: 10px;
+  /* background: #F2D6CC; */
+  padding: 10px 20px;
+}
+
+.profile-dropdown::before {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: -0.8rem;
+  left: 1.4rem;
+  transform: rotate(45deg);
+  background: white;
+  border-left: 1px solid gray;
+  border-top: 1px solid gray;
+}
+
+/* @media screen and (max-width: 1100px) {
+  .profile-dropdown {
+    position: absolute;
+    top: 8rem;
+    right: 2.3rem;
+    border: 1px solid gray;
+    width: 120px;
+    background: #FFF;
+    border-radius: 8px;
+  }
+
+  .profile-dropdown ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    gap: 10px;
+
+    padding: 10px 20px;
+  }
+
+  .profile-dropdown::before {
+    content: "";
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: -0.8rem;
+    left: 1.4rem;
+    transform: rotate(45deg);
+    background: white;
+    border-left: 1px solid gray;
+    border-top: 1px solid gray;
+  }
+} */
+@media (max-width:1100px) {
+  .profile-dropdown {
+    position: absolute;
+    top: 6.5rem;
+    left: 80%;
+    border: 1px solid gray;
+    width: 120px;
+    background: #FFF;
+    border-radius: 8px;
+    /* margin-left: 80%; */
+  }
+
+  .profile-dropdown::before {
+    content: "";
+    position: absolute;
+    width: 25px;
+    height: 25px;
+
+    transform: rotate(45deg);
+    background: white;
+    border-left: 1px solid gray;
+    border-top: 1px solid gray;
+  }
+
+}
+
+@media (max-width:900px) {
+  .profile-dropdown {
+    position: absolute;
+    top: 6.5rem;
+    left: 73%;
+
+  }
+}
+
+@media (max-width:750px) {
+  .profile-dropdown {
+    position: absolute;
+    top: 6.5rem;
+    left: 65%;
+
+  }
+}
+
+@media (max-width:550px) {
+  .profile-dropdown {
+    position: absolute;
+    top: 5.5rem;
+    left: 55%;
+
+  }
+}
+
+@media (max-width:430px) {
+  .profile-dropdown {
+    position: absolute;
+    top: 5.5rem;
+    left: 50%;
+
+  }
+}
+
+@media (max-width:400px) {
+  .profile-dropdown {
+    position: absolute;
+    top: 5.5rem;
+    left: 45%;
+
+  }
+}
+
+@media (max-width:370px) {
+  .profile-dropdown {
+    position: absolute;
+    top: 5.5rem;
+    left: 38%;
+
+  }
+}

@@ -1,0 +1,177 @@
+.checkoutpayment {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: white;
+  padding-top: 20vh;
+}
+
+.checkoutpayment-div {
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-between;
+  margin: 0 100px;
+  gap: 30px;
+}
+
+.checkout-h1 {
+  font-family: Perpetua Titling MT;
+  font-size: 35px;
+  font-weight: 700;
+  line-height: 48.13px;
+  letter-spacing: 0.03em;
+  text-align: left;
+  margin-left: 50px;
+  color: #E5087E;
+}
+
+.right-checkoutpayment {
+  display: flex;
+  flex-direction: column;
+}
+
+.left-checkoutpayment {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+
+}
+
+.check-outt {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.check-outt h2 {
+  font-family: Kumbh Sans;
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 44.65px;
+  text-align: left;
+  color: #AE7B37;
+}
+
+.check-outt button {
+  font-family: Kumbh Sans;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24.8px;
+  letter-spacing: 0.12em;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  /* width: 50%; */
+  border-radius: 10px;
+  border: 2px solid #000;
+  border-radius: 50px;
+  display: flex;
+  margin-bottom: -10px;
+  justify-content: center;
+}
+
+.checkout-shipping-address {
+  display: flex;
+  /* align-items: center; */
+  flex-direction: column;
+  gap: 20px;
+  margin: auto;
+  width: 100%;
+  /* width: 60%; */
+
+  margin-left: 0px;
+}
+
+.address-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  /* margin-top: 10px; */
+
+}
+
+.checkout-shipping-address h2 {
+  font-family: Kumbh Sans;
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 44.65px;
+  text-align: left;
+  color: #AE7B37;
+}
+
+.a_orderbar_checkout {
+  margin-top: -80px;
+}
+
+.shipping-address-editdelete {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.shipping-address-editdelete button {
+  background: black;
+  color: #fff;
+  outline: 0;
+  font-size: 14px;
+  padding: 2px 6px;
+}
+
+.shipping-address-editdelete h3 {
+  font-family: Kumbh Sans;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 18.6px;
+  letter-spacing: 0.12em;
+  text-align: left;
+
+}
+
+.shipping-address-editdelete button {
+
+
+  outline: 0;
+  border-radius: 0;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 50px;
+
+
+}
+
+.shipping-address-editdelete div {
+  display: flex;
+  gap: 5px;
+}
+
+.checkout-shipaddress {
+  width: 60%;
+  font-family: Kumbh Sans;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 18.6px;
+  letter-spacing: 0.12em;
+  text-align: left;
+
+}
+
+.a_add_checkout_address {
+  width: 350px;
+}
+
+@media(max-width:1000px) {
+  .checkoutpayment-div {
+    display: flex;
+    /* align-items: center; */
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 0px;
+    align-items: center;
+    gap: 30px;
+  }
+
+}

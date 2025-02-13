@@ -1,0 +1,412 @@
+.banner {
+  width: 100%;
+  min-height: 100vh;
+  background: rgb(255, 107, 107);
+  display: flex;
+
+  position: relative;
+  overflow: hidden;
+}
+
+.contents {
+  font-size: 19px;
+}
+
+.banner-cart-button {
+  background: transparent;
+}
+
+.palji-banners {
+  display: flex;
+  min-width: 100%;
+  width: 300%;
+
+  height: 100vh;
+  align-items: center;
+
+}
+
+.banner-item-cart {
+  padding: 7px 15px;
+  position: relative;
+}
+
+.banner-item-addto-cart {
+  cursor: pointer;
+}
+
+.banner-food-item-counter {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.banner-food-item-counter img {
+  width: 30px;
+  cursor: pointer;
+
+}
+
+.banner-cart-item-no {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: #fff;
+  font-size: 18px;
+  transform: translate(-50%, -50%);
+}
+
+.banner-item-addto-cart {
+  cursor: pointer;
+  color: #fff;
+}
+
+/* Add a new class for applying dynamic background */
+/* .dynamic-bg {
+  background: var(--banner-background);
+} */
+
+/* Update the transition property for the dynamic background */
+/* .dynamic-bg {
+  transition: background 0.5s ease;
+} */
+
+.slide {
+  flex: 0 0 33.33%;
+  /* Adjusted slide width based on total slides */
+  display: flex;
+  height: 100vh;
+
+  align-items: center;
+  justify-content: space-evenly;
+  min-width: 100%;
+}
+
+.palji-banners.active {
+  transform: translateX(0);
+  /* Added to reset position */
+}
+
+
+.left-banner {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 50px;
+}
+
+.left-banner .banner-info {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  color: #fff;
+}
+
+.title p {
+  font-family: Kumbh Sans;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 35px;
+  letter-spacing: 0em;
+  text-align: left;
+
+}
+
+.content {
+  font-family: Kumbh Sans;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 35px;
+  /* letter-spacing: 0em; */
+  text-align: left;
+}
+
+.left-banner .banner-info h2 {
+  font-family: Kumbh Sans;
+  font-size: 64px;
+  font-weight: 600;
+  line-height: 79px;
+  letter-spacing: 0em;
+  text-align: left;
+
+}
+
+.cart5 {
+  border: 2px solid white;
+  border-radius: 50px;
+}
+
+.cart5 button {
+  font-family: Kumbh Sans;
+  cursor: pointer;
+  font-weight: 500;
+  line-height: 35px;
+  letter-spacing: 0em;
+  text-align: left;
+  /* background: #E31E24; */
+  border: 2px solid white;
+  display: flex;
+  color: #fff;
+  border-radius: 50px;
+  padding: 5px 20px;
+  font-size: 20px;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  border: none;
+}
+
+
+.left-banner .banner-info .right-banner img {
+  width: 550px;
+  position: absolute;
+  left: 0;
+}
+
+.arrow-btn {
+
+  position: absolute;
+  bottom: 30px;
+  display: flex;
+  gap: 150px;
+  left: 42%;
+  /* right: 50%; */
+}
+
+.arrow-btn img {
+  width: 50px;
+  cursor: pointer;
+}
+
+
+
+@media screen and (max-width: 1100px) {
+  .left-banner .banner-info h2 {
+    font-size: 45px;
+  }
+
+  .right-banner img {
+    width: 500px;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .left-banner .banner-info h2 {
+    font-size: 40px;
+    line-height: 1.4;
+  }
+
+  .right-banner img {
+    width: 350px;
+    margin-top: -100px;
+  }
+
+  .title p {
+    font-size: 24px;
+  }
+
+  .content {
+    font-size: 22px;
+  }
+
+  .banner-flex {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+  }
+
+  .left-banner {
+    gap: 10px;
+  }
+
+  .left-banner {
+    width: 90%;
+  }
+
+  .arrow-btn {
+
+    position: absolute;
+    bottom: 30px;
+    display: flex;
+    gap: 70px;
+    left: 35%;
+    /* right: 50%; */
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .left-banner .banner-info h2 {
+    font-size: 40px;
+    line-height: 1.4;
+  }
+
+  .right-banner img {
+    width: 300px;
+  }
+
+  .title p {
+    font-size: 24px;
+  }
+
+  .content {
+    font-size: 22px;
+  }
+
+  .slide {
+    display: flex;
+    /* flex-direction: column; */
+  }
+
+  .banner {
+    /* margin-bottom: 150px; */
+    padding: 50px 0;
+  }
+
+  .arrow-btn {
+
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    gap: 50px;
+    left: 32%;
+    /* right: 50%; */
+  }
+
+  .arrow-btn img {
+    width: 40px;
+  }
+
+  .banner {}
+
+}
+
+@media screen and (max-width: 500px) {
+  .right-banner img {
+    width: 300px;
+    margin-top: -30px;
+  }
+
+  .content {
+    margin-top: -50px;
+    font-size: 0px;
+  }
+
+  .contents {
+    margin-top: -20px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .left-banner .banner-info h2 {
+    font-size: 35px;
+    line-height: 1.2;
+  }
+
+  .right-banner img {
+    width: 300px;
+  }
+
+  .title p {
+    font-size: 22px;
+  }
+
+  .content {
+    margin-top: -10px;
+    font-size: 20px;
+  }
+
+  .arrow-btn {
+
+    position: absolute;
+    bottom: 10px;
+    display: flex;
+    gap: 50px;
+    left: 30%;
+    /* right: 50%; */
+  }
+
+  .arrow-btn img {
+    width: 35px;
+  }
+}
+
+.right-banner img {
+  /* width: 550px; */
+  /* Adjust as needed */
+  transform: translateY(-00%);
+  /* Initially translate the image above its original position */
+  transition: transform 0.7s ease;
+  /* Adding transition property */
+}
+
+.banner-flex.active .right-banner img {
+  transform: translateY(0);
+  /* Translate the image to its original position */
+  animation: rotateAnimation 0.7s ease;
+  /* Applying the keyframe animation */
+}
+
+@keyframes rotateAnimation {
+  from {
+    transform: rotate(90deg) translateY(-200%);
+    /* Starting position: rotated and translated */
+  }
+
+  to {
+    transform: rotate(0deg) translateY(00%);
+    /* Ending position: back to original rotation and position */
+  }
+}
+
+
+
+/* 
+.left-banner .banner-info h2,
+.left-banner .banner-info p {
+  opacity: 0;
+  transform: translateY(-0%);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+} */
+
+/* .left-banner .banner-info .content {
+  opacity: 0;
+  transform: translateY(-50%);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+} */
+
+/* .left-banner .banner-info h2.show,
+.left-banner .banner-info p.show,
+.left-banner .banner-info .content.show {
+  opacity: 1;
+  transform: translateY(0);
+} */
+
+/* .left-banner .banner-info h2,
+.left-banner .banner-info p,
+.left-banner .banner-info .content {
+  opacity: 0;
+  transform: translateY(-60%);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.left-banner .banner-info h2.show,
+.left-banner .banner-info p.show,
+.left-banner .banner-info .content.show {
+  opacity: 1;
+  transform: translateY(0);
+} */
+
+.b_addtocart {
+  padding: 8px 20px;
+  font-size: 20px;
+  color: #fff;
+}
+
+.b_cart_quantity {
+  padding: 8px 15px;
+}
+
+.b_cart_quantity img {
+  width: 50px;
+}

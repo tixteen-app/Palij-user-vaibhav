@@ -1,0 +1,155 @@
+.container {
+  width: 85%;
+  margin: auto;
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  color: var(--volite);
+
+}
+
+.header img {
+  width: 30px;
+  margin-bottom: 7px;
+}
+
+.content {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 60px;
+  /* overflow-x: auto; */
+  /* overflow-y: hidden; */
+}
+
+.productContent {
+  background: #fff;
+  width: 300px;
+  height: 300px;
+}
+
+.productContent img {
+  padding: 30px 80px;
+
+}
+
+
+.content::-webkit-scrollbar {
+  display: none;
+}
+
+.name p {
+  font-size: 1.2rem;
+  margin-left: 5px;
+}
+
+@media(max-width:750px) {
+  .header {
+    display: flex;
+    justify-content: space-between;
+    color: var(--volite);
+
+  }
+
+  .header h2 {
+    font-size: 1.3rem;
+  }
+
+  .header img {
+    width: 18px;
+    margin-bottom: 5px;
+  }
+
+  .container {
+    width: 96%;
+    margin: auto;
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .productContent {
+    background: #fff;
+    width: 200px;
+    height: 200px;
+  }
+
+  .content {
+    /* width: 100%;
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    overflow-y: hidden; */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    place-items: center;
+  }
+
+  .productContent img {
+    padding: 0px;
+    padding-top: 15px;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+  }
+
+  .name p {
+    font-size: 1rem;
+    margin-left: 5px;
+  }
+}
+
+@media(max-width:500px) {
+  .header {
+    display: flex;
+    justify-content: space-between;
+    color: var(--volite);
+
+  }
+
+  .header h2 {
+    font-size: 1.2rem;
+  }
+
+  .header img {
+    width: 18px;
+    margin-bottom: 5px;
+  }
+
+  .container {
+    margin-top: 50px;
+    gap: 15px;
+  }
+
+  .productContent {
+    background: #fff;
+    width: 150px;
+    height: 180px;
+  }
+
+  .productContent img {
+    padding: 0px;
+    padding-top: 15px;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+  }
+
+  .name p {
+    font-size: 0.95rem;
+    margin-left: 2px;
+    font-weight: 500;
+  }
+}
