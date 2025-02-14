@@ -70,7 +70,6 @@ function UpdateProduct() {
 				"PUT",
 				formData
 			)
-			console.log("Product updated successfully!", updateProduct)
 		} catch (error) {
 			console.error("Error updating product:", error)
 		} finally {
@@ -121,7 +120,6 @@ function UpdateProduct() {
 		//     image: updatedImages,
 		//   };
 		// });
-		console.log("image upload ")
 		try {
 			const file = event.target.files[0]
 
@@ -147,7 +145,6 @@ function UpdateProduct() {
 
 							// const files = Array.from(e.target.files);
 							// const imageUrls = files.map((file) => URL.createObjectURL(file));
-							console.log("imageUrlsimageUrlsimageUrls", imageUrls)
 							setFormData((prevFormData) => {
 								const updatedImages = [...prevFormData.image]
 								updatedImages[index] = imageUrls
@@ -169,7 +166,6 @@ function UpdateProduct() {
 
 			// if (file.type.startsWith("image/")) {
 			if (file) {
-				console.log(file)
 
 				const compressedFile = await file
 
@@ -191,7 +187,6 @@ function UpdateProduct() {
 
 							// const files = Array.from(e.target.files);
 							// const imageUrls = files.map((file) => URL.createObjectURL(file));
-							console.log("imageUrlsimageUrlsimageUrls", imageUrls)
 							setFormData((prevFormData) => {
 								//   const updatedImages = [...prevFormData.image];
 								//   updatedImages[index] = imageUrls;

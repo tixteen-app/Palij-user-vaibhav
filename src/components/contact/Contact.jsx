@@ -67,7 +67,6 @@ const Contact = () => {
 		}
 		try {
 			const response = await makeApi("/api/create-message", "POST", Data)
-			console.log(response)
 			toast.success(response.data.message, {
 				onClose: () => {
 					setData({

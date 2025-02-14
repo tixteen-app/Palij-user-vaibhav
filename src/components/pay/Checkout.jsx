@@ -732,7 +732,10 @@ function Checkout() {
 		};
 		try {
 			const response = await makeApi('/api/create-razorpay-order', 'POST', data);
+<<<<<<< HEAD
 			console.log("rezpay orders data", response);
+=======
+>>>>>>> 3ed727c91ad52b00480fe018db8bc84293fab2d1
 
 			handleRazorpayScreen(response.data.amount, response.data.id, response.data.created_at);
 		} catch (error) {
@@ -799,14 +802,20 @@ function Checkout() {
 
 
 
+<<<<<<< HEAD
 	console.log("coupanCode", coupanCode)
+=======
+>>>>>>> 3ed727c91ad52b00480fe018db8bc84293fab2d1
 	const SubmitCoupan = async (e) => {
 		e.preventDefault()
 		try {
 			const applyCoupan = await makeApi("/api/apply-coupon", "POST", {
 				coupanCode: coupanCode,
 			})
+<<<<<<< HEAD
 			console.log(applyCoupan.data.message)
+=======
+>>>>>>> 3ed727c91ad52b00480fe018db8bc84293fab2d1
 		} catch (error) {
 			console.log(error)
 		}

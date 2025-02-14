@@ -7,7 +7,6 @@ const OpenProduct = () => {
 	const { all_product } = useContext(ShopContext)
 	const { productId } = useParams()
 	const pro = all_product
-	console.log(all_product)
 	useEffect(() => {
 		// Fetch data if all_product is not available
 		if (!all_product.length) {
@@ -16,7 +15,6 @@ const OpenProduct = () => {
 	}, [all_product])
 	// console.log("this is prodidplsy", pro)
 	const product = all_product.find((e) => e._id === productId)
-	console.log("this is all ", product)
 	if (!product) {
 		return <div>Loading...</div>
 	}
