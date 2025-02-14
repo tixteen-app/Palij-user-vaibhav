@@ -572,7 +572,6 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
 				`/api/get-all-products?name=${searchTerm}&category=${cat}&subcategory=${subcategory}&minPrice=${min}&maxPrice=${max}&page=${page}&perPage=${ResultPerPage}&IsOutOfStock=false`,
 				"GET"
 			);
-			console.log("Fetched products:", response.data.products);
 			setProducts(response.data.products);
 			setToalProduct(response.data.totalProducts);
 			const totalPages = Math.ceil(response.data.totalProducts / ResultPerPage);
@@ -671,14 +670,6 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
 			}
 		}
 	};
-
-
-
-
-	useEffect(() => {
-		console.log("Category prop changed:", category);
-	}, [category]);
-
 
 	const closePopup = () => {
 		setShowPopup(false);

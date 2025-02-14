@@ -29,8 +29,6 @@ const Slider = () => {
 
   useEffect(() => {
     // Debugging: Check if slides array and currentIndex are set
-    console.log("Slides array:", slides);
-    console.log("Current index:", currentIndex);
 
     // Auto-slide every 2 seconds
     const interval = setInterval(() => {

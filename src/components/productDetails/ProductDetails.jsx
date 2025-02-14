@@ -6,7 +6,6 @@ import { makeApi } from "../../api/callApi"
 const ProductDetails = () => {
 	const { productdetails } = useParams()
 	const [product, setProduct] = useState(null)
-	console.log("this is product id", productdetails)
 
 	useEffect(() => {
 		const fetchProduct = async () => {

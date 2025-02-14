@@ -39,7 +39,6 @@ const MyOrders = () => {
 					},
 				}
 			);
-			console.log("ship rocket data", response);
 
 		} catch (error) {
 			console.log(error);

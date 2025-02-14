@@ -2045,7 +2045,6 @@ function ProductDetails() {
 
 
 
-  console.log("productNuturitions", productNuturitions);
 
   return (
     <>

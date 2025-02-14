@@ -976,7 +976,6 @@ const Banner = () => {
 			backgroundCart: "#519B29",
 		},
 	]
-	console.log("bannerrrr", banner[1].id)
 	const handlePrevSlide = () => {
 		setCurrentSlide((prevSlide) =>
 			prevSlide === 0 ? banner.length - 1 : prevSlide - 1

@@ -81,7 +81,6 @@ const ShopContextProvider = (props) => {
 			}
 		}
 		totalAmount = parseFloat(totalAmount.toFixed(2))
-		console.log("discount amount", totalAmount)
 		return totalAmount
 	}
 	const getTotalCartItems = () => {
@@ -112,9 +111,6 @@ const ShopContextProvider = (props) => {
 		getTotalCartItems,
 		getTotalCartDiscountAmount,
 	}
-	console.log("cartitems", cartItems)
-	console.log("cartitems discount", getTotalCartDiscountAmount())
-
 	return (
 		<>
 			<ShopContext.Provider value={contextValue}>

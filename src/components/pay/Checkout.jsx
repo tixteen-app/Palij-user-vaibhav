@@ -656,8 +656,6 @@ function Checkout() {
 
 		// Check if selected pincode exists in available pincodes
 		const isValid = availablePincodes.includes(selectedPincode);
-		console.log("Selected Pincode:", selectedPincode); // Debugging
-		console.log("Available Pincodes:", availablePincodes); // Debugging
 		return isValid;
 	};
 
@@ -684,7 +682,6 @@ function Checkout() {
 
 
 	const handleDeleteClick = async (productId, selectProductSize, quantity) => {
-		console.log(productId, selectProductSize, quantity);
 		await deleteproductFromCart(productId, setProductLoaders, setCartItems, fetchCart, selectProductSize, quantity);
 
 		fetchCartItems();
@@ -697,7 +694,6 @@ function Checkout() {
 	};
 
 
-	console.log("cartItem", cartItem);
 
 
 	// Calculate final price after applying coupon discount
@@ -732,7 +728,6 @@ function Checkout() {
 		};
 		try {
 			const response = await makeApi('/api/create-razorpay-order', 'POST', data);
-			console.log("rezpay orders data", response);
 
 			handleRazorpayScreen(response.data.amount, response.data.id, response.data.created_at);
 		} catch (error) {
@@ -799,14 +794,12 @@ function Checkout() {
 
 
 
-	console.log("coupanCode", coupanCode)
 	const SubmitCoupan = async (e) => {
 		e.preventDefault()
 		try {
 			const applyCoupan = await makeApi("/api/apply-coupon", "POST", {
 				coupanCode: coupanCode,
 			})
-			console.log(applyCoupan.data.message)
 		} catch (error) {
 			console.log(error)
 		}

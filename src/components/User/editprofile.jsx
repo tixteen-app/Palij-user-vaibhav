@@ -23,7 +23,6 @@ const EditUserProfile = () => {
         mobileNumber: "",
         userImage: "",
     })
-    console.log("---------------------", editData)
     // Fetch existing user details on component mount
     useEffect(() => {
         const fetchUserDetails = async () => {
@@ -64,7 +63,6 @@ const EditUserProfile = () => {
         event.preventDefault()
         try {
             const userDataToUpdate = { ...editData }
-            console.log("mobileNumberChanged", mobileNumberChanged)
             if (!mobileNumberChanged) {
                 delete userDataToUpdate.mobileNumber
             }
@@ -100,8 +98,6 @@ const EditUserProfile = () => {
 
             // if (file.type.startsWith("image/")) {
             if (file) {
-                console.log(file)
-
                 const compressedFile = await file
 
                 const data = new FormData()

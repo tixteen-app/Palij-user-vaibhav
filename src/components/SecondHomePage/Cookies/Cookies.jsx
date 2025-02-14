@@ -124,7 +124,6 @@ const Cookies = () => {
 
 
 
-  console.log("ehdfskjefwiunend", products);
 
   return (
     <div className={styles.container}>

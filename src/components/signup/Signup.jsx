@@ -73,7 +73,6 @@ const Signup = () => {
 	}
 
 	const signup = async () => {
-		console.log("Signup function executed", formData)
 
 		if (!formData.email) {
 			toast.error("Please fill email")
