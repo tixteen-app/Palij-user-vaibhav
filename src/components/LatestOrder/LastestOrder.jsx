@@ -1,6 +1,7 @@
+
+
 // import React, { useEffect, useState } from "react";
 // import { useParams } from "react-router";
-
 
 // import styles from "./LatestOrder.module.css";
 // import { GoArrowLeft } from "react-icons/go";
@@ -13,7 +14,6 @@
 //   const { ordersummary } = useParams();
 //   const isCashOnDelivery = orderSummary?.paymentMethod.toLowerCase() === "cash on delivery";
 //   const isRazorpay = orderSummary?.paymentMethod.toLowerCase() === "razorpay";
-
 
 //   useEffect(() => {
 //     const fetchOrderSummary = async () => {

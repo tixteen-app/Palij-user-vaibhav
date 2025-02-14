@@ -6,9 +6,10 @@ import { makeApi } from "../../api/callApi"
 const ProductDetails = () => {
 	const { productdetails } = useParams()
 	const [product, setProduct] = useState(null)
+	console.log("this is product id", productdetails)
 
 	useEffect(() => {
- 		const fetchProduct = async () => {
+		const fetchProduct = async () => {
 			try {
 				// setLoading(true)
 				const response = await makeApi(
@@ -19,7 +20,7 @@ const ProductDetails = () => {
 			} catch (error) {
 				console.error("Error fetching product details:", error)
 			}
-		} 
+		}
 		fetchProduct()
 	}, [productdetails])
 
@@ -27,7 +28,14 @@ const ProductDetails = () => {
 		<div className="productDisplay">
 			<div className="product-display-left">
 				<div className="productdisplay-img-list">
-				
+					{/* {props.product.image.map((item, i) => {
+						return (
+							<img
+								src={props.product.thumbnail}
+								alt=""
+							/>
+						)
+					})} */}
 					<img
 						src={""}
 						alt=""

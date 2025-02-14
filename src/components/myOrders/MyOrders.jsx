@@ -5,12 +5,10 @@ import { Link } from "react-router-dom";
 import { makeApi } from "../../api/callApi.tsx";
 import Primaryloader from "../loaders/primaryloader.jsx";
 import styles from "./MyOrders.module.css";
-import axios from "axios";
 
 const MyOrders = () => {
 	const [loading, setLoading] = useState(false);
 	const [orders, setOrders] = useState([]);
-	const [shipRocketOrderDetails, setShiprocketOrderDetails] = useState([])
 
 	useEffect(() => {
 		const fetchOrders = async () => {
@@ -25,29 +23,6 @@ const MyOrders = () => {
 			}
 		};
 		fetchOrders();
-	}, []);
-
-	const fetchShiprocketOrder = async () => {
-		try {
-			const token = "your_auth_token"; // Replace with your actual token
-
-			const response = await axios.get(
-				`https://apiv2.shiprocket.in/v1/external/orders/show/${orders.shiprocketOrderId}`,
-				{
-					headers: {
-						Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQ2MDQxODksInNvdXJjZSI6InNyLWF1dGgtaW50IiwiZXhwIjoxNzMzMzkzMDkxLCJqdGkiOiJqQWh2QTdCakJ5eDNaNWVXIiwiaWF0IjoxNzMyNTI5MDkxLCJpc3MiOiJodHRwczovL3NyLWF1dGguc2hpcHJvY2tldC5pbi9hdXRob3JpemUvdXNlciIsIm5iZiI6MTczMjUyOTA5MSwiY2lkIjo0NDMyNDc1LCJ0YyI6MzYwLCJ2ZXJib3NlIjpmYWxzZSwidmVuZG9yX2lkIjowLCJ2ZW5kb3JfY29kZSI6IiJ9.oF9ssDAF09sg6LLDzoVVGNOg31XnnQMYuQiiu9kgnGU`, // Add the token here
-					},
-				}
-			);
-			console.log("ship rocket data", response);
-
-		} catch (error) {
-			console.log(error);
-		}
-	};
-
-	useEffect(() => {
-		fetchShiprocketOrder();
 	}, []);
 
 

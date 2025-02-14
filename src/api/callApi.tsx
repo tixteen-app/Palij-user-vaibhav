@@ -23,6 +23,7 @@ export const makeApi = async (
 			// url: `http://localhost:7000${endpoint}`,
 			// url: `https://new-palji-backend-1.onrender.com${endpoint}`,
 			url: `https://palji.ritaz.in${endpoint}`,
+
 			headers,
 			data,
 		}
