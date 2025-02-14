@@ -58,7 +58,7 @@ const Savory = () => {
           <div onClick={() => handleNavigate(item._id)} style={{ cursor: "pointer" }}>
             <div className={styles.productContent}>
               <div className={styles.productImage}>
-                <img src={item.thumbnail} alt="" />
+                <img src={item.thumbnail} alt="" style={{ width: "100%", height: "100%" }} />
               </div>
             </div>
             <div className={styles.name}>
