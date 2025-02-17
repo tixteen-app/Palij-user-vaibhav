@@ -644,6 +644,7 @@ const MyWatchlist = ({ search, category, minPrice, maxPrice }) => {
 			const method = "POST"
 			const endpoint = `/api/create-wishlist/${productId}`
 			const data = await makeApi(endpoint, method)
+			console.log(data.data)
 			setWishlistItems(
 				wishlistItems.filter((item) => item.products._id !== productId)
 			)

@@ -1,7 +1,8 @@
 
 
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate  } from 'react-router';
+import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import { makeApi } from '../../../api/callApi';
 import styles from './Cookies.module.css';
@@ -143,15 +144,17 @@ const Cookies = () => {
         <div className={styles.slides}>
           {products.slice(5, 8).map((item) => (
             <div className={styles.cardContainer}>
+              <Link to={`/product/product-details/${item._id}`}>
               <div className={styles.image}>
                 <img src={item.thumbnail} alt="" />
               </div>
+              </Link>
               <div className={styles.content}>
                 <div className={styles.productName}>
                   <h2>{item.name}</h2>
                   <p>Premium Cookies</p>
                 </div>
-                <h2 className={styles.weight}>800g</h2>
+                <h2 className={styles.weight}> </h2>
               </div>
               <div className={styles.cardFooter}>
                 <div className={styles.price}>

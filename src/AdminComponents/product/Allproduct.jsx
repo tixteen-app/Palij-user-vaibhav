@@ -29,6 +29,7 @@ const Allproduct = () => {
           "GET"
         );
         setProducts(response.data.products);
+        console.log("ResultPerPage", ResultPerPage);
         setToalProduct(response.data.totalProducts);
       } catch (error) {
         console.error("Error fetching products:", error);
@@ -49,6 +50,7 @@ const Allproduct = () => {
         `/api/delete-product/${productId}`,
         "DELETE"
       );
+      console.log(response);
       setProducts(products.filter((product) => product._id !== productId));
     } catch (error) {
       console.error("Error deleting product:", error);

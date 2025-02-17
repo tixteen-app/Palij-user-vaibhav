@@ -20,7 +20,7 @@ export const makeApi = async (
 
 		const config: AxiosRequestConfig = {
 			method,
-			// url: `http://localhost:5009${endpoint}`,
+			// url: `http://localhost:7000${endpoint}`,
 			// url: `https://new-palji-backend-1.onrender.com${endpoint}`,
 			url: `https://palji.ritaz.in${endpoint}`,
 

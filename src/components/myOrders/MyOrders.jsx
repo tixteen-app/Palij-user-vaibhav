@@ -25,31 +25,6 @@ const MyOrders = () => {
 		fetchOrders();
 	}, []);
 
-<<<<<<< HEAD
-=======
-	const fetchShiprocketOrder = async () => {
-		try {
-			const token = "your_auth_token"; // Replace with your actual token
-
-			const response = await axios.get(
-				`https://apiv2.shiprocket.in/v1/external/orders/show/${orders.shiprocketOrderId}`,
-				{
-					headers: {
-						Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQ2MDQxODksInNvdXJjZSI6InNyLWF1dGgtaW50IiwiZXhwIjoxNzMzMzkzMDkxLCJqdGkiOiJqQWh2QTdCakJ5eDNaNWVXIiwiaWF0IjoxNzMyNTI5MDkxLCJpc3MiOiJodHRwczovL3NyLWF1dGguc2hpcHJvY2tldC5pbi9hdXRob3JpemUvdXNlciIsIm5iZiI6MTczMjUyOTA5MSwiY2lkIjo0NDMyNDc1LCJ0YyI6MzYwLCJ2ZXJib3NlIjpmYWxzZSwidmVuZG9yX2lkIjowLCJ2ZW5kb3JfY29kZSI6IiJ9.oF9ssDAF09sg6LLDzoVVGNOg31XnnQMYuQiiu9kgnGU`, // Add the token here
-					},
-				}
-			);
-
-		} catch (error) {
-			console.log(error);
-		}
-	};
-
-	useEffect(() => {
-		fetchShiprocketOrder();
-	}, []);
-
->>>>>>> 3ed727c91ad52b00480fe018db8bc84293fab2d1
 
 
 	return (

@@ -129,6 +129,8 @@ const MyAccount = () => {
 		}
 	}, [])
 
+	console.log("user details", userDetails)
+
 	return (
 		<div className="myaccount">
 			<div className="userprofile-heading">

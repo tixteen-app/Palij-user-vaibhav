@@ -247,6 +247,14 @@ h1 span {
   .ours {
     /* height: 185vh; */
   }
+  .company-history p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.1em;
+    text-align: justify;
+    color: #AE7B37;
+  }
 
   .company-history h1 {
     font-size: 40px;
@@ -258,7 +266,7 @@ h1 span {
   }
 
   .aboutus h1 {
-    font-size: 50px;
+    font-size: 40px;
   }
 
   .cup-cakes img {
@@ -275,9 +283,7 @@ h1 span {
 }
 
 @media screen and (max-width: 450px) {
-  .ours {
-    /* height: 170vh; */
-  }
+  
 
   .our-values h2,
   .our-mission h2 {

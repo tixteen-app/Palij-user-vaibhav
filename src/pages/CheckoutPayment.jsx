@@ -149,6 +149,7 @@ const CheckoutPayment = () => {
 			const applyCoupan = await makeApi("/api/apply-coupon", "POST", {
 				coupanCode: coupanCode,
 			})
+			console.log(applyCoupan.data.message)
 			toast(applyCoupan.data.message) // Show success message if coupon applied successfully
 		} catch (error) {
 			console.error(error)
