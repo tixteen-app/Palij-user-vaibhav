@@ -255,14 +255,19 @@ const Navbar = () => {
 
 				<div className="media-profile-icon">
 					{userDatails?.userImage ?
-						<img src={userDatails?.userImage} alt="" style={{ width: "40px", height: "40px", borderRadius: "50%" }}
-							onClick={() => navigate(isloggedIn ? "/userprofile" : "/Signup")}
-						/> :
-						<img
-							onClick={() => navigate(isloggedIn ? "/userprofile" : "/Signup")}
-							src={homeImg.profile}
-							alt=""
-						/>
+						<div className="user_image_have_navbar" >
+							<img src={userDatails?.userImage} alt="" style={{ width: "40px", height: "40px", borderRadius: "50%" }}
+								onClick={() => navigate(isloggedIn ? "/userprofile" : "/Signup")}
+							/>
+						</div>
+						:
+						<div className="user_not_have_image_have_navbar">
+							<img
+								onClick={() => navigate(isloggedIn ? "/userprofile" : "/Signup")}
+								src={homeImg.profile}
+								alt=""
+							/>
+						</div>
 					}
 				</div>
 				{/* {isloggedIn && ( */}

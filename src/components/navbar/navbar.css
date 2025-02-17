@@ -414,6 +414,9 @@
     border-radius: 20px;
     margin-top: 25px;
   }
+  .user_not_have_image_have_navbar{
+    /* background: #000; */
+  }
 
   .navbar_wishlist {
     font-size: 30px;
@@ -438,9 +441,7 @@
   .special-menu-icon {
     font-size: 25px;
   }
-  .media-profile-icon{
-    margin-top: 10px;
-  }
+
   .media-profile-icon img {
     width: 40px;
   }
