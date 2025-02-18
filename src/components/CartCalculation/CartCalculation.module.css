@@ -68,6 +68,19 @@
   display: flex;
   gap: 10px;
 }
+.process_to_check{
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: #000000;
+  color: white;
+  width: 100%;
+}
+.process_to_check:hover{
+  background-color: #1e211ea8;
+}
 
 .viewDetails,
 .signUp {

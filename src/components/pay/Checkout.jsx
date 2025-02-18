@@ -829,20 +829,22 @@ function Checkout() {
 			{showModal && (
 				<div className={styles.popupOverlay}>
 					<div className={styles.popupContent}>
-						<h2>Non-Deliverable Products</h2>
-						<p>The following products are not deliverable to the selected address:</p>
+						<h4> UNAVAILABLE FOR DELIVERY </h4>
+						<p>The following item(s) are not deliverable to the selected address:</p>
 						<ul className={styles.popupList}>
 							{nonDeliverableProducts.map((item, index) => (
 								<li key={index} className={styles.popupItem}>
 									<div className={styles.popupImageName}>
-										<img
-											src={item.productId.thumbnail}
-											alt={item.productId.name}
-											className={styles.popupThumbnail}
-										/>
-										<div>
-											<h4>{item.productId.name}</h4>
-											<p>Price: ₹{item.singleProductPrice}</p>
+										<div className={styles.popupImagethumbnail} >
+											<img
+												src={item.productId.thumbnail}
+												alt={item.productId.name}
+												className={styles.popupThumbnail}
+											/>
+										</div>
+										<div className={styles.popupproductdetails} >
+											<div>{item.productId.name}</div>
+											<div>Price: ₹{item.singleProductPrice}</div>
 										</div>
 									</div>
 									<div className={styles.remove}><button onClick={() => handleDeleteClick(item.productId._id, item.size._id, item?.quantity)}>Remove</button></div>

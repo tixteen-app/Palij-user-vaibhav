@@ -327,7 +327,7 @@ function CartCalculation({
 
 			<div className={styles.actions}>
 				<button
-					className={styles.signUp}
+					className={styles.process_to_check}
 					disabled={disabled || loadingData.final}
 					style={{ opacity: disabled || loadingData.final ? 0.5 : 1 }}
 					onClick={() => navigate("/cart/checkout/")}

@@ -284,7 +284,7 @@ const CouponFunctions = () => {
                     disabled={loading}
                     className={styles.button}
                   >
-                    {loading ? "Applying..." : "Apply Coupon"}
+                    {loading ? "Applying..." : "Apply"}
                   </button>
                 </div>
               )}
