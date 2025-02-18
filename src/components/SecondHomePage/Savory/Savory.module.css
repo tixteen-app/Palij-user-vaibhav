@@ -35,7 +35,8 @@
 }
 
 .productContent img {
-  padding: 30px 80px;
+  /* padding: 30px 80px; */
+  width: 100%;
 
 }
 
