@@ -72,7 +72,7 @@
   padding: 40px 50px;
   text-align:start;
 }
-.popupButton {
+.popupButtonforremoveall {
   padding: 10px 20px;
   background-color: #ee5564;
   color: white;
@@ -80,6 +80,23 @@
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
+  width: 100%;
+}
+.closepopupButton {
+  padding: 10px 20px;
+  color: rgb(0, 0, 0);
+  background: white;
+
+  border: none;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+  font-weight: bold;
+}
+.popupButtonforremovealldiv{
+  width: 100%;
 }
 
 .popupButton:hover {
@@ -102,4 +119,9 @@
   border: 0;
   text-decoration: underline;
   font-size: 18px;
+}
+.popupButtonscart{
+  display: flex;
+  width: 100%;
+  gap: 10px;
 }
