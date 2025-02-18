@@ -3,20 +3,6 @@ import Cookies from 'js-cookie';
 
 let cartCountListeners = []
 
-// export const fetchCart = async (setCartItems) => {
-// 	try {
-// 		const response = await makeApi("/api/my-cart", "GET")
-// 		const cartItems = response.data.orderItems.map((item) => ({
-// 			productId: item.productId._id,
-// 			quantity: item.quantity,
-// 		}))
-// 		setCartItems(cartItems)
-// 		updateCartCount(cartItems)
-// 	} catch (error) {
-// 		console.log(error)
-// 	}
-// }
-
 
 export const ApplyCoupan = async (couponCode) => {
 	try {
@@ -72,123 +58,94 @@ export const fetchWishlist = async (setWishlistItems) => {
 		console.log(error)
 	}
 }
-
+export const addToCart = async (
+	productId,
+	setIsLogin,
+	setShowPopup,
+	fetchCart, // Ensure fetchCart does not take setFetchCartLoader if not needed
+	setCartItems,
+	setProductLoaders,
+	selectProductSize
+  ) => {
+	const token = localStorage.getItem("token");
+	if (!token) {
+	  setIsLogin(false);
+	  setShowPopup(true);
+	  return;
+	}
+	try {
+	  setProductLoaders((prevState) => ({
+		...prevState,
+		[productId]: true,
+	  }));
+  
+	  const method = "POST";
+	  const endpoint = "/api/add-to-cart";
+	  await makeApi(endpoint, method, {
+		productId,
+		selectProductSize,
+		quantity: 1,
+		shippingPrice: 0,
+	  });
+  
+	  // Ensure fetchCart is correctly called
+	  await fetchCart(setCartItems);
+	} catch (error) {
+	  console.log(error.response.data);
+	} finally {
+	  setProductLoaders((prevState) => ({
+		...prevState,
+		[productId]: false,
+	  }));
+	}
+  };
+  
 // export const addToCart = async (
 // 	productId,
 // 	setIsLogin,
 // 	setShowPopup,
 // 	fetchCart,
 // 	setCartItems,
-// 	setProductLoaders
+// 	setProductLoaders,
+// 	selectProductSize
 // ) => {
-// 	const token = localStorage.getItem("token")
+// 	const token = localStorage.getItem("token");
 // 	if (!token) {
-// 		setIsLogin(false)
-// 		setShowPopup(true)
-// 		return
+// 		setIsLogin(false);
+// 		setShowPopup(true);
+// 		return;
 // 	}
-// 	console.log("Added to cart")
 // 	try {
 // 		setProductLoaders((prevState) => ({
 // 			...prevState,
 // 			[productId]: true,
-// 		}))
+// 		}));
 
-// 		const method = "POST"
-// 		const endpoint = "/api/add-to-cart"
+// 		const method = "POST";
+// 		const endpoint = "/api/add-to-cart";
 // 		await makeApi(endpoint, method, {
 // 			productId,
+// 			selectProductSize,
 // 			quantity: 1,
 // 			shippingPrice: 0,
-// 		})
+// 		});
 
-// 		fetchCart(setCartItems)
+// 		fetchCart(setCartItems);
+// 		const updatedCartItems = Cookies.get("cartItems") ? JSON.parse(Cookies.get("cartItems")) : [];
+// 		const newCartItem = { productId, quantity: 1, size: selectProductSize };
+// 		updatedCartItems.push(newCartItem);
+// 		Cookies.set("cartItems", JSON.stringify(updatedCartItems), { expires: 2 });
 // 	} catch (error) {
-// 		console.log(error.response.data)
+// 		console.log(error.response.data);
 // 	} finally {
 // 		setProductLoaders((prevState) => ({
 // 			...prevState,
 // 			[productId]: false,
-// 		}))
+// 		}));
+// 		// RemoveCoupan()
+
 // 	}
-// }
-export const addToCart = async (
-	productId,
-	setIsLogin,
-	setShowPopup,
-	fetchCart,
-	setCartItems,
-	setProductLoaders,
-	selectProductSize
-) => {
-	const token = localStorage.getItem("token");
-	if (!token) {
-		setIsLogin(false);
-		setShowPopup(true);
-		return;
-	}
-	try {
-		setProductLoaders((prevState) => ({
-			...prevState,
-			[productId]: true,
-		}));
-
-		const method = "POST";
-		const endpoint = "/api/add-to-cart";
-		await makeApi(endpoint, method, {
-			productId,
-			selectProductSize,
-			quantity: 1,
-			shippingPrice: 0,
-		});
-
-		fetchCart(setCartItems);
-		const updatedCartItems = Cookies.get("cartItems") ? JSON.parse(Cookies.get("cartItems")) : [];
-		const newCartItem = { productId, quantity: 1, size: selectProductSize };
-		updatedCartItems.push(newCartItem);
-		Cookies.set("cartItems", JSON.stringify(updatedCartItems), { expires: 2 });
-	} catch (error) {
-		console.log(error.response.data);
-	} finally {
-		setProductLoaders((prevState) => ({
-			...prevState,
-			[productId]: false,
-		}));
-		// RemoveCoupan()
-
-	}
-};
-
-
-// export const removeFromCart = async (
-// 	productId,
-// 	setProductLoaders,
-// 	setCartItems,
-// 	fetchCart,
-// 	selectProductSize
-//   ) => {
-// 	try {
-// 	  setProductLoaders((prevState) => ({
-// 		...prevState,
-// 		[productId]: true, 
-// 	  }));
-// 	  const method = "POST";
-// 	  const endpoint = "/api/remove-from-cart";
-// 	  await makeApi(endpoint, method, { productId , selectProductSize });
-
-// 	  // fetchCart(setCartItems);
-// 	  let updatedCartItems = Cookies.get("cartItems") ? JSON.parse(Cookies.get("cartItems")) : [];
-// 	  updatedCartItems = updatedCartItems.filter(item => item.productId !== productId);
-// 	  Cookies.set("cartItems", JSON.stringify(updatedCartItems), { expires: 2 });
-// 	} catch (error) {
-// 	  console.log(error);
-// 	} finally {
-// 	  setProductLoaders((prevState) => ({
-// 		...prevState,
-// 		[productId]: false,
-// 	  }));
-// 	}
-//   };
+// };
 export const removeFromCart = async (
 	productId,
 	setProductLoaders,
@@ -334,33 +291,6 @@ export const cartItemRemoveFromCart = async (
 		}))
 	}
 }
-
-// export const deleteCartItemRemoveFromCart = async (
-// 	productId,
-// 	setProductLoaders,
-// 	fetchCart,
-// 	quantity
-// ) => {
-// 	try {
-// 		let removeQuantity = quantity ? quantity : 1
-// 		setProductLoaders((prevState) => ({
-// 			...prevState,
-// 			[productId]: true,
-// 		}))
-// 		const method = "POST"
-// 		const endpoint = `/api/remove-from-cart?quantity=${removeQuantity}`
-
-// 		await makeApi(endpoint, method, { productId })
-// 		fetchCart()
-// 	} catch (error) {
-// 		console.log(error)
-// 	} finally {
-// 		setProductLoaders((prevState) => ({
-// 			...prevState,
-// 			[productId]: false,
-// 		}))
-// 	}
-// }
 export const deleteproductFromCart = async (
 	productId,
 	setProductLoaders,
