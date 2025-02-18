@@ -1861,6 +1861,7 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 function ProductDetails() {
   const navigate = useNavigate();
   const { productId } = useParams();
+  console.log("productId", productId);
   const [completeCart, setCompleteCart] = useState([]);
   const [load, setLoad] = useState(false)
   const [product, setProduct] = useState(null);
