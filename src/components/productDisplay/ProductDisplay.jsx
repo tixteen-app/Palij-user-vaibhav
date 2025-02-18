@@ -8,6 +8,7 @@ import { IoIosHeart } from "react-icons/io"
 import BackButton from "./backButton"
 const ProductDisplay = (props) => {
 	// const { products } = props
+	console.log("product display", props.product.price)
 	// const { productId } = useParams()
 	const { cartItems, addToCart, removeFromCart } = useContext(ShopContext)
 	const navigate = useNavigate()
@@ -19,6 +20,7 @@ const ProductDisplay = (props) => {
 		}
 		addToCart(props.product._id)
 	}
+	console.log("this is openproduct", props)
 
 	return (
 		<div className="productDisplay">

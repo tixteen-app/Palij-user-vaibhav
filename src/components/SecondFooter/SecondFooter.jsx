@@ -16,14 +16,14 @@ const SecondFooter = () => {
             <img src={assets.logo2} alt="" />
           </div>
           <div className={styles.social}>
-            <Link to={"https://www.instagram.com/paljibakeryldh?igsh=eXV2bW12cmttdTg%3D"}>
+            <Link to={"https://www.instagram.com/paljibakeryldh?igsh=eXV2bW12cmttdTg%3D"} target="_blank" >
               <PiInstagramLogo />
 
             </Link>
-            <Link to={'https://twitter.com/paljibakery?lang=en'}>
+            <Link to={'https://twitter.com/paljibakery?lang=en'} target="_blank">
               <RiTwitterXLine />
             </Link>
-            <Link to={'https://m.facebook.com/paljibakery'}>
+            <Link to={'https://m.facebook.com/paljibakery'} target="_blank">
               <BiLogoFacebookSquare />
             </Link>
           </div>

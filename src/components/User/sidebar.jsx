@@ -38,8 +38,10 @@ const UserProfileSidebar = () => {
 	const handleLogout = (e) => {
 		e.preventDefault()
 		localStorage.removeItem("token")
+		console.log("1")
 		// navigate("/product/all-products");
 		window.location.href = "/product/all-products"
+		console.log("2")
 	}
 
 	return (

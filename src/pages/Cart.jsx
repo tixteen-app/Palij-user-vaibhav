@@ -50,6 +50,9 @@ const Cart = () => {
   };
 
   const handleDeleteClick = (productId, selectProductSize, quantity) => {
+    console.log('Delete Clicked with productId:', productId);
+    console.log('Size ID:', selectProductSize);
+    console.log('Quantity:', quantity);
     setProductToDelete({ productId, selectProductSize, quantity });
     setShowConfirmDialog(true);  // Ensure this is called correctly
 
