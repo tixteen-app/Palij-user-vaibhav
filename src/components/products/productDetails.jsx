@@ -1986,6 +1986,7 @@ function ProductDetails() {
   };
 
   const handleDecreaseQuantity = async () => {
+    console.log(cartQuantity)
     if (cartQuantity > 0) {
       try {
         await removeFromCart(productId, setProductLoaders, setCartItems, fetchCartItems, selectedSize._id);

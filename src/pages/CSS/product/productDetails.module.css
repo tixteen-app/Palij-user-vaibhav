@@ -429,11 +429,14 @@
   cursor: pointer;
   font-family: var(--heading-font);
   font-weight: 600;
+  transition: all 0.3s ease-in-out;
 }
 .selectedSizeButton{
   background: #6d6d6d;
   color: #fff;
   font-weight: 400;
+  border: 2px solid #6d6d6d;
+  transition: all 0.3s ease-in-out;
 }
 .selectQuntitytext{
   font-family: var(--body-font);

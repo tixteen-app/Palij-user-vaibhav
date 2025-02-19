@@ -24,28 +24,63 @@ export const RemoveCoupan = async (couponCode) => {
 	}
 };
 
+// export const fetchCart = async (setCartItems, setCompleteCart, setFetchCartLoader) => {
+// 	try {
+// 		setFetchCartLoader(true);
+// 		const response = await makeApi("/api/my-cart", "GET");
+// 		const cartItems = response.data.orderItems.map(item => ({
+// 			productId: item.productId._id,
+// 			quantity: item.quantity,
+// 			size: item.size._id,
+// 		}));
+		
+// 		setCartItems(cartItems);
+// 		if (setCompleteCart) {
+// 			setCompleteCart(response.data);
+// 		}
+// 		updateCartCount(cartItems);
+// 	} catch (error) {
+// 		console.log(error);
+// 	} finally {
+// 		// fetchCart(setCartItems);
+// 		setFetchCartLoader(false);
+// 	}
+// };
 export const fetchCart = async (setCartItems, setCompleteCart, setFetchCartLoader) => {
-	try {
-		setFetchCartLoader(true);
-		const response = await makeApi("/api/my-cart", "GET");
-		const cartItems = response.data.orderItems.map(item => ({
-			productId: item.productId._id,
-			quantity: item.quantity,
-			size: item.size._id,
-		}));
-		console.log("000", cartItems);
-		setCartItems(cartItems);
-		if (setCompleteCart) {
-			setCompleteCart(response.data);
-		}
-		updateCartCount(cartItems);
-	} catch (error) {
-		console.log(error);
-	} finally {
-		// fetchCart(setCartItems);
-		setFetchCartLoader(false);
-	}
+    try {
+        setFetchCartLoader(true);
+        const response = await makeApi("/api/my-cart", "GET");
+
+        // Check if orderItems is available and is an array
+        const orderItems = response.data.orderItems || [];
+
+        // If orderItems is empty, handle accordingly
+        if (orderItems.length === 0) {
+            setCartItems([]); // Set cartItems to empty array if no items exist
+            updateCartCount([]); // Update cart count to 0
+        } else {
+            const cartItems = orderItems.map(item => ({
+                productId: item.productId._id,
+                quantity: item.quantity,
+                size: item.size._id,
+            }));
+            setCartItems(cartItems);
+            updateCartCount(cartItems); // Update cart count with fetched items
+        }
+
+        if (setCompleteCart) {
+            setCompleteCart(response.data);
+        }
+
+    } catch (error) {
+        console.log(error);
+    } finally {
+        setFetchCartLoader(false); // Stop loader once fetching is complete
+    }
 };
+
+
+
 
 export const fetchWishlist = async (setWishlistItems) => {
 	try {

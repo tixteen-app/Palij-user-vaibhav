@@ -140,16 +140,17 @@ const Navbar = () => {
 
 	useEffect(() => {
 		const updateCartCount = (count) => {
-			setCartCount(count)
+			setCartCount(count);  // This will directly update the cart count
 		}
-
-		subscribeToCartCount(updateCartCount)
-
+	
+		subscribeToCartCount(updateCartCount);  // Subscribe to cart count changes
+	
 		return () => {
-			unsubscribeFromCartCount(updateCartCount)
+			unsubscribeFromCartCount(updateCartCount);  // Unsubscribe on cleanup
 		}
-	}, [])
-
+	}, []);
+	
+	
 
 	const fetchUserDetail = async () => {
 		try {
@@ -167,6 +168,8 @@ const Navbar = () => {
 	}, [])
 
 
+
+	
 
 
 
