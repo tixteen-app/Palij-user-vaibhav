@@ -2197,21 +2197,26 @@ function ProductDetails() {
                   <div className={styles.allAddToCart}>
                     {sizes.some(size => size.size && size.size.toLowerCase() !== 'null') && (
                       <div className={styles.sizeOptions}>
-                        <h3>Select Size:</h3>
+                        <div className={styles.selectQuntitytext} >Select Quntity:</div>
                         <div className={styles.sizeButtons}>
                           {sizes.map(size => (
                             size.size && size.size.toLowerCase() !== 'null' && ( // Conditional check to exclude null and 'null'
-                              <button
+                              <div
                                 key={size._id}
-                                className="btn"
-                                style={{
-                                  backgroundColor: selectedSize?._id === size._id ? '#ff6b6b' : '', // custom color logic
-                                  color: selectedSize?._id === size._id ? '#fff' : '#000', // text color logic
-                                }}
+                                // className={ size._id === selectedSize?._id ? styles.selectedSizeButton  : styles.sizeButton}
+                                className={`${styles.sizeButtondiv} ${size._id === selectedSize?._id ? styles.selectedSizeButton : ''}`}
                                 onClick={() => handleSizeChange(size)}
                               >
-                                {size.size} {size.sizetype} - ₹{size.FinalPrice}
-                              </button>
+                                <div
+                                  className={styles.finalpricebutton}
+                                >
+                                  ₹{size.FinalPrice}
+                                </div>
+                                <div className={styles.sizetypebutton}  >
+                                  {size.size}{size.sizetype}
+                                </div>
+
+                              </div>
                             )
                           ))}
                         </div>

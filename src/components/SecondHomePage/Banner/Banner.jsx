@@ -6,7 +6,7 @@ const Banner = () => {
     <div className={styles.conatiner}>
       <div className={styles.innerContainer}>
         <div className={styles.image}>
-          <video autoPlay muted loop >
+          <video autoPlay muted loop controls={false} playsinline>
             <source src={assets.cookieVideo} type="video/mp4" />
           </video>
         </div>
