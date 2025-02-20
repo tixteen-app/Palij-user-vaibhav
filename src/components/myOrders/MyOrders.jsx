@@ -9,6 +9,7 @@ import styles from "./MyOrders.module.css";
 const MyOrders = () => {
 	const [loading, setLoading] = useState(false);
 	const [orders, setOrders] = useState([]);
+	console.log("-=-=",orders);
 
 	useEffect(() => {
 		const fetchOrders = async () => {
@@ -36,38 +37,38 @@ const MyOrders = () => {
 				<div className={styles.loader}>
 					<Primaryloader />
 				</div>
-			) : orders.length === 0 ? (
+			) : (orders?.length === 0 || orders === undefined || orders === null  ) ? (
 				<div className={styles.noOrders}>No orders found</div>
 			) : (
 				<div className={styles.orderList}>
-					{orders.map((order) => (
+					{orders?.map((order) => (
 						<div key={order._id} className={styles.orderCard}>
 							<div className={styles.orderHeader}>
-								<span className={styles.orderId}>Order #{order._id.slice(-6)}</span>
-								<span className={styles.orderDate}>{new Date(order.createdAt).toLocaleDateString()}</span>
-								<span className={`${styles.orderStatus} ${styles[order.status.toLowerCase()]}`}>
-									{order.status}
+								<span className={styles.orderId}>Order #{order?._id.slice(-6)}</span>
+								<span className={styles.orderDate}>{new Date(order?.createdAt).toLocaleDateString()}</span>
+								<span className={`${styles.orderStatus} ${styles[order?.status.toLowerCase()]}`}>
+									{order?.status}
 								</span>
 							</div>
 							<div className={styles.orderItems}>
-								{order.CartId.orderItems.map((item) => (
+								{order?.CartId?.orderItems.map((item) => (
 									<div key={item._id} className={styles.orderItem}>
 										<img
-											src={item.productId.thumbnail}
-											alt={item.productId.name}
+											src={item?.productId.thumbnail}
+											alt={item?.productId.name}
 											className={styles.productImage}
 										/>
 										<div className={styles.productInfo}>
-											<h3>{item.productId.name}</h3>
-											<p>Quantity: {item.quantity}</p>
-											<p className={styles.itemPrice}>₹{item.totalPrice}</p>
+											<h3>{item?.productId.name}</h3>
+											<p>Quantity: {item?.quantity}</p>
+											<p className={styles.itemPrice}>₹{item?.totalPrice}</p>
 										</div>
 									</div>
 								))}
 							</div>
 							<div className={styles.orderFooter}>
 								<span className={styles.orderTotal}>
-									Total: ₹{order.CartId.totalPrice}
+									Total: ₹{order?.CartId?.totalPrice}
 								</span>
 								<Link to={`/userprofile/myorders/${order._id}`} className={styles.viewButton}>
 									View Details
