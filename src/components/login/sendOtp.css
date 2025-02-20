@@ -22,7 +22,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-right: 80px;
+  margin-right: 0px;
 }
 
 .Otp-verified-heading {
@@ -192,7 +192,7 @@
 
 
 .opt_don_loader_main_div {
-  margin-top: 50px;
+  margin-top: 250px;
   transition: all 1s ease-in-out;
 }
 

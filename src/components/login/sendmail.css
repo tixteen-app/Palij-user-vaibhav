@@ -70,7 +70,7 @@
     align-items: center;
     font-family: inherit;
     color: #fff;
-    background-color: #b7338b;
+    background-color: var(--redPink);
     border: none;
     width: 100%;
     padding: 12px 16px;
@@ -80,10 +80,13 @@
     cursor: pointer;
     border-radius: 6px;
     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.084), 0px 2px 3px rgba(0, 0, 0, 0.168);
+    transition: all 0.3s ease-in-out;
   }
   
   .form-submit-btn-forgot-password:hover {
-    background-color: #ff00aa;
+    border:  1px solid #b7338b;
+    background-color: #fff;
+    color: var(--redPink);
   }
   
   .link {
@@ -109,12 +112,11 @@
   width: 120px;
   height: 60px;
   border-radius: 200px 200px 0 0;
-  -webkit-mask: repeating-radial-gradient(farthest-side at bottom ,#0000 0,#000 1px 12%,#0000 calc(12% + 1px) 20%);
-  background:
-   radial-gradient(farthest-side at bottom,#514b82 0 95%,#0000 0) bottom/0% 0% no-repeat
-   #ddd;
+  -webkit-mask: repeating-radial-gradient(farthest-side at bottom, #0000 0, #000 1px 12%, #0000 calc(12% + 1px) 20%);
+  background: radial-gradient(farthest-side at bottom, #EE5564 0 95%, #0000 0) bottom/0% 0% no-repeat #ddd;
   animation: l10 2s infinite steps(6);
 }
+
 @keyframes l10 {
     100% {background-size:120% 120%}
 }
