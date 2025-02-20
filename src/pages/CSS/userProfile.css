@@ -289,7 +289,7 @@
 }
 
 
-@media(max-width:600px) {
+@media(max-width:2600px) {
   .userProfile-sidebar h1 {
     font-size: 23px;
     margin-top: 5px;
@@ -409,6 +409,7 @@
 
 .confirm-button,
 .cancel-button {
+  width: 100%;
   padding: 10px 20px;
   font-size: 1rem;
   border: none;

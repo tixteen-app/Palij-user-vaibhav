@@ -128,6 +128,7 @@ import styles from "./CouponSection.module.css";
 const CouponFunctions = () => {
   const [cartItems, setCartItems] = useState([]);
   const [completeCart, setCompleteCart] = useState({});
+  console.log("=-=-=-",completeCart);
   const [fetchCartLoader, setFetchCartLoader] = useState(false);
   const [loading, setLoading] = useState(false);
   const [appliedCoupon, setAppliedCoupon] = useState(false);

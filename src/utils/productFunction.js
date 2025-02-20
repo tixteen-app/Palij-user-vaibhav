@@ -50,12 +50,12 @@ export const fetchCart = async (setCartItems, setCompleteCart, setFetchCartLoade
     try {
         setFetchCartLoader(true);
         const response = await makeApi("/api/my-cart", "GET");
-
+		
         // Check if orderItems is available and is an array
-        const orderItems = response.data.orderItems || [];
+        const orderItems = response?.data?.orderItems || [];
 
         // If orderItems is empty, handle accordingly
-        if (orderItems.length === 0) {
+        if (orderItems?.length === 0) {
             setCartItems([]); // Set cartItems to empty array if no items exist
             updateCartCount([]); // Update cart count to 0
         } else {

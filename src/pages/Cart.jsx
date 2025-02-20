@@ -22,6 +22,7 @@ const Cart = () => {
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
   const [productToDelete, setProductToDelete] = useState(null);
   const [completeCart, setCompleteCart] = useState({ orderItems: [] });
+  console.log("-----------------",completeCart);
   const [isLogin, setIsLogin] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
 
@@ -87,7 +88,7 @@ const Cart = () => {
         <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}>
           <PrimaryLoader />
         </div>
-      ) : completeCart.orderItems.length === 0 ? (
+      ) : (completeCart?.orderItems?.length === 0 || completeCart?.orderItems?.length === undefined) ? (
         <div className="empty_cart_div">
           <img src={assets.cart_gif} alt="Empty Cart" className="NO_cart_image" />
           <Link to="/product/all-products">
