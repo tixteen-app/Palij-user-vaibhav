@@ -304,7 +304,7 @@ const OrderSummary = () => {
 					<div className={styles.totalSection}>
 						<div className={styles.totalRow}>
 							<span><strong>Subtotal:</strong></span>
-							<span>₹ {orderSummary.CartId.totalPrice} </span>
+							<span>₹ {orderSummary.CartId.totalPriceWithoutDiscount} </span>
 						</div>
 						{orderSummary.CartId.couapnDiscount > 0 && (
 							<div className={styles.totalRow}>
