@@ -294,6 +294,24 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
 		setIsLogin(!!token);
 	}, []);
 
+	// const fetchProduct = async (page, cat, searchTerm, min, max) => {
+	// 	try {
+	// 		setAllProductLoader(true);
+	// 		const response = await makeApi(
+	// 			`/api/get-all-products?name=${searchTerm}&category=${cat}&subcategory=${subcategory}&minPrice=${min}&maxPrice=${max}&page=${page}&perPage=${ResultPerPage}&IsOutOfStock=false`,
+	// 			"GET"
+	// 		);
+	// 		setProducts(response.data.products);
+	// 		setToalProduct(response.data.totalProducts);
+	// 		const totalPages = Math.ceil(response.data.totalProducts / 10);
+	// 		setTotalPages(totalPages);
+	// 		setDisplayedProducts(response.data.products.slice(0, visibleProducts));
+	// 	} catch (error) {
+	// 		console.error("Error fetching products:", error);
+	// 	} finally {
+	// 		setAllProductLoader(false);
+	// 	}
+	// };
 	const fetchProduct = async (page, cat, searchTerm, min, max) => {
 		try {
 			setAllProductLoader(true);
@@ -301,17 +319,22 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
 				`/api/get-all-products?name=${searchTerm}&category=${cat}&subcategory=${subcategory}&minPrice=${min}&maxPrice=${max}&page=${page}&perPage=${ResultPerPage}&IsOutOfStock=false`,
 				"GET"
 			);
-			setProducts(response.data.products);
+	
+			// Sort to ensure first product is first (modify sorting logic as needed)
+			const sortedProducts = response.data.products.sort((a, b) => a.name.localeCompare(b.name));
+	
+			setProducts(sortedProducts);
+			setDisplayedProducts(sortedProducts.slice(0, visibleProducts));
 			setToalProduct(response.data.totalProducts);
-			const totalPages = Math.ceil(response.data.totalProducts / 10);
-			setTotalPages(totalPages);
-			setDisplayedProducts(response.data.products.slice(0, visibleProducts));
+			setTotalPages(Math.ceil(response.data.totalProducts / 10));
 		} catch (error) {
 			console.error("Error fetching products:", error);
 		} finally {
 			setAllProductLoader(false);
 		}
 	};
+	
+	
 
 	useEffect(() => {
 		const queryParams = new URLSearchParams(location.search);
@@ -327,6 +350,7 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
 		fetchProduct(1, category, search, minPrice, maxPrice);
 		setCurrentPage(1);
 		fetchCartItems();
+		window.scrollTo(0, 0);
 	}, [search, category, minPrice, maxPrice]);
 
 	useEffect(() => {

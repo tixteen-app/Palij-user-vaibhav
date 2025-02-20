@@ -240,9 +240,15 @@ const ProductSidebar = () => {
 	const [selectedCategory, setSelectedCategory] = useState();
 	const [categoryName, setCategoryName] = useState("");
 	const [selectedPriceRange, setSelectedPriceRange] = useState({ min: 0, max: 1000000 }); // No filter by default
-
-
+	const [isInitialLoad, setIsInitialLoad] = useState(true);
 	const [showDropdown, setShowDropdown] = useState(false);
+
+	useEffect(() => {
+		if (isInitialLoad) {
+			window.scrollTo(0, 0);
+			setIsInitialLoad(false);
+		}
+	}, [isInitialLoad]);
 
 	useEffect(() => {
 		async function fetchCategories() {
