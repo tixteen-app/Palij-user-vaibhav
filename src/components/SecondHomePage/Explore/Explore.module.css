@@ -89,7 +89,10 @@
   }
 }
 
-@media(max-width:500px) {
+@media(max-width:520px) {
+  .contant{
+    text-align: center;
+  }
   .contant h2 {
     font-size: 2rem;
     margin-top: 15px;

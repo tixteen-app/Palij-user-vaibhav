@@ -77,14 +77,14 @@ const AboutUs = () => {
 								src={assets.our_value4}
 								alt="customer satisfaction IMG"
 							/>
-							<p>customer satisfaction</p>
+							<p> CUSTOMER SATISFACTION </p>
 						</div>
 						<div>
 							<img
 								src={assets.our_value5}
 								alt=" innovation IMG"
 							/>
-							<p>innovation</p>
+							<p> INNOVATION </p>
 						</div>
 					</div>
 				</div>

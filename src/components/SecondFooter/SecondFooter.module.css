@@ -143,3 +143,9 @@
     margin-top: -15px;
   }
 }
+
+@media (max-width:520px) {
+  .container{
+    text-align: center;
+  }
+}

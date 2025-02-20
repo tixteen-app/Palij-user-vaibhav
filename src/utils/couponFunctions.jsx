@@ -147,7 +147,7 @@ const CouponFunctions = () => {
 
   useEffect(() => {
     if (completeCart?.coupancode) {
-      setCouponCode(completeCart.coupancode);
+      setCouponCode(completeCart?.coupancode);
       setAppliedCoupon(true);
     }
   }, [completeCart]);
