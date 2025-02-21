@@ -32,7 +32,7 @@ const Cookies = () => {
   const [AllProductLoader, setAllProductLoader] = useState(false)
   const [AddTocartLoader, setAddTocartLoader] = useState({})
   const [completeCart, setCompleteCart] = useState([]);
-
+  
 
   useEffect(() => {
     const token = localStorage.getItem("token")
@@ -63,7 +63,7 @@ const Cookies = () => {
   }, []);
 
   useEffect(() => {
-    fetchCart(setCartItems)
+    fetchCart(setCartItems , setCompleteCart, setAddTocartLoader);
     fetchCartItems()
   }, [])
 
