@@ -4,9 +4,6 @@
   height: 100vh;
   width: 100%;
 }
-
-
-
 .cart-container {
 
   min-height: 100vh;
@@ -691,6 +688,14 @@
 
   .all_added_cart_list p {
     font-size: 15px;
+  }
+  .productItemName1{
+    width: 80%;
+      font-size: 8px;
+      white-space: nowrap; /* Prevent text from wrapping */
+      overflow: hidden; /* Hide overflowing text */
+      text-overflow: ellipsis; 
+    
   }
 }
 

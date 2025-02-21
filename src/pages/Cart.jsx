@@ -120,7 +120,7 @@ const Cart = () => {
 
                     <div className="productthumbnailname">
                       <img src={item?.productId?.thumbnail} alt="" />
-                      <p className="productItemName1">{item.productId?.name}  </p>
+                      <p className="productItemName1">{item.productId?.name}</p>
                     </div>
 
                     {/* <p className="productItemName2">
