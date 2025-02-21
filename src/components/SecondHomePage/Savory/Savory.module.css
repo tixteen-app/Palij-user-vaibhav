@@ -134,14 +134,14 @@
 
   .productContent {
     background: #fff;
-    width: 150px;
-    height: 180px;
+    width: 100%;
+    /* height: 180px; */
   }
 
   .productContent img {
     padding: 0px;
     padding-top: 15px;
-    height: 160px;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
