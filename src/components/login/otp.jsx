@@ -137,7 +137,7 @@ function OtpVerifiedForm() {
   return (
     <>
       <ToastContainer />
-      {IsOTPvalid === false ?
+      {IsOTPvalid === true ?
         <div className="main_login_page_div">
           <form className="Otp-verified-form" >
             <p className="Otp-verified-heading">Verify</p>
@@ -198,7 +198,7 @@ function OtpVerifiedForm() {
                     </div>
                   </div>  
                   :
-                  <div className="" >
+                  <div className="test" >
                     {loading ? <div className='match_OTP_loader'></div> : <div>
                       <button className="Otp-verified-btn1" onClick={(e) => { handleSubmit(e) }}>Submit</button>
                     </div>}
@@ -213,13 +213,11 @@ function OtpVerifiedForm() {
             </div>
           </form>
         </div>
-
-
         :
         <div className='login-signup' >
           <form className="d-flex flex-column" >
             <div>
-              <p className="login text-center">Update Password </p>
+              <p className="login text-center ">Update Password </p>
             </div>
             <div className="login_inputContainer login">
 
@@ -258,14 +256,14 @@ function OtpVerifiedForm() {
 
                 :
                 <div>
-                  <button type="submit" className="btn btn-success"
+                  <button type="submit" className="btn btn-success update_password_btn"
                     style={{ marginTop: "10px" }}
                     onClick={(e) => handleSubmitPassword(e)} >Update Password</button>
                 </div>
-              }
+              } 
             </div>
 
-
+ 
           </form>
         </div>
 
