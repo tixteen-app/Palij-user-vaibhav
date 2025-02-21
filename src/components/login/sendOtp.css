@@ -184,7 +184,19 @@
 }
 
 .update_password_btn{
-  
+  position: relative;
+  top: 9.5em;
+  /* left: 2.4em; */
+  width: 17em;
+  height: 3em;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  transition: .4s ease-in-out;
+  box-shadow: 1px 1px 3px #b5b5b5,
+    -1px -1px 3px #ffffff;
+  color: #b7338b;
+  font-weight: bold;
 }
 
 

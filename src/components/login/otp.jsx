@@ -137,7 +137,7 @@ function OtpVerifiedForm() {
   return (
     <>
       <ToastContainer />
-      {IsOTPvalid === true ?
+      {IsOTPvalid === false ?
         <div className="main_login_page_div">
           <form className="Otp-verified-form" >
             <p className="Otp-verified-heading">Verify</p>
@@ -256,7 +256,7 @@ function OtpVerifiedForm() {
 
                 :
                 <div>
-                  <button type="submit" className="btn btn-success update_password_btn"
+                  <button type="submit" className="btn update_password_btn"
                     style={{ marginTop: "10px" }}
                     onClick={(e) => handleSubmitPassword(e)} >Update Password</button>
                 </div>
