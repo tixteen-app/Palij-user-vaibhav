@@ -88,6 +88,7 @@
   border: 2px solid #000;
 
 } */
+ 
 
 @media (max-width:500px) {
 
@@ -95,4 +96,32 @@
   .login-popup-content {
     max-width: 380px;
   }
+}
+
+.googleAuthorize {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ddd;
+  padding: 10px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.googleAuthorize img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.googleAuthorizeText_login_with {
+  font-size: 14px;
+  font-weight: bold;
+  color: #000;
+}
+
+.or_text_on_popup {
+  text-align: center;
+  font-weight: bold;
+  margin: 10px 0;
 }
