@@ -51,10 +51,7 @@ const Slider = () => {
     <div className={styles.slider}>
       <div className={styles.slideContainer}>
         <img src={slides[currentIndex].image} alt={slides[currentIndex].title} className={styles.image} />
-        {/* <div className={styles.textOverlay}>
-          <h2 className={styles.title}>{slides[currentIndex].title}</h2>
-          <p className={styles.description}>{slides[currentIndex].description}</p>
-        </div> */}
+       
       </div>
       <button className={styles.prevButton} onClick={prevSlide}>❮</button>
       <button className={styles.nextButton} onClick={nextSlide}>❯</button>

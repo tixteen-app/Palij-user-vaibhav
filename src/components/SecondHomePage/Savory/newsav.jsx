@@ -15,7 +15,7 @@ import AddIcon from "../../../assets/add_icon_green.png"
 import RemoveIcon from "../../../assets/remove_icon_red.png"
 import { Link } from 'react-router-dom';
 
-const Savory = () => {
+const NSavory = () => {
 
   const [AllProductLoader, setAllProductLoader] = useState(false);
   const [products, setProducts] = useState([]);
@@ -210,7 +210,7 @@ const Savory = () => {
   )
 }
 
-export default Savory
+export default NSavory
 
 // import { useNavigate } from 'react-router';
 // import { assets } from '../../../assets/assets';

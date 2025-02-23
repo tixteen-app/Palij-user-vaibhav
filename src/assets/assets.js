@@ -53,7 +53,7 @@ import empty_cart from "./empty-cart.svg"
 import pieceOfCake from "./peiceofCake.png"
 import homeBanner2 from "./homebanner2.png"
 import homeBanner3 from "./homebanner3.png"
-import homeBanner4 from "./homebanner4.png"
+import homeBanner4 from "./Rusk.png"
 import aboutLandingbanner1 from "./aboutLandingPage1.png"
 import paljiMainImg from './paljiMainImg.png'
 import cart_gif from './home/cart gif.gif'

@@ -7,7 +7,7 @@
   margin: auto;
   overflow: hidden;
   /* background: #f5f5f5; */
-  padding-top: 14vh;
+  padding-top: 12vh;
   object-fit: cover;
 }
 
@@ -22,7 +22,7 @@
   width: 100%;
   height: auto;
 
-  height: 84vh;
+  height: 88vh;
   /* height: 100%; */
   object-fit: cover;
   border-radius: 30px;

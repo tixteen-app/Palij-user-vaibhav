@@ -7,6 +7,7 @@ import Category from './Category/Category'
 import Explore from './Explore/Explore'
 import Savory from './Savory/Savory'
 import SweetPraise from './SweetPraise/SweetPraise'
+import NSavory from './Savory/newsav'
 
 const SecondHomePage = () => {
   return (
@@ -17,6 +18,7 @@ const SecondHomePage = () => {
       <Banner />
       <Category />
       <Savory />
+      {/* <NSavory/> */}
       <Explore />
       <SweetPraise />
     </div>
