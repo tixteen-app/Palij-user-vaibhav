@@ -363,3 +363,13 @@ h1 span {
     height: 250px;
   }
 }
+
+
+@media (min-width: 1500px) {
+  .aboutus2 img {
+    width: 100%;
+    height: 100vh;
+    margin-top: 7vh;
+  }
+  
+}
