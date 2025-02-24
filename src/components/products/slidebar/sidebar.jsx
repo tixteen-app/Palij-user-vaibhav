@@ -233,10 +233,10 @@ const ProductSidebar = () => {
 	const Dstatus = queryParams.get("category") || " ";
 	const [parmstatus, setParmstatus] = useState();
 	const [selectedSubcategory, setSelectedSubcategory] = useState("");
+	console.log(selectedSubcategory,"-=-=-=");
 
 	const [categories, setCategories] = useState([]);
 	const [search, setSearch] = useState("");
-	console.log(search);
 	const [selectedCategory, setSelectedCategory] = useState();
 	const [categoryName, setCategoryName] = useState("");
 	const [selectedPriceRange, setSelectedPriceRange] = useState({ min: 0, max: 1000000 }); // No filter by default

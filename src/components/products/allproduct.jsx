@@ -312,9 +312,10 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
 	// 		setAllProductLoader(false);
 	// 	}
 	// };
-	const fetchProduct = async (page, cat, searchTerm, min, max) => {
+	const fetchProduct = async (page, cat, searchTerm, min, max,subcategory) => {
 		try {
 			setAllProductLoader(true);
+			console.log("//./././",subcategory)
 			const response = await makeApi(
 				`/api/get-all-products?name=${searchTerm}&category=${cat}&subcategory=${subcategory}&minPrice=${min}&maxPrice=${max}&page=${page}&perPage=${ResultPerPage}&IsOutOfStock=false`,
 				"GET"
@@ -343,15 +344,15 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
 		const minPriceFromUrl = queryParams.get("minPrice") || "0";
 		const maxPriceFromUrl = queryParams.get("maxPrice") || "1000000";
 
-		fetchProduct(1, categoryFromUrl, searchFromUrl, minPriceFromUrl, maxPriceFromUrl);
+		fetchProduct(1, categoryFromUrl, searchFromUrl, minPriceFromUrl, maxPriceFromUrl,subcategory);
 	}, [location.search]);
 
 	useEffect(() => {
-		fetchProduct(1, category, search, minPrice, maxPrice);
+		fetchProduct(1, category, search, minPrice, maxPrice,subcategory);
 		setCurrentPage(1);
 		fetchCartItems();
 		window.scrollTo(0, 0);
-	}, [search, category, minPrice, maxPrice]);
+	}, [search, category, minPrice, maxPrice,subcategory]);
 
 	useEffect(() => {
 		fetchCart(setCartItems);
