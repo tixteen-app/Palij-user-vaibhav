@@ -8,7 +8,14 @@
   align-items: center;
   background: #EFE2D7;
   gap: 20px;
-
+}
+.back_button_add_order_page{
+  position: absolute;
+  left: 30px;
+  top: 100px; 
+}
+.back_button_add_order_page svg{
+  height: 30px;
 }
 
 .address-form {
@@ -107,5 +114,13 @@
     width: 100%;
     /* margin: 20px; */
     /* display: none; */
+  }
+  .back_button_add_order_page{
+    position: absolute;
+    left: 5px;
+    top: 75px;
+  }
+  .back_button_add_order_page svg{
+    height: 24px;
   }
 }

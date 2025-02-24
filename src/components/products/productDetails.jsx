@@ -12,7 +12,7 @@
 // // import AddIcon from "../../assets/add_icon_green.png";
 // // import RemoveIcon from "../../assets/remove_icon_red.png";
 // // import "../../pages/CSS/product/productDetails.css";
-// // import { GoArrowLeft } from "react-icons/go";
+// // import { GoArrowLeft } from "react-icons/go"; 
 
 // // function ProductDetails() {
 // //   const navigate = useNavigate();
