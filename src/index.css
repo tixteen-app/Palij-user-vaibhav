@@ -126,7 +126,7 @@ Link {
   src: local('Eina03-Light'), url('../src/assets/fonts/MADEMedium.otf') format('woff');
 }
 
-@font-face {
+@font-face { 
   font-family: 'Made regular';
   font-style: normal;
   font-weight: normal;

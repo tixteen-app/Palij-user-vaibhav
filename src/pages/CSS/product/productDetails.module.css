@@ -546,7 +546,7 @@
 
 .description p {
   font-size: 22px;
-  font-family: var(--Tommay-font-1);
+  /* font-family: var(--Tommay-font-1); */
 
 }
 
@@ -558,7 +558,7 @@
   gap: 8px;
   flex-direction: column;
   margin-top: 80px;
-  font-family: var(--Tommay-font-1);
+  /* font-family: var(--Tommay-font-1); */
   color: #000;
 }
 
