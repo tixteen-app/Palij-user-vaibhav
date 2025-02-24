@@ -36,7 +36,9 @@ a {
 :root {
   --gay-bg-color: rgb(130, 130, 123);
   --redPink: #EE5564;
-  --volite: #A95800
+  --volite: #A95800;
+  --Tommay-font-1: 'Made Tommay Soft';
+
 }
 
 Link {
@@ -89,7 +91,12 @@ Link {
 
 }
 
-
+@font-face {
+  font-family: 'Made Tommay Soft';
+  src: url('./assets/font/MADE Tommy Soft Thin PERSONAL USE.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
 @font-face {
   font-family: 'Bodoni-bk';
   font-style: normal;
