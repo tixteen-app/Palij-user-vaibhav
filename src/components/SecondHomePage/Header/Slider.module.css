@@ -98,19 +98,6 @@
   background-color: #4a2d16;
   /* Adjust as per design */
 }
-
-@media(max-width:1000px) {
-  .image {
-    width: 100%;
-    height: auto;
-
-    /* height: 50vh; */
-    /* height: 100%; */
-    object-fit: cover;
-    border-radius: 30px;
-  }
-}
-
 @media(max-width:500px) {
   .slider {
     padding-top: 12vh;
@@ -128,6 +115,7 @@
     position: absolute;
     top: 60%;
     padding: 0px;
+    display: none;
 
   }
 
@@ -140,3 +128,16 @@
 
 
 }
+
+@media(max-width:1000px) {
+  .image {
+    width: 100%;
+    height: auto;
+
+    /* height: 50vh; */
+    /* height: 100%; */
+    object-fit: cover;
+    border-radius: 30px;
+  }
+}
+
