@@ -546,6 +546,8 @@
 
 .description p {
   font-size: 22px;
+  font-family: var(--Tommay-font-1);
+
 }
 
 /* ===============includes======== */
