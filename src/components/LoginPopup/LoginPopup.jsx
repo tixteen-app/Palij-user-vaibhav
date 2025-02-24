@@ -118,10 +118,12 @@ const LoginPopup = ({ onClose }) => {
 
 	const [email, setEmail] = useState("")
 	const [password, setPassword] = useState("")
+	const [Loading , setLoading] = useState(false)
 
 	// Handle Login with Email
 	const handleLogin = async (event) => {
 		event.preventDefault()
+		   setLoading(true);
 
 		if (!email) {
 			toast.error("Please fill email")
@@ -150,16 +152,29 @@ const LoginPopup = ({ onClose }) => {
 	// Handle Login with Google
 	const handleGoogleLogin = async () => {
 		try {
+			setLoading(true);
+			// const result = await signInWithPopup(auth, provider);
+			// const user = result.user;
+
+			// // Prepare data for login
+			// const loginData = {
+			// 	email: user.email,
+			// };
+
+			// // Attempt login with Google
+			// const response = await makeApi("/api/login-user", "POST", loginData);
+
 			const result = await signInWithPopup(auth, provider);
-			const user = result.user;
+						const user = result.user;
+			
+						// Prepare data for registration
+						const registrationData = {
+							email: user.email,
+							firstName: user.displayName.split(' ')[0],
+							lastName: user.displayName.split(' ')[1] || '',
+						};
+			const response = await makeApi("/api/register-user", "post", registrationData);
 
-			// Prepare data for login
-			const loginData = {
-				email: user.email,
-			};
-
-			// Attempt login with Google
-			const response = await makeApi("/api/login-user", "POST", loginData);
 
 			if (response.data.success) {
 				localStorage.setItem("token", response.data.token);
@@ -173,6 +188,8 @@ const LoginPopup = ({ onClose }) => {
 		} catch (error) {
 			console.error("Error during Google Sign-in:", error);
 			toast.error(`Failed to sign in with Google: ${error.message || error.code}`);
+		}finally {
+			setLoading(false)
 		}
 	}
 
