@@ -208,22 +208,53 @@ import { GoArrowLeft } from "react-icons/go";
 const OrderSummary = () => {
 	const [orderSummary, setOrderSummary] = useState(null);
 	const { ordersummary } = useParams();
+	const [shiprocketorder, setShiprocketorder] = useState(null);
+
 	const navigate = useNavigate()
-	const isCashOnDelivery = orderSummary?.paymentMethod.toLowerCase() === "cash on delivery";
 	const isRazorpay = orderSummary?.paymentMethod.toLowerCase() === "razorpay";
 
+	// useEffect(() => {
+	// 	const fetchOrderSummary = async () => {
+	// 		try {
+	// 			const response = await makeApi(
+	// 				`/api/get-second-order-by-id/${ordersummary}`,
+	// 				"GET"
+	// 			);
+	// 			await setOrderSummary(response.data.secondorder);
+	// 			const Shipresponse = await makeApi(`/api/shiprocket/get-order-by-id/${orderSummary.shiprocketOrderId}`, "GET");
+	// 			setShiprocketorder(Shipresponse?.data.data);
+	// 		} catch (error) {
+	// 			console.log(error);
+	// 		}
+	// 	};
+	// 	fetchOrderSummary();
+	// }, [ordersummary]);
 	useEffect(() => {
 		const fetchOrderSummary = async () => {
 			try {
+				// Fetch order summary data
 				const response = await makeApi(
 					`/api/get-second-order-by-id/${ordersummary}`,
 					"GET"
 				);
-				setOrderSummary(response.data.secondorder);
+				// If order summary is successful, set it to state
+				const fetchedOrderSummary = response.data.secondorder;
+				setOrderSummary(fetchedOrderSummary);
+
+				// Once orderSummary is set, check if shiprocketOrderId is available
+				if (fetchedOrderSummary?.shiprocketOrderId) {
+					const Shipresponse = await makeApi(
+						`/api/shiprocket/get-order-by-id/${fetchedOrderSummary.shiprocketOrderId}`,
+						"GET"
+					);
+					setShiprocketorder(Shipresponse?.data.data);
+				}
 			} catch (error) {
 				console.log(error);
 			}
 		};
+
+		// Call the function to fetch order summary
 		fetchOrderSummary();
 	}, [ordersummary]);
 
@@ -252,7 +283,7 @@ const OrderSummary = () => {
 					<div className={styles.invoiceInfo}>
 						<p><strong>Order ID:</strong> {orderSummary._id}</p>
 
-						<p><strong>Status:</strong> {orderSummary.status}</p>
+						<p><strong>Status:</strong> {shiprocketorder?.data?.status}</p>
 						<p><strong>Payment Method:</strong> {orderSummary.paymentMethod}</p>
 						{isRazorpay && (
 							<p><strong>Payment ID:</strong> {orderSummary.paymentId}</p>
