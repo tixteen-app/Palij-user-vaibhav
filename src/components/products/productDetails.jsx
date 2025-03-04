@@ -2066,7 +2066,6 @@ function ProductDetails() {
                 <div
                   className={styles.desktopImg}
                 >
-
                   <ReactImageMagnify
                     {...{
                       smallImage: {
@@ -2228,9 +2227,13 @@ function ProductDetails() {
               </div>
 
             </div>
-            <div className={styles.description}>
+            {/* <div className={styles.description}>
               <h2>Description</h2>
-              <p>{product?.description}</p>
+              <p className={styles.description} >{product?.description}</p>
+            </div> */}
+            <div className={styles.description}>
+              {product?.category?._id == "67b451f7ec3a4e4a3bbe5633" && <div className={styles.availableonlyspan}><span> Available Only in </span> <span style={{textDecoration:'underline'}} > Ludhiana </span> </div>  }
+              <p className={styles.description}> </p>
             </div>
             <div className={styles.vegetarian}>
               <img src={assets.vegetarian} alt="" />

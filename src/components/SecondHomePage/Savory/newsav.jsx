@@ -209,7 +209,7 @@ const NSavory = () => {
     </div>
   )
 }
-
+ 
 export default NSavory
 
 // import { useNavigate } from 'react-router';
@@ -330,7 +330,7 @@ export default NSavory
 //     // navigate(`/product/all-products?category=65f3c6ee7fd052885f56d587`);
 //   };
 
-//   return (
+//   return (  
 //     <div className={styles.container}>
 //       <div className={styles.header}>
 //         <h2>SAVORY</h2>

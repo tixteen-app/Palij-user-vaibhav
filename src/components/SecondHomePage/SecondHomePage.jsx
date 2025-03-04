@@ -17,8 +17,8 @@ const SecondHomePage = () => {
       <Cookies />
       <Banner />
       <Category />
-      <Savory />
-      {/* <NSavory/> */}
+      {/* <Savory /> */}
+      <NSavory/>
       <Explore />
       <SweetPraise />
     </div>
