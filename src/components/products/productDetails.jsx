@@ -2159,9 +2159,8 @@ function ProductDetails() {
                         </span>}
                     </div>
 
-                    {selectedSize?.price > selectedSize?.FinalPrice && <span className={styles.mrpSpan}> M.R.P ₹{selectedSize?.price}</span>}
+                    {selectedSize?.price > selectedSize?.FinalPrice ? <span className={styles.mrpSpan}> M.R.P ₹{selectedSize?.price}</span> : <span className={styles.mrpSpan}> M.R.P ₹{selectedSize?.price}</span>}
                     <span className={styles.inclusiveOffAllTax}>Inclusive of all taxes</span>
-
                     <div className={styles.actions}>
                       {isInCart ? (
                         <div className={styles.cartIncDec}>
@@ -2198,7 +2197,7 @@ function ProductDetails() {
                   <div className={styles.allAddToCart}>
                     {sizes.some(size => size.size && size.size.toLowerCase() !== 'null') && (
                       <div className={styles.sizeOptions}>
-                        <div className={styles.selectQuntitytext} >Select Quntity:</div>
+                        <div className={styles.selectQuntitytext} >Select Quantity:</div>
                         <div className={styles.sizeButtons}>
                           {sizes.map(size => (
                             size.size && size.size.toLowerCase() !== 'null' && ( // Conditional check to exclude null and 'null'

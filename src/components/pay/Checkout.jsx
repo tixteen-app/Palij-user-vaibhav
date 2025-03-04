@@ -224,25 +224,25 @@ function Checkout() {
 	const handleRemoveAllClick = async () => {
 		// Loop through non-deliverable products and delete them one by one
 		for (const item of nonDeliverableProducts) {
-		  await deleteproductFromCart(
-			item.productId._id,        // Pass productId
-			setProductLoaders,         // Pass setProductLoaders
-			setCartItems,              // Pass setCartItems
-			fetchCart,                 // Pass fetchCart function
-			item.size._id,             // Pass size
-			item.quantity              // Pass quantity
-		  );
+			await deleteproductFromCart(
+				item.productId._id,        // Pass productId
+				setProductLoaders,         // Pass setProductLoaders
+				setCartItems,              // Pass setCartItems
+				fetchCart,                 // Pass fetchCart function
+				item.size._id,             // Pass size
+				item.quantity              // Pass quantity
+			);
 		}
-	  
+
 		// After removing all, fetch the updated cart items
 		fetchCartItems();
-	  
+
 		// If cart is empty, redirect to cart page
 		if (cartItems.length === 0) {
-		  navigate("/cart");
+			navigate("/cart");
 		}
-	  };
-	  
+	};
+
 
 
 
@@ -405,10 +405,10 @@ function Checkout() {
 							<div
 								className={styles.popupButtonforremovealldiv}
 
-								onClick={handleRemoveAllClick} 
+								onClick={handleRemoveAllClick}
 							>
 								<button
-								className={styles.popupButtonforremoveall}
+									className={styles.popupButtonforremoveall}
 
 								>
 									Remove All
@@ -451,16 +451,23 @@ function Checkout() {
 					{currentPage === "CHECKOUT" ? (
 						<div>
 							<Orderbar activeOptionName="CHECKOUT" />
-							<div className="checkout_to_cart">
+							{/* <div className="checkout_to_cart">
 								<BackButton pageLocation="/cart" />
-							</div>
+							</div> */}
 							<div className="main_checkout_div">
 								{/* Shipping and Billing Addresses */}
 								<div className="shipping-address-container Order_page_display_none">
 									<div>
 										<div className="shipping-address-title">
-											<h2>Shipping Address</h2>
-											<button onClick={() => navigate("/add-shipping-address")}>
+											<div className="d-flex align-items-center gap-4 " >
+												<div className="d-flex align-items-center mb-2" >
+													<BackButton pageLocation="/cart" />
+												</div>
+												<div>
+													<h2>Shipping Address</h2>
+												</div>
+											</div>
+											<button style={{ border: "1px solid black", color: "black" }} onClick={() => navigate("/add-shipping-address")}>
 												Add New Address
 											</button>
 										</div>
@@ -522,16 +529,24 @@ function Checkout() {
 					) : (
 						<div>
 							<Orderbar activeOptionName="PAYMENT" />
-							<div
+							{/* <div
 								className="checkout_to_cart"
 								onClick={() => setCurrentPage("CHECKOUT")}
 							>
 								<BackButton />
-							</div>
+							</div> */}
 							<div className="main_checkout_div">
 								{/* Payment Method */}
 								<div className="shipping-address-container">
-									<div className="shipping-address-title">Payment Method</div>
+									{/* <div className="shipping-address-title">Payment Method</div> */}
+									<div className="d-flex align-items-center gap-4 " >
+												<div className="d-flex align-items-center mb-2" onClick={() => setCurrentPage("CHECKOUT")} >
+													<BackButton  />
+												</div>
+												<div>
+													<h2>Payment Method</h2>
+												</div>
+											</div>
 									<div className="cod-rzyp">
 										<div
 											className="address-item"
