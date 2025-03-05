@@ -485,7 +485,7 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
 							</div>
 							{visibleProducts < products.length && (
 								<div className={styles.loadMoreContainer}>
-									<button className={styles.loadMoreButton} onClick={handleLoadMore}>
+									<button className={styles.loadMoreButton} onClick={handleLoadMore} style={{ color: "black" }} >
 										Load More
 									</button>
 								</div>
