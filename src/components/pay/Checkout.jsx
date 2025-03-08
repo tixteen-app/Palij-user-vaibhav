@@ -11,7 +11,7 @@ import CartCalculation from "../CartCalculation/cartCalculation.jsx"
 import BackButton from "../products/backButton.jsx"
 import useCoupon from "../../hook/coupanHook.jsx"
 // import { updateCartCount } from "../../utils/couponFunctions.jsx"
-import { deleteproductFromCart, fetchCart, submitOrder } from "../../utils/productFunction.js"
+import { deleteproductFromCart, fetchCart, submitOrder,submitOrderforlocal  } from "../../utils/productFunction.js"
 import { assets } from "../../assets/assets.js"
 import styles from './checkout.module.css'
 
@@ -33,11 +33,11 @@ function Checkout() {
 	const [isSubmitDisabled, setIsSubmitDisabled] = useState(false)
 	const [showModal, setShowModal] = useState(false); // To control the modal visibility
 	const [nonDeliverableProducts, setNonDeliverableProducts] = useState([]); // List of non-deliverable products
-
-
-
 	const [cartItems, setCartItems] = useState([]);
 	const [productLoaders, setProductLoaders] = useState({});
+	const [availablePincodes, setAvailablePincodes] = useState([]);
+
+
 
 
 
@@ -56,6 +56,14 @@ function Checkout() {
 			setCartItem(response.data)
 		}
 		fetchCartItem()
+	}, [])
+
+	useEffect(() => {
+		const fetchpincode = async () => {
+			const response = await makeApi("/api/get-all-available-pincode", "GET")
+			setAvailablePincodes(response.data)
+		}
+		fetchpincode()
 	}, [])
 
 	const fetchCartItems = async () => {
@@ -119,6 +127,7 @@ function Checkout() {
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 
+
 		if (!selectPaymentMethod) {
 			toast("Please select a payment method");
 			return;
@@ -141,17 +150,23 @@ function Checkout() {
 			paymentMethod: selectPaymentMethod,
 			CartId: cartItem._id,
 		};
-
 		if (selectPaymentMethod === "Razorpay") {
+		if (!availablePincodes.pincode.some(p => p.pincode == data.shippingAddress.pincode)) {
 			createRazorpayOrder(cartItem.totalPrice);
+			} else {
+
+			createRazorpayOrderforlocal(cartItem.totalPrice);
+				// await submitOrder(data, setLoading, setOrderPlaced, navigate);
+			}
 		} else {
-			await submitOrder(data, setLoading, setOrderPlaced, navigate);
+			if (!availablePincodes.pincode.some(p => p.pincode == data.shippingAddress.pincode)) {
+				await submitOrder(data, setLoading, setOrderPlaced, navigate);
+			} else {
+				await submitOrderforlocal(data, setLoading, setOrderPlaced, navigate);
+
+			}
 		}
 	};
-
-
-
-
 
 	const getNonDeliverableProducts = (selectedAddress, cartItems) => {
 		if (!selectedAddress || !cartItems || cartItems.length === 0) return []; // No restrictions if no address or items
@@ -182,8 +197,6 @@ function Checkout() {
 
 		// Check if selected pincode exists in available pincodes
 		const isValid = availablePincodes.includes(selectedPincode);
-		console.log("Selected Pincode:", selectedPincode); // Debugging
-		console.log("Available Pincodes:", availablePincodes); // Debugging
 		return isValid;
 	};
 
@@ -210,7 +223,6 @@ function Checkout() {
 
 
 	const handleDeleteClick = async (productId, selectProductSize, quantity) => {
-		console.log(productId, selectProductSize, quantity);
 		await deleteproductFromCart(productId, setProductLoaders, setCartItems, fetchCart, selectProductSize, quantity);
 
 		fetchCartItems();
@@ -234,7 +246,6 @@ function Checkout() {
 			);
 		}
 
-		// After removing all, fetch the updated cart items
 		fetchCartItems();
 
 		// If cart is empty, redirect to cart page
@@ -242,21 +253,6 @@ function Checkout() {
 			navigate("/cart");
 		}
 	};
-
-
-
-
-
-	// Calculate final price after applying coupon discount
-	const calculateFinalPrice = () => {
-		if (appliedCoupon) {
-			return cartItem.TotalProductPrice * ((100 - couponDiscount) / 100)
-		}
-		return cartItem.TotalProductPrice
-	}
-
-
-
 
 	// Razopay
 	const loadRazorpayScript = (src) => {
@@ -279,8 +275,6 @@ function Checkout() {
 		};
 		try {
 			const response = await makeApi('/api/create-razorpay-order', 'POST', data);
-			console.log("rezpay orders data", response);
-
 			handleRazorpayScreen(response.data.amount, response.data.id, response.data.created_at);
 		} catch (error) {
 			console.log(error);
@@ -288,7 +282,71 @@ function Checkout() {
 
 		}
 	};
+	const createRazorpayOrderforlocal = async (amount) => {
+		const data = {
+			amount: amount, // Razorpay accepts amount in paise, so multiply by 100
+			currency: "INR",
+		};
+		try {
+			const response = await makeApi('/api/create-razorpay-order', 'POST', data);
+			handleRazorpayScreenforlocal(response.data.amount, response.data.id, response.data.created_at);
+		} catch (error) {
+			console.log(error);
+		} finally {
+
+		}
+	};
 	const handleRazorpayScreen = async (amount, orderId, order_created_at) => {
+		const res = await loadRazorpayScript(
+			"https://checkout.razorpay.com/v1/checkout.js"
+		);
+		if (!res) {
+			alert("Razorpay SDK failed to load");
+			return;
+		}
+
+		const options = {
+			key: "rzp_test_DaA1MMEW2IUUYe",
+			// key: "rzp_test_WANgED2h9l3SKi",
+			currency: "INR",
+			amount: amount,
+			name: "USER ",
+			description: "Test Transaction",
+			image: "http://localhost:5173/src/assets/logo.png",
+			order_id: orderId,
+			handler: function (response) {
+				// setResponseId(response.razorpay_order_id);
+				toast.success("Payment Successful");
+				const data = {
+					paymentId: response.razorpay_payment_id,
+					currency: "INR",
+					paymentorderCratedAt: order_created_at,
+					paymentDoneAt: new Date(),
+					orderfromURL: window.location.href,
+					DeviceType: /Mobi|Android/i.test(navigator.userAgent) ? "Mobile" : "Desktop",
+					shippingAddress: selectedShippingAddress,
+					billingAddress: selectedBillingAddress,
+					paymentMethod: selectPaymentMethod,
+					CartId: cartItem._id,
+				};
+				submitOrder(data, setLoading, setOrderPlaced, navigate)
+
+					;
+			},
+			prefill: {
+				name: "Vaibhav", // Optional user details
+				email: "fZ5vA@example.com",
+				contact: "9999999999",
+			},
+			theme: {
+				color: "#EE5564", // Customize Razorpay theme color
+			},
+		};
+
+		const paymentObject = new window.Razorpay(options);
+		paymentObject.open();
+	};
+	const handleRazorpayScreenforlocal = async (amount, orderId, order_created_at) => {
 		const res = await loadRazorpayScript(
 			"https://checkout.razorpay.com/v1/checkout.js"
 		);
@@ -324,12 +382,10 @@ function Checkout() {
 					paymentMethod: selectPaymentMethod,
 					CartId: cartItem._id,
 				};
-				submitOrder(data, setLoading, setOrderPlaced, navigate)
-
-					;
+				submitOrderforlocal(data, setLoading, setOrderPlaced, navigate);
 			},
 			prefill: {
-				name: "Vaibhav", // Optional user details
+				name: "Vaibhav", 
 				email: "fZ5vA@example.com",
 				contact: "9999999999",
 			},
@@ -346,7 +402,6 @@ function Checkout() {
 
 
 
-	console.log("coupanCode", coupanCode)
 	const SubmitCoupan = async (e) => {
 		e.preventDefault()
 		try {
@@ -540,13 +595,13 @@ function Checkout() {
 								<div className="shipping-address-container">
 									{/* <div className="shipping-address-title">Payment Method</div> */}
 									<div className="d-flex align-items-center gap-4 " >
-												<div className="d-flex align-items-center mb-2" onClick={() => setCurrentPage("CHECKOUT")} >
-													<BackButton  />
-												</div>
-												<div>
-													<h2>Payment Method</h2>
-												</div>
-											</div>
+										<div className="d-flex align-items-center mb-2" onClick={() => setCurrentPage("CHECKOUT")} >
+											<BackButton />
+										</div>
+										<div>
+											<h2>Payment Method</h2>
+										</div>
+									</div>
 									<div className="cod-rzyp">
 										<div
 											className="address-item"

@@ -1840,7 +1840,7 @@
 
 
 import React, { useEffect, useRef, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams , Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import LoginPopup from "../../components/LoginPopup/LoginPopup.jsx";
 import PrimaryLoader from "../loaders/primaryloader.jsx";
@@ -2054,9 +2054,11 @@ function ProductDetails() {
       {showPopup && <LoginPopup onClose={closePopup} />}
       <ToastContainer position="top-center" />
       <div>
-        <div className={styles.backButton} onClick={() => navigate(-1)}>
+        <div className={styles.backButton} >
           {/* <BackButton pageLocation="/product/all-products" /> */}
-          <GoArrowLeft />
+          <Link to="/product/all-products" >
+          <GoArrowLeft  />
+          </Link>
         </div>
         <div className={styles.productContainer}>
           <div className={styles.imgContainer}>

@@ -50,7 +50,7 @@ const Category = () => {
       </div>
       <div className={styles.cards}>{
         categories.map(item => (
-          <div className={styles.cardContainer} onClick={() => handleCategoryClick(item.nav)} >
+          <div className={styles.cardContainer} onClick={() => handleCategoryClick(item.nav)}  style={{ cursor: "pointer" }}>
             <div className={styles.innerContent} style={{ background: item.color }}>
               <img className={styles.categoryImg} src={item.img} alt={item.name} />
             </div>

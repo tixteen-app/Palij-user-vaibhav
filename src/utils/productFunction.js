@@ -248,6 +248,31 @@ export const submitOrder = async (
 		setLoading(false)
 	}
 }
+export const submitOrderforlocal = async (
+	data,
+	setLoading,
+	setOrderPlaced,
+	navigation
+) => {
+	try {
+		setLoading(true)
+		console.log("-------------------444")
+		const response = await makeApi("/api/create-second-order-for-self-delivery", "POST", data)
+		setOrderPlaced(true)
+
+		// Update cart count to 0
+		updateCartCount([])
+
+		setTimeout(() => {
+			setOrderPlaced(false)
+			navigation("/latest-order")
+		}, 5000)
+	} catch (error) {
+		console.error("Error creating order: ", error)
+	} finally {
+		setLoading(false)
+	}
+}
 
 export const cartItemFetchCart = async (
 	setCartItems,

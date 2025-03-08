@@ -1,3 +1,4 @@
+
 // import React, { useState, useEffect } from "react"
 // import "./editUserProfile.css"
 // import { useNavigate } from "react-router-dom"
@@ -5,22 +6,21 @@
 // import { ToastContainer, toast } from "react-toastify"
 // import "react-toastify/dist/ReactToastify.css"
 // import axios from "axios"
+// import { GoArrowLeft } from "react-icons/go"
 
 // const EditUserProfile = () => {
 // 	const navigate = useNavigate()
-// 	const [userProfile, setUserProfile] = useState("")
 // 	const [mobileNumberChanged, setMobileNumberChanged] = useState(false)
 // 	const [editData, setEditData] = useState({
 // 		firstName: "",
 // 		lastName: "",
 // 		gender: "",
 // 		dateofbirth: "",
-// 		// city: "",
 // 		email: "",
 // 		mobileNumber: "",
 // 		userImage: "",
 // 	})
-// 	console.log("---------------------", editData)
+
 // 	// Fetch existing user details on component mount
 // 	useEffect(() => {
 // 		const fetchUserDetails = async () => {
@@ -31,7 +31,9 @@
 // 					firstName: user.firstName,
 // 					lastName: user.lastName,
 // 					gender: user.gender,
-// 					// dateofbirth: user?.dateofbirth(0, 10),
+// 					dateofbirth: user.dateofbirth
+// 						? user.dateofbirth.substring(0, 10)
+// 						: "",
 // 					email: user.email,
 // 					mobileNumber: user.mobileNumber.toString(),
 // 					userImage: user.userImage,
@@ -52,23 +54,22 @@
 // 			setMobileNumberChanged(true)
 // 		}
 // 	}
+// 	const isValidMobileNumber = (number) => {
+// 		const regex = /^\d{10}$/ // Adjust the regex pattern as needed
+// 		return regex.test(number)
+// 	}
 
 // 	const onSubmitHandler = async (event) => {
 // 		event.preventDefault()
 // 		try {
 // 			const userDataToUpdate = { ...editData }
-// 			console.log("mobileNumberChanged", mobileNumberChanged)
 // 			if (!mobileNumberChanged) {
 // 				delete userDataToUpdate.mobileNumber
 // 			}
-// 			// show error if mobile number is less than 10 digits
-// 			if (mobileNumberChanged) {
-// 				if (editData.mobileNumber.length < 10) {
-// 					toast.error("Please enter valid mobile number")
-// 					return
-// 				}
+// 			if (mobileNumberChanged && !isValidMobileNumber(editData.mobileNumber)) {
+// 				toast.error("Please enter a valid 10-digit mobile number")
+// 				return
 // 			}
-// 			//  call api
 // 			const response = await makeApi(
 // 				"/api/update-user",
 // 				"PUT",
@@ -81,79 +82,70 @@
 // 					}
 // 				},
 // 			})
+
+// 			navigate("/userprofile")
+// 			window.location.reload();
 // 		} catch (error) {
 // 			console.log("Error updating user details:", error.response.data.message)
 // 			toast.error(error.response.data.message)
 // 		}
 // 	}
-// 	const handleProfileUpload = async (event, index) => {
+
+// 	const handleProfileUpload = async (event) => {
 // 		try {
 // 			const file = event.target.files[0]
-
-// 			// if (file.type.startsWith("image/")) {
 // 			if (file) {
-// 				console.log(file)
-
-// 				const compressedFile = await file
-
 // 				const data = new FormData()
-// 				data.append("file", compressedFile)
-// 				data.append("upload_preset", "ou1fk438")
+// 				data.append("file", file)
+// 				data.append("upload_preset", "pfendx01")
+// 				data.append("folder", "palji")
 
-// 				await axios
-// 					.post(
-// 						`https://api.cloudinary.com/v1_1/dyl3gzm7d/image/upload`,
-
-// 						data
-// 					)
-// 					.then((response) => {
-// 						if (response.status === 200) {
-// 							const imageURL = response.data.url
-// 							// setFormData({ ...formData, screenshot: imageURL });
-// 							//  setUserProfile(imageURL);
-// 							setEditData({
-// 								...editData,
-// 								userImage: imageURL,
-// 							})
-// 						}
-// 					})
+// 				const response = await axios.post(
+// 					`  https://api.cloudinary.com/v1_1/dwxtuqnty/upload`,
+// 					data
+// 				)
+// 				if (response.status === 200) {
+// 					const imageURL = response.data.url
+// 					setEditData((prevData) => ({
+// 						...prevData,
+// 						userImage: imageURL,
+// 					}))
+// 				}
 // 			}
 // 		} catch (error) {
-// 			console.log("image upload error", error)
+// 			console.log("Image upload error:", error)
 // 		}
 // 	}
+
 // 	return (
 // 		<>
 // 			<ToastContainer autoClose={1300} />
+// 			<div className="userupdatebackButton" onClick={() => navigate(-1)}>
+// 				<GoArrowLeft />
+// 			</div>
 // 			<div className="editUserProfile">
 // 				<form
-// 					action=""
 // 					className="edit-form"
 // 					onSubmit={onSubmitHandler}
 // 				>
 // 					<div className="edit-about-section">
 // 						<div className="file-input">
-// 							<div>
-// 								<input
-// 									id="file"
-// 									type="file"
-// 									onChange={(e) => handleProfileUpload(e)}
-// 									className="p-5"
-// 								/>
-// 							</div>
+// 							<input
+// 								id="file"
+// 								type="file"
+// 								onChange={handleProfileUpload}
+// 								className="p-5"
+// 							/>
 // 							<div className="select-user-img">
 // 								<img
-// 									src={editData?.userImage}
+// 									src={editData.userImage}
 // 									alt="profile"
 // 								/>
 // 							</div>
 // 						</div>
-
 // 						<div className="about-edit-btn">
 // 							<h2>About</h2>
-// 							<button type="button">Edit</button>
 // 						</div>
-
 // 						<div className="edit-username">
 // 							<input
 // 								type="text"
@@ -171,34 +163,32 @@
 // 							/>
 // 						</div>
 // 						<div className="edit-gender">
-// 							<label htmlFor="">Gender</label>
-// 							<div>
-// 								<div className="male-female">
-// 									<div>
-// 										<input
-// 											type="radio"
-// 											name="gender"
-// 											value="male"
-// 											checked={editData.gender === "male"}
-// 											onChange={onChangeHandler}
-// 										/>
-// 										<label htmlFor="male">Male</label>
-// 									</div>
-// 									<div>
-// 										<input
-// 											type="radio"
-// 											name="gender"
-// 											value="female"
-// 											checked={editData.gender === "female"}
-// 											onChange={onChangeHandler}
-// 										/>
-// 										<label htmlFor="female">Female</label>
-// 									</div>
+// 							<label htmlFor="gender">Gender</label>
+// 							<div className="male-female">
+// 								<div>
+// 									<input
+// 										type="radio"
+// 										name="gender"
+// 										value="male"
+// 										checked={editData.gender === "male"}
+// 										onChange={onChangeHandler}
+// 									/>
+// 									<label htmlFor="male">Male</label>
+// 								</div>
+// 								<div>
+// 									<input
+// 										type="radio"
+// 										name="gender"
+// 										value="female"
+// 										checked={editData.gender === "female"}
+// 										onChange={onChangeHandler}
+// 									/>
+// 									<label htmlFor="female">Female</label>
 // 								</div>
 // 							</div>
 // 						</div>
 // 						<div className="edit-dob">
-// 							<label htmlFor="">D.O.B</label>
+// 							<label htmlFor="dateofbirth">D.O.B</label>
 // 							<input
 // 								type="date"
 // 								name="dateofbirth"
@@ -210,10 +200,9 @@
 // 					<div className="edit-contacts">
 // 						<h2>Contacts</h2>
 // 						<div className="edit-email">
-// 							<label htmlFor="">Email</label>
+// 							<label htmlFor="email">Email</label>
 // 							<input
 // 								type="email"
-// 								placeholder="Johndeo@gmail.com"
 // 								name="email"
 // 								value={editData.email}
 // 								onChange={onChangeHandler}
@@ -221,30 +210,15 @@
 // 							/>
 // 						</div>
 // 						<div className="edit-pno">
-// 							<label htmlFor="">Phone number</label>
+// 							<label htmlFor="mobileNumber">Phone number</label>
 // 							<input
 // 								type="text"
-// 								placeholder="Phone Number"
 // 								name="mobileNumber"
 // 								value={editData.mobileNumber}
 // 								onChange={onChangeHandler}
 // 							/>
 // 						</div>
 // 					</div>
-// 					{/* <div className="edit-security">
-//           <h2>Security</h2>
-
-//           <div className="edit-password">
-//             <label htmlFor="">Password</label>
-//             <input
-//               type="password"
-//               placeholder="Password"
-//               name="password"
-//               value={editData.password}
-//               onChange={onChangeHandler}
-//             />
-//           </div>
-//         </div> */}
 // 					<button
 // 						type="submit"
 // 						className="edit-save-btn"
@@ -259,18 +233,18 @@
 
 // export default EditUserProfile
 
-import React, { useState, useEffect } from "react"
-import "./editUserProfile.css"
-import { useNavigate } from "react-router-dom"
-import { makeApi } from "../../api/callApi"
-import { ToastContainer, toast } from "react-toastify"
-import "react-toastify/dist/ReactToastify.css"
-import axios from "axios"
-import { GoArrowLeft } from "react-icons/go"
+import React, { useState, useEffect } from "react";
+import "./editUserProfile.css";
+import { useNavigate } from "react-router-dom";
+import { makeApi } from "../../api/callApi";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
+import { GoArrowLeft } from "react-icons/go";
 
 const EditUserProfile = () => {
-	const navigate = useNavigate()
-	const [mobileNumberChanged, setMobileNumberChanged] = useState(false)
+	const navigate = useNavigate();
+	const [mobileNumberChanged, setMobileNumberChanged] = useState(false);
 	const [editData, setEditData] = useState({
 		firstName: "",
 		lastName: "",
@@ -279,103 +253,98 @@ const EditUserProfile = () => {
 		email: "",
 		mobileNumber: "",
 		userImage: "",
-	})
+	});
 
 	// Fetch existing user details on component mount
 	useEffect(() => {
 		const fetchUserDetails = async () => {
 			try {
-				const response = await makeApi("/api/my-profile", "GET")
-				const user = response.data.user
+				const response = await makeApi("/api/my-profile", "GET");
+				const user = response.data.user;
 				setEditData({
-					firstName: user.firstName,
-					lastName: user.lastName,
-					gender: user.gender,
-					dateofbirth: user.dateofbirth
-						? user.dateofbirth.substring(0, 10)
-						: "",
-					email: user.email,
-					mobileNumber: user.mobileNumber.toString(),
-					userImage: user.userImage,
-				})
+					firstName: user.firstName || "",
+					lastName: user.lastName || "",
+					gender: user.gender || "",
+					dateofbirth: user.dateofbirth ? user.dateofbirth.substring(0, 10) : "",
+					email: user.email || "",
+					mobileNumber: user.mobileNumber ? user.mobileNumber.toString() : "",
+					userImage: user.userImage || "",
+				});
 			} catch (error) {
-				console.log(error)
+				console.log(error);
 			}
-		}
-		fetchUserDetails()
-	}, [])
+		};
+		fetchUserDetails();
+	}, []);
 
 	const onChangeHandler = (event) => {
 		setEditData({
 			...editData,
 			[event.target.name]: event.target.value,
-		})
+		});
 		if (event.target.name === "mobileNumber") {
-			setMobileNumberChanged(true)
+			setMobileNumberChanged(true);
 		}
-	}
+	};
+
 	const isValidMobileNumber = (number) => {
-		const regex = /^\d{10}$/ // Adjust the regex pattern as needed
-		return regex.test(number)
-	}
+		const regex = /^\d{10}$/; // Adjust the regex pattern as needed
+		return regex.test(number);
+	};
 
 	const onSubmitHandler = async (event) => {
-		event.preventDefault()
+		event.preventDefault();
 		try {
-			const userDataToUpdate = { ...editData }
+			const userDataToUpdate = { ...editData };
 			if (!mobileNumberChanged) {
-				delete userDataToUpdate.mobileNumber
+				delete userDataToUpdate.mobileNumber;
 			}
 			if (mobileNumberChanged && !isValidMobileNumber(editData.mobileNumber)) {
-				toast.error("Please enter a valid 10-digit mobile number")
-				return
+				toast.error("Please enter a valid 10-digit mobile number");
+				return;
 			}
-			const response = await makeApi(
-				"/api/update-user",
-				"PUT",
-				userDataToUpdate
-			)
+			const response = await makeApi("/api/update-user", "PUT", userDataToUpdate);
 			toast.success(response.data.message, {
 				onClose: () => {
 					if (response.data.user.role === "admin") {
-						navigate("/userprofile")
+						navigate("/userprofile");
 					}
 				},
-			})
+			});
 
-			navigate("/userprofile")
+			navigate("/userprofile");
 			window.location.reload();
 		} catch (error) {
-			console.log("Error updating user details:", error.response.data.message)
-			toast.error(error.response.data.message)
+			console.log("Error updating user details:", error.response.data.message);
+			toast.error(error.response.data.message);
 		}
-	}
+	};
 
 	const handleProfileUpload = async (event) => {
 		try {
-			const file = event.target.files[0]
+			const file = event.target.files[0];
 			if (file) {
-				const data = new FormData()
-				data.append("file", file)
-				data.append("upload_preset", "pfendx01")
-				data.append("folder", "palji")
+				const data = new FormData();
+				data.append("file", file);
+				data.append("upload_preset", "pfendx01");
+				data.append("folder", "palji");
 
 				const response = await axios.post(
-					`  https://api.cloudinary.com/v1_1/dwxtuqnty/upload`,
+					`https://api.cloudinary.com/v1_1/dwxtuqnty/upload`,
 					data
-				)
+				);
 				if (response.status === 200) {
-					const imageURL = response.data.url
+					const imageURL = response.data.url;
 					setEditData((prevData) => ({
 						...prevData,
 						userImage: imageURL,
-					}))
+					}));
 				}
 			}
 		} catch (error) {
-			console.log("Image upload error:", error)
+			console.log("Image upload error:", error);
 		}
-	}
+	};
 
 	return (
 		<>
@@ -384,10 +353,7 @@ const EditUserProfile = () => {
 				<GoArrowLeft />
 			</div>
 			<div className="editUserProfile">
-				<form
-					className="edit-form"
-					onSubmit={onSubmitHandler}
-				>
+				<form className="edit-form" onSubmit={onSubmitHandler}>
 					<div className="edit-about-section">
 						<div className="file-input">
 							<input
@@ -397,10 +363,7 @@ const EditUserProfile = () => {
 								className="p-5"
 							/>
 							<div className="select-user-img">
-								<img
-									src={editData.userImage}
-									alt="profile"
-								/>
+								<img src={editData.userImage} alt="profile" />
 							</div>
 						</div>
 						<div className="about-edit-btn">
@@ -479,16 +442,13 @@ const EditUserProfile = () => {
 							/>
 						</div>
 					</div>
-					<button
-						type="submit"
-						className="edit-save-btn"
-					>
+					<button type="submit" className="edit-save-btn">
 						Update
 					</button>
 				</form>
 			</div>
 		</>
-	)
-}
+	);
+};
 
-export default EditUserProfile
+export default EditUserProfile;
