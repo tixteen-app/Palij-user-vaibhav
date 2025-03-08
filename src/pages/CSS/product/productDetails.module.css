@@ -396,9 +396,13 @@
 
 .priceDetails {
   display: flex;
-  justify-content: space-between;
-  width: 100%;
+  justify-content: flex-start;
+  /* width: 60%; */
+  gap: 50px;
 }
+/* .priceDetails div {
+  width: 100%;
+} */
 
 .sizeOptions {
   display: flex;
@@ -432,8 +436,8 @@
   transition: all 0.3s ease-in-out;
 }
 .selectedSizeButton{
-  background: #6d6d6d;
-  color: #fff;
+  background: #d9d9d9;
+  color: #000000;
   font-weight: 400;
   border: 2px solid #6d6d6d;
   transition: all 0.3s ease-in-out;
@@ -459,7 +463,7 @@
 .title h1 {
   font-size: 4rem;
   color: #EE5564;
-  font-weight: 800;
+  text-transform: capitalize;
 }
 
 
@@ -503,11 +507,11 @@
 }
 
 .addTocart {
-  padding: 10px 30px;
+  padding: 8px 26px;
   border-radius: 10px;
   background: var(--redPink);
   color: #fff;
-  font-size: 18px;
+  font-size: 20px;
   cursor: pointer;
 }
 
@@ -536,7 +540,6 @@
 .description {
   margin-top: 20px;
   color: #000;
-  font-family: var(--Tommay-font-1);
 }
 
 .description h2 {
@@ -546,7 +549,6 @@
 
 .description p {
   font-size: 20px;
-  font-family: var(--Tommay-font-1) !important;
   font-weight: 400;
 }
 
@@ -597,7 +599,6 @@
 
 .mrpSpan {
   font-size: 1.2rem;
-  margin-left: 15px;
   text-decoration: line-through;
   text-decoration-color: #EE5564;
 }
@@ -671,6 +672,9 @@
 .productPriceName {
   width: 100%;
 }
+.productdetailsname{
+  font-weight: 400;
+}
 
 .vegetarian {
   display: flex;
@@ -696,7 +700,6 @@
   .title h1 {
     font-size: 3rem;
     color: #EE5564;
-    font-weight: 800;
   }
 
   .productPriceName h2 {
@@ -731,7 +734,6 @@
   .title h1 {
     font-size: 2.5rem;
     /* color: #EE5564; */
-    font-weight: 800;
   }
 
   .productPriceName h2 {
@@ -765,14 +767,10 @@
     gap: 7px;
   }
 }
-
-
-
 @media(max-width:800px) {
   .title h1 {
     font-size: 2.5rem;
     /* color: #EE5564; */
-    font-weight: 800;
   }
 
   .productPriceName h2 {
@@ -818,12 +816,10 @@
 
 }
 
-
 @media(max-width:450px) {
   .title h1 {
     font-size: 2.5rem;
     /* color: #EE5564; */
-    font-weight: 800;
     margin-top: 20px;
   }
 
@@ -871,17 +867,14 @@
 
   .mrpSpan {
     font-size: 1rem;
-    margin-left: 15px;
   }
 
 }
-
 
 @media(max-width:400px) {
   .title h1 {
     font-size: 2.5rem;
     /* color: #EE5564; */
-    font-weight: 800;
     margin-top: 20px;
   }
 
@@ -1152,7 +1145,6 @@
 
 .inclusiveOffAllTax {
   font-size: 17px;
-  margin-left: 10px;
 }
 
 @media(max-width:395px) {

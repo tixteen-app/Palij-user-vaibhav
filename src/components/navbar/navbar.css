@@ -7,7 +7,7 @@
   justify-content: space-between;
   padding: 0 50px;
   margin-top: -8px;
-  height: 90px;
+  height: 85px;
   background-color: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(20px);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -54,8 +54,8 @@
 }
 
 .center-logo {
-  width: 110px;
-  margin-bottom: 10px;
+  width: 100px;
+  margin: 10px;
 }
 
 .right-navbar {
@@ -64,7 +64,7 @@
   align-items: center;
   justify-content: space-between;
   color: black;
-  padding-bottom: 15px;
+  /* padding-bottom: 15px; */
 }
 
 .right-navbar ul {
@@ -299,12 +299,14 @@
     font-size: 18px;
   }
 
-
+.center-logo{
+  width: 80px;
+}
   .right-navbar {
-    margin-top: -20px;
     width: 50%;
     display: flex;
     justify-content: end;
+    align-items: center;
     gap: 30px;
   }
 
@@ -425,7 +427,7 @@
   }
 
   .center-logo {
-    width: 90px;
+    width: 75px;
   }
 
   .navbar {

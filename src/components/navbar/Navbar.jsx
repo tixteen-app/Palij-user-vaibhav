@@ -222,7 +222,7 @@ const Navbar = () => {
 			<Link to="/">
 				<img
 					className="center-logo"
-					src={assets.logo2}
+					src={assets.newlogo}
 					alt=""
 				/>
 			</Link>

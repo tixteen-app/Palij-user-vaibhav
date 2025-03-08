@@ -3,6 +3,7 @@ import logo from "./logo.png"
 import search_icon from "./Search.png"
 import cart_icon from "./Shopping Bag.png"
 import logo2 from "./favicon.svg"
+import newlogo from './png 2.png'
 import chocoChipCookie1 from "./chocoChipCooki1.png"
 import chocoChipCookie2 from "./chocoChipCooki2.png"
 import chocoChipCookie3 from "./chocoChipCooki3.png"
@@ -79,6 +80,7 @@ export const assets = {
 	logo,
 	cart_icon,
 	logo2,
+	newlogo,
 	chocoChipCookie1,
 	chocoChipCookie2,
 	chocoChipCookie3,

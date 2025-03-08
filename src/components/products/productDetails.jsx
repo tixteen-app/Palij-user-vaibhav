@@ -1840,7 +1840,7 @@
 
 
 import React, { useEffect, useRef, useState } from "react";
-import { useNavigate, useParams , Link } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import LoginPopup from "../../components/LoginPopup/LoginPopup.jsx";
 import PrimaryLoader from "../loaders/primaryloader.jsx";
@@ -2047,7 +2047,6 @@ function ProductDetails() {
 
 
 
-  console.log("productNuturitions", productNuturitions);
 
   return (
     <>
@@ -2057,7 +2056,7 @@ function ProductDetails() {
         <div className={styles.backButton} >
           {/* <BackButton pageLocation="/product/all-products" /> */}
           <Link to="/product/all-products" >
-          <GoArrowLeft  />
+            <GoArrowLeft />
           </Link>
         </div>
         <div className={styles.productContainer}>
@@ -2149,7 +2148,7 @@ function ProductDetails() {
           <div className={styles.productContant}>
             <div className={styles.title}>
               <div className={styles.productPriceName}>
-                <h1>{product?.name}</h1>
+                <h1 className={styles.productdetailsname}>{product?.name}</h1>
                 <div className={styles.priceDetails}>
                   <div className={styles.priceFlexCol}>
                     <div className={styles.dicountinprecentage}>
@@ -2195,7 +2194,7 @@ function ProductDetails() {
                     </div>
                   </div>
 
-                  <div className={styles.allAddToCart}>
+                  {/* <div className={styles.allAddToCart}>
                     {sizes.some(size => size.size && size.size.toLowerCase() !== 'null') && (
                       <div className={styles.sizeOptions}>
                         <div className={styles.selectQuntitytext} >Select Quantity:</div>
@@ -2205,7 +2204,7 @@ function ProductDetails() {
                               <div
                                 key={size._id}
                                 // className={ size._id === selectedSize?._id ? styles.selectedSizeButton  : styles.sizeButton}
-                                className={`${styles.sizeButtondiv} ${size._id === selectedSize?._id ? styles.selectedSizeButton : ''}`}
+                                className={`${styles.sizeButtondiv} ${size._id === selectedSize?._id ? '' : styles.selectedSizeButton}`}
                                 onClick={() => handleSizeChange(size)}
                               >
                                 <div
@@ -2223,7 +2222,33 @@ function ProductDetails() {
                         </div>
                       </div>
                     )}
+                  </div> */}
+                  <div className={styles.allAddToCart}>
+                    {sizes.length > 1 && sizes.some(size => size.size && size.size.toLowerCase() !== 'null') && (
+                      <div className={styles.sizeOptions}>
+                        <div className={styles.selectQuntitytext}>Select Quantity:</div>
+                        <div className={styles.sizeButtons}>
+                          {sizes.map(size => (
+                            size.size && size.size.toLowerCase() !== 'null' && (
+                              <div
+                                key={size._id}
+                                className={`${styles.sizeButtondiv} ${size._id === selectedSize?._id ? '' : styles.selectedSizeButton}`}
+                                onClick={() => handleSizeChange(size)}
+                              >
+                                <div className={styles.finalpricebutton}>
+                                  ₹{size.FinalPrice}
+                                </div>
+                                <div className={styles.sizetypebutton}>
+                                  {size.size}{size.sizetype}
+                                </div>
+                              </div>
+                            )
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
+
 
                 </div>
               </div>
@@ -2234,7 +2259,7 @@ function ProductDetails() {
               <p className={styles.description} >{product?.description}</p>
             </div> */}
             <div className={styles.description}>
-              {product?.category?._id == "67b451f7ec3a4e4a3bbe5633" && <div className={styles.availableonlyspan}><span> Available Only in </span> <span style={{textDecoration:'underline'}} > Ludhiana </span> </div>  }
+              {product?.category?._id == "67b451f7ec3a4e4a3bbe5633" && <div className={styles.availableonlyspan}><span> Available Only in </span> <span style={{ textDecoration: 'underline', textUnderlineOffset: "3px" }} > Ludhiana </span> </div>}
               <p className={styles.description}> </p>
             </div>
             <div className={styles.vegetarian}>
