@@ -12,6 +12,7 @@ import ContectUs from "./pages/contect";
 import Order from "./pages/order";
 import ForgotPasswordForm from "./components/Auth/sendMail";
 import OtpVerifiedForm from "./components/Auth/otp";
+// import TaxInvoice from "./Test";
 
 function App() {
   return (
@@ -45,6 +46,8 @@ function App() {
         />
         {/*  unknown page */}
         <Route path="*" element={<Home />} />
+        
+        {/* <Route path="/test" element={<TaxInvoice />} /> */}
       </Routes>
       <Footer />
     </div>

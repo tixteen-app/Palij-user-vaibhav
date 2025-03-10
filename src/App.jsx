@@ -42,6 +42,7 @@ import LatestOrder from "./components/LatestOrder/LastestOrder.jsx"
 import ProductSidebar from "./components/products/slidebar/sidebar.jsx"
 import SecondHomePage from "./components/SecondHomePage/SecondHomePage.jsx"
 import SecondFooter from "./components/SecondFooter/SecondFooter.jsx"
+// import TaxInvoice from "./Test.jsx"
 
 function App() {
 	// const [categories, setCategories] = useState([])
@@ -217,6 +218,8 @@ function App() {
 					path="/edit-shipping-address/:id"
 					element={<AddressForm isBilling={false} />}
 				/>
+						{/* <Route path="/testtttttttttttttt" element={<TaxInvoice />} /> */}
+				
 			</Routes>
 			{/* <NewFooter /> */}
 			<SecondFooter />
