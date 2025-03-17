@@ -437,47 +437,47 @@ const OrderSummary = () => {
         <div className={styles.invoiceDetails}>
           <div className={styles.billingInfo}>
             <p>
-              <strong>Customer Name: </strong> {orderSummary.userId.firstName}{" "}
-              {orderSummary.userId.lastName}
+              <strong>Customer Name: </strong> {orderSummary?.userId.firstName}{" "}
+              {orderSummary?.userId.lastName}
             </p>
             <p>
-              <strong>Email: </strong> {orderSummary.userId.email}
+              <strong>Email: </strong> {orderSummary?.userId.email}
             </p>
             <p>
-              <strong>Mobile Number: </strong> {orderSummary.userId.mobileNumber}
+              <strong>Mobile Number: </strong> {orderSummary?.userId.mobileNumber}
             </p>
           </div>
           <div className={styles.invoiceInfo}>
             <p>
-              <strong>Order ID:</strong> {orderSummary._id}
+              <strong>Order ID:</strong> {orderSummary?._id}
             </p>
             <p>
               <strong>Status:</strong> {shiprocketorder?.data?.status}
             </p>
             <p>
-              <strong>Payment Method:</strong> {orderSummary.paymentMethod}
+              <strong>Payment Method:</strong> {orderSummary?.paymentMethod}
             </p>
             {isRazorpay && (
               <p>
-                <strong>Payment ID:</strong> {orderSummary.paymentId}
+                <strong>Payment ID:</strong> {orderSummary?.paymentId}
               </p>
             )}
             <p>
               <strong>Issued:</strong>{" "}
-              {new Date(orderSummary.createdAt).toLocaleDateString()}
+              {new Date(orderSummary?.createdAt).toLocaleDateString()}
             </p>
             <p>
               <strong>Shipping Address: </strong>
-              {orderSummary.shippingAddress.firstname}{" "}
-              {orderSummary.shippingAddress.lastname}{" "}
-              {orderSummary.shippingAddress.address}
+              {orderSummary?.shippingAddress?.firstname}{" "}
+              {orderSummary?.shippingAddress?.lastname}{" "}
+              {orderSummary?.shippingAddress?.address}
               <br />
-              {orderSummary.shippingAddress.city},{" "}
-              {orderSummary.shippingAddress.state}{" "}
-              {orderSummary.shippingAddress.pincode}{" "}
-              {orderSummary.shippingAddress.country}
+              {orderSummary?.shippingAddress?.city},{" "}
+              {orderSummary?.shippingAddress?.state}{" "}
+              {orderSummary?.shippingAddress?.pincode}{" "}
+              {orderSummary?.shippingAddress?.country}
               <br />
-              Phone: {orderSummary.shippingAddress.phonenumber}
+              Phone: {orderSummary?.shippingAddress?.phonenumber}
             </p>
           </div>
         </div>

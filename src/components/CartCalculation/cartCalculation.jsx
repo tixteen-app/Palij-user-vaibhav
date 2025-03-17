@@ -329,15 +329,15 @@ function CartCalculation({
 							<span>{formatNumber(isCashOnDelivery ? roundedFinal : Final)}</span>
 						)}
 					</div>
-					{totalwithoutgst&&
-					<div className={styles.discountSection}>
-						<div className={styles.row}>
-							<span>Taxable Amount:</span>
-							<>
-								{loadingData.final ? <ShimmerEffect /> : <span>{formatNumber(totalwithoutgst)}</span>}
-							</>
+					{totalwithoutgst &&
+						<div className={styles.discountSection}>
+							<div className={styles.row}>
+								<span>Taxable Amount:</span>
+								<>
+									{loadingData.final ? <ShimmerEffect /> : <span>{formatNumber(totalwithoutgst)}</span>}
+								</>
+							</div>
 						</div>
-					</div>
 					}
 
 					<div className={styles.row}>
@@ -424,13 +424,13 @@ function CartCalculation({
 						)}
 					</div>
 					{totalwithoutgst &&
-				<div className={styles.row}>
-					<span>Taxble Amount:</span>
-					<>
-					 {loadingData.final ? <ShimmerEffect /> : <span>{formatNumber(totalwithoutgst)}</span>} 
-					</>
-				</div>
-				}
+						<div className={styles.row}>
+							<span>Taxble Amount:</span>
+							<>
+								{loadingData.final ? <ShimmerEffect /> : <span>{formatNumber(totalwithoutgst)}</span>}
+							</>
+						</div>
+					}
 					<div className={styles.row}>
 						<span>Delivery Fee:</span>
 						{loadingData.shipping ? (

@@ -10,7 +10,6 @@ import { ToastContainer, toast } from "react-toastify"
 import CartCalculation from "../CartCalculation/cartCalculation.jsx"
 import BackButton from "../products/backButton.jsx"
 import useCoupon from "../../hook/coupanHook.jsx"
-// import { updateCartCount } from "../../utils/couponFunctions.jsx"
 import { deleteproductFromCart, fetchCart, submitOrder, submitOrderforlocal } from "../../utils/productFunction.js"
 import { assets } from "../../assets/assets.js"
 import styles from './checkout.module.css'
@@ -41,9 +40,9 @@ function Checkout() {
 	const [availablePincodes, setAvailablePincodes] = useState([]);
 	const [fetchCartLoader, setFetchCartLoader] = useState(false);
 	const [completeCart, setCompleteCart] = useState([]);
-const [saveaddloader, setsaveaddresloder] = useState(false)
-const [deletePopup, setDeletePopup] = useState(false);
-const [addressToDelete, setAddressToDelete] = useState(null);
+	const [saveaddloader, setsaveaddresloder] = useState(false)
+	const [deletePopup, setDeletePopup] = useState(false);
+	const [addressToDelete, setAddressToDelete] = useState(null);
 
 	const {
 		couponCode,
@@ -55,154 +54,154 @@ const [addressToDelete, setAddressToDelete] = useState(null);
 	} = useCoupon()
 
 
-    const [cartTotalWithGST, setCartTotalWithGST] = useState(0);
-    const [totalAmountWithoutGST, setTotalAmountWithoutGST] = useState(0);
-  
+	const [cartTotalWithGST, setCartTotalWithGST] = useState(0);
+	const [totalAmountWithoutGST, setTotalAmountWithoutGST] = useState(0);
+
 	const [isEditPopupOpen, setIsEditPopupOpen] = useState(false);
 	const [editAddress, setEditAddress] = useState({
-	  firstname: "",
-	  lastname: "",
-	  address: "",
-	  city: "",
-	  state: "",
-	  country: "",
-	  pincode: "",
+		firstname: "",
+		lastname: "",
+		address: "",
+		city: "",
+		state: "",
+		country: "",
+		pincode: "",
 	});
-  
+
 	const openDeletePopup = (address) => {
 		setAddressToDelete(address);
 		setDeletePopup(true);
-	  };
-	  
-	  const closeDeletePopup = () => {
+	};
+
+	const closeDeletePopup = () => {
 		setDeletePopup(false);
 		setAddressToDelete(null);
-	  };
-	  
+	};
 
-	  const handleDeleteAddress = async () => {
+
+	const handleDeleteAddress = async () => {
 		try {
-		//   await axios.delete(`/api/address/${addressToDelete._id}`); // Replace with your API endpoint
-		 await makeApi(
-						`/api/delete-shiped-address/${addressToDelete._id}`,
-						"DELETE"
-					)
-		  setDeletePopup(false);
-		  setAddressToDelete(null);
-		  // Refresh address list after deletion
+			//   await axios.delete(`/api/address/${addressToDelete._id}`); // Replace with your API endpoint
+			await makeApi(
+				`/api/delete-shiped-address/${addressToDelete._id}`,
+				"DELETE"
+			)
+			setDeletePopup(false);
+			setAddressToDelete(null);
+			// Refresh address list after deletion
 		} catch (error) {
-		  console.error("Error deleting address:", error);
-		}finally{
+			console.error("Error deleting address:", error);
+		} finally {
 			fetchShippingAddresses()
 		}
-	  };
-	  
-	
+	};
+
+
 	const openEditPopup = (address) => {
-	  setEditAddress(address);
-	  setIsEditPopupOpen(true);
+		setEditAddress(address);
+		setIsEditPopupOpen(true);
 	};
-  
+
 	const closeEditPopup = () => {
-	  setIsEditPopupOpen(false);
+		setIsEditPopupOpen(false);
 	};
-  
+
 	const handleInputChange = (e) => {
 		const { name, value } = e.target;
 		if (name === "pincode" && value.length === 6) {
 			console.log("1")
-		  fetchCityStateCountry(value);
+			fetchCityStateCountry(value);
 		}
-	  
+
 		setEditAddress((prevState) => ({
-		  ...prevState,
-		  [name]: value,
+			...prevState,
+			[name]: value,
 		}));
-	  };
-	  
-	  const fetchCityStateCountry = async (pincode) => {
+	};
+
+	const fetchCityStateCountry = async (pincode) => {
 		try {
-		  const response = await axios.get(`https://api.postalpincode.in/pincode/${pincode}`);
-		  
-		  if (response.data && response.data[0].Status === "Success") {
-			const postOfficeData = response.data[0].PostOffice[0];
-			const { State, Country, District: city } = postOfficeData; // Fixed "Division" to "District" (correct API field)
-	  
-			setEditAddress((prevState) => ({
-			  ...prevState,
-			  city,
-			  state: State,
-			  country: Country,
-			}));
-		  } else {
-			console.error("Invalid pincode or no data available.");
-		  }
+			const response = await axios.get(`https://api.postalpincode.in/pincode/${pincode}`);
+
+			if (response.data && response.data[0].Status === "Success") {
+				const postOfficeData = response.data[0].PostOffice[0];
+				const { State, Country, District: city } = postOfficeData; // Fixed "Division" to "District" (correct API field)
+
+				setEditAddress((prevState) => ({
+					...prevState,
+					city,
+					state: State,
+					country: Country,
+				}));
+			} else {
+				console.error("Invalid pincode or no data available.");
+			}
 		} catch (error) {
-		  console.error("Error fetching city, state, and country:", error);
+			console.error("Error fetching city, state, and country:", error);
 		}
-	  };
-	  
-	const handleSaveAddress = async() => {
-		try{
+	};
+
+	const handleSaveAddress = async () => {
+		try {
 			setsaveaddresloder(true)
 			const response = await makeApi(`/api/update-shiped-address/${editAddress._id}`, "PUT", editAddress);
-		}catch(error){
+		} catch (error) {
 			console.error("Error updating address:", error);
-		}finally{
+		} finally {
 			closeEditPopup();
-		fetchShippingAddresses()
-		setsaveaddresloder(false)
+			fetchShippingAddresses()
+			setsaveaddresloder(false)
 
 
 		}
 	};
 
-    useEffect(() => {
-        const fetchCartItem = async () => {
-          try {
-            const response = await makeApi("/api/my-cart", "GET");
-            // Set the cart items after fetching the data
-            setCartItem(response.data);
-      
-            if (response?.data?.orderItems?.length > 0) {
-              let totalGstAmount = 0;
-              let totalAmountNoGST = 0
-      
-              // Loop through each item and calculate GST, accounting for quantity and custom tax percentage
-              response.data.orderItems.forEach(item => {
-                let finalPrice = item.size?.FinalPrice || 0;
-                
-                // Get the tax percentage for each product from the product data
-                let gstPercentage = item.productId?.category?.tax ; // Default to 18% if no tax percentage is provided
-      
-                // Calculate the actual price before GST
-                let actualPrice = finalPrice / (1 + gstPercentage / 100);
-                totalAmountNoGST += actualPrice * item.quantity;
-      
-                // Calculate the GST amount for this item
-                let gstAmount = finalPrice - actualPrice;
-      
-                // Multiply by quantity to account for multiple items of the same product
-                gstAmount *= item.quantity;
-      
-                // Add the GST amount to the total GST amount
-                totalGstAmount += gstAmount;
-              });
-      
-              // Store the total GST amount in state
-              setCartTotalWithGST(totalGstAmount);
-              setTotalAmountWithoutGST(totalAmountNoGST);
-      
-            //   console.log("Total GST Amount:", totalGstAmount);
-            }
-          } catch (error) {
-            console.error("Error fetching cart items:", error);
-          }
-        };
-      
-        fetchCartItem();
-      }, []);
-      
+	useEffect(() => {
+		const fetchCartItem = async () => {
+			try {
+				const response = await makeApi("/api/my-cart", "GET");
+				// Set the cart items after fetching the data
+				setCartItem(response.data);
+
+				if (response?.data?.orderItems?.length > 0) {
+					let totalGstAmount = 0;
+					let totalAmountNoGST = 0
+
+					// Loop through each item and calculate GST, accounting for quantity and custom tax percentage
+					response.data.orderItems.forEach(item => {
+						let finalPrice = item.size?.FinalPrice || 0;
+
+						// Get the tax percentage for each product from the product data
+						let gstPercentage = item.productId?.category?.tax; // Default to 18% if no tax percentage is provided
+
+						// Calculate the actual price before GST
+						let actualPrice = finalPrice / (1 + gstPercentage / 100);
+						totalAmountNoGST += actualPrice * item.quantity;
+
+						// Calculate the GST amount for this item
+						let gstAmount = finalPrice - actualPrice;
+
+						// Multiply by quantity to account for multiple items of the same product
+						gstAmount *= item.quantity;
+
+						// Add the GST amount to the total GST amount
+						totalGstAmount += gstAmount;
+					});
+
+					// Store the total GST amount in state
+					setCartTotalWithGST(totalGstAmount);
+					setTotalAmountWithoutGST(totalAmountNoGST);
+
+					//   console.log("Total GST Amount:", totalGstAmount);
+				}
+			} catch (error) {
+				console.error("Error fetching cart items:", error);
+			}
+		};
+
+		fetchCartItem();
+	}, []);
+
 
 	useEffect(() => {
 		const fetchpincode = async () => {
@@ -211,84 +210,16 @@ const [addressToDelete, setAddressToDelete] = useState(null);
 		}
 		fetchpincode()
 	}, [])
-   
-    const fetchCartItems = async () => {
-        setFetchCartLoader(true);
-        await fetchCart(setCartItems, setCompleteCart, setFetchCartLoader);
-        setFetchCartLoader(false);
-    
-        // if (completeCart?.orderItems?.length > 0) {
-        //     // Initialize total GST amount
-        //     let totalGstAmount = 0;
-    
-        //     // Loop through each item and calculate GST
-        //     completeCart.orderItems.forEach(item => {
-        //         let finalPrice = item.size?.FinalPrice || 0;
-        //         let gstPercentage = 18;
-    
-        //         // Calculate the actual price before GST
-        //         let actualPrice = finalPrice / (1 + gstPercentage / 100);
-                
-        //         // Calculate the GST amount for this item
-        //         let gstAmount = finalPrice - actualPrice;
-       
-        //         // Add the GST amount to the total GST amount
-        //         totalGstAmount += gstAmount;
-        //     });
-    
-        //     // Store the total GST amount in state
-        //     setCartTotalWithGST(totalGstAmount);
-    
-        //     console.log("Total GST Amount:", totalGstAmount);
-        // }
-    };
-    
-    
-	// const fetchCartItems = async () => {
-	// 	setFetchCartLoader(true);
-	// 	await fetchCart(setCartItems, setCompleteCart, setFetchCartLoader);
-	// 	setFetchCartLoader(false);
-	// };
+
+	const fetchCartItems = async () => {
+		setFetchCartLoader(true);
+		await fetchCart(setCartItems, setCompleteCart, setFetchCartLoader);
+		setFetchCartLoader(false);
+	};
 
 	useEffect(() => {
 		fetchCartItems();
 	}, []);
-
-    // const fetchCartItems = async () => {
-    //     setFetchCartLoader(true);
-    //     await fetchCart(setCartItems, setCompleteCart, setFetchCartLoader);
-    //     setFetchCartLoader(false);
-    
-    //     // Extracting the FinalPrice from orderItems
-    //     if (completeCart?.orderItems?.length > 0) {
-    //         console.log("----1")
-    //         console.log("----2",completeCart.orderItems[0].size)
-    //         let finalPrice = completeCart.orderItems[0].size?.FinalPrice || 0;
-    
-    //         // GST Calculation (18% assumed)
-    //         let gstPercentage = 18;
-    //         let gstAmount = (finalPrice * gstPercentage) / 100;
-    //         let totalWithGST =   gstAmount;
-    
-    //         // Storing the total price in state
-    //         setCartTotalWithGST(totalWithGST);
-    //     }
-    // };
-    // const fetchCartItems = async () => {
-    //     setFetchCartLoader(true);
-    //     await fetchCart(setCartItems, setCompleteCart, setFetchCartLoader);
-    //     setFetchCartLoader(false);
-    
-    //     if (completeCart?.orderItems?.length > 0) {
-    //         let finalPrice = completeCart.orderItems[0].size?.FinalPrice || 0;
-    //         let gstPercentage = 18;
-    //         let actualPrice = finalPrice / (1 + gstPercentage / 100);
-    //         let gstAmount = finalPrice - actualPrice;
-    //         setCartTotalWithGST(gstAmount); 
-    //         console.log("GST Amount:", gstAmount);
-    //     }
-    // };
-
 
 
 	const fetchShippingAddresses = async () => {
@@ -705,19 +636,19 @@ const [addressToDelete, setAddressToDelete] = useState(null);
 										<div className="shipping-address-title">
 											<div className="d-flex align-items-center gap-3" >
 												<Link to={"/cart"} >
-												<div className="d-flex align-items-center " >
-												<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
-</svg>
-												</div>
+													<div className="d-flex align-items-center " >
+														<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+															<path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8" />
+														</svg>
+													</div>
 												</Link>
 												<div>
 													<h2>Shipping Address</h2>
 												</div>
 											</div>
-											<button className="add_new_address_button_cart_page" style={{ border: "1px solid black", color: "black" , display:"flex", alignItems:"center" , gap:"10px" , justifyContent:"center" }} onClick={() => navigate("/add-shipping-address")}>
-												<div>Add New Address </div> <div style={{marginTop:"-3px", fontWeight:"bold"}} > <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
-  															<path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+											<button className="add_new_address_button_cart_page" style={{ border: "1px solid black", color: "black", display: "flex", alignItems: "center", gap: "10px", justifyContent: "center" }} onClick={() => navigate("/add-shipping-address")}>
+												<div>Add New Address </div> <div style={{ marginTop: "-3px", fontWeight: "bold" }} > <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+													<path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2" />
 												</svg></div>
 											</button>
 										</div>
@@ -748,94 +679,77 @@ const [addressToDelete, setAddressToDelete] = useState(null);
 															{`${address.firstname} ${address.lastname}, ${address.address}, ${address.city}, ${address.state}, ${address.country}, ${address.pincode}`}
 														</label>
 
-																<div>
-																<svg onClick={() => openEditPopup(address)}
- xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
-  <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.5.5 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11z"/>
-</svg> 
-																</div>
-																<div>
-																<svg onClick={() => openDeletePopup(address)} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
-  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
-</svg>
-																</div>
+														<div>
+															<svg onClick={() => openEditPopup(address)}
+																xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+																<path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.5.5 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11z" />
+															</svg>
+														</div>
+														<div>
+															<svg onClick={() => openDeletePopup(address)} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+																<path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5" />
+															</svg>
+														</div>
 													</div>
 												))}
 										</div>
 									</div>
 									{isEditPopupOpen && (
-        <div className="cart_page-popup-overlay">
-          <div className="cart_page-popup">
-            <h2>Edit Address</h2>
-            <input type="text" name="firstname" value={editAddress.firstname} onChange={handleInputChange} placeholder="First Name" />
-            <input type="text" name="lastname" value={editAddress.lastname} onChange={handleInputChange} placeholder="Last Name" />
-            <input type="text" name="address" value={editAddress.address} onChange={handleInputChange} placeholder="Address" />
-            <input type="text" name="pincode" value={editAddress.pincode} onChange={handleInputChange} placeholder="Pincode" />
-            <input type="text" name="city" readOnly value={editAddress.city} onChange={handleInputChange} placeholder="City" />
-            <input type="text" name="state" readOnly value={editAddress.state} onChange={handleInputChange} placeholder="State" />
-            <input type="text" name="country" readOnly value={editAddress.country} onChange={handleInputChange} placeholder="Country" />
-            
-            <div className="cart_page-popup-buttons">
-              <button className="" onClick={handleSaveAddress}> { saveaddloader ? <div>Saving...</div> : "Save"} </button>
-              <button className="" onClick={closeEditPopup}>Cancel</button>
-            </div>
-          </div>
-        </div>
-      )}
+										<div className="cart_page-popup-overlay">
+											<div className="cart_page-popup">
+												<h2>Edit Address</h2>
+												<input type="text" name="firstname" value={editAddress.firstname} onChange={handleInputChange} placeholder="First Name" />
+												<input type="text" name="lastname" value={editAddress.lastname} onChange={handleInputChange} placeholder="Last Name" />
+												<input type="text" name="address" value={editAddress.address} onChange={handleInputChange} placeholder="Address" />
+												<input type="text" name="pincode" value={editAddress.pincode} onChange={handleInputChange} placeholder="Pincode" />
+												<input type="text" name="city" readOnly value={editAddress.city} onChange={handleInputChange} placeholder="City" />
+												<input type="text" name="state" readOnly value={editAddress.state} onChange={handleInputChange} placeholder="State" />
+												<input type="text" name="country" readOnly value={editAddress.country} onChange={handleInputChange} placeholder="Country" />
+
+												<div className="cart_page-popup-buttons">
+													<button className="" onClick={handleSaveAddress}> {saveaddloader ? <div>Saving...</div> : "Save"} </button>
+													<button className="" onClick={closeEditPopup}>Cancel</button>
+												</div>
+											</div>
+										</div>
+									)}
 
 								</div>
 
 								{deletePopup && (
-//   <div className="cart_page-delete-popup-overlay">
-//     <div className="cart_page-delete-popup">
-//       <h3>Confirm Delete</h3>
-//       <p>Are you sure you want to delete this address?</p>
-//       <p><strong>{addressToDelete?.firstname} {addressToDelete?.lastname}</strong></p>
-//       <p>{addressToDelete?.address}, {addressToDelete?.city}, {addressToDelete?.state}, {addressToDelete?.country}, {addressToDelete?.pincode}</p>
-      
-//       <div className="cart_page-popup-buttons">
-//         <button className="cart_page-delete-btn" onClick={handleDeleteAddress}>Delete</button>
-//         <button className="cart_page-cancel-btn" onClick={closeDeletePopup}>Cancel</button>
-//       </div>
-//     </div>
-//   </div>
-<div className="confirmation-dialog ">
-                <div className="dialog-content">
-                  <h2>Confirm Deletion</h2>
-                  <p>Are you sure you want to remove this address ?</p>
-                  <div className="dialog-buttons_both">
-                    <button onClick={handleDeleteAddress} className="confirm-button">Confirm</button>
-                    <button onClick={closeDeletePopup} className="cancel-button">Cancel</button>
-                  </div>
-                </div>
-              </div>
-)}
+
+									<div className="confirmation-dialog ">
+										<div className="dialog-content">
+											<h2>Confirm Deletion</h2>
+											<p>Are you sure you want to remove this address ?</p>
+											<div className="dialog-buttons_both">
+												<button onClick={handleDeleteAddress} className="confirm-button">Confirm</button>
+												<button onClick={closeDeletePopup} className="cancel-button">Cancel</button>
+											</div>
+										</div>
+									</div>
+								)}
 
 								{/* Proceed to Payment */}
 								<div className="styles_checkout_coupan">
-										<div onClick={(e) => manageCurrentPage(e)}>
-											<CartCalculation
-												tax={cartTotalWithGST}
-												shipping={0}
-												total={cartItem?.totalPriceWithoutDiscount}
-												CoupanApplied={appliedCoupon ? couponDiscount : cartItem?.totalPriceWithoutDiscount}
-												Final={cartItem?.totalPrice}
-												ButtonName="PROCEED TO PAYMENT"
-												totalwithoutgst={totalAmountWithoutGST}
-											/>
-										</div>
+									<div onClick={(e) => manageCurrentPage(e)}>
+										<CartCalculation
+											tax={cartTotalWithGST}
+											shipping={0}
+											total={cartItem?.totalPriceWithoutDiscount}
+											CoupanApplied={appliedCoupon ? couponDiscount : cartItem?.totalPriceWithoutDiscount}
+											Final={cartItem?.totalPrice}
+											ButtonName="PROCEED TO PAYMENT"
+											totalwithoutgst={totalAmountWithoutGST}
+										/>
+									</div>
 								</div>
 							</div>
 						</div>
 					) : (
 						<div>
 							<Orderbar activeOptionName="PAYMENT" />
-							{/* <div
-								className="checkout_to_cart"
-								onClick={() => setCurrentPage("CHECKOUT")}
-							>
-								<BackButton />
-							</div> */}
+							
 							<div className="main_checkout_div">
 								{/* Payment Method */}
 								<div className="shipping-address-container">
@@ -907,30 +821,8 @@ const [addressToDelete, setAddressToDelete] = useState(null);
 										disabled={isSubmitDisabled}
 										isCashOnDelivery={selectPaymentMethod === "Cash On Delivery"}
 									/>
-									{/* <CartCalculation
-										tax={cartTotalWithGST}
-										shipping={0}
-										total={cartItem?.totalPriceWithoutDiscount}
-										CoupanApplied={appliedCoupon ? couponDiscount : cartItem?.totalPriceWithoutDiscount}
-										Final={cartItem?.totalPrice}
-										ButtonName="PLACE ORDER"
-										disabled={isSubmitDisabled}
-										isCashOnDelivery={selectPaymentMethod === "Cash On Delivery"}
-									/> */}
 								</div>
-								{/* <div onClick={(e) => handleSubmit(e)}>
-									<CartCalculation
-										tax={0}
-										shipping={0}
-										total={cartItem?.totalPriceWithoutDiscount}
-										CoupanApplied={appliedCoupon ? couponDiscount : cartItem?.totalPriceWithoutDiscount}
-										Final={cartItem?.totalPrice}
-										ButtonName="PLACE ORDER"
-										disabled={isSubmitDisabled}
-										isCashOnDelivery={selectPaymentMethod === "Cash On Delivery"}
-										pincode={selectedShippingAddress?.pincode} // Pass the pincode here
-									/>
-								</div> */}
+														
 							</div>
 						</div>
 					)}
@@ -941,608 +833,3 @@ const [addressToDelete, setAddressToDelete] = useState(null);
 }
 
 export default Checkout
-
-
-// import { calculateTax } from "../../utils/tax/taxUtils.jsx";
-// import React, { useState, useEffect } from "react";
-// import "./checkout.css";
-// import Orderbar from "../orderbar/orderbar.jsx";
-// import { makeApi } from "../../api/callApi";
-// import { useNavigate } from "react-router-dom";
-// import SucessGIF from "../../assets/Order Placed.gif";
-// import Primaryloader from "../../components/loaders/primaryloader.jsx";
-// import { ToastContainer, toast } from "react-toastify";
-// import CartCalculation from "../CartCalculation/cartCalculation.jsx";
-// import BackButton from "../products/backButton.jsx";
-// import useCoupon from "../../hook/coupanHook.jsx";
-// import { deleteproductFromCart, fetchCart, submitOrder, submitOrderforlocal } from "../../utils/productFunction.js";
-// import { assets } from "../../assets/assets.js";
-// import styles from './checkout.module.css';
-
-// function Checkout() {
-//     const navigate = useNavigate();
-//     const [shippingAddresses, setShippingAddresses] = useState([]);
-//     const [selectedAddress, setSelectedAddress] = useState(null);
-//     const [billingAddresses, setBillingAddresses] = useState([]);
-//     const [selectPaymentMethod, setSelectPaymentMethod] = useState(null);
-//     const [loading, setLoading] = useState(false);
-//     const [cartItem, setCartItem] = useState([]);
-//     const [selectedShippingAddress, setSelectedShippingAddress] = useState(null);
-//     const [selectedBillingAddress, setSelectedBillingAddress] = useState(null);
-//     const [coupanCode, setCoupanCode] = useState(null);
-//     const [currentPage, setCurrentPage] = useState("CHECKOUT");
-//     const [orderPlaced, setOrderPlaced] = useState(false);
-//     const [isSubmitDisabled, setIsSubmitDisabled] = useState(false);
-//     const [showModal, setShowModal] = useState(false);
-//     const [nonDeliverableProducts, setNonDeliverableProducts] = useState([]);
-//     const [cartItems, setCartItems] = useState([]);
-//     const [productLoaders, setProductLoaders] = useState({});
-//     const [availablePincodes, setAvailablePincodes] = useState([]);
-//     const [fetchCartLoader, setFetchCartLoader] = useState(false);
-//     const [completeCart, setCompleteCart] = useState([]);
-
-//     const {
-//         couponCode,
-//         setCouponCode,
-//         appliedCoupon,
-//         couponDiscount,
-//         applyCoupon,
-//         removeCoupon,
-//     } = useCoupon();
-
-//     useEffect(() => {
-//         const fetchCartItem = async () => {
-//             const response = await makeApi("/api/my-cart", "GET");
-//             setCartItem(response.data);
-//         };
-//         fetchCartItem();
-//     }, []);
-
-//     useEffect(() => {
-//         const fetchpincode = async () => {
-//             const response = await makeApi("/api/get-all-available-pincode", "GET");
-//             setAvailablePincodes(response.data);
-//         };
-//         fetchpincode();
-//     }, []);
-
-//     const fetchCartItems = async () => {
-//         setFetchCartLoader(true);
-//         await fetchCart(setCartItems, setCompleteCart, setFetchCartLoader);
-//         setFetchCartLoader(false);
-//     };
-
-//     useEffect(() => {
-//         fetchCartItems();
-//     }, []);
-
-//     const fetchShippingAddresses = async () => {
-//         try {
-//             setLoading(true);
-//             const response = await makeApi("/api/get-my-shiped-address", "GET");
-//             setShippingAddresses(response.data.shipedaddress);
-//             setLoading(false);
-//         } catch (error) {
-//             console.error("Error fetching shipping addresses: ", error);
-//             setLoading(false);
-//         }
-//     };
-
-//     const fetchBillingAddresses = async () => {
-//         try {
-//             setLoading(true);
-//             const response = await makeApi("/api/get-my-billing-address", "GET");
-//             setBillingAddresses(response.data.billingaddress);
-//             setLoading(false);
-//         } catch (error) {
-//             console.error("Error fetching billing addresses: ", error);
-//             setLoading(false);
-//         }
-//     };
-
-//     useEffect(() => {
-//         fetchShippingAddresses();
-//         fetchBillingAddresses();
-//     }, []);
-
-//     const handleAddressSelect = (address) => {
-//         setSelectedAddress(address);
-//     };
-
-//     const handleShippingAddressSelect = (address) => {
-//         setSelectedShippingAddress(address);
-//     };
-
-//     const handleBillingAddressSelect = (address) => {
-//         setSelectedBillingAddress(address);
-//     };
-
-//     const handlePaymentMethodSelect = (payment) => {
-//         setSelectPaymentMethod(payment);
-//     };
-
-//     const handleSubmit = async (event) => {
-//         event.preventDefault();
-
-//         if (!selectPaymentMethod) {
-//             toast("Please select a payment method");
-//             return;
-//         }
-
-//         if (!selectedShippingAddress) {
-//             toast.error("Please select a shipping address");
-//             return;
-//         }
-
-//         if (!isPincodeValid(selectedShippingAddress, cartItem?.orderItems)) {
-//             toast.error("The selected shipping address's pincode is not serviceable.");
-//             return;
-//         }
-
-//         setIsSubmitDisabled(true);
-//         const data = {
-//             shippingAddress: selectedShippingAddress,
-//             billingAddress: selectedBillingAddress,
-//             paymentMethod: selectPaymentMethod,
-//             CartId: cartItem._id,
-//         };
-
-//         if (selectPaymentMethod === "Razorpay") {
-//             if (!availablePincodes.pincode.some(p => p.pincode == data.shippingAddress.pincode)) {
-//                 createRazorpayOrder(updatedTotal);
-//             } else {
-//                 createRazorpayOrderforlocal(updatedTotal);
-//             }
-//         } else {
-//             if (!availablePincodes.pincode.some(p => p.pincode == data.shippingAddress.pincode)) {
-//                 await submitOrder(data, setLoading, setOrderPlaced, navigate,updatedTotal);
-//             } else {
-//                 await submitOrderforlocal(data, setLoading, setOrderPlaced, navigate,updatedTotal);
-//             }
-//         }
-//     };
-
-//     const getNonDeliverableProducts = (selectedAddress, cartItems) => {
-//         if (!selectedAddress || !cartItems || cartItems.length === 0) return [];
-
-//         const selectedPincode = selectedAddress.pincode?.toString();
-//         const nonDeliverable = cartItems.filter((item) => {
-//             const availablePincodes = item.productId?.category?.availablePinCodes || [];
-//             return availablePincodes.length > 0 && !availablePincodes.includes(selectedPincode);
-//         });
-
-//         return nonDeliverable;
-//     };
-
-//     const isPincodeValid = (selectedAddress, cartItems) => {
-//         if (!selectedAddress || !cartItems || cartItems.length === 0) return true;
-
-//         const selectedPincode = selectedAddress.pincode?.toString();
-//         const availablePincodes = cartItems.flatMap((item) =>
-//             item.productId?.category?.availablePinCodes?.map(String) || []
-//         );
-
-//         if (availablePincodes.length === 0) return true;
-
-//         const isValid = availablePincodes.includes(selectedPincode);
-//         return isValid;
-//     };
-
-//     const manageCurrentPage = (e) => {
-//         e.preventDefault();
-
-//         if (!selectedShippingAddress) {
-//             toast.error("Please select a shipping address");
-//             return;
-//         }
-
-//         const nonDeliverables = getNonDeliverableProducts(selectedShippingAddress, cartItem?.orderItems);
-
-//         if (nonDeliverables.length > 0) {
-//             setNonDeliverableProducts(nonDeliverables);
-//             setShowModal(true);
-//             return;
-//         }
-
-//         setCurrentPage("PAYMENT");
-//     };
-
-//     const handleDeleteClick = async (productId, selectProductSize, quantity) => {
-//         await deleteproductFromCart(productId, setProductLoaders, setCartItems, fetchCart, selectProductSize, quantity);
-//         fetchCartItems();
-
-//         if (cartItems.length === 0) {
-//             navigate("/cart");
-//         }
-//     };
-
-//     const handleRemoveAllClick = async () => {
-//         for (const item of nonDeliverableProducts) {
-//             await deleteproductFromCart(
-//                 item.productId._id,
-//                 setProductLoaders,
-//                 setCartItems,
-//                 fetchCart,
-//                 item.size._id,
-//                 item.quantity
-//             );
-//         }
-
-//         fetchCartItems();
-
-//         if (cartItems.length === 0) {
-//             navigate("/cart");
-//         }
-//     };
-
-//     const loadRazorpayScript = (src) => {
-//         return new Promise((resolve) => {
-//             const script = document.createElement("script");
-//             script.src = src;
-//             script.onload = () => {
-//                 resolve(true);
-//             };
-//             script.onerror = () => {
-//                 resolve(false);
-//             };
-//             document.body.appendChild(script);
-//         });
-//     };
-
-//     const createRazorpayOrder = async (amount) => {
-//         const data = {
-//             amount: amount,
-//             currency: "INR",
-//         };
-//         try {
-//             const response = await makeApi('/api/create-razorpay-order', 'POST', data);
-//             handleRazorpayScreen(response.data.amount, response.data.id, response.data.created_at);
-//         } catch (error) {
-//             console.log(error);
-//         }
-//     };
-//   // Calculate the final price with tax
-//   const { updatedTotal } = calculateTax(cartItem?.totalPrice, selectedShippingAddress?.pincode);
-//   console.log("1====updatedTotal",updatedTotal)
-
-
-//     const createRazorpayOrderforlocal = async (amount) => {
-//         const data = {
-//             amount: amount,
-//             currency: "INR",
-//         };
-//         try {
-//             const response = await makeApi('/api/create-razorpay-order', 'POST', data);
-//             handleRazorpayScreenforlocal(response.data.amount, response.data.id, response.data.created_at);
-//         } catch (error) {
-//             console.log(error);
-//         }
-//     };
-
-//     const handleRazorpayScreen = async (amount, orderId, order_created_at) => {
-//         const res = await loadRazorpayScript("https://checkout.razorpay.com/v1/checkout.js");
-//         if (!res) {
-//             alert("Razorpay SDK failed to load");
-//             return;
-//         }
-
-//         const options = {
-//             key: "rzp_test_DaA1MMEW2IUUYe",
-//             currency: "INR",
-//             amount: amount,
-//             name: "USER ",
-//             description: "Test Transaction",
-//             image: "http://localhost:5173/src/assets/logo.png",
-//             order_id: orderId,
-//             handler: function (response) {
-//                 toast.success("Payment Successful");
-//                 const data = {
-//                     paymentId: response.razorpay_payment_id,
-//                     currency: "INR",
-//                     paymentorderCratedAt: order_created_at,
-//                     paymentDoneAt: new Date(),
-//                     orderfromURL: window.location.href,
-//                     DeviceType: /Mobi|Android/i.test(navigator.userAgent) ? "Mobile" : "Desktop",
-//                     shippingAddress: selectedShippingAddress,
-//                     billingAddress: selectedBillingAddress,
-//                     paymentMethod: selectPaymentMethod,
-//                     CartId: cartItem._id,
-//                 };
-//                 submitOrder(data, setLoading, setOrderPlaced, navigate,updatedTotal);
-//             },
-//             prefill: {
-//                 name: "Vaibhav",
-//                 email: "fZ5vA@example.com",
-//                 contact: "9999999999",
-//             },
-//             theme: {
-//                 color: "#EE5564",
-//             },
-//         };
-
-//         const paymentObject = new window.Razorpay(options);
-//         paymentObject.open();
-//     };
-
-//     const handleRazorpayScreenforlocal = async (amount, orderId, order_created_at) => {
-//         const res = await loadRazorpayScript("https://checkout.razorpay.com/v1/checkout.js");
-//         if (!res) {
-//             alert("Razorpay SDK failed to load");
-//             return;
-//         }
-
-//         const options = {
-//             key: "rzp_test_DaA1MMEW2IUUYe",
-//             currency: "INR",
-//             amount: amount,
-//             name: "USER ",
-//             description: "Test Transaction",
-//             image: "http://localhost:5173/src/assets/logo.png",
-//             order_id: orderId,
-//             handler: function (response) {
-//                 toast.success("Payment Successful");
-//                 const data = {
-//                     paymentId: response.razorpay_payment_id,
-//                     currency: "INR",
-//                     paymentorderCratedAt: order_created_at,
-//                     paymentDoneAt: new Date(),
-//                     orderfromURL: window.location.href,
-//                     DeviceType: /Mobi|Android/i.test(navigator.userAgent) ? "Mobile" : "Desktop",
-//                     shippingAddress: selectedShippingAddress,
-//                     billingAddress: selectedBillingAddress,
-//                     paymentMethod: selectPaymentMethod,
-//                     CartId: cartItem._id,
-//                 };
-//                 submitOrderforlocal(data, setLoading, setOrderPlaced, navigate,updatedTotal);
-//             },
-//             prefill: {
-//                 name: "Vaibhav",
-//                 email: "fZ5vA@example.com",
-//                 contact: "9999999999",
-//             },
-//             theme: {
-//                 color: "#EE5564",
-//             },
-//         };
-
-//         const paymentObject = new window.Razorpay(options);
-//         paymentObject.open();
-//     };
-
-//     const SubmitCoupan = async (e) => {
-//         e.preventDefault();
-//         try {
-//             const applyCoupan = await makeApi("/api/apply-coupon", "POST", {
-//                 coupanCode: coupanCode,
-//             });
-//         } catch (error) {
-//             console.log(error);
-//         }
-//     };
-
-  
-
-//     return (
-//         <>
-//             <ToastContainer
-//                 position="top-center"
-//                 autoClose={3000}
-//                 hideProgressBar={false}
-//                 newestOnTop={false}
-//                 closeOnClick
-//                 rtl={false}
-//                 pauseOnFocusLoss
-//                 draggable
-//                 pauseOnHover
-//             />
-
-//             {showModal && (
-//                 <div className={styles.popupOverlay}>
-//                     <div className={styles.popupContent}>
-//                         <h4> UNAVAILABLE FOR DELIVERY </h4>
-//                         <p>The following item(s) are not deliverable to the selected address:</p>
-//                         <ul className={styles.popupList}>
-//                             {nonDeliverableProducts.map((item, index) => (
-//                                 <li key={index} className={styles.popupItem}>
-//                                     <div className={styles.popupImageName}>
-//                                         <div className={styles.popupImagethumbnail}>
-//                                             <img
-//                                                 src={item.productId.thumbnail}
-//                                                 alt={item.productId.name}
-//                                                 className={styles.popupThumbnail}
-//                                             />
-//                                         </div>
-//                                         <div className={styles.popupproductdetails}>
-//                                             <div>{item.productId.name}</div>
-//                                             <div>Price: ₹{item.singleProductPrice}</div>
-//                                         </div>
-//                                     </div>
-//                                     <div>
-//                                         <div className={styles.remove}>
-//                                             <button onClick={() => handleDeleteClick(item.productId._id, item.size._id, item?.quantity)}>Remove</button>
-//                                         </div>
-//                                     </div>
-//                                 </li>
-//                             ))}
-//                         </ul>
-//                         <div className={styles.popupButtonscart}>
-//                             <div
-//                                 className={styles.popupButtonforremovealldiv}
-//                                 onClick={handleRemoveAllClick}
-//                             >
-//                                 <button className={styles.popupButtonforremoveall}>
-//                                     Remove All
-//                                 </button>
-//                             </div>
-//                             <div className={styles.popupButtonforremovealldiv}>
-//                                 <button
-//                                     className={styles.closepopupButton}
-//                                     onClick={() => setShowModal(false)}
-//                                 >
-//                                     Close
-//                                 </button>
-//                             </div>
-//                         </div>
-//                     </div>
-//                 </div>
-//             )}
-
-//             {orderPlaced && (
-//                 <div className="success-gif-container">
-//                     <img src={SucessGIF} alt="Success GIF" className="success-gif" />
-//                 </div>
-//             )}
-
-//             {!orderPlaced && (
-//                 <div className="a_checkout">
-//                     {currentPage === "CHECKOUT" ? (
-//                         <div>
-//                             <Orderbar activeOptionName="CHECKOUT" />
-//                             <div className="main_checkout_div">
-//                                 <div className="shipping-address-container Order_page_display_none">
-//                                     <div>
-//                                         <div className="shipping-address-title">
-//                                             <div className="d-flex align-items-center gap-4">
-//                                                 <div className="d-flex align-items-center mb-2">
-//                                                     <BackButton pageLocation="/cart" />
-//                                                 </div>
-//                                                 <div>
-//                                                     <h2>Shipping Address</h2>
-//                                                 </div>
-//                                             </div>
-//                                             <button style={{ border: "1px solid black", color: "black" }} onClick={() => navigate("/add-shipping-address")}>
-//                                                 Add New Address
-//                                             </button>
-//                                         </div>
-
-//                                         <div className="shipping-address-list">
-//                                             {loading && <Primaryloader />}
-//                                             {!loading &&
-//                                                 shippingAddresses.map((address, index) => (
-//                                                     <div key={index} className="address-item">
-//                                                         <input
-//                                                             type="radio"
-//                                                             id={`shipping-address-${index}`}
-//                                                             name="shippingAddress"
-//                                                             value={address._id}
-//                                                             checked={selectedShippingAddress === address}
-//                                                             onChange={() => handleShippingAddressSelect(address)}
-//                                                             className="address-radio"
-//                                                         />
-//                                                         <label
-//                                                             htmlFor={`shipping-address-${index}`}
-//                                                             className="address-label"
-//                                                         >
-//                                                             {`${address.firstname} ${address.lastname}, ${address.address}, ${address.city}, ${address.state}, ${address.country}, ${address.pincode}`}
-//                                                         </label>
-//                                                     </div>
-//                                                 ))}
-//                                         </div>
-//                                     </div>
-//                                 </div>
-
-//                                 <div className="styles_checkout_coupan">
-//                                     {selectedShippingAddress?.pincode ? (
-//                                         <div onClick={(e) => manageCurrentPage(e)}>
-//                                             <CartCalculation
-//                                                 tax={0}
-//                                                 shipping={0}
-//                                                 total={cartItem?.totalPriceWithoutDiscount}
-//                                                 CoupanApplied={appliedCoupon ? couponDiscount : cartItem?.totalPriceWithoutDiscount}
-//                                                 Final={cartItem?.totalPrice} // Use updatedTotal from tax calculation
-//                                                 ButtonName="PROCEED TO PAYMENT"
-//                                                 CGST={0}
-//                                                 SGST={0}
-//                                                 IGST={0}
-//                                                 pincode={selectedShippingAddress.pincode}
-//                                             />
-//                                         </div>
-//                                     ) : (
-//                                         <div onClick={(e) => manageCurrentPage(e)}>
-//                                             <CartCalculation
-//                                                 tax={0}
-//                                                 shipping={0}
-//                                                 total={cartItem?.totalPriceWithoutDiscount}
-//                                                 CoupanApplied={appliedCoupon ? couponDiscount : cartItem?.totalPriceWithoutDiscount}
-//                                                 Final={cartItem?.totalPrice}
-//                                                 ButtonName="PROCEED TO PAYMENT"
-//                                             />
-//                                         </div>
-//                                     )}
-//                                 </div>
-//                             </div>
-//                         </div>
-//                     ) : (
-//                         <div>
-//                             <Orderbar activeOptionName="PAYMENT" />
-//                             <div className="main_checkout_div">
-//                                 <div className="shipping-address-container">
-//                                     <div className="d-flex align-items-center gap-4">
-//                                         <div className="d-flex align-items-center mb-2" onClick={() => setCurrentPage("CHECKOUT")}>
-//                                             <BackButton />
-//                                         </div>
-//                                         <div>
-//                                             <h2>Payment Method</h2>
-//                                         </div>
-//                                     </div>
-//                                     <div className="cod-rzyp">
-//                                         <div
-//                                             className="address-item"
-//                                             onClick={() => handlePaymentMethodSelect("Cash On Delivery")}
-//                                         >
-//                                             <input
-//                                                 type="radio"
-//                                                 id="CashOnDelivery"
-//                                                 name="payment-method"
-//                                                 value="Cash On Delivery"
-//                                                 checked={selectPaymentMethod === "Cash On Delivery"}
-//                                                 onChange={() => handlePaymentMethodSelect("Cash On Delivery")}
-//                                                 className="address-radio"
-//                                             />
-//                                             <label htmlFor="CashOnDelivery" className="address-label">
-//                                                 Cash On Delivery
-//                                             </label>
-//                                         </div>
-//                                         <div
-//                                             className="address-item"
-//                                             onClick={() => handlePaymentMethodSelect("Razorpay")}
-//                                         >
-//                                             <input
-//                                                 type="radio"
-//                                                 id="Razorpay"
-//                                                 name="payment-method"
-//                                                 value="Razorpay"
-//                                                 checked={selectPaymentMethod === "Razorpay"}
-//                                                 onChange={() => handlePaymentMethodSelect("Razorpay")}
-//                                                 className="address-radio"
-//                                             />
-//                                             <label htmlFor="Razorpay" className="address-label">
-//                                                 <img src={assets.razorpay_logo} alt="" />
-//                                             </label>
-//                                         </div>
-//                                     </div>
-//                                 </div>
-
-//                                 <div onClick={(e) => handleSubmit(e)}>
-//                                     <CartCalculation
-//                                         tax={0}
-//                                         shipping={0}
-//                                         total={cartItem?.totalPriceWithoutDiscount}
-//                                         CoupanApplied={appliedCoupon ? couponDiscount : cartItem?.totalPriceWithoutDiscount}
-//                                         Final={cartItem?.totalPrice} // Use updatedTotal from tax calculation
-//                                         ButtonName="PLACE ORDER"
-//                                         disabled={isSubmitDisabled}
-//                                         isCashOnDelivery={selectPaymentMethod === "Cash On Delivery"}
-//                                         pincode={selectedShippingAddress?.pincode}
-//                                     />
-//                                 </div>
-//                             </div>
-//                         </div>
-//                     )}
-//                 </div>
-//             )}
-//         </>
-//     );
-// }
-
-// export default Checkout;
