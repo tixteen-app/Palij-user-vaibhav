@@ -237,7 +237,8 @@ return localstaus || shipstaus || "Pending";
                     {orders?.map((order) => (
                         <div key={order._id} className={styles.orderCard}>
                             <div className={styles.orderHeader}>
-                                <span className={styles.orderId}>Order #{order?._id.slice(-6)}</span>
+                                {/* <span className={styles.orderId}>Order #{order?._id.slice(-6)}</span> */}
+                                <span className={styles.orderId}>Order #{order?.orderId}</span>
                                 <span className={styles.orderDate}>{new Date(order?.createdAt).toLocaleDateString()}</span>
                                 <span className={`${styles.orderStatus} ${styles[getOrderStatus(order._id).toLowerCase()]}`}>
                                     {getOrderStatus(order.shiprocketOrderId)}
