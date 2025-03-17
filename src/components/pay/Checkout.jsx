@@ -822,7 +822,8 @@ function Checkout() {
 										isCashOnDelivery={selectPaymentMethod === "Cash On Delivery"}
 									/>
 								</div>
-														
+								
+							
 							</div>
 						</div>
 					)}
