@@ -72,7 +72,7 @@
 // 					 {loadingData.final ? <ShimmerEffect /> : <span>{formatNumber(total)}</span>} 
 // 					</>
 // 				</div>
-			
+
 // 				<div className={styles.row}>
 // 					<span>Discount:</span>
 // 					{loadingData.discount ? (
@@ -207,280 +207,280 @@ function CartCalculation({
 
 	return (
 		<>
-		<div className={styles.orderSummary}>
-			<h2 className={styles.title}>Order Details</h2>
+			<div className={styles.orderSummary}>
+				<h2 className={styles.title}>Order Details</h2>
 
-			<div className={styles.details}>
-				<div className={styles.row}>
-					<span>Order Amount:</span>
-					<>
-					 {loadingData.final ? <ShimmerEffect /> : <span>{formatNumber(total)}</span>} 
-					</>
+				<div className={styles.details}>
+					<div className={styles.row}>
+						<span>Order Amount:</span>
+						<>
+							{loadingData.final ? <ShimmerEffect /> : <span>{formatNumber(total)}</span>}
+						</>
+					</div>
+					{totalwithoutgst &&
+						<div className={styles.row}>
+							<span>Taxble Amount:</span>
+							<>
+								{loadingData.final ? <ShimmerEffect /> : <span>{formatNumber(totalwithoutgst)}</span>}
+							</>
+						</div>
+					}
+
+					<div className={styles.row}>
+						<span>Delivery Fee:</span>
+						{loadingData.shipping ? (
+							<ShimmerEffect />
+						) : (
+							<span>
+								{shipping === 0 ? (
+									<>Free</>
+								) : (
+									formatNumber(shipping)
+								)}
+							</span>
+						)}
+					</div>
+					{tax !== 0 &&
+						<div className={styles.row}>
+							<span>Tax added:</span>
+							{loadingData.tax ? (
+								<ShimmerEffect />
+							) : (
+								<span>
+									₹{tax.toFixed(2)}
+								</span>
+							)}
+						</div>
+					}
 				</div>
-			
+
+				<div className={styles.total}>
+					<span>Order Total:</span>
+					{loadingData.final ? (
+						<ShimmerEffect />
+					) : (
+						<span>{formatNumber(total)}</span>
+					)}
+				</div>
+
+				<div className={styles.discountSection}>
+					<div className={styles.row}>
+						<span>Discount:</span>
+						{loadingData.discount ? (
+							<ShimmerEffect />
+						) : (
+							<span className={styles.savings}>
+								{formatNumber(isCashOnDelivery ? roundedDiscount : discount)}
+							</span>
+						)}
+					</div>
+				</div>
+
+				<div className={styles.finalPrice}>
+					<span>Final Price:</span>
+					{loadingData.final ? (
+						<ShimmerEffect />
+					) : (
+						<span>{formatNumber(isCashOnDelivery ? roundedFinal : Final)}</span>
+					)}
+				</div>
+
+				<div className={styles.actions}>
+					<button
+						className={styles.process_to_check}
+						disabled={disabled || loadingData.final}
+						style={{ opacity: disabled || loadingData.final ? 0.5 : 1 }}
+						onClick={() => navigate("/cart/checkout/")}
+					>
+						{ButtonName}
+					</button>
+				</div>
+			</div>
+
+
+			<div className={styles.orderSummary} style={{ marginTop: "100px" }} >
+				<h2 className={styles.title}>Order Details</h2>
+
+				<div className={styles.details}>
+					<div className={styles.row}>
+						<span>Order Amount:</span>
+						<>
+							{loadingData.final ? <ShimmerEffect /> : <span>{formatNumber(total)}</span>}
+						</>
+					</div>
+					<div className={styles.discountSection}>
+						<div className={styles.row}>
+							<span>Discount:</span>
+							{loadingData.discount ? (
+								<ShimmerEffect />
+							) : (
+								<span className={styles.savings}>
+									{formatNumber(isCashOnDelivery ? roundedDiscount : discount)}
+								</span>
+							)}
+						</div>
+					</div>
+
+					<div className={styles.finalPrice}>
+						<span>Salling Price:</span>
+						{loadingData.final ? (
+							<ShimmerEffect />
+						) : (
+							<span>{formatNumber(isCashOnDelivery ? roundedFinal : Final)}</span>
+						)}
+					</div>
+					{totalwithoutgst&&
+					<div className={styles.discountSection}>
+						<div className={styles.row}>
+							<span>Taxable Amount:</span>
+							<>
+								{loadingData.final ? <ShimmerEffect /> : <span>{formatNumber(totalwithoutgst)}</span>}
+							</>
+						</div>
+					</div>
+					}
+
+					<div className={styles.row}>
+						<span>Delivery Fee:</span>
+						{loadingData.shipping ? (
+							<ShimmerEffect />
+						) : (
+							<span>
+								{shipping === 0 ? (
+									<>Free</>
+								) : (
+									formatNumber(shipping)
+								)}
+							</span>
+						)}
+					</div>
+					{tax !== 0 &&
+						<div className={styles.row}>
+							<span>Tax added:</span>
+							{loadingData.tax ? (
+								<ShimmerEffect />
+							) : (
+								<span>
+									₹{tax.toFixed(2)}
+								</span>
+							)}
+						</div>
+					}
+				</div>
+
+				<div className={styles.total}>
+					<span>Order Total:</span>
+					{loadingData.final ? (
+						<ShimmerEffect />
+					) : (
+						<span>{formatNumber(isCashOnDelivery ? roundedFinal : Final)}</span>
+					)}
+				</div>
+
+
+
+				<div className={styles.actions}>
+					<button
+						className={styles.process_to_check}
+						disabled={disabled || loadingData.final}
+						style={{ opacity: disabled || loadingData.final ? 0.5 : 1 }}
+						onClick={() => navigate("/cart/checkout/")}
+					>
+						{ButtonName}
+					</button>
+				</div>
+			</div>
+
+
+			<div className={styles.orderSummary} style={{ marginTop: "100px" }} >
+				<h2 className={styles.title}>Order Details</h2>
+
+				<div className={styles.details}>
+					<div className={styles.row}>
+						<span>MRP:</span>
+						<>
+							{loadingData.final ? <ShimmerEffect /> : <span>{formatNumber(total)}</span>}
+						</>
+					</div>
+					<div className={styles.discountSection}>
+						<div className={styles.row}>
+							<span>Discount:</span>
+							{loadingData.discount ? (
+								<ShimmerEffect />
+							) : (
+								<span className={styles.savings}>
+									{formatNumber(isCashOnDelivery ? roundedDiscount : discount)}
+								</span>
+							)}
+						</div>
+					</div>
+
+					<div className={styles.finalPrice}>
+						<span>Salling Price:</span>
+						{loadingData.final ? (
+							<ShimmerEffect />
+						) : (
+							<span>{formatNumber(isCashOnDelivery ? roundedFinal : Final)}</span>
+						)}
+					</div>
+					{totalwithoutgst &&
 				<div className={styles.row}>
 					<span>Taxble Amount:</span>
 					<>
 					 {loadingData.final ? <ShimmerEffect /> : <span>{formatNumber(totalwithoutgst)}</span>} 
 					</>
 				</div>
-
-				<div className={styles.row}>
-					<span>Delivery Fee:</span>
-					{loadingData.shipping ? (
-						<ShimmerEffect />
-					) : (
-						<span>
-							{shipping === 0 ? (
-								<>Free</>
-							) : (
-								formatNumber(shipping)
-							)}
-						</span>
-					)}
-				</div>
-				{tax !== 0 &&
-				<div className={styles.row}>
-					<span>Tax added:</span>
-					{loadingData.tax ? (
-						<ShimmerEffect />
-					) : (
-						<span>
-							₹{tax.toFixed(2)}
-						</span>
-					)}
-				</div>
 				}
-			</div>
-
-			<div className={styles.total}>
-				<span>Order Total:</span>
-				{loadingData.final ? (
-					<ShimmerEffect />
-				) : (
-					<span>{formatNumber(total)}</span>
-				)}
-			</div>
-
-			<div className={styles.discountSection}>
-				<div className={styles.row}>
-					<span>Discount:</span>
-					{loadingData.discount ? (
-						<ShimmerEffect />
-					) : (
-						<span className={styles.savings}>
-							{formatNumber(isCashOnDelivery ? roundedDiscount : discount)}
-						</span>
-					)}
-				</div>
-			</div>
-
-			<div className={styles.finalPrice}>
-				<span>Final Price:</span>
-				{loadingData.final ? (
-					<ShimmerEffect />
-				) : (
-					<span>{formatNumber(isCashOnDelivery ? roundedFinal : Final)}</span>
-				)}
-			</div>
-
-			<div className={styles.actions}>
-				<button
-					className={styles.process_to_check}
-					disabled={disabled || loadingData.final}
-					style={{ opacity: disabled || loadingData.final ? 0.5 : 1 }}
-					onClick={() => navigate("/cart/checkout/")}
-				>
-					{ButtonName}
-				</button>  
-			</div>
-		</div>
-
-
-		<div className={styles.orderSummary} style={{marginTop:"100px"}} >
-			<h2 className={styles.title}>Order Details</h2>
-
-			<div className={styles.details}>
-				<div className={styles.row}>
-					<span>Order Amount:</span>
-					<>
-					 {loadingData.final ? <ShimmerEffect /> : <span>{formatNumber(total)}</span>} 
-					</>
-				</div>
-				<div className={styles.discountSection}>
-				<div className={styles.row}>
-					<span>Discount:</span>
-					{loadingData.discount ? (
-						<ShimmerEffect />
-					) : (
-						<span className={styles.savings}>
-							{formatNumber(isCashOnDelivery ? roundedDiscount : discount)}
-						</span>
-					)}
-				</div>
-			</div>
-
-			<div className={styles.finalPrice}>
-				<span>Salling Price:</span>
-				{loadingData.final ? (
-					<ShimmerEffect />
-				) : (
-					<span>{formatNumber(isCashOnDelivery ? roundedFinal : Final)}</span>
-				)}
-			</div>
-			<div className={styles.discountSection}>
-			
-				<div className={styles.row}>
-					<span>Taxable Amount:</span>
-					<>
-					 {loadingData.final ? <ShimmerEffect /> : <span>{formatNumber(totalwithoutgst)}</span>} 
-					</>
-				</div>
-				</div>
-
-				<div className={styles.row}>
-					<span>Delivery Fee:</span>
-					{loadingData.shipping ? (
-						<ShimmerEffect />
-					) : (
-						<span>
-							{shipping === 0 ? (
-								<>Free</>
+					<div className={styles.row}>
+						<span>Delivery Fee:</span>
+						{loadingData.shipping ? (
+							<ShimmerEffect />
+						) : (
+							<span>
+								{shipping === 0 ? (
+									<>Free</>
+								) : (
+									formatNumber(shipping)
+								)}
+							</span>
+						)}
+					</div>
+					{tax !== 0 &&
+						<div className={styles.row}>
+							<span>Tax added:</span>
+							{loadingData.tax ? (
+								<ShimmerEffect />
 							) : (
-								formatNumber(shipping)
+								<span>
+									₹{tax.toFixed(2)}
+								</span>
 							)}
-						</span>
-					)}
+						</div>
+					}
 				</div>
-				{tax !== 0 &&
-				<div className={styles.row}>
-					<span>Tax added:</span>
-					{loadingData.tax ? (
+
+				<div className={styles.total}>
+					<span>Order Total:</span>
+					{loadingData.final ? (
 						<ShimmerEffect />
 					) : (
-						<span>
-							₹{tax.toFixed(2)}
-						</span>
+						<span>{formatNumber(isCashOnDelivery ? roundedFinal : Final)}</span>
 					)}
 				</div>
-				}
-			</div>
-
-			<div className={styles.total}>
-				<span>Order Total:</span>
-				{loadingData.final ? (
-					<ShimmerEffect />
-				) : (
-					<span>{formatNumber(isCashOnDelivery ? roundedFinal : Final)}</span>
-				)}
-			</div>
-
-			
-
-			<div className={styles.actions}>
-				<button
-					className={styles.process_to_check}
-					disabled={disabled || loadingData.final}
-					style={{ opacity: disabled || loadingData.final ? 0.5 : 1 }}
-					onClick={() => navigate("/cart/checkout/")}
-				>
-					{ButtonName}
-				</button>  
-			</div>
-		</div>
 
 
-		<div className={styles.orderSummary} style={{marginTop:"100px"}} >
-			<h2 className={styles.title}>Order Details</h2>
 
-			<div className={styles.details}>
-				<div className={styles.row}>
-					<span>MRP:</span>
-					<>
-					 {loadingData.final ? <ShimmerEffect /> : <span>{formatNumber(total)}</span>} 
-					</>
-				</div>
-				<div className={styles.discountSection}>
-				<div className={styles.row}>
-					<span>Discount:</span>
-					{loadingData.discount ? (
-						<ShimmerEffect />
-					) : (
-						<span className={styles.savings}>
-							{formatNumber(isCashOnDelivery ? roundedDiscount : discount)}
-						</span>
-					)}
+				<div className={styles.actions}>
+					<button
+						className={styles.process_to_check}
+						disabled={disabled || loadingData.final}
+						style={{ opacity: disabled || loadingData.final ? 0.5 : 1 }}
+						onClick={() => navigate("/cart/checkout/")}
+					>
+						{ButtonName}
+					</button>
 				</div>
 			</div>
-
-			<div className={styles.finalPrice}>
-				<span>Salling Price:</span>
-				{loadingData.final ? (
-					<ShimmerEffect />
-				) : (
-					<span>{formatNumber(isCashOnDelivery ? roundedFinal : Final)}</span>
-				)}
-			</div>
-			<div className={styles.discountSection}>
-			
-				<div className={styles.row}>
-					<span>Taxable Amount:</span>
-					<>
-					 {loadingData.final ? <ShimmerEffect /> : <span>{formatNumber(totalwithoutgst)}</span>} 
-					</>
-				</div>
-				</div>
-
-				<div className={styles.row}>
-					<span>Delivery Fee:</span>
-					{loadingData.shipping ? (
-						<ShimmerEffect />
-					) : (
-						<span>
-							{shipping === 0 ? (
-								<>Free</>
-							) : (
-								formatNumber(shipping)
-							)}
-						</span>
-					)}
-				</div>
-				{tax !== 0 &&
-				<div className={styles.row}>
-					<span>Tax added:</span>
-					{loadingData.tax ? (
-						<ShimmerEffect />
-					) : (
-						<span>
-							₹{tax.toFixed(2)}
-						</span>
-					)}
-				</div>
-				}
-			</div>
-
-			<div className={styles.total}>
-				<span>Order Total:</span>
-				{loadingData.final ? (
-					<ShimmerEffect />
-				) : (
-					<span>{formatNumber(isCashOnDelivery ? roundedFinal : Final)}</span>
-				)}
-			</div>
-
-			
-
-			<div className={styles.actions}>
-				<button
-					className={styles.process_to_check}
-					disabled={disabled || loadingData.final}
-					style={{ opacity: disabled || loadingData.final ? 0.5 : 1 }}
-					onClick={() => navigate("/cart/checkout/")}
-				>
-					{ButtonName}
-				</button>  
-			</div>
-		</div>
 		</>
 
 	);
