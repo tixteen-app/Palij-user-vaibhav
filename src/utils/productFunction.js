@@ -259,13 +259,9 @@ export const submitOrderforlocal = async (
 ) => {
 	try {
 		setLoading(true)
-		// data.priceaftertax = updatedTotal
 		const response = await makeApi("/api/create-second-order-for-self-delivery", "POST", data)
 		setOrderPlaced(true)
-
-		// Update cart count to 0
 		updateCartCount([])
-
 		setTimeout(() => {
 			setOrderPlaced(false)
 			navigation("/latest-order")

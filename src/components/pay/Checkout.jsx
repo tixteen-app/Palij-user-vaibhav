@@ -279,6 +279,7 @@ function Checkout() {
 			shippingAddress: selectedShippingAddress,
 			billingAddress: selectedBillingAddress,
 			paymentMethod: selectPaymentMethod,
+			taxprice: cartTotalWithGST,
 			CartId: cartItem._id,
 		};
 		if (selectPaymentMethod === "Razorpay") {

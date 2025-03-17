@@ -160,6 +160,7 @@ function CartCalculation({
 	isCashOnDelivery,
 	totalwithoutgst
 }) {
+	
 	const [loadingData, setLoadingData] = useState({
 		final: true,
 		discount: true,
