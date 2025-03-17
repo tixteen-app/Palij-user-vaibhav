@@ -207,7 +207,7 @@ function CartCalculation({
 
 	return (
 		<>
-			<div className={styles.orderSummary}>
+			{/* <div className={styles.orderSummary}>
 				<h2 className={styles.title}>Order Details</h2>
 
 				<div className={styles.details}>
@@ -295,10 +295,10 @@ function CartCalculation({
 						{ButtonName}
 					</button>
 				</div>
-			</div>
+			</div> */}
 
 
-			<div className={styles.orderSummary} style={{ marginTop: "100px" }} >
+			{/* <div className={styles.orderSummary} style={{ marginTop: "100px" }} >
 				<h2 className={styles.title}>Order Details</h2>
 
 				<div className={styles.details}>
@@ -389,10 +389,10 @@ function CartCalculation({
 						{ButtonName}
 					</button>
 				</div>
-			</div>
+			</div> */}
 
 
-			<div className={styles.orderSummary} style={{ marginTop: "100px" }} >
+			<div className={styles.orderSummary}  >
 				<h2 className={styles.title}>Order Details</h2>
 
 				<div className={styles.details}>
