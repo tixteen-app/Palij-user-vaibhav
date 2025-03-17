@@ -228,10 +228,12 @@ export const submitOrder = async (
 	data,
 	setLoading,
 	setOrderPlaced,
-	navigation
+	navigation,
+	// updatedTotal
 ) => {
 	try {
 		setLoading(true)
+		// data.priceaftertax = updatedTotal
 		const response = await makeApi("/api/create-second-order", "POST", data)
 		setOrderPlaced(true)
 
@@ -252,11 +254,12 @@ export const submitOrderforlocal = async (
 	data,
 	setLoading,
 	setOrderPlaced,
-	navigation
+	navigation,
+	// updatedTotal
 ) => {
 	try {
 		setLoading(true)
-		console.log("-------------------444")
+		// data.priceaftertax = updatedTotal
 		const response = await makeApi("/api/create-second-order-for-self-delivery", "POST", data)
 		setOrderPlaced(true)
 
@@ -389,7 +392,6 @@ export const deleteproductFromCart = async (
 export const updateCartCount = (cartItems) => {
 	const cartCount = cartItems.reduce((count, item) => count + item.quantity, 0)
 	cartCountListeners.forEach((listener) => listener(cartCount))
-	console.log("cart count")
 }
 
 export const subscribeToCartCount = (listener) => {

@@ -17,7 +17,7 @@ const Explore = () => {
           It's a Memory!
         </h2>
         <p>Perfectly Packed for Every Occasion!</p>
-        <button onClick={handleCategoryClick}>EXPLORE <img src={assets.crossArrow} alt="" /></button>
+        <button onClick={handleCategoryClick} >EXPLORE <img src={assets.crossArrow} alt="" /></button>
       </div>
     </div>
   )

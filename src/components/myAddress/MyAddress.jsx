@@ -101,10 +101,12 @@ const MyAddress = () => {
 							>
 								Add Shipping Address
 							</button>
+							<div className="shipping_Address_main_div_my_profile" >
 							{shippingAddresses.map((address) => (
+								
 								<div
 									key={address._id}
-									className="billing-address a_shipp_bill"
+									className="billing-address a_shipp_bill "
 								>
 									<div className="billing-address-flex">
 										<h3>SHIPPING ADDRESS</h3>
@@ -126,6 +128,7 @@ const MyAddress = () => {
 									</p>
 								</div>
 							))}
+							</div>
 						</div>
 					</div>
 				</div>

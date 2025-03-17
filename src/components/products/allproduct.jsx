@@ -313,18 +313,18 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
 	// 		setAllProductLoader(false);
 	// 	}
 	// };
-	const fetchProduct = async (page, cat, searchTerm, min, max,subcategory) => {
+	const fetchProduct = async (page, cat, searchTerm, min, max, subcategory) => {
 		try {
 			setAllProductLoader(true);
-			console.log("//./././",subcategory)
+			console.log("//./././", subcategory)
 			const response = await makeApi(
 				`/api/get-all-products?name=${searchTerm}&category=${cat}&subcategory=${subcategory}&minPrice=${min}&maxPrice=${max}&page=${page}&perPage=${ResultPerPage}&IsOutOfStock=false`,
 				"GET"
 			);
-	
+
 			// Sort to ensure first product is first (modify sorting logic as needed)
 			const sortedProducts = response.data.products.sort((a, b) => a.name.localeCompare(b.name));
-	
+
 			setProducts(sortedProducts);
 			setDisplayedProducts(sortedProducts.slice(0, visibleProducts));
 			setToalProduct(response.data.totalProducts);
@@ -335,8 +335,8 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
 			setAllProductLoader(false);
 		}
 	};
-	
-	
+
+
 
 	useEffect(() => {
 		const queryParams = new URLSearchParams(location.search);
@@ -345,15 +345,15 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
 		const minPriceFromUrl = queryParams.get("minPrice") || "0";
 		const maxPriceFromUrl = queryParams.get("maxPrice") || "1000000";
 
-		fetchProduct(1, categoryFromUrl, searchFromUrl, minPriceFromUrl, maxPriceFromUrl,subcategory);
+		fetchProduct(1, categoryFromUrl, searchFromUrl, minPriceFromUrl, maxPriceFromUrl, subcategory);
 	}, [location.search]);
 
 	useEffect(() => {
-		fetchProduct(1, category, search, minPrice, maxPrice,subcategory);
+		fetchProduct(1, category, search, minPrice, maxPrice, subcategory);
 		setCurrentPage(1);
 		fetchCartItems();
 		window.scrollTo(0, 0);
-	}, [search, category, minPrice, maxPrice,subcategory]);
+	}, [search, category, minPrice, maxPrice, subcategory]);
 
 	useEffect(() => {
 		fetchCart(setCartItems);
@@ -383,9 +383,12 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
 		const cartItem = cartItems.find(item => item.productId === productId && item.size === size._id);
 		if (cartItem && cartItem.quantity > 0) {
 			try {
+				setQuantityLoading(prev => ({ ...prev, [productId]: true }));
 				await removeFromCart(productId, setProductLoaders, setCartItems, fetchCartItems, size._id);
 			} catch (error) {
 				console.error("Error decreasing quantity:", error);
+			}finally {
+				setQuantityLoading(prev => ({ ...prev, [productId]: false }));
 			}
 		}
 	};
@@ -447,22 +450,28 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
 													<div className={styles.cartActions}>
 														{cartItems.some(cartItem => cartItem.productId === item._id && cartItem.size === item.size[0]._id) ? (
 															<div className={styles.cartIncDec}>
-																<img
+																{/* <img
 																	src={RemoveIcon}
 																	alt=""
 																	onClick={() => handleDecreaseQuantity(item._id, item.size[0])}
-																/>
+																/> */}
+																<svg xmlns="http://www.w3.org/2000/svg" onClick={() => handleDecreaseQuantity(item._id, item.size[0])} width="30" height="30" fill="currentColor" class="bi bi-dash text-black" style={{ cursor: "pointer" }} viewBox="0 0 16 16">
+																	<path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" />
+																</svg>
 																{quantityLoading[item._id] ? (
 																	<div className={styles.loader}>
 																	</div>
 																) : (
 																	<p>{cartItems.find(cartItem => cartItem.productId === item._id && cartItem.size === item.size[0]._id)?.quantity || 0}</p>
 																)}
-																<img
+																{/* <img
 																	src={AddIcon}
 																	alt=""
 																	onClick={() => handleIncreaseQuantity(item._id, item.size[0])}
-																/>
+																/> */}
+																<svg xmlns="http://www.w3.org/2000/svg" onClick={() => handleIncreaseQuantity(item._id, item.size[0])} width="30" height="30" fill="currentColor" class="bi bi-plus text-black" style={{ cursor: "pointer" }} viewBox="0 0 16 16">
+																	<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+																</svg>
 															</div>
 														) : (
 															<>

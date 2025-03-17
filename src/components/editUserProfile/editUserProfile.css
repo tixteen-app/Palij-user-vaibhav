@@ -141,7 +141,7 @@
 }
 
 .edit-pno input {
-  margin-left: 25px;
+  margin-left: 50px;
 }
 
 .edit-security {
@@ -229,9 +229,9 @@ input[type=file]::file-selector-button:hover {
     padding: 0 18px;
   }
 
-  .edit-pno input {
-    margin-left: 40px;
-  }
+  /* .edit-pno input {
+    margin-left: 50px;
+  } */
 
   .male-female {
     display: flex;

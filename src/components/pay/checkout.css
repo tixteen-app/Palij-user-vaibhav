@@ -21,6 +21,11 @@
   padding-top: 10vh;
   background: white;
 }
+.my_cart_add_addreess_page_back_button{
+  position: absolute;
+  top: 8%;
+  left: 4%;
+}
 
 .success-gif-containe {
   padding-top: 35vh;
@@ -63,3 +68,170 @@
   display: flex;
   flex-direction: column;
 }
+
+/* Popup Overlay */
+.cart_page-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Popup Container */
+.cart_page-popup {
+  background: #ffffff;
+  padding: 25px;
+  width: 90%;
+  max-width: 450px;
+  border-radius: 8px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Popup Title */
+.cart_page-popup h2 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Input Fields */
+.cart_page-popup input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.2s ease-in-out;
+}
+
+.cart_page-popup input:focus {
+  border-color: var(--pink-color);
+}
+
+
+
+/* Save Button */
+.cart_page-save-btn {
+  color: white;
+}
+
+
+
+/* Cancel Button */
+.cart_page-cancel-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.cart_page-cancel-btn:hover {
+  background-color: #c82333;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .cart_page-popup {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .cart_page-popup input {
+    padding: 10px;
+  }
+
+  .cart_page-popup-buttons {
+    flex-direction: column;
+  }
+
+  .cart_page-save-btn,
+  .cart_page-cancel-btn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Button Container */
+.cart_page-popup-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+/* Save & Cancel Buttons */
+.cart_page-popup-buttons button {
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 5px;
+  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+  width: 48%;
+}
+
+/* Save Button */
+.cart_page-popup-buttons button:first-child {
+  background-color: var(--redPink); 
+  color: #ffffff;
+  font-size: 15px;
+}
+
+.cart_page-popup-buttons button:first-child:hover {
+  background-color: #ee5564be;
+}
+
+/* Cancel Button */
+.cart_page-popup-buttons button:last-child {
+  border: 1px solid #EE5564;
+  color: #000000;
+  transition: all 0.4 ease-in-out;
+}
+
+.cart_page-popup-buttons button:last-child:hover {
+  background-color: #EE5564;
+  border: none;
+  color: white;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .cart_page-popup-buttons {
+    flex-direction: column;
+  }
+
+  .cart_page-popup-buttons button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+}
+@media (max-width: 520px) {
+  .my_cart_add_addreess_page_back_button{
+    position: absolute;
+    top: 5%;
+    left: 1%;
+  }
+}
+

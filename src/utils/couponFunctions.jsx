@@ -125,10 +125,9 @@ import CartCalculation from "../components/CartCalculation/cartCalculation";
 import { makeApi } from "../api/callApi.tsx";
 import styles from "./CouponSection.module.css";
 
-const CouponFunctions = () => {
+const CouponFunctions = ({ updateCart }) => {
   const [cartItems, setCartItems] = useState([]);
   const [completeCart, setCompleteCart] = useState({});
-  console.log("=-=-=-",completeCart);
   const [fetchCartLoader, setFetchCartLoader] = useState(false);
   const [loading, setLoading] = useState(false);
   const [appliedCoupon, setAppliedCoupon] = useState(false);
@@ -142,9 +141,10 @@ const CouponFunctions = () => {
     }
   };
 
+  
   useEffect(() => {
     fetchCartItem();
-  }, []);
+  }, [updateCart]);
 
   useEffect(() => {
     if (completeCart?.coupancode) {
@@ -189,61 +189,6 @@ const CouponFunctions = () => {
   };
 
   return (
-    // <div>
-
-
-    //   <div className="cart-bottomm">
-    //     <div className="cart-address">
-    //       <div className="cart-shipping-address"></div>
-    //     </div>
-
-    //     <div className="cart-billing">
-    //       <div className={styles.couponSection}>
-
-    //         <div className={styles.inputGroup}>
-    //           <input
-    //             type="text"
-    //             placeholder="Enter coupon code"
-    //             value={couponCode}
-    //             onChange={(e) => setCouponCode(e.target.value)}
-    //             disabled={loading || appliedCoupon}
-    //             className={styles.input}
-    //           />
-    //           <button
-    //             onClick={handleApplyCoupon}
-    //             disabled={loading || appliedCoupon}
-    //             className={styles.button}
-    //           >
-    //             {loading ? "Applying..." : appliedCoupon ? "Applied" : "Apply Coupon"}
-    //           </button>
-    //         </div>
-    //         {appliedCoupon && (
-    //           <div className={styles.appliedCoupon}>
-    //             <span>Coupon applied: {couponCode}</span>
-    //             <button
-    //               onClick={handleRemoveCoupon}
-    //               disabled={loading}
-    //               className={`${styles.button} ${styles.removeButton}`}
-    //             >
-    //               {loading ? "Removing..." : "Remove"}
-    //             </button>
-    //           </div>
-    //         )}
-    //       </div>
-    //       <CartCalculation
-    //         tax={0}
-    //         shipping={0}
-    //         CoupanApplied={appliedCoupon ? completeCart?.couapnDiscount : 0}
-    //         Final={completeCart?.totalPrice}
-    //         total={completeCart?.totalPriceWithoutDiscount}
-    //         ButtonName="PROCEED TO CHECKOUT"
-    //         disabled={false}
-    //       />
-    //     </div>
-    //   </div>
-
-    //   <ToastContainer />
-    // </div>
     <>
       <ToastContainer position="top-right"
         autoClose={2000}

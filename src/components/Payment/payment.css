@@ -40,6 +40,16 @@
 .shipping-address-container {
   width: 100%;
 }
+.add_new_address_button_cart_page{
+  border-radius: 10px !important;
+  font-weight: 400 !important;
+  margin: 10px 0px  !important;
+  transition: all 0.9 ease !important;
+}
+.add_new_address_button_cart_page:hover{
+  background-color: black !important;
+  color: white !important;
+}
 
 .shipping-address-title {
   font-size: 30px;
@@ -50,7 +60,8 @@
 .address-item {
   display: flex;
   padding: 15px 20px;
-  border: 2px solid #E5087E;
+  /* border: 2px solid #E5087E; */
+  border: 2px solid #050505;
   border-radius: 10px;
   width: 60%;
   margin-top: 20px;
@@ -133,7 +144,6 @@
   /* address */
   .shipping-address-container {
     width: 100%;
-    margin-top: -20px;
   }
 
   .shipping-address-title {

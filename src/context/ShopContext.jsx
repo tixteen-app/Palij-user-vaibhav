@@ -25,7 +25,6 @@ const ShopContextProvider = (props) => {
 		fetchData()
 	}, [])
 	const all_product = all_products
-	// console.log(all_product)
 
 	const addToCart = (itemId) => {
 		// const token = localStorage.getItem("token")
@@ -81,7 +80,6 @@ const ShopContextProvider = (props) => {
 			}
 		}
 		totalAmount = parseFloat(totalAmount.toFixed(2))
-		console.log("discount amount", totalAmount)
 		return totalAmount
 	}
 	const getTotalCartItems = () => {
@@ -112,8 +110,6 @@ const ShopContextProvider = (props) => {
 		getTotalCartItems,
 		getTotalCartDiscountAmount,
 	}
-	console.log("cartitems", cartItems)
-	console.log("cartitems discount", getTotalCartDiscountAmount())
 
 	return (
 		<>

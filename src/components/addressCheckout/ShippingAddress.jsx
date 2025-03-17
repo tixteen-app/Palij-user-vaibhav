@@ -3,6 +3,7 @@ import { makeApi } from "../../api/callApi"
 import { ToastContainer, toast } from "react-toastify"
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
+import BackButton from "../products/backButton"
 
 const AddShippingAddress = () => {
 	const navigate = useNavigate()
@@ -117,12 +118,19 @@ const AddShippingAddress = () => {
 	return (
 		<>
 			<ToastContainer autoClose={1000} />
+			<div  className="d-flex align-items-center mb-2 my_cart_add_addreess_page_back_button"  >
+				<BackButton pageLocation="/cart/checkout/" />
+			</div>
 			<div className="my-shipping-belling-address">
+
 				<form
 					action=""
 					className="address-form"
 				>
+
+
 					<div className="my-shipping-address">
+
 						<div className="shipping-header">
 							<h2>Shipping Address:</h2>
 							{/* <button type="button">Edit</button> */}

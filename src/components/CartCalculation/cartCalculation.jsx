@@ -1,4 +1,3 @@
-
 // import React, { useEffect, useState } from "react";
 // import { useNavigate } from "react-router-dom";
 // import useCoupon from "../../hook/coupanHook";
@@ -12,12 +11,14 @@
 // 	Final,
 // 	ButtonName,
 // 	disabled,
-// }) {
+// 	isCashOnDelivery,
+// 	totalwithoutgst
 
+// }) {
 // 	const [loadingData, setLoadingData] = useState({
-// 		final: false,
-// 		discount: false,
-// 		shipping: false
+// 		final: true,
+// 		discount: true,
+// 		shipping: true,
 // 	});
 
 // 	const formatNumber = (number) => {
@@ -31,155 +32,68 @@
 // 		couponDiscount,
 // 		applyCoupon,
 // 		removeCoupon,
+
 // 	} = useCoupon();
 // 	const navigate = useNavigate();
 
-
 // 	useEffect(() => {
 // 		// Simulate data fetching
-// 		if (Final !== undefined && Final !== null) {
-// 			setLoadingData(prev => ({ ...prev, final: false }));
-// 		}
-// 		if (shipping !== undefined && shipping !== null) {
-// 			setLoadingData(prev => ({ ...prev, shipping: false }));
-// 		}
-// 		// Add similar checks for other values as needed
-// 	}, [Final, shipping]);
+// 		setTimeout(() => {
+// 			setLoadingData({
+// 				final: false,
+// 				discount: false,
+// 				shipping: false,
+// 			});
+// 		}, 2000); // Simulating 2 seconds delay
+// 	}, []);
 
-
-
-// 	return (
-// 		<div className={styles.orderSummary}>
-// 			<h2 className={styles.title}>Order Details</h2>
-
-// 			<div className={styles.details}>
-// 				<div className={styles.row}>
-// 					<span>Order Amount:</span>
-// 					{loadingData.final ? (
-// 						<span className={styles.loading}></span>
-// 					) : (
-// 						<span>{total}</span>
-// 					)}
-// 				</div>
-// 				<div className={styles.row}>
-// 					<span>Discount:</span>
-// 					<span className={styles.savings}>-₹{total - Final}</span>
-// 				</div>
-
-// 				<div className={styles.row}>
-// 					<span>Delivery Fee:</span>
-// 					{loadingData.shipping ? (
-// 						<span className={styles.loading}></span>
-// 					) : (
-// 						<span>
-// 							{shipping === 0 ? (
-// 								<>Free</>
-// 							) : (
-// 								formatNumber(shipping)
-// 							)}
-// 						</span>
-// 					)}
-// 				</div>
-// 			</div>
-
-// 			<div className={styles.total}>
-// 				<span>Order Total:</span>
-// 				{loadingData.final ? (
-// 					<span className={styles.loading}></span>
-// 				) : (
-// 					<span>₹{Final}</span>
-// 				)}
-// 			</div>
-
-// 			<div className={styles.actions}>
-// 				<button
-// 					className={styles.signUp}
-// 					disabled={disabled}
-// 					style={{ opacity: disabled ? 0.5 : 1 }}
-// 					onClick={() => navigate("/cart/checkout/")}
-// 				>
-// 					{ButtonName}
-// 				</button>
-// 			</div>
-// 		</div>
-
-// 	);
-// }
-
-// export default CartCalculation;
-
-
-
-// import React, { useEffect, useState } from "react";
-// import { useNavigate } from "react-router-dom";
-// import useCoupon from "../../hook/coupanHook";
-// import styles from './CartCalculation.module.css';
-
-// function CartCalculation({
-// 	tax,
-// 	shipping,
-// 	CoupanApplied,
-// 	total,
-// 	Final,
-// 	ButtonName,
-// 	disabled,
-// }) {
-// 	const [loadingData, setLoadingData] = useState({
-// 		final: false,
-// 		discount: false,
-// 		shipping: false,
-// 	});
-
-// 	const formatNumber = (number) => {
-// 		return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(number);
+// 	const roundValue = (value) => {
+// 		return isCashOnDelivery ? Math.round(value) : value;
 // 	};
 
-// 	const {
-// 		couponCode,
-// 		setCouponCode,
-// 		appliedCoupon,
-// 		couponDiscount,
-// 		applyCoupon,
-// 		removeCoupon,
-// 	} = useCoupon();
-// 	const navigate = useNavigate();
+// 	const discount = (total) - Final;
+// 	const roundedDiscount = roundValue(discount);
+// 	const roundedFinal = roundValue(Final);
 
-// 	useEffect(() => {
-// 		// Simulate data fetching
-// 		if (Final !== undefined && Final !== null) {
-// 			setLoadingData(prev => ({ ...prev, final: false }));
-// 		}
-// 		if (shipping !== undefined && shipping !== null) {
-// 			setLoadingData(prev => ({ ...prev, shipping: false }));
-// 		}
-// 	}, [Final, shipping]);
-
-// 	const roundedDiscount = Math.round(total - Final);
-// 	const roundedFinal = Math.round(Final);
+// 	const ShimmerEffect = () => (
+// 		<div className={styles.shimmer}>
+// 			<div className={styles.shimmerInner}></div>
+// 		</div>
+// 	);
 
 // 	return (
-
 // 		<div className={styles.orderSummary}>
 // 			<h2 className={styles.title}>Order Details</h2>
 
 // 			<div className={styles.details}>
 // 				<div className={styles.row}>
 // 					<span>Order Amount:</span>
-// 					{loadingData.final ? (
-// 						<span className={styles.loading}></span>
+// 					<>
+// 					 {loadingData.final ? <ShimmerEffect /> : <span>{formatNumber(total)}</span>} 
+// 					</>
+// 				</div>
+			
+// 				<div className={styles.row}>
+// 					<span>Discount:</span>
+// 					{loadingData.discount ? (
+// 						<ShimmerEffect />
 // 					) : (
-// 						<span>{formatNumber(total)}</span>
+// 						<span className={styles.savings}>
+// 							{formatNumber(isCashOnDelivery ? roundedDiscount : discount)}
+// 						</span>
 // 					)}
 // 				</div>
 // 				<div className={styles.row}>
-// 					<span>Discount:</span>
-// 					<span className={styles.savings}>₹{roundedDiscount}</span>
+// 					<span>Taxble  Amount:</span>
+// 					<>
+// 					 {loadingData.final ? <ShimmerEffect /> : <span>{formatNumber(totalwithoutgst)}</span>} 
+// 					</>
 // 				</div>
 
 // 				<div className={styles.row}>
 // 					<span>Delivery Fee:</span>
 // 					{loadingData.shipping ? (
-// 						<span className={styles.loading}></span>
+// 						<ShimmerEffect />
 // 					) : (
 // 						<span>
 // 							{shipping === 0 ? (
@@ -190,34 +104,45 @@
 // 						</span>
 // 					)}
 // 				</div>
+// 				{tax !== 0 &&
+// 				<div className={styles.row}>
+// 					<span>Tax added:</span>
+// 					{loadingData.tax ? (
+// 						<ShimmerEffect />
+// 					) : (
+// 						<span>
+// 							₹{tax.toFixed(2)}
+// 							{/* ₹{Math.round(tax * 100) / 100} */}
+// 						</span>
+// 					)}
+// 				</div>
+// 				}
 // 			</div>
 
 // 			<div className={styles.total}>
 // 				<span>Order Total:</span>
 // 				{loadingData.final ? (
-// 					<span className={styles.loading}></span>
+// 					<ShimmerEffect />
 // 				) : (
-// 					<span>₹{roundedFinal}</span>
+// 					<span>{formatNumber(isCashOnDelivery ? roundedFinal : Final)}</span>
 // 				)}
 // 			</div>
 
 // 			<div className={styles.actions}>
 // 				<button
-// 					className={styles.signUp}
-// 					disabled={disabled}
-// 					style={{ opacity: disabled ? 0.5 : 1 }}
+// 					className={styles.process_to_check}
+// 					disabled={disabled || loadingData.final}
+// 					style={{ opacity: disabled || loadingData.final ? 0.5 : 1 }}
 // 					onClick={() => navigate("/cart/checkout/")}
 // 				>
 // 					{ButtonName}
-// 				</button>
+// 				</button>  
 // 			</div>
 // 		</div>
 // 	);
 // }
 
 // export default CartCalculation;
-
-
 
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -232,7 +157,8 @@ function CartCalculation({
 	Final,
 	ButtonName,
 	disabled,
-	isCashOnDelivery
+	isCashOnDelivery,
+	totalwithoutgst
 }) {
 	const [loadingData, setLoadingData] = useState({
 		final: true,
@@ -251,7 +177,6 @@ function CartCalculation({
 		couponDiscount,
 		applyCoupon,
 		removeCoupon,
-
 	} = useCoupon();
 	const navigate = useNavigate();
 
@@ -270,7 +195,7 @@ function CartCalculation({
 		return isCashOnDelivery ? Math.round(value) : value;
 	};
 
-	const discount = total - Final;
+	const discount = (total) - Final;
 	const roundedDiscount = roundValue(discount);
 	const roundedFinal = roundValue(Final);
 
@@ -281,23 +206,23 @@ function CartCalculation({
 	);
 
 	return (
+		<>
 		<div className={styles.orderSummary}>
 			<h2 className={styles.title}>Order Details</h2>
 
 			<div className={styles.details}>
 				<div className={styles.row}>
 					<span>Order Amount:</span>
-					{loadingData.final ? <ShimmerEffect /> : <span>{formatNumber(total)}</span>}
+					<>
+					 {loadingData.final ? <ShimmerEffect /> : <span>{formatNumber(total)}</span>} 
+					</>
 				</div>
+			
 				<div className={styles.row}>
-					<span>Discount:</span>
-					{loadingData.discount ? (
-						<ShimmerEffect />
-					) : (
-						<span className={styles.savings}>
-							{formatNumber(isCashOnDelivery ? roundedDiscount : discount)}
-						</span>
-					)}
+					<span>Taxble Amount:</span>
+					<>
+					 {loadingData.final ? <ShimmerEffect /> : <span>{formatNumber(totalwithoutgst)}</span>} 
+					</>
 				</div>
 
 				<div className={styles.row}>
@@ -314,10 +239,44 @@ function CartCalculation({
 						</span>
 					)}
 				</div>
+				{tax !== 0 &&
+				<div className={styles.row}>
+					<span>Tax added:</span>
+					{loadingData.tax ? (
+						<ShimmerEffect />
+					) : (
+						<span>
+							₹{tax.toFixed(2)}
+						</span>
+					)}
+				</div>
+				}
 			</div>
 
 			<div className={styles.total}>
 				<span>Order Total:</span>
+				{loadingData.final ? (
+					<ShimmerEffect />
+				) : (
+					<span>{formatNumber(total)}</span>
+				)}
+			</div>
+
+			<div className={styles.discountSection}>
+				<div className={styles.row}>
+					<span>Discount:</span>
+					{loadingData.discount ? (
+						<ShimmerEffect />
+					) : (
+						<span className={styles.savings}>
+							{formatNumber(isCashOnDelivery ? roundedDiscount : discount)}
+						</span>
+					)}
+				</div>
+			</div>
+
+			<div className={styles.finalPrice}>
+				<span>Final Price:</span>
 				{loadingData.final ? (
 					<ShimmerEffect />
 				) : (
@@ -333,9 +292,197 @@ function CartCalculation({
 					onClick={() => navigate("/cart/checkout/")}
 				>
 					{ButtonName}
-				</button>
+				</button>  
 			</div>
 		</div>
+
+
+		<div className={styles.orderSummary} style={{marginTop:"100px"}} >
+			<h2 className={styles.title}>Order Details</h2>
+
+			<div className={styles.details}>
+				<div className={styles.row}>
+					<span>Order Amount:</span>
+					<>
+					 {loadingData.final ? <ShimmerEffect /> : <span>{formatNumber(total)}</span>} 
+					</>
+				</div>
+				<div className={styles.discountSection}>
+				<div className={styles.row}>
+					<span>Discount:</span>
+					{loadingData.discount ? (
+						<ShimmerEffect />
+					) : (
+						<span className={styles.savings}>
+							{formatNumber(isCashOnDelivery ? roundedDiscount : discount)}
+						</span>
+					)}
+				</div>
+			</div>
+
+			<div className={styles.finalPrice}>
+				<span>Salling Price:</span>
+				{loadingData.final ? (
+					<ShimmerEffect />
+				) : (
+					<span>{formatNumber(isCashOnDelivery ? roundedFinal : Final)}</span>
+				)}
+			</div>
+			<div className={styles.discountSection}>
+			
+				<div className={styles.row}>
+					<span>Taxable Amount:</span>
+					<>
+					 {loadingData.final ? <ShimmerEffect /> : <span>{formatNumber(totalwithoutgst)}</span>} 
+					</>
+				</div>
+				</div>
+
+				<div className={styles.row}>
+					<span>Delivery Fee:</span>
+					{loadingData.shipping ? (
+						<ShimmerEffect />
+					) : (
+						<span>
+							{shipping === 0 ? (
+								<>Free</>
+							) : (
+								formatNumber(shipping)
+							)}
+						</span>
+					)}
+				</div>
+				{tax !== 0 &&
+				<div className={styles.row}>
+					<span>Tax added:</span>
+					{loadingData.tax ? (
+						<ShimmerEffect />
+					) : (
+						<span>
+							₹{tax.toFixed(2)}
+						</span>
+					)}
+				</div>
+				}
+			</div>
+
+			<div className={styles.total}>
+				<span>Order Total:</span>
+				{loadingData.final ? (
+					<ShimmerEffect />
+				) : (
+					<span>{formatNumber(isCashOnDelivery ? roundedFinal : Final)}</span>
+				)}
+			</div>
+
+			
+
+			<div className={styles.actions}>
+				<button
+					className={styles.process_to_check}
+					disabled={disabled || loadingData.final}
+					style={{ opacity: disabled || loadingData.final ? 0.5 : 1 }}
+					onClick={() => navigate("/cart/checkout/")}
+				>
+					{ButtonName}
+				</button>  
+			</div>
+		</div>
+
+
+		<div className={styles.orderSummary} style={{marginTop:"100px"}} >
+			<h2 className={styles.title}>Order Details</h2>
+
+			<div className={styles.details}>
+				<div className={styles.row}>
+					<span>MRP:</span>
+					<>
+					 {loadingData.final ? <ShimmerEffect /> : <span>{formatNumber(total)}</span>} 
+					</>
+				</div>
+				<div className={styles.discountSection}>
+				<div className={styles.row}>
+					<span>Discount:</span>
+					{loadingData.discount ? (
+						<ShimmerEffect />
+					) : (
+						<span className={styles.savings}>
+							{formatNumber(isCashOnDelivery ? roundedDiscount : discount)}
+						</span>
+					)}
+				</div>
+			</div>
+
+			<div className={styles.finalPrice}>
+				<span>Salling Price:</span>
+				{loadingData.final ? (
+					<ShimmerEffect />
+				) : (
+					<span>{formatNumber(isCashOnDelivery ? roundedFinal : Final)}</span>
+				)}
+			</div>
+			<div className={styles.discountSection}>
+			
+				<div className={styles.row}>
+					<span>Taxable Amount:</span>
+					<>
+					 {loadingData.final ? <ShimmerEffect /> : <span>{formatNumber(totalwithoutgst)}</span>} 
+					</>
+				</div>
+				</div>
+
+				<div className={styles.row}>
+					<span>Delivery Fee:</span>
+					{loadingData.shipping ? (
+						<ShimmerEffect />
+					) : (
+						<span>
+							{shipping === 0 ? (
+								<>Free</>
+							) : (
+								formatNumber(shipping)
+							)}
+						</span>
+					)}
+				</div>
+				{tax !== 0 &&
+				<div className={styles.row}>
+					<span>Tax added:</span>
+					{loadingData.tax ? (
+						<ShimmerEffect />
+					) : (
+						<span>
+							₹{tax.toFixed(2)}
+						</span>
+					)}
+				</div>
+				}
+			</div>
+
+			<div className={styles.total}>
+				<span>Order Total:</span>
+				{loadingData.final ? (
+					<ShimmerEffect />
+				) : (
+					<span>{formatNumber(isCashOnDelivery ? roundedFinal : Final)}</span>
+				)}
+			</div>
+
+			
+
+			<div className={styles.actions}>
+				<button
+					className={styles.process_to_check}
+					disabled={disabled || loadingData.final}
+					style={{ opacity: disabled || loadingData.final ? 0.5 : 1 }}
+					onClick={() => navigate("/cart/checkout/")}
+				>
+					{ButtonName}
+				</button>  
+			</div>
+		</div>
+		</>
+
 	);
 }
 

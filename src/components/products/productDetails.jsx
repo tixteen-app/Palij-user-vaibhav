@@ -1989,9 +1989,14 @@ function ProductDetails() {
     console.log(cartQuantity)
     if (cartQuantity > 0) {
       try {
+      setQuantityLoading(true);
+
         await removeFromCart(productId, setProductLoaders, setCartItems, fetchCartItems, selectedSize._id);
       } catch (error) {
         console.error("Error decreasing quantity:", error);
+      }finally{
+      setQuantityLoading(false);
+
       }
     }
   };
@@ -2164,19 +2169,24 @@ function ProductDetails() {
                     <div className={styles.actions}>
                       {isInCart ? (
                         <div className={styles.cartIncDec}>
-                          <img
+                          {/* <img
                             src={RemoveIcon}
                             alt=""
-                            onClick={handleDecreaseQuantity} />
+                            onClick={handleDecreaseQuantity} /> */}
+                             <svg xmlns="http://www.w3.org/2000/svg" onClick={handleDecreaseQuantity} width="30" height="30" fill="currentColor" class="bi bi-dash text-black" style={{ cursor: "pointer" }} viewBox="0 0 16 16">
+                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" />
+                      </svg>
                           {quantityLoading ? (
                             <div className={styles.countLoaderss}>
-                              {/* <PrimaryLoader /> */}
                             </div>
                           ) : (
                             <p>{cartQuantity}</p>
                           )}
                           {/* <p>{cartQuantity}</p> */}
-                          <img src={AddIcon} alt="" onClick={handleIncreaseQuantity} />
+                          {/* <img src={AddIcon} alt="" onClick={handleIncreaseQuantity} /> */}
+                          <svg xmlns="http://www.w3.org/2000/svg" onClick={handleIncreaseQuantity} width="30" height="30" fill="currentColor" class="bi bi-plus text-black" style={{ cursor: "pointer" }} viewBox="0 0 16 16">
+                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+                          </svg>
                           {/* <button className="btn btn-danger" onClick={() => navigate("/cart")}>Go to Cart</button> */}
                         </div>
                       ) : (
