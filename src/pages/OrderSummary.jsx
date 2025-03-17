@@ -449,7 +449,7 @@ const OrderSummary = () => {
           </div>
           <div className={styles.invoiceInfo}>
             <p>
-              <strong>Order ID:</strong> {orderSummary?._id}
+              <strong>Order ID:</strong> {orderSummary?.orderId}
             </p>
             <p>
               <strong>Status:</strong> {shiprocketorder?.data?.status}
