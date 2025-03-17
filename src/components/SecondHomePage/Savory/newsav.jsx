@@ -138,14 +138,11 @@ const NSavory = () => {
               <div className={styles.name}>
                 <p>{item.name}</p>
               </div>
-              <div className={styles.cardFooter}>
-                <div className={styles.price}>
+              <div className={styles.cardFooter}  >
+                <div className={styles.price} style={{paddingTop:"4px"}} >
                   {item.size.length > 0 &&
                     <p className={styles.productPrice}>
                       <span>₹</span>{item.size[0].FinalPrice} {/* Assuming you want to show the price of the first size */}
-                      {/* {item.size[0].discountPercentage > 0 && (
-                        <span> ₹{item.size[0].price}</span>
-                      )} */}
                     </p>
                   }
                 </div>
@@ -155,12 +152,16 @@ const NSavory = () => {
                     {cartItems.some(cartItem => cartItem.productId === item._id && cartItem.size === item.size[0]._id) ? (
                       <div className={styles.cartIncDec}>
                         <div>
-                          <img
+                          {/* <img
                             src={RemoveIcon}
                             alt=""
                             onClick={() => handleDecreaseQuantity(item._id, item.size[0])}
-                          />
+                          /> */}
+                          	<svg xmlns="http://www.w3.org/2000/svg" onClick={() => handleDecreaseQuantity(item._id, item.size[0])} width="30" height="30" fill="currentColor" class="bi bi-dash text-black" style={{ cursor: "pointer" }} viewBox="0 0 16 16">
+																	<path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" />
+																</svg>
                         </div>
+                        
                         <div>
                         {quantityLoading[item._id] ? (
                           <div className={styles.loader}>
@@ -172,12 +173,14 @@ const NSavory = () => {
                         )}
                         </div>
                         <div>
-
-                          <img
+                        <svg xmlns="http://www.w3.org/2000/svg" onClick={() => handleIncreaseQuantity(item._id, item.size[0])} width="30" height="30" fill="currentColor" class="bi bi-plus text-black" style={{ cursor: "pointer" }} viewBox="0 0 16 16">
+																	<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+																</svg>
+                          {/* <img
                             src={AddIcon}
                             alt=""
                             onClick={() => handleIncreaseQuantity(item._id, item.size[0])}
-                          />
+                          /> */}
                         </div>
                       </div>
                     ) : (

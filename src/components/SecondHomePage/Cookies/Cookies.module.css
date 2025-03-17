@@ -168,7 +168,7 @@
 .loader {
   width: 25px;
   height: 25px;
-  border: 4px solid var(--redPink);
+  border: 4px solid black;
   border-bottom-color: transparent;
   border-radius: 50%;
   display: inline-block;
