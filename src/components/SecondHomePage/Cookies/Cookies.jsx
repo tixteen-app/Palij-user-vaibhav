@@ -232,12 +232,15 @@ import React, { useState, useRef, useEffect } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
+import Slider from "react-slick";
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
 import './PremiumCookies.css';
 import { makeApi } from '../../../api/callApi';
 import { FiPlus, FiMinus } from 'react-icons/fi';
 import { LuLoaderCircle } from "react-icons/lu";
 
-// Import API cart functions
 import {
   addToCart,
   removeFromCart,
@@ -255,12 +258,12 @@ const Cookies = () => {
   const [AddTocartLoader, setAddTocartLoader] = useState({});
   const [productLoaders, setProductLoaders] = useState({});
   const [showPopup, setShowPopup] = useState(false);
-
   const [IsLogin, setIsLogin] = useState(false);
 
+  const [isMobileOrTablet, setIsMobileOrTablet] = useState(false);
   const sliderRef = useRef(null);
 
-  // ✅ Fetch products from API
+  // Fetch products
   const fetchProduct = async () => {
     try {
       setAllProductLoader(true);
@@ -279,7 +282,6 @@ const Cookies = () => {
     }
   };
 
-  // ✅ Fetch cart items from API
   const fetchCartItems = async () => {
     try {
       await fetchCart(setCartItems, setCompleteCart, setAddTocartLoader);
@@ -288,25 +290,18 @@ const Cookies = () => {
     }
   };
 
-  // ✅ Increase quantity API call
-  // Increase quantity (Optimistic UI)
   const handleIncreaseQuantity = async (productId, size) => {
     if (!IsLogin) {
       setShowPopup(true);
       return;
     }
 
-    const cartItem = cartItems.find(
-      item => item.productId === productId && item.size === size._id
-    );
-
+    const cartItem = cartItems.find(item => item.productId === productId && item.size === size._id);
     if (size.quantity === cartItem?.quantity) {
-      // toast('Cannot add more than available quantity.', { type: 'error' });
       console.log('Cannot add more than available quantity.');
       return;
     }
 
-    // ✅ Optimistic UI update before API call
     const updatedCartItems = cartItems.map(item => {
       if (item.productId === productId && item.size === size._id) {
         return { ...item, quantity: item.quantity + 1 };
@@ -326,35 +321,19 @@ const Cookies = () => {
     setQuantityLoading(prev => ({ ...prev, [productId]: true }));
 
     try {
-      await addToCart(
-        productId,
-        setIsLogin,
-        setShowPopup,
-        fetchCartItems,
-        setCartItems,
-        setProductLoaders,
-        size._id
-      );
+      await addToCart(productId, setIsLogin, setShowPopup, fetchCartItems, setCartItems, setProductLoaders, size._id);
     } catch (error) {
       console.error("Error increasing quantity:", error);
-      // toast("Error updating cart!", { type: "error" });
-      console.log('Error updating cart!');
-      fetchCartItems(); // rollback to actual API state
+      fetchCartItems();
     } finally {
       setQuantityLoading(prev => ({ ...prev, [productId]: false }));
     }
   };
 
-
-  // ✅ Decrease quantity API call
   const handleDecreaseQuantity = async (productId, size) => {
-    const cartItem = cartItems.find(
-      item => item.productId === productId && item.size === size._id
-    );
-
+    const cartItem = cartItems.find(item => item.productId === productId && item.size === size._id);
     if (!cartItem || cartItem.quantity <= 0) return;
 
-    // ✅ Optimistic UI update before API call
     const updatedCartItems = cartItems
       .map(item => {
         if (item.productId === productId && item.size === size._id) {
@@ -362,31 +341,21 @@ const Cookies = () => {
         }
         return item;
       })
-      .filter(item => item.quantity > 0); // Remove item if quantity goes to 0
+      .filter(item => item.quantity > 0);
 
     setCartItems(updatedCartItems);
     setQuantityLoading(prev => ({ ...prev, [productId]: true }));
 
     try {
-      await removeFromCart(
-        productId,
-        setProductLoaders,
-        setCartItems,
-        fetchCartItems,
-        size._id
-      );
+      await removeFromCart(productId, setProductLoaders, setCartItems, fetchCartItems, size._id);
     } catch (error) {
       console.error("Error decreasing quantity:", error);
-      // toast("Error updating cart!", { type: "error" });
-      console.log('Error updating cart!');
-      fetchCartItems(); // rollback to actual API state
+      fetchCartItems();
     } finally {
       setQuantityLoading(prev => ({ ...prev, [productId]: false }));
     }
   };
 
-
-  // ✅ Initialize fetches
   useEffect(() => {
     fetchProduct();
     fetchCart(setCartItems);
@@ -396,38 +365,33 @@ const Cookies = () => {
     setIsLogin(!!token);
   }, []);
 
-  // ✅ Update slider on window resize
   useEffect(() => {
-    const handleResize = () => updateSlider();
+    const handleResize = () => {
+      setIsMobileOrTablet(window.innerWidth <= 1024);
+    };
+
+    handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const updateSlider = () => {
-    if (window.innerWidth <= 575 && sliderRef.current) {
-      const itemWidth = sliderRef.current.clientWidth;
-      sliderRef.current.scrollTo({
-        left: currentIndex * itemWidth,
-        behavior: 'smooth',
-      });
-    }
+  const sliderSettings = {
+    dots: true,
+    arrows: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 2, // default value for tablets and desktops
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 575, // mobile devices
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ],
   };
-
-  const handleRightClick = () => {
-    setCurrentIndex(prevIndex =>
-      prevIndex < products.length - 1 ? prevIndex + 1 : 0
-    );
-  };
-
-  const handleLeftClick = () => {
-    setCurrentIndex(prevIndex =>
-      prevIndex > 0 ? prevIndex - 1 : products.length - 1
-    );
-  };
-
-  // const closePopup = () => {
-  //   setShowPopup(false);
-  // };
 
   return (
     <div className="premiumcookies">
@@ -436,133 +400,151 @@ const Cookies = () => {
       </div>
 
       <div className="slider-container">
-        <button className="arrow left-arrow" onClick={handleLeftClick}>
-          &#10094;
-        </button>
-
-        {allProductLoader ? (
-          <div className="premiumgrid" ref={sliderRef}>
-            {[1, 2, 3].map((_, index) => (
-              <div className="griditem" key={index}>
-                <div className="gridimg">
-                  <Skeleton height={200} width={'100%'} />
-                </div>
-                <div className="gridcontent">
-                  <div className="itemhead">
-                    <h3><Skeleton width={100} /></h3>
-                    <h3><Skeleton width={50} /></h3>
-                  </div>
-                  <div className="itemmiddle">
-                    <Skeleton width={`60%`} />
-                  </div>
-                  <div className="itemlower">
-                    <div className="lfirst">
-                      <Skeleton width={80} height={30} />
-                    </div>
-                    <Skeleton width={60} height={35} style={{ borderRadius: '5px' }} />
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="premiumgrid" ref={sliderRef}>
-            {products.length > 0 ? (
-              products.slice(5, 8).map((product, index) => {
-                const cartItem = cartItems.find(
-                  item => item.productId === product._id && item.size === product.size[0]._id
-                );
-
-                return (
-                  <div className="griditem" key={index}>
-                    <div className="gridimg">
-                      <img
-                        src={product.thumbnail ||
-                          'https://res.cloudinary.com/dtivafy25/image/upload/v1742208325/55_s8h0ie.png'
-                        }
-                        alt={product.name || 'Premium Cookie'}
-                      />
-                    </div>
-
-                    <div className="gridcontent">
-                      <div className="itemhead">
-                        <h3>{product.name || 'Product Name'}</h3>
-                        <h3>{product.size && product.size[0]?.weight ? product.size[0].weight : '800g'}</h3>
-                      </div>
-
-                      <div className="itemlower">
-                        <div className="lfirst">
-                          {product.size && product.size.length > 0 ? (
-                            <p>
-                              <span>₹</span>{product.size[0].FinalPrice || '0'}
-                              {product.size[0].discountPercentage > 0 && (
-                                <>
-                                  <span className="op">₹{product.size[0].price || '0'}</span>
-                                  <span className="rp">-{product.size[0].discountPercentage}%</span>
-                                </>
-                              )}
-                            </p>
-                          ) : (
-                            <p><span>₹</span>0</p>
-                          )}
-                        </div>
-
-                        {cartItem ? (
-                          <div className="quantity-control">
-                            {quantityLoading[product._id] ? (
-                              <LuLoaderCircle className="spin-loader" size={18} />
-                            ) : (
-                              <>
-                                <button
-                                  onClick={() => handleDecreaseQuantity(product._id, product.size[0])}
-                                  className="qty-btn"
-                                  disabled={quantityLoading[product._id]}
-                                >
-                                  <FiMinus size={18} />
-                                </button>
-
-                                <span className="qty-value">{cartItem.quantity}</span>
-
-                                <button
-                                  onClick={() => handleIncreaseQuantity(product._id, product.size[0])}
-                                  className="qty-btn"
-                                  disabled={quantityLoading[product._id]}
-                                >
-                                  <FiPlus size={18} />
-                                </button>
-                              </>
-                            )}
-                          </div>
-                        ) : (
-                          <button
-                            className="addbtn"
-                            onClick={() => handleIncreaseQuantity(product._id, product.size[0])}
-                            disabled={quantityLoading[product._id]}
-                          >
-                            {quantityLoading[product._id] ? (
-                              <LuLoaderCircle className="spin-loader" size={18} />
-                            ) : (
-                              "ADD"
-                            )}
-                          </button>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                );
-              })
-            ) : (
-              <div className="no-products">No products found in this category.</div>
-            )}
-          </div>
+        {!isMobileOrTablet && (
+          <>
+            <button className="arrow left-arrow" onClick={() => setCurrentIndex(prev => prev > 0 ? prev - 1 : products.length - 1)}>
+              &#10094;
+            </button>
+          </>
         )}
 
-        <button className="arrow right-arrow" onClick={handleRightClick}>
-          &#10095;
-        </button>
+        {allProductLoader ? (
+          <div className={isMobileOrTablet ? "" : "premiumgrid"} ref={sliderRef}>
+            <Slider {...sliderSettings}>
+              {[1, 2, 3].map((_, index) => (
+                <div className="griditem" key={index}>
+                  <div className="gridimg">
+                    <Skeleton height={200} width={'100%'} />
+                  </div>
+                  <div className="gridcontent">
+                    <div className="itemhead">
+                      <h3><Skeleton width={100} /></h3>
+                      <h3><Skeleton width={50} /></h3>
+                    </div>
+                    <div className="itemmiddle">
+                      <Skeleton width={`60%`} />
+                    </div>
+                    <div className="itemlower">
+                      <div className="lfirst">
+                        <Skeleton width={80} height={30} />
+                      </div>
+                      <Skeleton width={60} height={35} style={{ borderRadius: '5px' }} />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </Slider>
+          </div>
+        ) : (
+          <>
+            {isMobileOrTablet ? (
+              <Slider {...sliderSettings}>
+                {products.length > 0 ? products.slice(5, 8).map((product, index) => renderProduct(product, index)) :
+                  <div className="no-products">No products found in this category.</div>
+                }
+              </Slider>
+            ) : (
+              <div className="premiumgrid" ref={sliderRef}>
+                {products.length > 0 ? products.slice(5, 8).map((product, index) => renderProduct(product, index)) :
+                  <div className="no-products">No products found in this category.</div>
+                }
+              </div>
+            )}
+          </>
+        )}
+
+        {/* {!isMobileOrTablet && (
+          <>
+            <button className="arrow right-arrow" onClick={() => setCurrentIndex(prev => prev < products.length - 1 ? prev + 1 : 0)}>
+              &#10095;
+            </button>
+          </>
+        )} */}
       </div>
     </div>
   );
+
+  function renderProduct(product, index) {
+    const cartItem = cartItems.find(
+      item => item.productId === product._id && item.size === product.size[0]._id
+    );
+
+    return (
+      <div className="griditem" key={index}>
+        <div className="gridimg">
+          <img
+            src={product.thumbnail || 'https://res.cloudinary.com/dtivafy25/image/upload/v1742208325/55_s8h0ie.png'}
+            alt={product.name || 'Premium Cookie'}
+          />
+        </div>
+
+        <div className="gridcontent">
+          <div className="itemhead">
+            <h3>{product.name || 'Product Name'}</h3>
+            <h3>{product.size && product.size[0]?.weight ? product.size[0].weight : '800g'}</h3>
+          </div>
+
+          <div className="itemlower">
+            <div className="lfirst">
+              {product.size && product.size.length > 0 ? (
+                <p>
+                  <span>₹</span>{product.size[0].FinalPrice || '0'}
+                  {product.size[0].discountPercentage > 0 && (
+                    <>
+                      <span className="op">₹{product.size[0].price || '0'}</span>
+                      <span className="rp">-{product.size[0].discountPercentage}%</span>
+                    </>
+                  )}
+                </p>
+              ) : (
+                <p><span>₹</span>0</p>
+              )}
+            </div>
+
+            {cartItem ? (
+              <div className="quantity-control">
+                {quantityLoading[product._id] ? (
+                  <div style={{ display: 'flex', alignItems: 'center', marginRight: '15px' }}>
+                    <LuLoaderCircle className="spin-loader" size={18} />
+                  </div>
+                ) : (
+                  <>
+                    <button
+                      onClick={() => handleDecreaseQuantity(product._id, product.size[0])}
+                      className="qty-btn"
+                      disabled={quantityLoading[product._id]}
+                    >
+                      <FiMinus size={18} />
+                    </button>
+                    <span className="qty-value">{cartItem.quantity}</span>
+                    <button
+                      onClick={() => handleIncreaseQuantity(product._id, product.size[0])}
+                      className="qty-btn"
+                      disabled={quantityLoading[product._id]}
+                    >
+                      <FiPlus size={18} />
+                    </button>
+                  </>
+                )}
+              </div>
+            ) : (
+              <button
+                className="addbtn"
+                onClick={() => handleIncreaseQuantity(product._id, product.size[0])}
+                disabled={quantityLoading[product._id]}
+              >
+                {quantityLoading[product._id] ? (
+                  <LuLoaderCircle className="spin-loader" size={18} />
+                ) : (
+                  "ADD"
+                )}
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  }
 };
 
 export default Cookies;
