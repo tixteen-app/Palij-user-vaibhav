@@ -39,7 +39,7 @@ const Navbar = () => {
 	const [input, setInput] = useState("")
 	const [allProduct, setAllProduct] = useState([])
 	const [categories, setCategories] = useState([])
-	const [setsearchloading , setSearchLoading] = useState(false)
+	const [setsearchloading, setSearchLoading] = useState(false)
 
 	const fetchData = async (value) => {
 		try {
@@ -135,9 +135,9 @@ const Navbar = () => {
 		const updateCartCount = (count) => {
 			setCartCount(count);  // This will directly update the cart count
 		}
-	
+
 		subscribeToCartCount(updateCartCount);  // Subscribe to cart count changes
-	
+
 		return () => {
 			unsubscribeFromCartCount(updateCartCount);  // Unsubscribe on cleanup
 		}
@@ -213,6 +213,7 @@ const Navbar = () => {
 			<div className="right-navbar">
 				<ul>
 					<li className={location.pathname === "/contact" ? "active" : ""}
+						style={{ marginTop: "-10px !important" }}
 					>
 						<Link to="/contact">CONTACT US</Link>
 					</li>
@@ -297,7 +298,8 @@ const Navbar = () => {
 									ABOUT US
 								</Link>
 							</li>
-							<li className={location.pathname === "/contact" ? "active" : ""}>
+							<li className={location.pathname === "/contact" ? "active" : ""}
+							>
 								<Link
 									to="/contact"
 									onClick={closeMenu}

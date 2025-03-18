@@ -41,15 +41,25 @@
   position: relative;
 }
 
-.left-navbar ul li,
-.right-navbar ul li {
+.left-navbar ul li {
   text-transform: uppercase;
   font-family: Kumbh Sans;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 400;
   line-height: 35px;
   letter-spacing: 0em;
   text-align: left;
+}
+
+.right-navbar ul li {
+  text-transform: uppercase;
+  font-family: Kumbh Sans;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 35px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-top: -10px;
 
 }
 
@@ -150,8 +160,8 @@
 .special-search input {
   border: 0;
   outline: 0;
-  padding: 10px 10px;
-  font-size: 18px;
+  padding: 0px 10px;
+  font-size: 15px;
   background: none;
   color: black;
 }
@@ -299,9 +309,10 @@
     font-size: 18px;
   }
 
-.center-logo{
-  width: 80px;
-}
+  .center-logo {
+    width: 80px;
+  }
+
   .right-navbar {
     width: 50%;
     display: flex;
@@ -416,7 +427,8 @@
     border-radius: 20px;
     margin-top: 25px;
   }
-  .user_not_have_image_have_navbar{
+
+  .user_not_have_image_have_navbar {
     /* background: #000; */
   }
 

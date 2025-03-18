@@ -189,7 +189,7 @@ const NSavory = () => {
                           <div className={styles.loader} style={{ margin: "auto" }}>
                           </div> :
                           <button
-
+                          // className='newsavorybtn'
                             onClick={() => handleIncreaseQuantity(item._id, item.size[0])}
 
                           >

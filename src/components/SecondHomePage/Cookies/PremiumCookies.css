@@ -32,7 +32,7 @@
 
 .griditem {
     width: 80%;
-    padding: 6%;
+    padding: 6% 6% 11px;
     background-color: #fff;
     border-radius: 15px;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
@@ -67,7 +67,7 @@
 }
 
 .itemhead h3 {
-    font-size: 1.4vw;
+    font-size: 20px;
     font-weight: 400;
     color: #000;
 }
@@ -91,7 +91,7 @@
 }
 
 .itemlower p {
-    font-size: 1.7vw;
+    font-size: 24px;
     font-weight: 400;
     color: #000;
 }
@@ -133,26 +133,8 @@
     color: rgba(234, 10, 10, 1);
 }
 
-.slick-next {
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
-    font-size: 24px;
-    color: #333;
-  }
-  
-  .slick-prev {
-    position: absolute;
-    top: 50%;
-    left: 20px;
-    transform: translateY(-50%);
-    font-size: 24px;
-    color: #333;
-  }
-
 .addbtn {
-    width: 32%;
+    /* width: 32%;
     background-color: #fff;
     border: 1px solid black;
     border-radius: 5px;
@@ -160,7 +142,16 @@
     font-weight: 700;
     cursor: pointer;
     color: #000;
-    height: 45px;
+    height: 45px; */
+    background: var(--redPink);
+    border: 0;
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    height: 40px;
+    font-size: 15px;
 }
 
 .addbtn:active {

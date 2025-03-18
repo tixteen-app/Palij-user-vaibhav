@@ -556,16 +556,24 @@ const Cookies = () => {
                 )}
               </div>
             ) : (
+              // <button
+              //   className="addbtn"
+              //   onClick={() => handleIncreaseQuantity(product._id, product.size[0])}
+              //   disabled={quantityLoading[product._id]}
+              // >
+              //   {quantityLoading[product._id] ? (
+              //     <LuLoaderCircle className="spin-loader" size={18} />
+              //   ) : (
+              //     "ADD"
+              //   )}
+              // </button>
               <button
                 className="addbtn"
+                // onClick={() => handleIncreaseQuantity(item._id, item.size[0])}
                 onClick={() => handleIncreaseQuantity(product._id, product.size[0])}
                 disabled={quantityLoading[product._id]}
               >
-                {quantityLoading[product._id] ? (
-                  <LuLoaderCircle className="spin-loader" size={18} />
-                ) : (
-                  "ADD"
-                )}
+                Add to Cart
               </button>
             )}
           </div>

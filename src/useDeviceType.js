@@ -16,3 +16,5 @@ const useDeviceType = () => {
 
   return { isMobile, isTablet, isMobileOrTablet };
 };
+
+export default useDeviceType;
