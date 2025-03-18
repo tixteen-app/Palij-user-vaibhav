@@ -7,8 +7,8 @@
   position: relative;
 }
 
-.loader {
-  background: #FEA59F;
+/* .loader {
+  background: #050303;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,18 +19,18 @@
   /* overflow: hidden; */
   /* margin-top: 152.5px; */
   /* margin-top: 10%; */
-  position: absolute;
+  /* position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-
+} */
+/* 
 .loader img {
   width: 50%;
   margin-top: 100px;
   transition: transform 1s ease-out;
 
-}
+} */ 
 
 .loader img.animate {
   animation: moveLogo 1s ease-out,
