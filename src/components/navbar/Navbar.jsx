@@ -25,30 +25,25 @@ import { homeImg } from "../../assets/home/home"
 const Navbar = () => {
 	const [showNavbar, setShowNavbar] = useState(false)
 	const [categoryDropdownVisible, setCategoryDropdownVisible] = useState(false)
-	const [cartItem, setCartItem] = useState([])
-	const [myCartData, setMyCartData] = useState([])
 	const [userDatails, setUserDetails] = useState()
-
 	const [isloggedIn, setIsloggedIn] = useState(false)
 	const [totalQuantities, setTotalQuantities] = useState(0)
 	const [cartUpdated, setCartUpdated] = useState(false)
-	const { getTotalCartItems } = useContext(ShopContext)
 	const [cartCount, setCartCount] = useState(0)
 	const [isLoading, setIsLoading] = useState(false);
-
 	const location = useLocation()
 	const navigate = useNavigate()
-
 	const [moblieMenu, setMobileMenu] = useState(false)
 	const [openProfile, setOpenProfile] = useState(false)
 	const [products, setProducts] = useState([])
 	const [input, setInput] = useState("")
 	const [allProduct, setAllProduct] = useState([])
 	const [categories, setCategories] = useState([])
+	const [setsearchloading , setSearchLoading] = useState(false)
 
 	const fetchData = async (value) => {
 		try {
-			setIsLoading(true);
+			setSearchLoading(true);
 			const response = await makeApi(
 				`/api/get-all-products?perPage=1550&page=1`,
 				"GET"
@@ -67,7 +62,7 @@ const Navbar = () => {
 		} catch (error) {
 			console.error("Error fetching products:", error)
 		} finally {
-			setIsLoading(false);
+			setSearchLoading(false);
 		}
 	}
 
@@ -92,8 +87,6 @@ const Navbar = () => {
 	const toggleCategoryDropdown = () => {
 		setCategoryDropdownVisible(!categoryDropdownVisible)
 	}
-
-
 
 	useEffect(() => {
 		async function fetchCategories() {
@@ -149,8 +142,6 @@ const Navbar = () => {
 			unsubscribeFromCartCount(updateCartCount);  // Unsubscribe on cleanup
 		}
 	}, []);
-	
-	
 
 	const fetchUserDetail = async () => {
 		try {
@@ -166,13 +157,6 @@ const Navbar = () => {
 	useEffect(() => {
 		fetchUserDetail()
 	}, [])
-
-
-
-	
-
-
-
 
 	return showNavbar ? (
 		<div className="navbar">
@@ -250,7 +234,7 @@ const Navbar = () => {
 							product={products}
 							clearSearchInput={clearSearchInput}
 							input={input}
-							isLoading={isLoading}
+							isLoading={setsearchloading}
 						/>
 					</div>
 				</div>
