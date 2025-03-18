@@ -410,7 +410,7 @@ const Cookies = () => {
 
         {allProductLoader ? (
           <div className={isMobileOrTablet ? "" : "premiumgrid"} ref={sliderRef}>
-            <Slider {...sliderSettings}>
+            {isMobileOrTablet && <Slider {...sliderSettings}>
               {[1, 2, 3].map((_, index) => (
                 <div className="griditem" key={index}>
                   <div className="gridimg">
@@ -433,7 +433,35 @@ const Cookies = () => {
                   </div>
                 </div>
               ))}
-            </Slider>
+            </Slider>}
+            {
+              !isMobileOrTablet &&
+              <>
+                {[1, 2, 3].map((_, index) => (
+                  <div className="griditem" key={index}>
+                    <div className="gridimg">
+                      <Skeleton height={200} width={'100%'} />
+                    </div>
+                    <div className="gridcontent">
+                      <div className="itemhead">
+                        <h3><Skeleton width={100} /></h3>
+                        <h3><Skeleton width={50} /></h3>
+                      </div>
+                      <div className="itemmiddle">
+                        <Skeleton width={`60%`} />
+                      </div>
+                      <div className="itemlower">
+                        <div className="lfirst">
+                          <Skeleton width={80} height={30} />
+                        </div>
+                        <Skeleton width={60} height={35} style={{ borderRadius: '5px' }} />
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </>
+
+            }
           </div>
         ) : (
           <>
