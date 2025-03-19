@@ -21,7 +21,7 @@
   row-gap: 50px;
 }
 
-@media screen and (max-width: 1440px) {
+@media screen and (max-width: 1550px) {
   .allProductsList {
     grid-template-columns: repeat(3, 1fr);
   }
