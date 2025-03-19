@@ -88,7 +88,7 @@ const Signup = () => {
 		}
 
 		try {
-			const response = await makeApi("/api/register-user", "post", formData)
+			const response = await makeApi("/api/register-user-by-pass", "post", formData)
 			const responseData = response.data
 			if (responseData.success) {
 				localStorage.setItem("token", responseData.token)
