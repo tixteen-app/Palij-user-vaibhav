@@ -246,6 +246,7 @@ import {
   removeFromCart,
   fetchCart
 } from "../../../utils/productFunction";
+import LoginPopup from '../../LoginPopup/LoginPopup';
 
 const Cookies = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -292,6 +293,7 @@ const Cookies = () => {
 
   const handleIncreaseQuantity = async (productId, size) => {
     if (!IsLogin) {
+      console.log("-----1")
       setShowPopup(true);
       return;
     }
@@ -392,9 +394,14 @@ const Cookies = () => {
       }
     ],
   };
+  const closePopup = () => {
+    setShowPopup(false);
+  };
 
   return (
     <div className="premiumcookies">
+			{showPopup && <LoginPopup onClose={closePopup} />}
+
       <div className="premiumheading">
         <h1>PREMIUM COOKIES</h1>
       </div>

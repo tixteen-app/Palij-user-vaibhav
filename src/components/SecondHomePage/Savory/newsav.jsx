@@ -123,6 +123,8 @@ const NSavory = () => {
 
   return (
     <div className={styles.container}>
+			{showPopup && <LoginPopup onClose={closePopup} />}
+
       <div className={styles.header}>
         <h2>SAVORY</h2>
         <h2 style={{ cursor: "pointer" }} onClick={handleCategoryClick}>VIEW ALL <img src={assets.brownArrow} alt="" />

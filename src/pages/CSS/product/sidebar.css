@@ -264,7 +264,7 @@
     align-items: center;
     gap: 10px;
     border-radius: 50px;
-    border: 2px solid var(--redPink);
+    border: 2px solid black;
     justify-content: space-between;
   }
 
@@ -277,7 +277,7 @@
 
   .media_all_product_search div {
     font-size: 30px;
-    color: var(--redPink);
+    color: black;
     font-weight: 200;
     padding-right: 8px;
     align-items: center;
@@ -290,7 +290,7 @@
   }
 
   .media_filter {
-    border: 2px solid var(--redPink);
+    border: 2px solid black;
     display: flex;
     justify-content: center;
     border-radius: 50px;
