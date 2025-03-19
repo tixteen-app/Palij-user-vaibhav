@@ -173,11 +173,11 @@ const Navbar = () => {
 									src={userDatails?.userImage}
 									alt=""
 									style={{ width: "40px", height: "40px", borderRadius: "50%" }}
-									onClick={() => navigate(isloggedIn ? "/userprofile" : "/Signup")}
+									onClick={() => navigate(isloggedIn ? "/userprofile" : "/palji-login")}
 								/>
 							) : (
 								<img
-									onClick={() => navigate(isloggedIn ? "/userprofile" : "/Signup")}
+									onClick={() => navigate(isloggedIn ? "/userprofile" : "/palji-login")}
 									src={homeImg.profile}
 									alt=""
 									style={{ width: "40px", height: "40px", borderRadius: "50%" }}
@@ -245,13 +245,13 @@ const Navbar = () => {
 					{userDatails?.userImage ?
 						<div className="user_image_have_navbar" >
 							<img src={userDatails?.userImage} alt="" style={{ width: "40px", height: "40px", borderRadius: "50%" }}
-								onClick={() => navigate(isloggedIn ? "/userprofile" : "/Signup")}
+								onClick={() => navigate(isloggedIn ? "/userprofile" : "/palji-login")}
 							/>
 						</div>
 						:
 						<div className="user_not_have_image_have_navbar">
 							<img
-								onClick={() => navigate(isloggedIn ? "/userprofile" : "/Signup")}
+								onClick={() => navigate(isloggedIn ? "/userprofile" : "/palji-login")}
 								src={homeImg.profile}
 								alt=""
 							/>
@@ -259,9 +259,9 @@ const Navbar = () => {
 					}
 				</div>
 				{/* {isloggedIn && ( */}
-				<Link to={isloggedIn ? "/cart" : "/Signup"}>
+				<Link to={isloggedIn ? "/cart" : "/palji-login"}>
 					<div className="nav-cart">
-						<span className="cart-no">{cartCount}</span>
+						{isloggedIn === true && <span className="cart-no">{cartCount}</span>}
 						{/* <HiMiniShoppingBag className="cart-icon" /> */}
 						<img src={homeImg.cart} alt="" className="cart-icon" />
 					</div>

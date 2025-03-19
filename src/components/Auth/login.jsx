@@ -75,7 +75,7 @@ const Login = () => {
             />
             <div className="text-end w-100 text-danger">
               <Link className="css-for-link-tag golden-color-text" to={"/user-password/Forgot-Password"}>
-                Forgot password
+                Forgot passwordsss
               </Link>
             </div>
             {isLoading ? <HorizotalLoader /> :

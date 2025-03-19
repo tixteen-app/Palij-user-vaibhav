@@ -1,0 +1,168 @@
+.otp-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f4f6fa;
+    padding: 20px;
+}
+
+.otp-card {
+    background: #fff;
+    padding: 40px 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    text-align: center;
+}
+
+.otp-back {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 20px;
+    color: #333;
+    cursor: pointer;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.otp-back:hover {
+    transform: translateX(-5px);
+    color: #e91e63;
+}
+
+.otp-logo-container {
+    margin-bottom: 15px;
+}
+
+.otp-logo {
+    width: 100px;
+    height: auto;
+    border-radius: 50%;
+}
+
+.otp-title {
+    font-size: 22px;
+    color: #e91e63;
+    margin-bottom: 30px;
+}
+
+.otp-inputs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.otp-input {
+    width: 50px;
+    height: 60px;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background: #fafafa;
+    transition: all 0.3s;
+}
+
+.otp-input:focus {
+    border-color: #e91e63;
+    outline: none;
+}
+
+.password-input-container {
+    margin-bottom: 25px;
+}
+
+.password-input {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.password-input:focus {
+    border-color: #e91e63;
+}
+
+.otp-submit-button {
+    width: 100%;
+    padding: 14px 0;
+    background-color: #e0e0e0;
+    color: #777;
+    border-radius: 8px;
+    font-size: 16px;
+    border: none;
+    transition: all 0.3s;
+    cursor: not-allowed;
+}
+
+.otp-submit-button.active {
+    background-color: #e91e63;
+    color: #fff;
+    cursor: pointer;
+}
+
+.otp-submit-button.active:hover {
+    background-color: #d81b60;
+}
+
+.password-input-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.password-input {
+    width: 100%;
+    padding: 14px 50px 14px 14px;
+    /* Right padding for the icon */
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.password-input:focus {
+    border-color: #e91e63;
+}
+
+/* Eye icon styling */
+.eye-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #888;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.eye-icon:hover {
+    color: #e91e63;
+}
+
+
+
+@media (max-width: 480px) {
+    .otp-card {
+        padding: 30px 20px;
+    }
+
+    .otp-input {
+        width: 40px;
+        height: 50px;
+    }
+
+    .otp-back {
+        top: 15px;
+        left: 15px;
+    }
+}

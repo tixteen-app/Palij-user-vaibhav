@@ -1,0 +1,259 @@
+.palji-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #ffffff;
+    padding: 20px;
+  }
+  
+  .palji-card {
+    display: flex;
+    width: 100%;
+    max-width: 1100px;
+    background: #fff;
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+
+  }
+  
+  /* Left Section */
+  .palji-left {
+    flex: 1;
+    background: url('https://res.cloudinary.com/dtivafy25/image/upload/v1742368368/WhatsApp_Image_2025-03-19_at_12.41.35_PM_o1cxjk.jpg')
+      center center / cover no-repeat;
+    position: relative;
+  }
+  
+  .palji-overlay {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    color: #fff;
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.6);
+    text-align: left;
+  }
+  
+  .palji-logo-overlay {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+  }
+  
+  .palji-overlay h2 {
+    font-size: 26px;
+    margin-bottom: 8px;
+  }
+  
+  .palji-overlay p {
+    font-size: 14px;
+  }
+  
+  /* Right Section */
+  .palji-right {
+    flex: 1;
+    background-color: #fff6fa;
+    padding: 50px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .palji-logo-container {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  
+  .palji-logo {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .palji-heading {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+  
+  .palji-subheading {
+    text-align: center;
+    font-size: 13px;
+    margin-bottom: 25px;
+  }
+  
+  .palji-google-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    color: #333;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px;
+    width: 100%;
+    border: 1px solid #e5087e;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  
+  .palji-google-btn:hover {
+    background-color: #fdf0f5;
+  }
+  
+  .palji-google-icon {
+    margin-right: 10px;
+    color: #e5087e;
+    font-size: 16px;
+  }
+  
+  .palji-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+    color: #888;
+    font-size: 12px;
+    position: relative;
+  }
+  
+  .palji-divider span {
+    background-color: #fff6fa;
+    padding: 0 10px;
+  }
+  
+  .palji-divider::before,
+  .palji-divider::after {
+    content: "";
+    position: absolute;
+    height: 1px;
+    width: 40%;
+    background-color: #ddd;
+    top: 50%;
+  }
+  
+  .palji-divider::before {
+    left: 0;
+  }
+  
+  .palji-divider::after {
+    right: 0;
+  }
+  
+  .palji-signup-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .palji-form-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .palji-signup-form input {
+    padding: 12px;
+    border: 1px solid #e5087e;
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: #f5f7ff;
+    color: #333;
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  
+  .palji-password-field {
+    position: relative;
+  }
+  
+  .palji-password-field input {
+    padding-right: 40px;
+  }
+  
+  .toggle-eye {
+    position: absolute;
+    right: 12px;
+    top: 38%;
+    transform: translateY(-50%);
+    color: #e5087e;
+    cursor: pointer;
+  }
+  
+  .palji-button {
+    padding: 14px 0;
+    background-color: #e5087e;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .palji-button:hover {
+    background-color: #d1076f;
+  }
+  
+  .palji-login-link {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  .palji-login-link a {
+    color: #e5087e;
+    text-decoration: underline;
+    font-weight: 600;
+  }
+  
+  .loader {
+    width: 16px;
+    height: 16px;
+    border: 3px solid #fff;
+    border-top: 3px solid #e5087e;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .palji-card {
+      flex-direction: column;
+      max-width: 500px;
+    }
+  
+    .palji-left {
+      height: 200px;
+    }
+  
+    .palji-right {
+      padding: 40px 20px;
+    }
+  
+    .palji-form-row {
+      flex-direction: column;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .palji-heading {
+      font-size: 22px;
+    }
+  
+    .palji-subheading {
+      font-size: 12px;
+    }
+  
+    .palji-button {
+      font-size: 14px;
+    }
+  }
+  

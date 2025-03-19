@@ -42,6 +42,8 @@ import LatestOrder from "./components/LatestOrder/LastestOrder.jsx"
 import ProductSidebar from "./components/products/slidebar/sidebar.jsx"
 import SecondHomePage from "./components/SecondHomePage/SecondHomePage.jsx"
 import SecondFooter from "./components/SecondFooter/SecondFooter.jsx"
+
+import PaljiSignUp from "./components/signup/PaljiSignUp.jsx"
 // import TaxInvoice from "./Test.jsx"
 
 function App() {
@@ -106,12 +108,12 @@ function App() {
 					element={<Login />}
 				/>{" "}
 				<Route
-					path="/signup"
+					path="/palji-login"
 					element={<Signup />}
 				/>{" "}
 				<Route
 					path="/register"
-					element={<SignUp />}
+					element={<PaljiSignUp />}
 				/>
 				<Route
 					path="/userprofile"
