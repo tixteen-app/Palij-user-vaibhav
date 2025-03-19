@@ -452,7 +452,7 @@ const OrderSummary = () => {
               <strong>Order ID:</strong> {orderSummary?.orderId}
             </p>
             <p>
-              <strong>Status:</strong> {shiprocketorder?.data?.status}
+              <strong>Status:</strong> { shiprocketorder?.data?.status ? <>{shiprocketorder?.data?.status}</>:<>{orderSummary?.status}</>} 
             </p>
             <p>
               <strong>Payment Method:</strong> {orderSummary?.paymentMethod}
@@ -482,8 +482,8 @@ const OrderSummary = () => {
           </div>
         </div>
 
-        <table className={styles.productTable}>
-          <thead>
+        <table className={styles.productTable} >
+          <thead  >
             <tr>
               <th>PRODUCT</th>
               <th>QTY</th>
@@ -491,7 +491,7 @@ const OrderSummary = () => {
               <th>AMOUNT</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody  >
             {orderSummary?.CartId?.orderItems?.map((item) => (
               <tr key={item._id}>
                 <td>

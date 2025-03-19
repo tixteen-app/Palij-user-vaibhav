@@ -217,7 +217,7 @@ const MyOrders = () => {
     const localstaus = localorder?.status
     console.log ("--", localstaus, shipstaus);
 
-return localstaus || shipstaus || "Pending";
+return localstaus || shipstaus ;
 };
 
 
@@ -241,7 +241,8 @@ return localstaus || shipstaus || "Pending";
                                 <span className={styles.orderId}>Order #{order?.orderId}</span>
                                 <span className={styles.orderDate}>{new Date(order?.createdAt).toLocaleDateString()}</span>
                                 <span className={`${styles.orderStatus} ${styles[getOrderStatus(order._id).toLowerCase()]}`}>
-                                    {getOrderStatus(order.shiprocketOrderId)}
+                                {order.shiprocketOrderId ? getOrderStatus(order.shiprocketOrderId) : getOrderStatus(order._id)}
+  
                                 </span>
                             </div>
                             <div className={styles.orderItems}>
