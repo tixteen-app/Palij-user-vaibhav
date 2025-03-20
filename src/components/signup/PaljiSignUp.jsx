@@ -91,7 +91,7 @@ console.log('responseData', responseData);
 
   return (
     <div className="palji-container">
-      <div className="palji-card" style={{ height: '72vh' }}>
+      <div className="palji-card">
         {/* Left Section with Image and Logo */}
         <div className="palji-left">
           <div className="palji-overlay">

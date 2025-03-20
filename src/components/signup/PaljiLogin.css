@@ -15,9 +15,10 @@
     box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
     overflow: hidden;
-    height: 73vh;
+    height: 80vh;
     /* Set the fixed height */
 }
+
 
 @media (max-width: 768px) {
     .palji-card {
