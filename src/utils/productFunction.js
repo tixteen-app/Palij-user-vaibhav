@@ -262,13 +262,12 @@ export const submitOrder = async (
 	try {
 	  setLoading(true);
 	  console.log(deliverycharge , typeof(deliverycharge));
-	  // First, update the cart with the new totalPrice and deliveryCharges
 	  const updateCartResponse = await makeApi(
 		"/api/update-cart-data",
 		"PUT",
-		{ deliveryCharges: deliverycharge }
+		{ deliveryCharges: deliverycharge  , payment : data.paymentMethod }
 	  );
-		// Now proceed with creating the order
+
 		const response = await makeApi("/api/create-second-order", "POST", data);
 		setOrderPlaced(true);
     
@@ -300,7 +299,8 @@ export const submitOrderforlocal = async (
 		const updateCartResponse = await makeApi(
 			"/api/update-cart-data",
 			"PUT",
-			{ deliveryCharges: deliverycharge }
+			{ deliveryCharges: deliverycharge  , payment : data.paymentMethod }
+
 		  );
 	  
 		const response = await makeApi("/api/create-second-order-for-self-delivery", "POST", data)

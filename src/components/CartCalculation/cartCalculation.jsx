@@ -13,9 +13,11 @@ function CartCalculation({
 	disabled,
 	isCashOnDelivery,
 	totalwithoutgst,
-	pricewithdevverycharge
+	pricewithdevverycharge,
+	Razopaydiscount
 }) {
-	
+	console.log("Razopaydiscount", Razopaydiscount)
+
 	const [loadingData, setLoadingData] = useState({
 		final: true,
 		discount: true,
@@ -52,8 +54,8 @@ function CartCalculation({
 	};
 
 	const discount = (total) - Final;
-	const roundedDiscount = roundValue(discount)  ;
-	const roundedFinal = roundValue(pricewithdevverycharge) ;
+	const roundedDiscount = roundValue(discount);
+	const roundedFinal = roundValue(pricewithdevverycharge);
 
 
 
@@ -65,7 +67,7 @@ function CartCalculation({
 
 	return (
 		<>
-					<div className={styles.orderSummary}  >
+			<div className={styles.orderSummary}  >
 				<h2 className={styles.title}>Order Details</h2>
 
 				<div className={styles.details}>
@@ -82,7 +84,7 @@ function CartCalculation({
 								<ShimmerEffect />
 							) : (
 								<span className={styles.savings}>
-									{formatNumber(isCashOnDelivery ? (roundedDiscount) :  (discount))}
+									{formatNumber(isCashOnDelivery ? (roundedDiscount) : (discount))}
 								</span>
 							)}
 						</div>
@@ -117,7 +119,8 @@ function CartCalculation({
 						</div>
 					}
 				</div>
-					<div className={styles.row}>
+				<div className={styles.row}>
+					{shipping !== 0 && <>
 						<span>Delivery Fee:</span>
 						{loadingData.shipping ? (
 							<ShimmerEffect />
@@ -130,14 +133,41 @@ function CartCalculation({
 								)}
 							</span>
 						)}
-					</div>
+					</>}
+				</div>
+				<div className={styles.row}>
+					{Razopaydiscount > 0 &&
+						<>
+							<span>Pre Paid discount:</span>
+							{loadingData.shipping ? (
+								<ShimmerEffect />
+							) : (
+								<span>
+									₹ - 25
+								</span>
+							)}
+						</>}
+				</div>
 
 				<div className={styles.total}>
 					<span>Order Total:</span>
 					{loadingData.final ? (
 						<ShimmerEffect />
 					) : (
-						<span>{formatNumber(isCashOnDelivery ? roundedFinal : pricewithdevverycharge)}</span>
+						<>
+							{
+								!isCashOnDelivery && Razopaydiscount ? (
+									<>
+										 		<span>{formatNumber(isCashOnDelivery ? (roundedFinal - 25) : (pricewithdevverycharge - 25))}</span>
+									</>
+								) : (
+									<>
+										<span>{formatNumber(isCashOnDelivery ? roundedFinal : pricewithdevverycharge)}</span>
+									</>
+								)
+							}
+
+						</>
 					)}
 				</div>
 

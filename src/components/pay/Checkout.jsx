@@ -15,6 +15,8 @@ import { assets } from "../../assets/assets.js"
 import styles from './checkout.module.css'
 import axios from "axios"
 
+
+
 function Checkout() {
 	const navigate = useNavigate()
 	const [shippingAddresses, setShippingAddresses] = useState([])
@@ -39,8 +41,8 @@ function Checkout() {
 	const [deletePopup, setDeletePopup] = useState(false);
 	const [addressToDelete, setAddressToDelete] = useState(null);
 	const [deliverycharge, setDeliveryCharge] = useState(0)
-	console.log("deliverycharge", deliverycharge);
 	const [finaltotal, setFinalTotal] = useState(0)
+	const [Razopaydiscount, setRazopayDiscount] = useState(0)
 	const {
 		couponCode,
 		setCouponCode,
@@ -106,8 +108,7 @@ function Checkout() {
 	const handleInputChange = (e) => {
 		const { name, value } = e.target;
 		if (name === "pincode" && value.length === 6) {
-			console.log("1")
-			fetchCityStateCountry(value);
+		fetchCityStateCountry(value);
 		}
 
 		setEditAddress((prevState) => ({
@@ -258,6 +259,11 @@ function Checkout() {
 
 	const handlePaymentMethodSelect = (payment) => {
 		setSelectPaymentMethod(payment)
+		if(payment === "Razorpay"){
+			setRazopayDiscount(25)
+		}else{
+			setRazopayDiscount(0)
+		}
 	}
 
 	const handleSubmit = async (event) => {
@@ -289,9 +295,9 @@ function Checkout() {
 		};
 		if (selectPaymentMethod === "Razorpay") {
 			if (!availablePincodes.pincode.some(p => p.pincode == data.shippingAddress.pincode)) {
-				createRazorpayOrder(cartItem.totalPrice + deliverycharge);
+				createRazorpayOrder(cartItem.totalPrice + deliverycharge - Razopaydiscount  );
 			} else {
-				createRazorpayOrderforlocal(cartItem.totalPrice +  deliverycharge);
+				createRazorpayOrderforlocal(cartItem.totalPrice +  deliverycharge -  Razopaydiscount );
 			}
 		} else {
 			if (!availablePincodes.pincode.some(p => p.pincode == data.shippingAddress.pincode)) {
@@ -402,7 +408,7 @@ function Checkout() {
 	};
 	const createRazorpayOrder = async (amount) => {
 		const data = {
-			amount: amount, // Razorpay accepts amount in paise, so multiply by 100
+			amount: amount  , // Razorpay accepts amount in paise, so multiply by 100
 			currency: "INR",
 		};
 		try {
@@ -746,6 +752,7 @@ function Checkout() {
 											ButtonName="PROCEED TO PAYMENT"
 											totalwithoutgst={totalAmountWithoutGST}
 											pricewithdevverycharge={finaltotal}
+											Razopaydiscount={0}
 										/>
 									</div>
 								</div>
@@ -829,7 +836,8 @@ function Checkout() {
 										disabled={isSubmitDisabled}
 										isCashOnDelivery={selectPaymentMethod === "Cash On Delivery"}
 										totalwithoutgst={totalAmountWithoutGST}
-											pricewithdevverycharge={finaltotal}
+										pricewithdevverycharge={finaltotal}
+										Razopaydiscount={Razopaydiscount}
 									/>
 								</div>
 								

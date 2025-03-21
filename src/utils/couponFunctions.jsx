@@ -255,6 +255,7 @@ const CouponFunctions = ({ updateCart }) => {
               total={completeCart?.totalPriceWithoutDiscount}
               ButtonName="PROCEED TO CHECKOUT"
               disabled={false}
+              pricewithdevverycharge={completeCart?.totalPrice}
             />
           </div>
         </div>
