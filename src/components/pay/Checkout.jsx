@@ -18,18 +18,13 @@ import axios from "axios"
 function Checkout() {
 	const navigate = useNavigate()
 	const [shippingAddresses, setShippingAddresses] = useState([])
-
 	const [selectedAddress, setSelectedAddress] = useState(null)
-	const [billingAddresses, setBillingAddresses] = useState([])
-
 	const [selectPaymentMethod, setSelectPaymentMethod] = useState(null)
 	const [loading, setLoading] = useState(false)
 	const [cartItem, setCartItem] = useState([])
 	const [selectedShippingAddress, setSelectedShippingAddress] = useState(null)
-
 	const [selectedBillingAddress, setSelectedBillingAddress] = useState(null)
 	const [coupanCode, setCoupanCode] = useState(null)
-
 	const [currentPage, setCurrentPage] = useState("CHECKOUT")
 	const [orderPlaced, setOrderPlaced] = useState(false)
 	const [isSubmitDisabled, setIsSubmitDisabled] = useState(false)
@@ -43,7 +38,9 @@ function Checkout() {
 	const [saveaddloader, setsaveaddresloder] = useState(false)
 	const [deletePopup, setDeletePopup] = useState(false);
 	const [addressToDelete, setAddressToDelete] = useState(null);
-
+	const [deliverycharge, setDeliveryCharge] = useState(0)
+	console.log("deliverycharge", deliverycharge);
+	const [finaltotal, setFinalTotal] = useState(0)
 	const {
 		couponCode,
 		setCouponCode,
@@ -78,10 +75,8 @@ function Checkout() {
 		setAddressToDelete(null);
 	};
 
-
 	const handleDeleteAddress = async () => {
 		try {
-			//   await axios.delete(`/api/address/${addressToDelete._id}`); // Replace with your API endpoint
 			await makeApi(
 				`/api/delete-shiped-address/${addressToDelete._id}`,
 				"DELETE"
@@ -97,6 +92,8 @@ function Checkout() {
 	};
 
 
+
+	
 	const openEditPopup = (address) => {
 		setEditAddress(address);
 		setIsEditPopupOpen(true);
@@ -187,6 +184,16 @@ function Checkout() {
 						// Add the GST amount to the total GST amount
 						totalGstAmount += gstAmount;
 					});
+
+					console.log(response.data.totalPrice)					
+
+					if(response.data.totalPrice <500){
+						setDeliveryCharge( 75)
+						setFinalTotal(response.data.totalPrice + 75)
+					}else{
+						setDeliveryCharge( 0)
+						setFinalTotal(response.data.totalPrice)
+					}
 
 					// Store the total GST amount in state
 					setCartTotalWithGST(totalGstAmount);
@@ -290,9 +297,9 @@ function Checkout() {
 			}
 		} else {
 			if (!availablePincodes.pincode.some(p => p.pincode == data.shippingAddress.pincode)) {
-				await submitOrder(data, setLoading, setOrderPlaced, navigate);
+				await submitOrder(data, setLoading, setOrderPlaced, navigate,deliverycharge);
 			} else {
-				await submitOrderforlocal(data, setLoading, setOrderPlaced, navigate);
+				await submitOrderforlocal(data, setLoading, setOrderPlaced, navigate,deliverycharge);
 
 			}
 		}
@@ -309,9 +316,6 @@ function Checkout() {
 
 		return nonDeliverable;
 	};
-
-
-
 
 	const isPincodeValid = (selectedAddress, cartItems) => {
 		// Ensure selectedAddress and cartItems exist
@@ -488,7 +492,6 @@ function Checkout() {
 		const options = {
 			key: "rzp_test_DaA1MMEW2IUUYe",
 			// key: "rzp_test_WANgED2h9l3SKi",
-
 			currency: "INR",
 			amount: amount,
 			name: "USER ",
@@ -622,6 +625,7 @@ function Checkout() {
 					/>
 				</div>
 			)}
+
 			{!orderPlaced && (
 				<div className="a_checkout">
 					{currentPage === "CHECKOUT" ? (
@@ -736,12 +740,14 @@ function Checkout() {
 									<div onClick={(e) => manageCurrentPage(e)}>
 										<CartCalculation
 											tax={cartTotalWithGST}
-											shipping={0}
+											shipping={deliverycharge}
 											total={cartItem?.totalPriceWithoutDiscount}
 											CoupanApplied={appliedCoupon ? couponDiscount : cartItem?.totalPriceWithoutDiscount}
 											Final={cartItem?.totalPrice}
+											// Final={finaltotal}
 											ButtonName="PROCEED TO PAYMENT"
 											totalwithoutgst={totalAmountWithoutGST}
+											pricewithdevverycharge={finaltotal}
 										/>
 									</div>
 								</div>
@@ -803,24 +809,29 @@ function Checkout() {
 											/>
 											<label
 												htmlFor="Razorpay"
-												className="address-label"
+												className="address-label w-100"
 											>
 												<img src={assets.razorpay_logo} alt="" />
 
 											</label>
+											<br/>
 										</div>
+											<small className="w-100" >save 25rs on pre paid orders </small>
 									</div>
 								</div>
 								<div onClick={(e) => handleSubmit(e)}>
 									<CartCalculation
 										tax={cartTotalWithGST}
-										shipping={0}
+										shipping={deliverycharge}
 										total={cartItem?.totalPriceWithoutDiscount}
 										CoupanApplied={appliedCoupon ? couponDiscount : cartItem?.totalPriceWithoutDiscount}
 										Final={cartItem?.totalPrice}
+										// Final={finaltotal}
 										ButtonName="PLACE ORDER"
 										disabled={isSubmitDisabled}
 										isCashOnDelivery={selectPaymentMethod === "Cash On Delivery"}
+										totalwithoutgst={totalAmountWithoutGST}
+											pricewithdevverycharge={finaltotal}
 									/>
 								</div>
 								
@@ -835,3 +846,7 @@ function Checkout() {
 }
 
 export default Checkout
+
+
+
+

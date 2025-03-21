@@ -224,41 +224,84 @@ export const removeFromCart = async (
 
 	}
 };
+// export const submitOrder = async (
+// 	data,
+// 	setLoading,
+// 	setOrderPlaced,
+// 	navigation,
+// 	finaltotal,
+// 	deliverycharge
+// ) => {
+// 	try {
+// 		setLoading(true)
+// 		// data.priceaftertax = updatedTotal
+// 		const response = await makeApi("/api/create-second-order", "POST", data)
+// 		setOrderPlaced(true)
+
+// 		// Update cart count to 0
+// 		updateCartCount([])
+
+// 		setTimeout(() => {
+// 			setOrderPlaced(false)
+// 			navigation("/latest-order")
+// 		}, 5000)
+// 	} catch (error) {
+// 		console.error("Error creating order: ", error)
+// 	} finally {
+// 		setLoading(false)
+// 	}
+// }
+
 export const submitOrder = async (
 	data,
 	setLoading,
 	setOrderPlaced,
 	navigation,
-	// updatedTotal
-) => {
+	deliverycharge
+  ) => {
 	try {
-		setLoading(true)
-		// data.priceaftertax = updatedTotal
-		const response = await makeApi("/api/create-second-order", "POST", data)
-		setOrderPlaced(true)
-
+	  setLoading(true);
+	  // First, update the cart with the new totalPrice and deliveryCharges
+	  const updateCartResponse = await makeApi(
+		"/api/update-cart-data",
+		"PUT",
+		{ deliveryCharges: deliverycharge }
+	  );
+		// Now proceed with creating the order
+		const response = await makeApi("/api/create-second-order", "POST", data);
+		setOrderPlaced(true);
+    
 		// Update cart count to 0
-		updateCartCount([])
-
+		updateCartCount([]);
+  
 		setTimeout(() => {
-			setOrderPlaced(false)
-			navigation("/latest-order")
-		}, 5000)
+		  setOrderPlaced(false);
+		  navigation("/latest-order");
+		}, 5000);
+	 
 	} catch (error) {
-		console.error("Error creating order: ", error)
+	  console.error("Error creating order: ", error);
 	} finally {
-		setLoading(false)
+	  setLoading(false);
 	}
-}
+  };
+  
+
 export const submitOrderforlocal = async (
 	data,
 	setLoading,
 	setOrderPlaced,
 	navigation,
-	// updatedTotal
+	deliverycharge
 ) => {
 	try {
 		setLoading(true)
+		const updateCartResponse = await makeApi(
+			"/api/update-cart-data",
+			"PUT",
+			{ deliveryCharges: deliverycharge }
+		  );
+	  
 		const response = await makeApi("/api/create-second-order-for-self-delivery", "POST", data)
 		setOrderPlaced(true)
 		updateCartCount([])

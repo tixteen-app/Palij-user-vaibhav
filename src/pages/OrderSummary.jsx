@@ -531,7 +531,7 @@ const OrderSummary = () => {
               <span>
                 <strong>Shipping Price:</strong>
               </span>
-              <span>Free </span>
+              <span>₹ {orderSummary.CartId.deliveryCharges}</span>
             </div>
             <div className={styles.totalRow}>
               <span>
