@@ -198,8 +198,6 @@ function Checkout() {
 					// Store the total GST amount in state
 					setCartTotalWithGST(totalGstAmount);
 					setTotalAmountWithoutGST(totalAmountNoGST);
-
-					//   console.log("Total GST Amount:", totalGstAmount);
 				}
 			} catch (error) {
 				console.error("Error fetching cart items:", error);
@@ -291,9 +289,9 @@ function Checkout() {
 		};
 		if (selectPaymentMethod === "Razorpay") {
 			if (!availablePincodes.pincode.some(p => p.pincode == data.shippingAddress.pincode)) {
-				createRazorpayOrder(cartItem.totalPrice);
+				createRazorpayOrder(cartItem.totalPrice + deliverycharge);
 			} else {
-				createRazorpayOrderforlocal(cartItem.totalPrice);
+				createRazorpayOrderforlocal(cartItem.totalPrice +  deliverycharge);
 			}
 		} else {
 			if (!availablePincodes.pincode.some(p => p.pincode == data.shippingAddress.pincode)) {
@@ -463,7 +461,7 @@ function Checkout() {
 					paymentMethod: selectPaymentMethod,
 					CartId: cartItem._id,
 				};
-				submitOrder(data, setLoading, setOrderPlaced, navigate)
+				submitOrder(data, setLoading, setOrderPlaced, navigate,deliverycharge)
 
 					;
 			},
@@ -515,7 +513,7 @@ function Checkout() {
 					paymentMethod: selectPaymentMethod,
 					CartId: cartItem._id,
 				};
-				submitOrderforlocal(data, setLoading, setOrderPlaced, navigate);
+				submitOrderforlocal(data, setLoading, setOrderPlaced, navigate,deliverycharge);
 			},
 			prefill: {
 				name: "Vaibhav",

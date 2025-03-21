@@ -261,6 +261,7 @@ export const submitOrder = async (
   ) => {
 	try {
 	  setLoading(true);
+	  console.log(deliverycharge , typeof(deliverycharge));
 	  // First, update the cart with the new totalPrice and deliveryCharges
 	  const updateCartResponse = await makeApi(
 		"/api/update-cart-data",
