@@ -547,7 +547,7 @@ const OrderSummary = () => {
               <span>
                 <strong> Total discount:</strong>
               </span>
-              <span> - ₹{orderSummary?.CartId.totalPriceWithoutDiscount - orderSummary?.CartId.totalPrice}</span>
+              <span> - ₹{orderSummary?.CartId.totalPrice - orderSummary?.CartId.totalPriceWithoutDiscount}</span>
             </div>
             <div className={styles.totalRow}>
               <span>

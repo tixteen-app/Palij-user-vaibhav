@@ -623,7 +623,7 @@ const TaxInvoice = ({ orderSummary, onClose }) => {
                   <td>{orderSummary?.CartId?.totalPriceWithoutDiscount?.toFixed(2) || "0.00"}</td>
                   {isPunjab ? <td colSpan={2}></td> : <td></td>}
                 </tr>
-                {isPunjab ? (
+                {/* {isPunjab ? (
                   <>
                     <tr>
                       <td colSpan={5}>
@@ -645,7 +645,7 @@ const TaxInvoice = ({ orderSummary, onClose }) => {
                     </td>
                     <td colSpan={3}>{taxPrice.toFixed(2)}</td>
                   </tr>
-                )}
+                )} */}
                 <tr>
                   <td colSpan={5}>
                     <strong>Logistic Charges</strong>
@@ -657,7 +657,7 @@ const TaxInvoice = ({ orderSummary, onClose }) => {
                   <td colSpan={5}>
                     <strong>discount</strong>
                   </td>
-                  <td colSpan={3}>- ₹{orderSummary?.CartId.totalPriceWithoutDiscount - orderSummary?.CartId.totalPrice}</td>
+                  <td colSpan={3}>- ₹{ orderSummary?.CartId.totalPrice - orderSummary?.CartId.totalPriceWithoutDiscount }</td>
                 </tr>
                 }
 

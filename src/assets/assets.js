@@ -52,9 +52,9 @@ import profile_reset from "./profile_reset.png"
 import userprofile_menu from "./menu_icon.png"
 import empty_cart from "./empty-cart.svg"
 import pieceOfCake from "./peiceofCake.png"
-import homeBanner2 from "./homebanner2.png"
-import homeBanner3 from "./homebanner3.png"
-import homeBanner4 from "./Rusk.png"
+import homeBanner2 from "./new banner 3.png"
+import homeBanner3 from "./new banner 2.png"
+import homeBanner4 from "./new banner 1.png"
 import aboutLandingbanner1 from "./aboutLandingPage1.png"
 import paljiMainImg from './paljiMainImg.png'
 import cart_gif from './home/cart gif.gif'
