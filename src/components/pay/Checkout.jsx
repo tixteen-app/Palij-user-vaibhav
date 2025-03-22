@@ -292,6 +292,7 @@ function Checkout() {
 			paymentMethod: selectPaymentMethod,
 			taxprice: cartTotalWithGST,
 			CartId: cartItem._id,
+			
 		};
 		if (selectPaymentMethod === "Razorpay") {
 			if (!availablePincodes.pincode.some(p => p.pincode == data.shippingAddress.pincode)) {

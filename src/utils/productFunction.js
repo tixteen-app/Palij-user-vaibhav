@@ -262,7 +262,7 @@ export const submitOrder = async (
 	try {
 	  setLoading(true);
 	  console.log(deliverycharge , typeof(deliverycharge));
-	  const updateCartResponse = await makeApi(
+	  const updateCartResponse = await makeApi( 
 		"/api/update-cart-data",
 		"PUT",
 		{ deliveryCharges: deliverycharge  , payment : data.paymentMethod }

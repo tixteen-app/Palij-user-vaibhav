@@ -2164,7 +2164,10 @@ function ProductDetails() {
                         </span>}
                     </div>
 
-                    {selectedSize?.price > selectedSize?.FinalPrice ? <span className={styles.mrpSpan}> M.R.P ₹{selectedSize?.price}</span> : <span className={styles.mrpSpan}> M.R.P ₹{selectedSize?.price}</span>}
+                    {/* {selectedSize?.price > selectedSize?.FinalPrice ? <span className={styles.mrpSpan}> M.R.P ₹{selectedSize?.price}</span> : <span className={styles.mrpSpan}> M.R.P ₹{selectedSize?.price}</span>} */}
+                    {selectedSize?.price > selectedSize?.FinalPrice && (
+  <span className={styles.mrpSpan}> M.R.P ₹{selectedSize?.price}</span>
+)}
                     <span className={styles.inclusiveOffAllTax}>Inclusive of all taxes</span>
                     <div className={styles.actions}>
                       {isInCart ? (
