@@ -249,12 +249,12 @@ return localstaus || shipstaus ;
                                 {order?.CartId?.orderItems.map((item) => (
                                     <div key={item._id} className={styles.orderItem}>
                                         <img
-                                            src={item?.productId.thumbnail}
-                                            alt={item?.productId.name}
+                                            src={item?.productId?.thumbnail}
+                                            alt={item?.productId?.name}
                                             className={styles.productImage}
                                         />
                                         <div className={styles.productInfo}>
-                                            <h3>{item?.productId.name}</h3>
+                                            <h3>{item?.productId?.name}</h3>
                                             <p>Quantity: {item?.quantity}</p>
                                             <p className={styles.itemPrice}>₹{item?.totalPrice}</p>
                                         </div>

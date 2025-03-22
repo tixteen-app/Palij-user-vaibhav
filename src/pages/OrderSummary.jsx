@@ -497,11 +497,11 @@ const OrderSummary = () => {
                 <td>
                   <div className={styles.productInfo}>
                     <img
-                      src={item.productId.thumbnail}
-                      alt={item.productId.name}
+                      src={item.productId?.thumbnail}
+                      alt={item.productId?.name}
                       className={styles.productImage}
                     />
-                    <span>{item.productId.name}</span>
+                    <span>{item.productId?.name}</span>
                   </div>
                 </td>
                 <td>{item.quantity}</td>
