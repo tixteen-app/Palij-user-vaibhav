@@ -452,7 +452,7 @@ const OrderSummary = () => {
               <strong>Order ID:</strong> {orderSummary?.orderId}
             </p>
             <p>
-              <strong>Status:</strong> { shiprocketorder?.data?.status ? <>{shiprocketorder?.data?.status}</>:<>{orderSummary?.status}</>} 
+              <strong>Status:</strong> {shiprocketorder?.data?.status ? <>{shiprocketorder?.data?.status}</> : <>{orderSummary?.status}</>}
             </p>
             <p>
               <strong>Payment Method:</strong> {orderSummary?.paymentMethod}
@@ -533,7 +533,7 @@ const OrderSummary = () => {
               </span>
               <span>₹ {orderSummary.CartId.deliveryCharges}</span>
             </div>
-            {
+            {/* {
               orderSummary?.paymentMethod === "Razorpay" && (
                 <div className={styles.totalRow}>
                   <span>
@@ -542,7 +542,13 @@ const OrderSummary = () => {
                   <span> - ₹25</span>
                 </div>
               )
-            }
+            } */}
+            <div className={styles.totalRow}>
+              <span>
+                <strong> Total discount:</strong>
+              </span>
+              <span> - ₹{orderSummary?.CartId.totalPriceWithoutDiscount - orderSummary?.CartId.totalPrice}</span>
+            </div>
             <div className={styles.totalRow}>
               <span>
                 <strong>Total:</strong>

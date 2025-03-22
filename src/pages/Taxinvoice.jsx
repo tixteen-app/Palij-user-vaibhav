@@ -655,9 +655,9 @@ const TaxInvoice = ({ orderSummary, onClose }) => {
                 {orderSummary.isPaid &&
                 <tr>
                   <td colSpan={5}>
-                    <strong>Pre paid discount</strong>
+                    <strong>discount</strong>
                   </td>
-                  <td colSpan={3}>- 25</td>
+                  <td colSpan={3}>- ₹{orderSummary?.CartId.totalPriceWithoutDiscount - orderSummary?.CartId.totalPrice}</td>
                 </tr>
                 }
 
