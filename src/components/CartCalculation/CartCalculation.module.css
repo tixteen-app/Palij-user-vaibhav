@@ -17,6 +17,16 @@
   padding-bottom: 10px;
   border-bottom: 1px solid #e0e0e0;
 }
+.codMessage {
+  font-size: 0.9em;
+  color: #ff5722;
+  background-color: #fff3e0;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  border: 1px solid #ffcc80;
+  text-align: center;
+}
 
 .details {
   margin-bottom: 15px;

@@ -822,7 +822,6 @@ function Checkout() {
 											</label>
 											<br/>
 										</div>
-											<small className="w-100" >save 25rs on pre paid orders </small>
 									</div>
 								</div>
 								<div onClick={(e) => handleSubmit(e)}>

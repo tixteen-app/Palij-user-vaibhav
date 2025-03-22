@@ -135,6 +135,14 @@ function CartCalculation({
 						)}
 					</>}
 				</div>
+
+				{isCashOnDelivery && (
+  <div className={styles.codMessage}>
+    <span>Save ₹25 on prepaid orders</span>
+  </div>
+)}
+
+
 				<div className={styles.row}>
 					{Razopaydiscount > 0 &&
 						<>
