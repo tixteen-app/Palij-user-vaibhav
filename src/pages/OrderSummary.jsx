@@ -533,6 +533,16 @@ const OrderSummary = () => {
               </span>
               <span>₹ {orderSummary.CartId.deliveryCharges}</span>
             </div>
+            {
+              orderSummary?.paymentMethod === "Razorpay" && (
+                <div className={styles.totalRow}>
+                  <span>
+                    <strong>Per paid discount:</strong>
+                  </span>
+                  <span> - ₹25</span>
+                </div>
+              )
+            }
             <div className={styles.totalRow}>
               <span>
                 <strong>Total:</strong>

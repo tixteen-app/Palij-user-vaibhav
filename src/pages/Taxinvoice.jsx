@@ -505,6 +505,7 @@ import { usePDF } from "react-to-pdf"; // Import the usePDF hook
 import "./CSS/taxinvoice.css";
 
 const TaxInvoice = ({ orderSummary, onClose }) => {
+  console.log("orderSummary",orderSummary.isPaid)
   const isPunjab = orderSummary?.shippingAddress?.state === "Punjab";
   const taxPrice = Number(orderSummary?.taxprice) || 0;
   const logisticPrice = orderSummary?.CartId?.deliveryCharges;
@@ -573,7 +574,7 @@ const TaxInvoice = ({ orderSummary, onClose }) => {
                 <tr>
                   <th>S.No</th>
                   <th>Description of Goods</th>
-                  <th>HSN Code</th>
+                  {/* <th>HSN Code</th> */}
                   <th>Qty</th>
                   <th>Rate (INR)</th>
                   <th>Taxable Amt (INR)</th>
@@ -598,7 +599,7 @@ const TaxInvoice = ({ orderSummary, onClose }) => {
                     <tr key={item?._id}>
                       <td>{index + 1}</td>
                       <td>{item?.productId?.name || "N/A"}</td>
-                      <td>N/A</td>
+                      {/* <td>N/A</td> */}
                       <td>{item?.quantity || 0}</td>
                       <td>{item?.singleProductPrice?.toFixed(2) || "0.00"}</td>
                       <td>{taxableAmount.toFixed(2)}</td>
@@ -651,6 +652,16 @@ const TaxInvoice = ({ orderSummary, onClose }) => {
                   </td>
                   <td colSpan={3}>{logisticPrice.toFixed(2)}</td>
                 </tr>
+                {orderSummary.isPaid &&
+                <tr>
+                  <td colSpan={5}>
+                    <strong>Pre paid discount</strong>
+                  </td>
+                  <td colSpan={3}>- 25</td>
+                </tr>
+                }
+
+                
                 <tr>
                   <td colSpan={5}>
                     <strong>Grand Total (Incl. GST & Logistic Charges)</strong>
