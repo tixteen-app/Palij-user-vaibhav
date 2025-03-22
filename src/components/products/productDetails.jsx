@@ -1989,13 +1989,13 @@ function ProductDetails() {
     console.log(cartQuantity)
     if (cartQuantity > 0) {
       try {
-      setQuantityLoading(true);
+        setQuantityLoading(true);
 
         await removeFromCart(productId, setProductLoaders, setCartItems, fetchCartItems, selectedSize._id);
       } catch (error) {
         console.error("Error decreasing quantity:", error);
-      }finally{
-      setQuantityLoading(false);
+      } finally {
+        setQuantityLoading(false);
 
       }
     }
@@ -2157,7 +2157,9 @@ function ProductDetails() {
                 <div className={styles.priceDetails}>
                   <div className={styles.priceFlexCol}>
                     <div className={styles.dicountinprecentage}>
-                      <h2>₹{selectedSize?.FinalPrice}</h2>
+                      {/* <h2>₹{selectedSize?.FinalPrice}</h2> */}
+                      <h2>₹{selectedSize?.FinalPrice.toFixed(2)}</h2>
+
                       {selectedSize?.price > selectedSize?.FinalPrice &&
                         <span style={{ color: 'red', marginLeft: '15px' }}>
                           -{calculateDiscountPercentage(selectedSize?.price, selectedSize?.FinalPrice)}%
@@ -2166,8 +2168,8 @@ function ProductDetails() {
 
                     {/* {selectedSize?.price > selectedSize?.FinalPrice ? <span className={styles.mrpSpan}> M.R.P ₹{selectedSize?.price}</span> : <span className={styles.mrpSpan}> M.R.P ₹{selectedSize?.price}</span>} */}
                     {selectedSize?.price > selectedSize?.FinalPrice && (
-  <span className={styles.mrpSpan}> M.R.P ₹{selectedSize?.price}</span>
-)}
+                      <span className={styles.mrpSpan}> M.R.P ₹{selectedSize?.price}</span>
+                    )}
                     <span className={styles.inclusiveOffAllTax}>Inclusive of all taxes</span>
                     <div className={styles.actions}>
                       {isInCart ? (
@@ -2176,9 +2178,9 @@ function ProductDetails() {
                             src={RemoveIcon}
                             alt=""
                             onClick={handleDecreaseQuantity} /> */}
-                             <svg xmlns="http://www.w3.org/2000/svg" onClick={handleDecreaseQuantity} width="30" height="30" fill="currentColor" class="bi bi-dash text-black" style={{ cursor: "pointer" }} viewBox="0 0 16 16">
-                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" />
-                      </svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" onClick={handleDecreaseQuantity} width="30" height="30" fill="currentColor" class="bi bi-dash text-black" style={{ cursor: "pointer" }} viewBox="0 0 16 16">
+                            <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" />
+                          </svg>
                           {quantityLoading ? (
                             <div className={styles.countLoaderss}>
                             </div>
