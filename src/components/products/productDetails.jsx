@@ -1861,7 +1861,6 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 function ProductDetails() {
   const navigate = useNavigate();
   const { productId } = useParams();
-  console.log("productId", productId);
   const [completeCart, setCompleteCart] = useState([]);
   const [load, setLoad] = useState(false)
   const [product, setProduct] = useState(null);
@@ -1910,7 +1909,8 @@ function ProductDetails() {
       setSelectedImage(response.data.product.thumbnail)
       setProductNuturitions(response.data.productNuturitions)
       if (response.data.sizes.length > 0) {
-        const availableSize = response.data.sizes.find(size => size.IsOutOfStock === "false");
+        // const availableSize = response.data.sizes.find(size => size.IsOutOfStock === "false");
+        const availableSize = response.data.sizes[0];
         setSelectedSize(availableSize || null);
       }
     } catch (error) {
