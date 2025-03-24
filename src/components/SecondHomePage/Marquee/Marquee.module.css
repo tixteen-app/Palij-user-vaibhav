@@ -1,7 +1,7 @@
 .marquee {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 10px;
   margin-top: 30px;
 }
 

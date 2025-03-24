@@ -6,25 +6,25 @@ const categories = [
   {
     img: assets.category1,
     name: "Cookies",
-    color: "#C89A69",
+    color: "#BA7830",
     nav: "65fc0c45d3cadabee3443e54"
   },
   {
     img: assets.category2,
     name: "Savory",
-    color: "#BA99E3",
+    color: "#9F65E8",
     nav: "65f3c6ee7fd052885f56d587"
   },
   {
     img: assets.category3,
     name: "Gift Hampers",
-    color: "#FFCE98",
+    color: "#FFAE55",
     nav: "65f3c6cf7fd052885f56d584"
   },
   {
     img: assets.category4,
     name: "Cakes",
-    color: "#F08690"
+    color: "#E75866"
   },
 ]
 

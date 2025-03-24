@@ -44,6 +44,7 @@ import SecondHomePage from "./components/SecondHomePage/SecondHomePage.jsx"
 import SecondFooter from "./components/SecondFooter/SecondFooter.jsx"
 
 import PaljiSignUp from "./components/signup/PaljiSignUp.jsx"
+import Homepage from "./pages/Homepage.jsx"
 // import TaxInvoice from "./Test.jsx"
 
 function App() {
@@ -69,6 +70,10 @@ function App() {
 				<Route
 					path="/"
 					element={<SecondHomePage />}
+				/>
+				<Route
+					path="/new"
+					element={<Homepage />}
 				/>
 				<Route
 					path="/aboutus"

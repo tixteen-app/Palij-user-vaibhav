@@ -7,16 +7,9 @@ const MarqueeComponent = () => {
     <Marquee>
       <div className={styles.marquee}>
         Freshness Baked Daily
-        <img src={assets.dotPoint} alt="dotpoint" />  Flavor in Every Bite
-        <img src={assets.dotPoint} alt="dotpoint" />  Crafted with Care
-        <img src={assets.dotPoint} alt="dotpoint" />  Delight in Every Bite
-        <img src={assets.dotPoint} alt="dotpoint" />  Freshness Baked Daily
-        <img src={assets.dotPoint} alt="dotpoint" />  Flavor in Every Bite
-        <img src={assets.dotPoint} alt="dotpoint" />  Crafted with Care
-        <img src={assets.dotPoint} alt="dotpoint" />  Delight in Every Bite
-        <img src={assets.dotPoint} alt="dotpoint" />  Flavor in Every Bite
-        <img src={assets.dotPoint} alt="dotpoint" />  Crafted with Care
-        <img src={assets.dotPoint} alt="dotpoint" />  Delight in Every Bite
+        <img src={assets.dotPoint} alt="dotpoint" />  <span className="text-black" > free shipping </span> <span>on order above ₹750 </span>
+        <img src={assets.dotPoint} alt="dotpoint" />  <span className="text-black"> free shipping </span> <span>on order above ₹750 </span>
+        <img src={assets.dotPoint} alt="dotpoint" />  <span className="text-black"> free shipping </span> <span>on order above ₹750 </span>
       </div>
     </Marquee>
   )

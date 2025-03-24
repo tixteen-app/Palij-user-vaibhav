@@ -7,7 +7,6 @@ import {
   addToCart,
   removeFromCart,
   fetchCart,
-  fetchWishlist,
 } from "../../../utils/productFunction.js"
 import LoginPopup from '../../LoginPopup/LoginPopup.jsx';
 
@@ -15,11 +14,6 @@ const NSavory = () => {
 
   const [AllProductLoader, setAllProductLoader] = useState(false);
   const [products, setProducts] = useState([]);
-  const navigate = useNavigate();
-  const swiperRef = useRef(null);
-
-
-  const [selectedSize, setSelectedSize] = useState(null);
   const [IsLogin, setIsLogin] = useState(false)
   const [showPopup, setShowPopup] = useState(false)
   const [cartItems, setCartItems] = useState([])
@@ -63,11 +57,9 @@ const NSavory = () => {
   }, []);
 
   function handleNavigate(id) {
-    // navigate(`product/product-details/${id}`)
   }
 
   const handleCategoryClick = () => {
-    // navigate(`/product/all-products?category=65f3c6ee7fd052885f56d587`);
   };
 
   const fetchCartItems = async () => {
@@ -147,11 +139,6 @@ const NSavory = () => {
                     {cartItems.some(cartItem => cartItem.productId === item._id && cartItem.size === item.size[0]._id) ? (
                       <div className={styles.cartIncDec}>
                         <div>
-                          {/* <img
-                            src={RemoveIcon}
-                            alt=""
-                            onClick={() => handleDecreaseQuantity(item._id, item.size[0])}
-                          /> */}
                           	<svg xmlns="http://www.w3.org/2000/svg" onClick={() => handleDecreaseQuantity(item._id, item.size[0])} width="30" height="30" fill="currentColor" class="bi bi-dash text-black" style={{ cursor: "pointer" }} viewBox="0 0 16 16">
 																	<path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" />
 																</svg>
@@ -171,11 +158,6 @@ const NSavory = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" onClick={() => handleIncreaseQuantity(item._id, item.size[0])} width="30" height="30" fill="currentColor" class="bi bi-plus text-black" style={{ cursor: "pointer" }} viewBox="0 0 16 16">
 																	<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
 																</svg>
-                          {/* <img
-                            src={AddIcon}
-                            alt=""
-                            onClick={() => handleIncreaseQuantity(item._id, item.size[0])}
-                          /> */}
                         </div>
                       </div>
                     ) : (
@@ -184,7 +166,6 @@ const NSavory = () => {
                           <div className={styles.loader} style={{ margin: "auto" }}>
                           </div> :
                           <button
-                          // className='newsavorybtn'
                             onClick={() => handleIncreaseQuantity(item._id, item.size[0])}
 
                           >
