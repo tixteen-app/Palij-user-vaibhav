@@ -3,12 +3,12 @@ import styles from './Slider.module.css';
 import { assets } from '../../../assets/assets';
 
 const slides = [
-  {
-    id: 1,
-    image: assets.homeBanner4, // replace with actual image path
-    title: 'Butter Garlic Rusk',
-    description: 'Deliciously Baked & Crispy',
-  },
+  // {
+  //   id: 1,
+  //   image: assets.homeBanner4, 
+  //   title: 'Butter Garlic Rusk',
+  //   description: 'Deliciously Baked & Crispy',
+  // },
   {
     id: 2,
     image: assets.homeBanner2, // replace with actual image path
