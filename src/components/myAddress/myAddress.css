@@ -116,39 +116,83 @@
   color: #AE7B37;
   width: 200%;
   margin-bottom: -20px;
-
 }
 
-@media(max-width:700px) {
+
+@media(max-width:360px) {
+
+  .billing-address {
+    /* width: 0%; */
+    width: 115px;
+  }
+}
+@media(max-width:500px) {
+  .myaddress {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
   .shipping-billing-address {
     min-height: 55vh;
-    /* background: #F2D6CC; */
+    background: white;
+    border: 1px solid #000;
     border-radius: 20px;
-    padding: 20px;
-
-
+    padding: 20px 50px;
+    
+    
   }
-
-
+  
+  .ship_bill_add {
+    /* width: 50%; */
+    width: 250px;
+    padding: 10px 10px;
+    border-radius: 8px;
+  }
+  
   .shipping-billing-flex {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 20px;
   }
-
-  .shipping-address p,
-  .billing-address p {
-    font-family: Kumbh Sans;
-    font-size: 15px;
-    font-weight: 400;
-    line-height: 18.6px;
-    letter-spacing: 0.12em;
-    text-align: left;
-    width: 180%;
-    margin-top: 0px;
+  .shipping_Address_main_div_my_profile{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 100px;
+    margin-top: 40px;
+    /* justify-content:space; */
   }
-}
+  
+  .billing-address,
+  .shipping-address {
+    /* width: 46%; */
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 5px;
+    padding: 0px 10px;
+    width: 100% !important;
+  }
 
+  
+  .billing-address-flex,
+  .shipping-address-flex {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-top: 50px;
+  }
+  
+  .billing-address-flex div,
+  .shipping-address-flex div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: -10px;
+  }
+
+}
 @media(max-width:580px) {
   .shipping-billing-flex {
     display: flex;
@@ -172,19 +216,37 @@
     width: 155px;
   }
 }
+@media(max-width:700px) {
+  .shipping-billing-address {
+    min-height: 55vh;
+    /* background: #F2D6CC; */
+    border-radius: 20px;
+    padding: 20px;
+  }
 
-@media(max-width:400px) {
 
-  .billing-address {
-    /* width: 0%; */
-    width: 135px;
+  .shipping-billing-flex {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .shipping-address p,
+  .billing-address p {
+    font-family: Kumbh Sans;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 18.6px;
+    letter-spacing: 0.12em;
+    text-align: left;
+    width: 100%;
+    margin-top: 0px;
   }
 }
-
-@media(max-width:360px) {
-
-  .billing-address {
-    /* width: 0%; */
-    width: 115px;
-  }
+@media(max-width:1180px) {
+  .shipping-address button, .billing-address button {
+    padding: 7px 11px;
+    font-size: 12px;
 }
+}
+
