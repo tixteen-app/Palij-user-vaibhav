@@ -18,10 +18,11 @@
   width: 100%;
   height: auto;
 
-  height: 88vh;
+  height: 100vh;
   /* height: 100%; */
-  object-fit: cover;
+  /* object-fit: cover; */
   border-radius: 30px;
+
 }
 
 .textOverlay {
