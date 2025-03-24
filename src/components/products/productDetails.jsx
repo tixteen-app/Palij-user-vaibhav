@@ -2208,36 +2208,7 @@ function ProductDetails() {
                       )}
                     </div>
                   </div>
-
-                  {/* <div className={styles.allAddToCart}>
-                    {sizes.some(size => size.size && size.size.toLowerCase() !== 'null') && (
-                      <div className={styles.sizeOptions}>
-                        <div className={styles.selectQuntitytext} >Select Quantity:</div>
-                        <div className={styles.sizeButtons}>
-                          {sizes.map(size => (
-                            size.size && size.size.toLowerCase() !== 'null' && ( // Conditional check to exclude null and 'null'
-                              <div
-                                key={size._id}
-                                // className={ size._id === selectedSize?._id ? styles.selectedSizeButton  : styles.sizeButton}
-                                className={`${styles.sizeButtondiv} ${size._id === selectedSize?._id ? '' : styles.selectedSizeButton}`}
-                                onClick={() => handleSizeChange(size)}
-                              >
-                                <div
-                                  className={styles.finalpricebutton}
-                                >
-                                  ₹{size.FinalPrice}
-                                </div>
-                                <div className={styles.sizetypebutton}  >
-                                  {size.size}{size.sizetype}
-                                </div>
-
-                              </div>
-                            )
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                  </div> */}
+ 
                   <div className={styles.allAddToCart}>
                     {sizes.length > 1 && sizes.some(size => size.size && size.size.toLowerCase() !== 'null') && (
                       <div className={styles.sizeOptions}>

@@ -44,10 +44,16 @@
 .priceDetails {
   display: flex;
   justify-content: flex-start;
-  gap: 50px;
+  gap: 30px;
 }
-.priceDetails div {
+.priceFlexCol{
   width: 100%;
+  max-width: 200px;
+
+}
+.allAddToCart{
+  width: 100%;
+  max-width: 300px;
 }
 
 .sizeOptions {
@@ -313,9 +319,7 @@
   border: 1px solid #ff6b6b;
 }
 
-.priceDetails {
-  display: flex;
-}
+
 
 .actions {
   margin-top: 15px;
