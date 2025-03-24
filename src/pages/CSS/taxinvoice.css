@@ -201,4 +201,14 @@
     padding: 5px 8px;
     width: 13%;
   }
+
+  .tax_invoice-download-button {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    padding: 6px 8px;
+    font-size: 10px;
+    max-width: 100px;
+  }
+  
 }
