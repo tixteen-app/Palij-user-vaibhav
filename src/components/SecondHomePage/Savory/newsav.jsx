@@ -83,10 +83,7 @@ const NSavory = () => {
       return;
     }
     const cartItem = cartItems.find(item => item.productId === productId && item.size === size._id);
-    // if (size.quantity === cartItem?.quantity) {
-    //   toast('Cannot add more than available quantity.', { type: 'error' });
-    //   return;
-    // }
+
     try {
       setQuantityLoading(prev => ({ ...prev, [productId]: true }));
       await addToCart(productId, setIsLogin, setShowPopup, fetchCartItems, setCartItems, setProductLoaders, size._id);

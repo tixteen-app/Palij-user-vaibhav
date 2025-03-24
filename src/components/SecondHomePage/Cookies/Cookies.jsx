@@ -293,16 +293,15 @@ const Cookies = () => {
 
   const handleIncreaseQuantity = async (productId, size) => {
     if (!IsLogin) {
-      console.log("-----1")
       setShowPopup(true);
       return;
     }
 
     const cartItem = cartItems.find(item => item.productId === productId && item.size === size._id);
-    if (size.quantity === cartItem?.quantity) {
-      console.log('Cannot add more than available quantity.');
-      return;
-    }
+    // if (size.quantity === cartItem?.quantity) {
+    //   console.log('Cannot add more than available quantity.');
+    //   return;
+    // }
 
     const updatedCartItems = cartItems.map(item => {
       if (item.productId === productId && item.size === size._id) {
