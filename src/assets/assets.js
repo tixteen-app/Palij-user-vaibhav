@@ -54,6 +54,8 @@ import empty_cart from "./empty-cart.svg"
 import pieceOfCake from "./peiceofCake.png"
 import homeBanner2 from "./new2.jpg"
 import homeBanner3 from "./new4.jpg"
+import homeBannerMobile1 from "./new1.jpg"
+import homeBannerMobile2 from "./new3.jpg"
 import homeBanner4 from "./new banner 1.png"
 import aboutLandingbanner1 from "./aboutLandingPage1.png"
 import paljiMainImg from './paljiMainImg.png'
@@ -131,6 +133,8 @@ export const assets = {
 	aboutLandingbanner1,
 	homeBanner3,
 	homeBanner4,
+	homeBannerMobile1,
+	homeBannerMobile2,
 	paljiMainImg,
 	cart_gif,
 	razorpay_logo,
