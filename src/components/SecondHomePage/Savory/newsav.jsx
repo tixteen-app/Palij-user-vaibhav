@@ -9,11 +9,7 @@ import {
   fetchCart,
   fetchWishlist,
 } from "../../../utils/productFunction.js"
-import Primaryloader from '../../loaders/primaryloader';
 import LoginPopup from '../../LoginPopup/LoginPopup.jsx';
-import AddIcon from "../../../assets/add_icon_green.png"
-import RemoveIcon from "../../../assets/remove_icon_red.png"
-import { Link } from 'react-router-dom';
 
 const NSavory = () => {
 
@@ -87,10 +83,10 @@ const NSavory = () => {
       return;
     }
     const cartItem = cartItems.find(item => item.productId === productId && item.size === size._id);
-    if (size.quantity === cartItem?.quantity) {
-      toast('Cannot add more than available quantity.', { type: 'error' });
-      return;
-    }
+    // if (size.quantity === cartItem?.quantity) {
+    //   toast('Cannot add more than available quantity.', { type: 'error' });
+    //   return;
+    // }
     try {
       setQuantityLoading(prev => ({ ...prev, [productId]: true }));
       await addToCart(productId, setIsLogin, setShowPopup, fetchCartItems, setCartItems, setProductLoaders, size._id);

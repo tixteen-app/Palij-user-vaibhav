@@ -213,7 +213,7 @@ const Navbar = () => {
 			<div className="right-navbar">
 				<ul>
 					<li className={location.pathname === "/contact" ? "active" : ""}
-						style={{ marginTop: "-10px !important" }}
+						style={{ marginTop: "0px" }}
 					>
 						<Link to="/contact">CONTACT US</Link>
 					</li>
@@ -262,7 +262,6 @@ const Navbar = () => {
 				<Link to={isloggedIn ? "/cart" : "/palji-login"}>
 					<div className="nav-cart">
 						{isloggedIn === true && <span className="cart-no">{cartCount}</span>}
-						{/* <HiMiniShoppingBag className="cart-icon" /> */}
 						<img src={homeImg.cart} alt="" className="cart-icon" />
 					</div>
 				</Link>

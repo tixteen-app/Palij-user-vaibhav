@@ -91,10 +91,10 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
 			return;
 		}
 		const cartItem = cartItems.find(item => item.productId === productId && item.size === size._id);
-		if (size.quantity === cartItem?.quantity) {
-			toast('Cannot add more than available quantity.', { type: 'error' });
-			return;
-		}
+		// if (size.quantity === cartItem?.quantity) {
+		// 	toast('Cannot add more than available quantity.', { type: 'error' });
+		// 	return;
+		// }
 		try {
 			setQuantityLoading(prev => ({ ...prev, [productId]: true }));
 			await addToCart(productId, setIsLogin, setShowPopup, fetchCartItems, setCartItems, setProductLoaders, size._id);
@@ -167,12 +167,12 @@ console.log('displayedProducts',displayedProducts);
 												<p className={styles.name}>{item.name}</p>
 												<div className={styles.pricecart}>
 													{item.size.length > 0 &&
-														<p className={styles.productPrice}>
+														<div className={styles.productPrice}>
 															₹{item.size[0].FinalPrice} {/* Assuming you want to show the price of the first size */}
 															{item.size[0].discountPercentage > 0 && (
 																<span> ₹{item.size[0].price}</span>
 															)}
-														</p>
+														</div>
 													}
 													<div className={styles.cartActions}>
 														{cartItems.some(cartItem => cartItem.productId === item._id && cartItem.size === item.size[0]._id) ? (

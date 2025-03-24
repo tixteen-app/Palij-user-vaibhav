@@ -20,7 +20,7 @@
   width: 44%;
   display: flex;
   align-items: center;
-  padding-bottom: 15px;
+  /* padding-bottom: 15px; */
 }
 
 .left-navbar img {
