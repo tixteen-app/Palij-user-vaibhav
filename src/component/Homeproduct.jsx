@@ -124,7 +124,7 @@ function Homeproduct() {
                             <div className="homeproduct_product_div_details" >
                                 <div>
                                     <div className="bold_details_homeproduct" >{product.name}</div>
-                                    <div>{product.description}</div>
+                                    {/* <div>{product.description}</div> */}
                                 </div>
                                 <div className="bold_details_homeproduct">
                                     {product.weight}
