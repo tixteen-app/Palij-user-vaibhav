@@ -459,7 +459,7 @@ const PaljiLogin = () => {
 
             <div className="palji-options">
               <label className="remember-me">
-                <input type="checkbox" /> Remember Me
+                {/* <input type="checkbox" /> Remember Me */}
               </label>
               <Link to="/forgot-password">Forgot Password?</Link>
             </div>
@@ -467,14 +467,14 @@ const PaljiLogin = () => {
             <button
               type="submit"
               className={`palji-button ${loginLoading ? 'loading' : ''}`}
-              disabled={loginLoading || googleLoading} // Disable if any loading is true
+              disabled={loginLoading || googleLoading} 
             >
               {loginLoading ? (
                 <>
-                  <span className="loader"></span> Processing...
+                  {/* <span className="loader"></span> Processing... */}
                 </>
               ) : (
-                <>➔ Continue</>
+                <> ➔ Continue</>
               )}
             </button>
           </form>

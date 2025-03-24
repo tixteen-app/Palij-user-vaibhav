@@ -27,6 +27,14 @@ const PaljiSignUp = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  useEffect(() => {
+    // if token is present, redirect to home
+    const token = localStorage.getItem("token");
+    if (token) {
+      navigate("/");
+    }
+  }, []);
+
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -41,19 +49,17 @@ const PaljiSignUp = () => {
     try {
       const response = await makeApi("/api/register-user-by-pass", "post", formData);
       const responseData = response.data;
-console.log('responseData', responseData);
-      if (responseData.success) {
-        toast.success("Account created successfully!");
-        // Redirect to login or home
-        navigate("/");
-      } else {
-        toast.error("Signup failed, please try again!");
-      }
+      localStorage.setItem("token", responseData.token);
+      toast.success("Account created successfully!");
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
     } catch (error) {
-      toast.error(error.response.data.message|| "Google signup failed!");
+      toast.error(error.response.data.message || "Google signup failed!");
       console.error("Signup error:", error);
     } finally {
       setLoading(false);
+
     }
   };
 
@@ -82,7 +88,7 @@ console.log('responseData', responseData);
         toast.error("Google signup failed!");
       }
     } catch (error) {
-      toast.error(error.response.data.message|| "Google signup failed!");
+      toast.error(error.response.data.message || "Google signup failed!");
       console.error("Google Sign-in error:", error);
     } finally {
       setGoogleLoading(false);
@@ -123,10 +129,10 @@ console.log('responseData', responseData);
             {/* {googleLoading ? (
               <span className="loader"></span>
             ) : ( */}
-              <>
-                <FaGoogle className="palji-google-icon" />
-                Sign Up with Google
-              </>
+            <>
+              <FaGoogle className="palji-google-icon" />
+              Sign Up with Google
+            </>
             {/* )} */}
           </button>
 

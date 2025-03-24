@@ -163,6 +163,11 @@ button {
   padding: 5px 15px;
   border-radius: 5px;
 }
+@media (max-width:1460px) {
+  .productContent {
+    width: 300px;
+  }
+}
 
 @media (max-width: 767px) {
   .container {
@@ -257,7 +262,7 @@ button {
 @media (max-width: 550px) {
   .productContent {
       height: 340px;
-    width: 320px;
+    width: 200px;
 
   }
 
@@ -293,8 +298,3 @@ button {
   }
 }
 
-@media (max-width:1460px) {
-  .productContent {
-    width: 300px;
-  }
-}
