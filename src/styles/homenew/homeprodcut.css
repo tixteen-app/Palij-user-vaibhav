@@ -221,6 +221,9 @@
     font-size: 20px;
     font-weight: 600;
 }
+.homeproduct_product_div_details_category{
+    font-size: 13px;
+}
 
 .discount_text_homeproduct {
     color: red;
@@ -300,6 +303,9 @@
 }
 
 @media (max-width: 576px) {
+    .homeproduct_product_div_details_category{
+        font-size: 10px;
+    }
     .homeproduct_product_main_div {
         width: 95%;
         gap: 15px;
