@@ -6,6 +6,7 @@ import Category from '../components/SecondHomePage/Category/Category'
 import Explore from '../components/SecondHomePage/Explore/Explore'
 import TestimonialSlider from '../component/newtopbnner'
 import Homeproduct from '../component/Homeproduct'
+import Homesavery from '../component/homesavery'
 
 function Homepage() {
   return (
@@ -13,8 +14,9 @@ function Homepage() {
       <MarqueeComponent />
       <Slider />
       <Category />
-      <Explore />
       <Homeproduct/>
+      <Homesavery/>
+      <Explore />
         <TestimonialSlider/>
       
 
