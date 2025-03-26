@@ -168,7 +168,7 @@ const MyAccount = () => {
 								</div>
 								<div className="userprofile-no">
 									<span>CONTACT NUMBER</span>
-									<p>{userDetails.mobileNumber}</p>
+									<p>{ userDetails.mobileNumber ? userDetails.mobileNumber: "Contact Number"}</p>
 								</div>
 								<div className="userprofile-email">
 									<span>EMAIL ADDRESS</span>
