@@ -16,7 +16,6 @@ const OpenProduct = () => {
 	}, [all_product])
 	// console.log("this is prodidplsy", pro)
 	const product = all_product.find((e) => e._id === productId)
-	console.log("this is all ", product)
 	if (!product) {
 		return <div>Loading...</div>
 	}

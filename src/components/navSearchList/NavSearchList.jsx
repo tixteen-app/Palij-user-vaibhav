@@ -25,11 +25,8 @@ const NavSearchList = ({ product, clearSearchInput, input, isLoading }) => {
 					>
 						<img src={result.thumbnail} alt={result.name} />
 						<div className="result-info">
-							<h3>{result.name}</h3>
-							{/* <p>₹{result.price}</p> */}
-							{/* <p>₹{result.price}</p> */}
+							<div>{result.name}</div>
 							<p>₹{result.size[0].FinalPrice}</p>
-
 						</div>
 					</Link>
 				))
