@@ -63,14 +63,7 @@ const MyAccount = () => {
                                         {/* <p>{userDatails.firstName + " " + userDatails.lastName}</p> */}
                                         <p>{userDatails?.firstName} {userDatails?.lastName}</p>
                                     </div>
-                                    {/* <div className="userprofile-birthdate">
-                            <span>DATE OF BIRTH</span>
-                            <p> 01/01/2000 </p>
-                        </div> */}
-                                    {/* <div className="userprofile-gender">
-                            <span>GENDER</span>
-                            <p>Male</p>
-                        </div> */}
+                                
                                     <div className="userprofile-no">
                                         <span>CONTACT NUMBER</span>
                                         {/* <p>{userDatails.mobileNumber}</p> */}
