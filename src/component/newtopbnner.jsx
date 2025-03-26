@@ -2,18 +2,18 @@ import React, { useState, useEffect, useRef } from "react";
 import "../styles/homenew/TestimonialSlider.css";
 
 const testimonials = [
-  { id: 1, image: "https://www.istockphoto.com/resources/images/HomePage/FourPack/C2-Photos-iStock-1356197695.jpg", text: "Amazing quality and taste! Perfect for every celebration.", name: "Kabir" },
-  { id: 2, image: "https://www.istockphoto.com/resources/images/HomePage/FourPack/C2-Photos-iStock-1356197695.jpg", text: "Amazing quality and taste! Perfect for every celebration.", name: "Kabir" },
-  { id: 3, image: "https://www.istockphoto.com/resources/images/HomePage/FourPack/C2-Photos-iStock-1356197695.jpg", text: "Amazing quality and taste! Perfect for every celebration.", name: "Kabir" },
-  { id: 4, image: "https://www.istockphoto.com/resources/images/HomePage/FourPack/C2-Photos-iStock-1356197695.jpg", text: "Amazing quality and taste! Perfect for every celebration.", name: "Kabir" },
-  { id: 5, image: "https://www.istockphoto.com/resources/images/HomePage/FourPack/C2-Photos-iStock-1356197695.jpg", text: "Amazing quality and taste! Perfect for every celebration.", name: "Kabir" },
-  { id: 6, image: "https://www.istockphoto.com/resources/images/HomePage/FourPack/C2-Photos-iStock-1356197695.jpg", text: "Amazing quality and taste! Perfect for every celebration.", name: "Kabir" },
+  { id: 1, image: "https://www.istockphoto.com/resources/images/HomePage/FourPack/C2-Photos-iStock-1356197695.jpg", text: "A wonderful experience! The product exceeded all expectations.", name: "Aarav" },
+  { id: 2, image: "https://www.shutterstock.com/image-photo/bakery-happy-portrait-man-cafe-600nw-2466962447.jpg", text: "Delicious and fresh. I’ll definitely order again for my next event.", name: "Nisha" },
+  { id: 3, image: "https://media.istockphoto.com/id/1194938286/photo/lovely-plus-sizewoman-workingg-at-her-bakery.jpg?s=612x612&w=0&k=20&c=UuKrkCR_hjriQKGNHbMI4Ot4yI5AFvcW3hxvvQ6-unQ=", text: "Quality is top-notch! My guests loved everything.", name: "Rehan" },
+  { id: 4, image: "https://thumbs.dreamstime.com/b/business-owner-bakery-shop-background-female-81036247.jpg", text: "Highly recommended! The perfect treat for any occasion.", name: "Simran" },
+  { id: 5, image: "https://www.istockphoto.com/resources/images/HomePage/FourPack/C2-Photos-iStock-1356197695.jpg", text: "Absolutely amazing! Great taste and perfect presentation.", name: "Vikram" },
+  { id: 6, image: "https://media.istockphoto.com/id/1272984030/photo/nothing-invites-customers-to-your-store-like-a-welcoming-smile.jpg?s=612x612&w=0&k=20&c=ahpJKFOXlRkS0KAZr9FsX3tPjMZBOGScjI4iCu1GKjY=", text: "An unforgettable experience. The product was flawless!", name: "Priya" },
 ];
 
 const TestimonialSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const totalSlides = testimonials.length;
-  const visibleSlides = 4;
+  const visibleSlides = 3.8;
   const sliderRef = useRef(null);
   const autoSlideIntervalRef = useRef(null);
   const [isPaused, setIsPaused] = useState(false);
@@ -23,7 +23,7 @@ const TestimonialSlider = () => {
     if (!isPaused) {
       autoSlideIntervalRef.current = setInterval(() => {
         setCurrentIndex(prev => (prev + 1) % totalSlides);
-      }, 2000);
+      }, 200000);
     }
 
     return () => {

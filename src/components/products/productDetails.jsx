@@ -2072,6 +2072,7 @@ function ProductDetails() {
                 <div
                   className={styles.desktopImg}
                 >
+                  
                   <ReactImageMagnify
                     {...{
                       smallImage: {
@@ -2208,6 +2209,7 @@ function ProductDetails() {
                       )}
                     </div>
                   </div>
+
  
                   <div className={styles.allAddToCart}>
                     {sizes.length > 1 && sizes.some(size => size.size && size.size.toLowerCase() !== 'null') && (

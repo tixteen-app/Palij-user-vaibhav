@@ -7,6 +7,7 @@ import Explore from '../components/SecondHomePage/Explore/Explore'
 import TestimonialSlider from '../component/newtopbnner'
 import Homeproduct from '../component/Homeproduct'
 import Homesavery from '../component/homesavery'
+import Satisfation from '../component/satisfation'
 
 function Homepage() {
   return (
@@ -14,6 +15,7 @@ function Homepage() {
       <MarqueeComponent />
       <Slider />
       <Category />
+      <Satisfation/>
       <Homeproduct/>
       <Homesavery/>
       <Explore />

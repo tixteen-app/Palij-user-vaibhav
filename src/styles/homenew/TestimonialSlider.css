@@ -9,8 +9,8 @@
   .new_home_slider_title {
     color: #9b6310;
     font-size: 24px;
-    font-weight: bold;
     margin-bottom: 20px;
+    font-family: var(--Tommay-font-1) !important;
   }
   
   .new_home_slider_wrapper {
@@ -22,6 +22,7 @@
     margin: 0 auto;
     overflow: hidden;
   }
+  
   
   .new_home_slider {
     width: 100%;
@@ -35,7 +36,7 @@
   }
   
   .new_home_slider_card {
-    flex: 0 0 calc(25% - 20px);
+    flex: 0 0 calc(22% - 20px);
     margin: 0 10px;
     background: white;
     padding: 20px;
@@ -54,14 +55,13 @@
   .new_home_slider_text {
     font-size: 16px;
     margin: 10px 0;
-    color: #333;
     text-align: left;
+    font-weight: 500;
   }
   
   .new_home_slider_name {
     font-size: 14px;
     font-weight: bold;
-    color: #555;
     text-align: right;
   }
   

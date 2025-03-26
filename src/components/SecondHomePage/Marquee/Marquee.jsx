@@ -6,7 +6,6 @@ const MarqueeComponent = () => {
   return (
     <Marquee>
       <div className={styles.marquee}>
-        Freshness Baked Daily
         <img src={assets.dotPoint} alt="dotpoint" />  <span className="text-black" > free shipping </span> <span>on order above ₹750 </span>
         <img src={assets.dotPoint} alt="dotpoint" />  <span className="text-black"> free shipping </span> <span>on order above ₹750 </span>
         <img src={assets.dotPoint} alt="dotpoint" />  <span className="text-black"> free shipping </span> <span>on order above ₹750 </span>

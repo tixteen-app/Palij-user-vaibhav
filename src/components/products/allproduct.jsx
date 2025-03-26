@@ -25,6 +25,7 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
 	const [AddTocartLoader, setAddTocartLoader] = useState({})
 	const [displayedProducts, setDisplayedProducts] = useState([]);
 	const [visibleProducts, setVisibleProducts] = useState(20);
+	const [sortBy, setSortBy] = useState("");
 
 	useEffect(() => {
 		if (isInitialLoad) {
@@ -136,7 +137,22 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
 		setVisibleProducts(nextVisibleProducts);
 		setDisplayedProducts(products.slice(0, nextVisibleProducts));
 	};
-console.log('displayedProducts',displayedProducts);
+
+	const handleSort = (sortType) => {
+		let sortedProducts = [...products];  // Make a copy of the products array to avoid mutating the original state
+
+		if (sortType === "hight") {
+			// Sort by Price Low to High
+			sortedProducts.sort((a, b) => a.size[0].FinalPrice - b.size[0].FinalPrice);
+		} else if (sortType === "low") {
+			// Sort by Price High to Low
+			sortedProducts.sort((a, b) => b.size[0].FinalPrice - a.size[0].FinalPrice);
+		}
+
+		setDisplayedProducts(sortedProducts.slice(0, visibleProducts));  // Update displayed products after sorting
+	};
+
+
 	return (
 		<div className={styles.mainContainer}>
 			{showPopup && <LoginPopup onClose={closePopup} />}
@@ -153,6 +169,22 @@ console.log('displayedProducts',displayedProducts);
 						<div className={styles.NoProductsFound}>No Products Found</div>
 					) : (
 						<div>
+							<div className={styles.sortContainer} >
+								<div className={styles.sortBy} > <span className={styles.sortLabel} > Sort By : </span>
+									<select
+										className={styles.sortSelect}
+										value={sortBy}
+										onChange={(e) => {
+											const selectedSort = e.target.value;
+											setSortBy(selectedSort);
+											handleSort(selectedSort);
+										}}
+									>
+										<option value="hight" className={styles.sortOption} >Price Low to High</option>
+										<option value="low" className={styles.sortOption}>Price High to Low</option>
+									</select>
+								</div>
+							</div>
 							<div className={styles.productsContainer}>
 								<h2>{categoryName}</h2>
 								<div className={styles.allProductsList}>

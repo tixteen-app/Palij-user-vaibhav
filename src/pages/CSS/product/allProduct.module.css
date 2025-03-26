@@ -207,6 +207,35 @@
   animation: rotation 1s linear infinite;
 }
 
+.sortContainer{
+  text-align: end;
+  padding: 0px 40px;
+}
+.sortLabel{
+  margin-right: 10px;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+.sortSelect{
+  padding: 5px 10px;
+  border: 1px solid #b47d56;
+  border-radius: 5px;
+}
+.sortSelect option{
+  padding: 5px 10px;
+  border: 1px solid #b47d56;
+  border-radius: 5px;
+}
+.sortSelect option:hover{
+  background: #b47d56;
+  color: #fff;
+}
+.sortOption:hover{
+  background: #b47d56;
+  color: #fff;
+}
+
+
 @keyframes rotation {
   0% {
     transform: rotate(0deg);
