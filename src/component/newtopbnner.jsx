@@ -18,12 +18,11 @@ const TestimonialSlider = () => {
   const autoSlideIntervalRef = useRef(null);
   const [isPaused, setIsPaused] = useState(false);
 
-  // Auto-slide function
   useEffect(() => {
     if (!isPaused) {
       autoSlideIntervalRef.current = setInterval(() => {
         setCurrentIndex(prev => (prev + 1) % totalSlides);
-      }, 200000);
+      }, 1500);
     }
 
     return () => {
@@ -39,18 +38,18 @@ const TestimonialSlider = () => {
   };
 
   return (
-    <div 
+    <div
       className="new_home_slider_container"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
       <h2 className="new_home_slider_title">SWEET PRAISE</h2>
-      
+
       <div className="new_home_slider_wrapper">
         <div className="new_home_slider" ref={sliderRef}>
-          <div 
-            className="new_home_slider_track" 
-            style={{ 
+          <div
+            className="new_home_slider_track"
+            style={{
               transform: getTransformValue(),
               width: `${(totalSlides * 100) / visibleSlides}%`
             }}
@@ -69,8 +68,8 @@ const TestimonialSlider = () => {
       {/* Dots Navigation */}
       <div className="new_home_slider_dots">
         {testimonials.map((_, index) => (
-          <span 
-            key={index} 
+          <span
+            key={index}
             className={`new_home_slider_dot ${index === currentIndex ? "active" : ""}`}
             onClick={() => setCurrentIndex(index)}
           ></span>
