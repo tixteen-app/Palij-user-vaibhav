@@ -67,9 +67,13 @@ function App() {
 		<div className="app">
 			{!location.pathname.startsWith("/admin") && <Navbar />}
 			<Routes>
-				<Route
+				{/* <Route
 					path="/"
 					element={<SecondHomePage />}
+				/> */}
+				<Route
+					path="/"
+					element={<Homepage />}
 				/>
 				<Route
 					path="/new"
