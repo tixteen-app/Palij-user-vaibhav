@@ -214,7 +214,7 @@ function App() {
 				/>{" "}
 				<Route
 					path="/test"
-					element={<TestingCart />}
+					element={<LatestOrder />}
 				/>
 
 				{/* <Route

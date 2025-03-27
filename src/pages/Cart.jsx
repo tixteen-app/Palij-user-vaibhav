@@ -115,7 +115,6 @@ const Cart = () => {
     }
   };
 
-  console.log("completeCart?.orderItems?",completeCart?.orderItems)
 
   return (
     <>
