@@ -115,11 +115,13 @@ const Cart = () => {
     }
   };
 
+  console.log("completeCart?.orderItems?",completeCart?.orderItems)
+
   return (
     <>
       <ToastContainer />
       {
-        (completeCart?.orderItems?.length === 0) ? (
+        (completeCart?.orderItems?.length === 0 || completeCart?.orderItems === undefined ) ? (
           <div className="empty_cart_div">
             <img src={assets.cart_gif} alt="Empty Cart" className="NO_cart_image" />
             <Link to="/product/all-products">
@@ -175,7 +177,7 @@ const Cart = () => {
                   </div>
                 </div>
               ))} */}
-              {completeCart.orderItems.map((item, index) => (
+              {completeCart?.orderItems?.map((item, index) => (
                 <div className="all_added_cart_list" key={index}>
                   <div className="cross" onClick={() => handleDeleteClick(item.productId._id, item.size._id, item.quantity)}>
                     <img className="remove-cart" src={assets.cart_remove} alt="Remove" />
@@ -186,12 +188,6 @@ const Cart = () => {
                       <div className="productthumbnailname">
                         <img src={item?.productId?.thumbnail} alt="" />
                         <p className="productItemName1">{item.productId?.name}</p>
-                        {/* {item.size?.size && (
-                          <p className="product-size-display">
-                            ({item.size.size}
-                            {item.size.sizetype})
-                          </p>
-                        )} */}
                       </div>
 
                       <p className="item-price">{`₹${item.size.FinalPrice} x ${item.quantity}`}</p>
