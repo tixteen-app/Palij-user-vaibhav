@@ -1,15 +1,3 @@
-// import React from 'react'
-
-// function Homesavery() {
-//   return (
-//     <div>Homesavery</div>
-//   )
-// }
-
-// export default Homesavery
-
-
-
 
 import "../styles/homenew/homeprodcut.css";
 import React, { useState, useEffect } from 'react';
@@ -17,11 +5,12 @@ import LoginPopup from "../components/LoginPopup/LoginPopup";
 import { addToCart, removeFromCart, fetchCart } from "../utils/productFunction";
 import { makeApi } from "../api/callApi";
 import { assets } from "../assets/assets";
+import SkeletonLoader from "../components/products/SkeletonLoader";
+import { useNavigate } from "react-router-dom";
 
 function Homesavery() {
-
-
-
+        const navigate = useNavigate();
+    
     const [AllProductLoader, setAllProductLoader] = useState(false);
     const [products, setProducts] = useState([]);
     const [IsLogin, setIsLogin] = useState(false)
@@ -31,8 +20,7 @@ function Homesavery() {
     const [productLoaders, setProductLoaders] = useState({})
     const [AddTocartLoader, setAddTocartLoader] = useState({})
     const [completeCart, setCompleteCart] = useState([]);
-
-
+    const [categories, setCategories] = useState([]);
 
     useEffect(() => {
         const token = localStorage.getItem("token")
@@ -44,6 +32,7 @@ function Homesavery() {
             setAllProductLoader(true);
             const categoriesResponse = await makeApi(`/api/get-all-categories`, "GET");
             const categories = categoriesResponse.data.categories;
+            setCategories(categories);
 
             if (categories.length > 0) {
                 const categoryId = categories[2]._id;
@@ -70,6 +59,7 @@ function Homesavery() {
     }
 
     const handleCategoryClick = () => {
+        navigate(`/product/all-products?category=${categories[2]._id}`);
     };
 
     const fetchCartItems = async () => {
@@ -119,7 +109,11 @@ function Homesavery() {
     return (
         <>
             {showPopup && <LoginPopup onClose={closePopup} />}
-
+            {AllProductLoader ? 
+        <div className="p-5">
+          <SkeletonLoader cards={4} />
+        </div> :
+        <>
             <div className="homeproduct_container_main_div" >
                 {/* top heading */}
                 <div className="homeproduct_top_heading_div homeproduct_top_heading_div_for_Savory" >
@@ -140,7 +134,11 @@ function Homesavery() {
                             {/* details */}
                             <div className="homeproduct_product_div_details" >
                                 <div>
-                                    <div className="bold_details_homeproduct" >{product.name}</div>
+                                    {/* <div className="bold_details_homeproduct" >{product.name}</div> */}
+                                    <div className="bold_details_homeproduct">
+                                        {product.name.split(' ').slice(0, 3).join(' ')}
+                                    </div>
+
                                     <div className="homeproduct_product_div_details_category" >{product.category.name}</div>
 
                                 </div>
@@ -237,6 +235,8 @@ function Homesavery() {
                     ))}
                 </div>
             </div>
+        </>
+}
         </>
     );
 }

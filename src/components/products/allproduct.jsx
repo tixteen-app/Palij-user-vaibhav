@@ -157,11 +157,6 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
 		<div className={styles.mainContainer}>
 			{showPopup && <LoginPopup onClose={closePopup} />}
 			{AllProductLoader ? (
-				// <div className={styles.AllProductLoader}>
-				// 	<div>
-				// 		<Primaryloader />
-				// 	</div>
-				// </div>
 				<SkeletonLoader items={12} />
 			) : (
 				<div className={styles.container}>

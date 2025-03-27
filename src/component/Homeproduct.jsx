@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react';
 import LoginPopup from "../components/LoginPopup/LoginPopup";
 import { addToCart, removeFromCart, fetchCart } from "../utils/productFunction";
 import { makeApi } from "../api/callApi";
+import SkeletonLoader from "../components/products/SkeletonLoader";
 
 function Homeproduct() {
 
@@ -107,13 +108,17 @@ function Homeproduct() {
   return (
     <>
       {showPopup && <LoginPopup onClose={closePopup} />}
-
+      {AllProductLoader ? 
+        <div className="p-5">
+          <SkeletonLoader cards={4} />
+        </div> :
+        <>
+        
       <div className="homeproduct_container_main_div" >
         {/* top heading */}
         <div className="homeproduct_top_heading_div" >
           Best Seller
         </div>
-        {/* products */}
         <div className="homeproduct_product_main_div" >
           {products.slice(0, 4).map((product) => (
             <div key={product.id} className="homeproduct_product_sub_div" >
@@ -124,17 +129,22 @@ function Homeproduct() {
               {/* details */}
               <div className="homeproduct_product_div_details" >
                 <div>
-                  <div className="bold_details_homeproduct" >{product.name}</div>
+                  <div className="bold_details_homeproduct">
+                    {product.name.split(' ').slice(0, 2).join(' ')}
+                  </div>
+
                   <div className="homeproduct_product_div_details_category" >{product.category.name}</div>
                 </div>
                 <div className="bold_details_homeproduct">
                   {/* {product.weight} */}
                   {product.size.length > 0 &&
-                    <>
-                      {product.size[0].size}{product.size[0].sizetype}
-                    </>
-
+                    product.size[0].sizetype !== "Pack" && (
+                      <>
+                        {product.size[0].size}{product.size[0].sizetype}
+                      </>
+                    )
                   }
+
                 </div>
               </div>
               {/* add to cart options */}
@@ -220,6 +230,8 @@ function Homeproduct() {
           ))}
         </div>
       </div>
+      </>
+      }
     </>
   );
 }

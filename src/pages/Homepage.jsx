@@ -8,6 +8,7 @@ import TestimonialSlider from '../component/newtopbnner'
 import Homeproduct from '../component/Homeproduct'
 import Homesavery from '../component/homesavery'
 import Satisfation from '../component/satisfation'
+import Pcookies from '../component/pcookies'
 
 function Homepage() {
   return (
@@ -18,6 +19,7 @@ function Homepage() {
       <Satisfation/>
       <Homeproduct/>
       <Homesavery/>
+      <Pcookies/>
       <Explore />
         <TestimonialSlider/>
       

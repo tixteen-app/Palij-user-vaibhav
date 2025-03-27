@@ -545,6 +545,7 @@ import { IoSearch } from "react-icons/io5";
 import FilterDropdown from "./FilterPopup";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { useLocation } from "react-router-dom";
+import Skeleton from "react-loading-skeleton";
 
 
 const ProductSidebar = () => {
@@ -559,7 +560,7 @@ const ProductSidebar = () => {
 	const [selectedPriceRange, setSelectedPriceRange] = useState({ min: 0, max: 1000000 }); // No filter by default
 	const [isInitialLoad, setIsInitialLoad] = useState(true);
 	const [showDropdown, setShowDropdown] = useState(false);
-
+	const [catloader , setCatloader] = useState(false);
 	useEffect(() => {
 		if (isInitialLoad) {
 			window.scrollTo(0, 0);
@@ -570,6 +571,7 @@ const ProductSidebar = () => {
 	useEffect(() => {
 		async function fetchCategories() {
 			try {
+				setCatloader(true);
 				const response = await makeApi("/api/get-all-categories", "GET");
 				if (response.status === 200) {
 					setCategories(response.data.categories);
@@ -594,6 +596,8 @@ const ProductSidebar = () => {
 				}
 			} catch (error) {
 				console.log("Error fetching categories:", error);
+			}finally{
+				setCatloader(false);
 			}
 		}
 		fetchCategories();
@@ -667,7 +671,13 @@ const ProductSidebar = () => {
 						)}
 						{/* drop down */}
 						<div className={styles.categories}>
-							<div>
+							{catloader ? (
+								<>
+											<Skeleton height={`200px`} width={`100%`} />
+								</>
+							):(
+								<>
+									<div>
 								<p
 									onClick={() => handleCategoryChange("", "")}
 									className={selectedCategory === "" ? styles.active : ""}
@@ -697,7 +707,9 @@ const ProductSidebar = () => {
 										)}
 									</div>
 								))}
-							</div>
+							</div></>
+							)}
+						
 						</div>
 					</div>
 					{/* filter by price */}

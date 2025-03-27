@@ -258,12 +258,28 @@
 
 @media(max-width:550px) {
   .productImg img {
-
     object-fit: contain;
     margin: auto;
     /* background: #000; */
   }
+  .sortLabel{
+    display: none;
+  }
 
+  .sortSelect{
+    padding: 3px 5px;
+    border: 1px solid #b47d56;
+    border-radius: 5px;
+    width: 50%;
+  }
+
+  .sortSelect option{
+    padding: 5px 10px;
+    border: 1px solid #b47d56;
+    border-radius: 5px;
+  }
+
+  
   .mainContainer {
     margin-top: 0vh;
   }
@@ -271,8 +287,6 @@
   .productsContainer h2 {
     display: none;
   }
-
-
 
   .pricecart {
     display: flex;
@@ -284,7 +298,8 @@
   }
 }
 
-@media(max-width:450px) {
+@media(max-width:550px) {
+  
   .mainContainer {
     margin-top: 0vh;
   }
