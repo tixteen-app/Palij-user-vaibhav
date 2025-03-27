@@ -94,7 +94,7 @@ function ProductDetails() {
       if (cakeMessage !== currentCartMessage) {
         updateCakeMessage();
       }
-    }, 1000); // 1 second debounce
+    }, 500); // 1 second debounce
 
     return () => clearTimeout(timer);
   }, [cakeMessage]);

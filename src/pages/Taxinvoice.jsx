@@ -45,25 +45,32 @@ const TaxInvoice = ({ orderSummary, onClose }) => {
 
           {/* Invoice Details */}
           <div className="tax_invoice-details">
-              <p>
-                <strong>Invoice No:</strong> {orderSummary?._id}
-              </p>
-              <p>
-                <strong>Invoice Date:</strong> {new Date(orderSummary?.createdAt).toLocaleDateString()}
-              </p>
-              <p>
-                <strong>Order No:</strong> {orderSummary?.orderId}
-              </p>
-              <p>
-                <strong>Order Date:</strong> {new Date(orderSummary?.createdAt).toLocaleDateString()}
-              </p>
-              <p>
-                <strong>Nature of Supply:</strong> Goods
-              </p>
-              <p>
-                <strong>Place of Supply:</strong> {orderSummary?.shippingAddress?.state}
-              </p>
+            <div className="invoice-row">
+              <div>Invoice No:</div>
+              <div>{orderSummary?.invoiceId}</div>
+            </div>
+            <div className="invoice-row">
+              <div>Invoice Date:</div>
+              <div>{new Date(orderSummary?.createdAt).toLocaleDateString()}</div>
+            </div>
+            <div className="invoice-row">
+              <div>Order No:</div>
+              <div>{orderSummary?.orderId}</div>
+            </div>
+            <div className="invoice-row">
+              <div>Order Date:</div>
+              <div>{new Date(orderSummary?.createdAt).toLocaleDateString()}</div>
+            </div>
+            <div className="invoice-row">
+              <div>Nature of Supply:</div>
+              <div>Goods</div>
+            </div>
+            <div className="invoice-row">
+              <div>Place of Supply:</div>
+              <div>{orderSummary?.shippingAddress?.state}</div>
+            </div>
           </div>
+
 
           {/* Invoice Table */}
           <div className="tax_invoice-table-container">

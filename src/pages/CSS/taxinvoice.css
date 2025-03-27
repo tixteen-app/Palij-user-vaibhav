@@ -91,11 +91,28 @@
 
 /* Invoice Details */
 .tax_invoice-details {
-  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
-  gap: 1px;
+  gap: 1px; 
+  padding: 10px 0px;
 }
+
+.invoice-row {
+  display: flex;
+  justify-content: flex-start; /* Aligns label and value on opposite sides */
+  padding: 5px 0; /* Adds padding to rows */
+  gap: 10px;
+}
+
+.invoice-row div:first-child {
+  font-weight: bold; /* Makes the label text bold */
+  width: 20%;
+}
+
+.invoice-row div:last-child {
+  text-align: right; /* Aligns the value text to the right */
+}
+
 
 .tax_invoice-detail-item {
   margin-bottom: 8px;
@@ -172,10 +189,20 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 580px) {
   .tax_invoice-container {
     padding: 10px;
   }
+  .invoice-row {
+    display: flex;
+    justify-content: space-between; /* Aligns label and value on opposite sides */
+    padding: 5px 0; /* Adds padding to rows */
+  }
+  .invoice-row div:first-child {
+    font-weight: bold; /* Makes the label text bold */
+    width: 100%;
+  }
+  
 
   .tax_invoice-company-name {
     font-size: 18px;
@@ -187,7 +214,7 @@
   }
 
   .tax_invoice-title h2 {
-    font-size: 14px;
+    font-size: 15px;
   }
 
   .tax_invoice-table th,
