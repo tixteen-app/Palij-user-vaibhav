@@ -26,7 +26,7 @@ const TaxInvoice = ({ orderSummary, onClose }) => {
           onClick={toPDF} // Trigger PDF generation
           style={{ marginLeft: "10px", backgroundColor: "#4CAF50", color: "white" }}
         >
-          Download Bill
+          Download
         </button>
         <div ref={targetRef} className="p-3">
           {/* Company Header */}
@@ -45,7 +45,6 @@ const TaxInvoice = ({ orderSummary, onClose }) => {
 
           {/* Invoice Details */}
           <div className="tax_invoice-details">
-            <div>
               <p>
                 <strong>Invoice No:</strong> {orderSummary?._id}
               </p>
@@ -64,7 +63,6 @@ const TaxInvoice = ({ orderSummary, onClose }) => {
               <p>
                 <strong>Place of Supply:</strong> {orderSummary?.shippingAddress?.state}
               </p>
-            </div>
           </div>
 
           {/* Invoice Table */}

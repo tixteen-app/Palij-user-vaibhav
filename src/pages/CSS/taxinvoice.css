@@ -91,10 +91,10 @@
 
 /* Invoice Details */
 .tax_invoice-details {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
 }
 
 .tax_invoice-detail-item {
@@ -208,7 +208,9 @@
     left: 0px;
     padding: 6px 8px;
     font-size: 10px;
-    max-width: 100px;
+    max-width: 70px;
   }
-  
+  .tax_invoice-close-button {
+    top: 0px;
+  } 
 }

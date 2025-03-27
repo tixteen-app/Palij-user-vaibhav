@@ -27,6 +27,17 @@
   height: 100vh;
 }
 
+/* Adjust the cart item layout */
+.all_added_cart_list {
+  position: relative;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.cart-items-item {
+  flex-wrap: wrap;
+}
+
 
 .empty_cart_div h2 {
   /* border: 2px solid #FFF; */
@@ -430,6 +441,7 @@
   margin: auto;
 }
 
+
 .cart-item {
   /* width: 50%; */
 
@@ -594,7 +606,7 @@
   .all_added_cart_list {
     border: 1px solid #000;
     border-radius: 10px;
-    margin-top: 10px;
+    margin: 10px 10px;
     position: relative;
   }
 
@@ -603,7 +615,7 @@
     display: flex;
     align-items: center;
     right: 12px;
-    bottom: 38px;
+    top: 22px;
     border: 1px solid red;
     border-radius: 50%;
     padding: 4px;
@@ -636,6 +648,7 @@
     margin-left: 20px;
 
   }
+  
 
   .Icon_add_to_cart_main_cart_page img {
     width: 30px;
@@ -882,4 +895,50 @@
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+
+/* Message Container */
+.cart-cake-message {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  padding: 8px 0;
+}
+
+.message-label {
+  font-weight: 500;
+  color: #EE5564;
+  margin-right: 15px;
+}
+
+/* Input Wrapper */
+.message-input-wrapper {
+  position: relative;
+  width: 40%;
+}
+
+/* Input with bottom border only */
+.message-input-bottom-border {
+  width: 100%;
+  padding: 4px 25px 4px 0;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  font-size: 0.9rem;
+  background: transparent;
+  transition: border-color 0.3s;
+}
+
+.message-input-bottom-border:focus {
+  outline: none;
+  border-bottom-color: #EE5564;
+}
+
+/* Edit icon inside input */
+.edit-icon-inside {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
 }

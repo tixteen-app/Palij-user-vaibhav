@@ -35,7 +35,7 @@ function Checkout() {
 	const [cartItems, setCartItems] = useState([]);
 	const [productLoaders, setProductLoaders] = useState({});
 	const [availablePincodes, setAvailablePincodes] = useState([]);
-	const [fetchCartLoader, setFetchCartLoader] = useState(false);
+	const [fetchCartLoader, setFetchCartLoader] = useState();
 	const [completeCart, setCompleteCart] = useState([]);
 	const [saveaddloader, setsaveaddresloder] = useState(false)
 	const [deletePopup, setDeletePopup] = useState(false);
@@ -361,37 +361,78 @@ function Checkout() {
 	};
 
 
+	// const handleDeleteClick = async (productId, selectProductSize, quantity) => {
+	// 	await deleteproductFromCart(productId, setProductLoaders, setCartItems, fetchCart, selectProductSize, quantity);
+
+	// 	fetchCartItems();
+	// 	setShowModal(false);
+
+	// 	// Check if cartItems state is empty
+	// 	if (cartItems.length === 0) {
+	// 		navigate("/cart");
+	// 	}
+
+	// };
 	const handleDeleteClick = async (productId, selectProductSize, quantity) => {
-		await deleteproductFromCart(productId, setProductLoaders, setCartItems, fetchCart, selectProductSize, quantity);
-
-		fetchCartItems();
-
-		// Check if cartItems state is empty
-		if (cartItems.length === 0) {
-			navigate("/cart");
+		try {
+		  // Call API to delete product from the cart
+		  const deleteSuccess = await deleteproductFromCart(productId, setProductLoaders, setCartItems, fetchCart, selectProductSize, quantity);
+	  
+		  // If the deletion was successful, close the modal
+			fetchCartItems();
+			setShowModal(false);
+			  navigate("/cart");
+		
+		} catch (error) {
+		  console.error("Error deleting product from cart:", error);
 		}
+	  };
+	  
+	// const handleRemoveAllClick = async () => {
+	// 	// Loop through non-deliverable products and delete them one by one
+	// 	for (const item of nonDeliverableProducts) {
+	// 		await deleteproductFromCart(
+	// 			item.productId._id,        
+	// 			setProductLoaders,         
+	// 			setCartItems,              
+	// 			fetchCart,                  
+	// 			item.size._id,             
+	// 			item.quantity              
+	// 		);
+	// 	}
 
-	};
+	// 	fetchCartItems();
+
+	// 	// If cart is empty, redirect to cart page
+	// 		navigate("/cart");
+	// 	setShowModal(false);
+	// };
 	const handleRemoveAllClick = async () => {
-		// Loop through non-deliverable products and delete them one by one
-		for (const item of nonDeliverableProducts) {
+		try {
+		  // Loop through non-deliverable products and delete them one by one
+		  for (const item of nonDeliverableProducts) {
 			await deleteproductFromCart(
-				item.productId._id,        // Pass productId
-				setProductLoaders,         // Pass setProductLoaders
-				setCartItems,              // Pass setCartItems
-				fetchCart,                 // Pass fetchCart function
-				item.size._id,             // Pass size
-				item.quantity              // Pass quantity
+			  item.productId._id,
+			  setProductLoaders,
+			  setCartItems,
+			  fetchCart,
+			  item.size._id,
+			  item.quantity
 			);
+		  }
+	  
+		  // Fetch updated cart items after removing products
+		  fetchCartItems();
+	  
+		  // After everything is done, close the modal and redirect to the cart page
+		  setShowModal(false);
+		  navigate("/cart");
+		} catch (error) {
+		  console.error("Error removing products from cart:", error);
+		  // You can handle errors, like showing a message to the user, if needed
 		}
-
-		fetchCartItems();
-
-		// If cart is empty, redirect to cart page
-		if (cartItems.length === 0) {
-			navigate("/cart");
-		}
-	};
+	  };
+	  
 
 	// Razopay
 	const loadRazorpayScript = (src) => {

@@ -8,6 +8,10 @@ import "../../styles/Auth/singup.css"
 const Signup = () => {
 	const navigate = useNavigate()
 
+	useEffect(() => {
+			navigate("/")
+	}, [])
+
 	const [formData, setFormData] = useState({
 		firstName: "",
 		lastName: "",

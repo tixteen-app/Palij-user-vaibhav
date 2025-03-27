@@ -353,6 +353,42 @@
   margin: auto 0;
   font-size: 1.1rem;
 }
+/* cake msg */
+.cakeMessageContainer {
+  margin-top: 30px;
+  width: 40%;
+}
+.add-cake-message {
+font-size: 20px;
+font-weight: 500;
+}
+.cakeMessageContainer h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.cakeMessageInput {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.cakeMessageInput:focus {
+  outline: none;
+  border-color: #EE5564;
+}
+.cakeMessage{
+  font-weight: 500;
+}
+.messageNote {
+  font-size: 12px;
+  color: #777;
+  margin-top: 5px;
+}
 
 @media(max-width:800px) {
   .title h1 {

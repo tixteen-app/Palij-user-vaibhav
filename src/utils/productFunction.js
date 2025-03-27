@@ -97,7 +97,7 @@ export const addToCart = async (
 	productId,
 	setIsLogin,
 	setShowPopup,
-	fetchCart, // Ensure fetchCart does not take setFetchCartLoader if not needed
+	fetchCart, 
 	setCartItems,
 	setProductLoaders,
 	selectProductSize
