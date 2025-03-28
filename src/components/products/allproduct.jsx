@@ -270,6 +270,21 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
     const [sortBy, setSortBy] = useState("");
     const [hasFetched, setHasFetched] = useState(false); // New state to track if we've completed first fetch
 
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (isDropdownOpen && !event.target.closest(`.${styles.customDropdown}`)) {
+                setIsDropdownOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [isDropdownOpen]);
+
     useEffect(() => {
         if (isInitialLoad) {
             window.scrollTo(0, 0);
@@ -383,13 +398,13 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
         } else if (sortType === "low") {
             sortedProducts.sort((a, b) => b.size[0].FinalPrice - a.size[0].FinalPrice);
         }
-        setDisplayedProducts(sortedProducts.slice(0, visibleProducts)); 
+        setDisplayedProducts(sortedProducts.slice(0, visibleProducts));
     };
 
     return (
         <div className={styles.mainContainer}>
             {showPopup && <LoginPopup onClose={closePopup} />}
-            
+
             {/* Show loader only when loading and no products are available yet */}
             {AllProductLoader && !hasFetched ? (
                 <SkeletonLoader items={12} />
@@ -401,25 +416,60 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
                     ) : (
                         <div>
                             {displayedProducts.length > 0 && (
+                                // <div className={styles.sortContainer}>
+                                //     <div className={styles.sortBy}>
+                                //         <span className={styles.sortLabel}>Sort By : </span>
+                                //         <select
+                                //             className={styles.sortSelect}
+                                //             value={sortBy}
+                                //             onChange={(e) => {
+                                //                 const selectedSort = e.target.value;
+                                //                 setSortBy(selectedSort);
+                                //                 handleSort(selectedSort);
+                                //             }}
+                                //         >
+                                //             <option value="hight" className={styles.sortOption}>Price Low to High</option>
+                                //             <option value="low" className={styles.sortOption}>Price High to Low</option>
+                                //         </select>
+                                //     </div>
+                                // </div>
                                 <div className={styles.sortContainer}>
-                                    <div className={styles.sortBy}>
-                                        <span className={styles.sortLabel}>Sort By : </span>
-                                        <select
-                                            className={styles.sortSelect}
-                                            value={sortBy}
-                                            onChange={(e) => {
-                                                const selectedSort = e.target.value;
-                                                setSortBy(selectedSort);
-                                                handleSort(selectedSort);
-                                            }}
-                                        >
-                                            <option value="hight" className={styles.sortOption}>Price Low to High</option>
-                                            <option value="low" className={styles.sortOption}>Price High to Low</option>
-                                        </select>
+                                    <div className={styles.customDropdown}>
+                                        <div className={styles.sortLabel}>Sort By:</div>
+                                        <div className={styles.dropdownHeader} onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
+                                            {sortBy === "hight" ? "Price Low to High" : "Price High to Low"}
+                                            <span className={`${styles.arrow} ${isDropdownOpen ? styles.open : ""}`}>
+                                                ▼
+                                            </span>
+                                        </div>
+                                        {isDropdownOpen && (
+                                            <div className={styles.dropdownOptions}>
+                                                <div
+                                                    className={styles.dropdownOption}
+                                                    onClick={() => {
+                                                        setSortBy("hight");
+                                                        handleSort("hight");
+                                                        setIsDropdownOpen(false);
+                                                    }}
+                                                >
+                                                    Price Low to High
+                                                </div>
+                                                <div
+                                                    className={styles.dropdownOption}
+                                                    onClick={() => {
+                                                        setSortBy("low");
+                                                        handleSort("low");
+                                                        setIsDropdownOpen(false);
+                                                    }}
+                                                >
+                                                    Price High to Low
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             )}
-                            
+
                             <div className={styles.productsContainer}>
                                 {displayedProducts.length > 0 && <h2>{categoryName}</h2>}
                                 <div className={styles.allProductsList}>

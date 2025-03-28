@@ -80,6 +80,86 @@
   opacity: 0.7;
 }
 
+.sortContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.customDropdown {
+  position: relative;
+  display: inline-block;
+  min-width: 200px;
+  display: flex;
+  font-family: var(--Tommay-font-1);
+  align-items: center;
+}
+
+.sortLabel {
+  margin-right: 10px;
+  font-weight: 500;
+  color: #333;
+}
+
+.dropdownHeader {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: white;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.dropdownHeader:hover {
+  border-color: #aaa;
+}
+
+.arrow {
+  transition: transform 0.3s ease;
+  font-size: 12px;
+  margin-left: 8px;
+}
+
+.arrow.open {
+  transform: rotate(180deg);
+}
+
+.dropdownOptions {
+  position: absolute;
+  top: 100%;
+  right: 10px;
+  /* right: 0; */
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 100;
+  margin-top: 5px;
+  width: 70%;
+}
+
+.dropdownOption {
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.dropdownOption:hover {
+  background-color: #f5f5f5;
+}
+
+.dropdownOption:first-child {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.dropdownOption:last-child {
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
 .productImg {
   /* padding: 10px; */
   /* background: red; */
@@ -304,6 +384,28 @@
     align-items: center;
     gap: 15px;
   }
+  .dropdownOptions {
+    position: absolute;
+    top: 100%;
+    right: 10px;
+    /* right: 0; */
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 100;
+    margin-top: 5px;
+    width: 100%;
+  }
+  .customDropdown {
+    position: relative;
+    display: inline-block;
+    min-width: 160px;
+    display: flex;
+    font-family: var(--Tommay-font-1);
+    align-items: center;
+}
+  
 }
 
 @media(max-width:550px) {
