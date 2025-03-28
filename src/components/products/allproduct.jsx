@@ -431,7 +431,9 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
                                                 </div>
                                             </Link>
                                             <div className={styles.productContent}>
-                                                <p className={styles.name}>{item.name}</p>
+                                                <div className={styles.name}>{item.name}</div>
+                                                {/* cat name  */}
+                                                {/* <div className={styles.catName}>{item.category.name}</div> */}
                                                 <div className={styles.pricecart}>
                                                     {item.size.length > 0 &&
                                                         <div className={styles.productPrice}>

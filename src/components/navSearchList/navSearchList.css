@@ -12,6 +12,7 @@
   overflow-y: auto;
   width: 250px;
   margin-top: 5px;
+  padding: 5px;
 }
 
 .result-item {

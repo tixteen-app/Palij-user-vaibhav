@@ -471,10 +471,11 @@ const Cart = () => {
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             onClick={() => handleRemoveFromCart(item.productId._id, item.size._id)}
-                            width="30"
-                            height="30"
+                            // width="30"
+                            // height="30"
+
                             fill="currentColor"
-                            className="bi bi-dash text-black"
+                            className="bi bi-dash text-black cart_buutons_plus_minus"
                             style={{ cursor: "pointer" }}
                             viewBox="0 0 16 16"
                           >
@@ -490,10 +491,10 @@ const Cart = () => {
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             onClick={() => handleAddToCart(item.productId._id, item.size._id)}
-                            width="30"
-                            height="30"
+                            // width="30"
+                            // height="30"
                             fill="currentColor"
-                            className="bi bi-plus text-black"
+                            className="bi bi-plus text-black cart_buutons_plus_minus "
                             style={{ cursor: "pointer" }}
                             viewBox="0 0 16 16"
                           >

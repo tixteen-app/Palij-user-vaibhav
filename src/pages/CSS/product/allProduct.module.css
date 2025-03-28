@@ -56,7 +56,15 @@
   line-height: 1;
   text-transform: uppercase;
 }
-
+.catName{
+  font-weight: 400;
+  font-size: 10px;
+  line-height: normal;
+  padding: 5px 0px;
+  text-transform: uppercase;
+  padding-bottom: 5px;
+  color: rgba(103, 103, 103, 0.858);
+}
 .productPrice {
   font-weight: 400;
   font-size: 1.3rem;
@@ -342,6 +350,16 @@
     line-height: normal;
     padding: 0;
     text-transform: uppercase;
+    padding: 5px 0px;
+  }
+  .catName{
+    font-weight: 400;
+    font-size: 10px;
+    line-height: normal;
+    padding: 0;
+    text-transform: uppercase;
+    padding-bottom: 5px;
+    color: rgba(103, 103, 103, 0.858);
   }
 
   .productPrice {
@@ -365,5 +383,13 @@
     width: 25px;
     height: 25px;
     cursor: pointer;
+  }
+  .loadMoreButton {
+    padding: 10px 20px;
+    background: white;
+    border: 1px solid #b47d56;
+    transition: all 0.5s ease-in-out;
+    font-family: "Kumbh Sans";
+    width: 40%;
   }
 }
