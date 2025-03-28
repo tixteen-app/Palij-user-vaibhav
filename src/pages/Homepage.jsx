@@ -12,7 +12,7 @@ import Gifthamper from '../component/giftham'
 
 function Homepage() {
   return (
-    <div style={{ marginTop: "50px"   , background: "#f1f0f5", paddingBottom: "80px"  }} >
+    <div style={{ marginTop: "70px"   , background: "#f1f0f5", paddingBottom: "80px"  }} >
       <MarqueeComponent />
       <Slider />
       <Category />
