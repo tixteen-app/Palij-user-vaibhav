@@ -43,7 +43,7 @@ function DropLine() {
             return;
         }
         if (Data.phonennumber && Data.phonennumber.length < 10) {
-            toast.error('Please enter valid phonennumber');
+            toast.error('Please enter valid phone number');
             return;
         }
         try {

@@ -368,7 +368,9 @@ function ProductDetails() {
                         </div>
                       ) : (
                         fetchCartLoader ? (
-                          <PrimaryLoader />
+                          // <PrimaryLoader />
+                          <div className={styles.countLoaderss}>
+                            </div>
                         ) : (
                           <>
                             <div

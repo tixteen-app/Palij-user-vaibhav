@@ -161,6 +161,7 @@ const AddShippingAddress = () => {
 							value={formData.phonenumber}
 							onChange={handleInputChange}
 							required
+							max={10}
 						/>
 						<textarea
 							name="address"

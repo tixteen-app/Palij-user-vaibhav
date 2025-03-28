@@ -35,7 +35,7 @@ function Homesavery() {
             setCategories(categories);
 
             if (categories.length > 0) {
-                const categoryId = categories[2]._id;
+                const categoryId = categories[1]._id;
                 const response = await makeApi(
                     `/api/get-all-products-by-category/${categoryId}`,
                     "GET"
@@ -59,7 +59,7 @@ function Homesavery() {
     }
 
     const handleCategoryClick = () => {
-        navigate(`/product/all-products?category=${categories[2]._id}`);
+        navigate(`/product/all-products?category=${categories[1]._id}`);
     };
 
     const fetchCartItems = async () => {

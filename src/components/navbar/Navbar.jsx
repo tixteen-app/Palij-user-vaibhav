@@ -43,6 +43,7 @@ const Navbar = () => {
 
 	const fetchData = async (value) => {
 		try {
+			console.log("-=-=-1",value)
 			setSearchLoading(true);
 			const response = await makeApi(
 				`/api/get-all-products?perPage=1550&page=1`,
@@ -218,7 +219,7 @@ const Navbar = () => {
 						<Link to="/contact">CONTACT US</Link>
 					</li>
 				</ul>
-				<div className="nav-search-bar">
+				{/* <div className="nav-search-bar">
 					<div
 						className={"special-search  search"}
 					>
@@ -238,7 +239,28 @@ const Navbar = () => {
 							isLoading={setsearchloading}
 						/>
 					</div>
-				</div>
+				</div> */}
+				<div className="nav-search-bar">
+  <div className={"special-search search"}>
+    <input
+      type="text"
+      placeholder="Search"
+      value={input}
+      onChange={(e) => handleChange(e.target.value)}
+    />
+    <IoSearch className="search_icon" />
+  </div>
+  {input && (  // Only show search results when input has value
+    <div className="search-list-result">
+      <NavSearchList
+        product={products}
+        clearSearchInput={clearSearchInput}
+        input={input}
+        isLoading={setsearchloading}
+      />
+    </div>
+  )}
+</div>
 
 
 				<div className="media-profile-icon">

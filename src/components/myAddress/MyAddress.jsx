@@ -106,7 +106,7 @@ const MyAddress = () => {
         <div className="shipping-billing-flex d-flex justify-content-between">
           <div className="billing-addressz"> 
             <h2 className="n_shipp_bill">SHIPPING ADDRESS</h2>
-            <div className="d-flex flex-column gap-5">
+            <div className="d-flex flex-column gap-2">
               <button
                 className="ship_bill_add"
                 onClick={() => navigator("/shipping-address")}
@@ -134,7 +134,7 @@ const MyAddress = () => {
                         </button>
                       </div>
                     </div>
-                    <p>
+                    <p className="p-1" >
                       {`${address.firstname}, ${address.lastname}, ${address.address}, ${address.city}, ${address.state} ${address.pincode}`}
                     </p>
                   </div>

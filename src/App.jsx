@@ -42,6 +42,9 @@ import LatestOrder from "./components/LatestOrder/LastestOrder.jsx"
 import ProductSidebar from "./components/products/slidebar/sidebar.jsx"
 import SecondHomePage from "./components/SecondHomePage/SecondHomePage.jsx"
 import SecondFooter from "./components/SecondFooter/SecondFooter.jsx"
+import { Navigate } from "react-router-dom";
+
+
 
 import PaljiSignUp from "./components/signup/PaljiSignUp.jsx"
 import Homepage from "./pages/Homepage.jsx"
@@ -216,6 +219,10 @@ function App() {
 					path="/test"
 					element={<LatestOrder />}
 				/>
+				<Route
+					path="*"
+					element={<Navigate to="/" replace />}
+				/>
 
 				{/* <Route
 					path="/userprofile/myaddress"
@@ -229,10 +236,12 @@ function App() {
 					path="/edit-shipping-address/:id"
 					element={<AddressForm isBilling={false} />}
 				/>
-						{/* <Route path="/testtttttttttttttt" element={<TaxInvoice />} /> */}
-				
+				{/* <Route path="/testtttttttttttttt" element={<TaxInvoice />} /> */}
+
 			</Routes>
 			{/* <NewFooter /> */}
+
+
 			<SecondFooter />
 		</div>
 	)

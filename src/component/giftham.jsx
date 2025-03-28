@@ -8,7 +8,7 @@ import { assets } from "../assets/assets";
 import SkeletonLoader from "../components/products/SkeletonLoader";
 import { useNavigate } from "react-router-dom";
 
-function Pcookies() {
+function Gifthamper() {
     const navigate = useNavigate();
     const [AllProductLoader, setAllProductLoader] = useState(false);
     const [products, setProducts] = useState([]);
@@ -33,7 +33,7 @@ function Pcookies() {
             const categories = categoriesResponse.data.categories;
             setCategories(categories);
             if (categories.length > 0) {
-                const categoryId = categories[2]._id;
+                const categoryId = categories[0]._id;
                 const response = await makeApi(
                     `/api/get-all-products-by-category/${categoryId}`,
                     "GET"
@@ -58,7 +58,7 @@ function Pcookies() {
     }
 
     const handleCategoryClick = () => {
-         navigate(`/product/all-products?category=${categories[2]._id}`);
+         navigate(`/product/all-products?category=${categories[0]._id}`);
     };
 
     const fetchCartItems = async () => {
@@ -116,7 +116,7 @@ function Pcookies() {
                     <div className="homeproduct_container_main_div" >
                         {/* top heading */}
                         <div className="homeproduct_top_heading_div homeproduct_top_heading_div_for_Savory" >
-                            <div>PREMIUM COOKIES</div>
+                            <div>Gift Hamper </div>
                             <div>
                                 <div className="homeproduct_top_heading_div_viewall" onClick={handleCategoryClick}>VIEW ALL <img src={assets.brownArrow} alt="" className="homeproduct_top_heading_div_arrow" />
                                 </div>
@@ -127,7 +127,7 @@ function Pcookies() {
                             {products.slice(0, 4).map((product) => (
                                 <div key={product.id} className="homeproduct_product_sub_div" >
                                     {/* image */}
-                                    <div className="homeproduct_product_div_image" onClick={() => handleNavigate(product._id)}  >
+                                    <div className="homeproduct_product_div_image" onClick={() => handleNavigate(product._id)} >
                                         <img src={product.thumbnail} alt={product.name} />
                                     </div>
                                     {/* details */}
@@ -135,7 +135,7 @@ function Pcookies() {
                                         <div>
                                             {/* <div className="bold_details_homeproduct" >{product.name}</div> */}
                                             <div className="bold_details_homeproduct">
-                                                {product.name.split(' ').slice(0, 3).join(' ')}
+                                                {product.name.split(' ').slice(0, 2).join(' ')}
                                             </div>
 
                                             <div className="homeproduct_product_div_details_category" >{product.category.name}</div>
@@ -246,4 +246,4 @@ function Pcookies() {
     );
 }
 
-export default Pcookies;
+export default Gifthamper;

@@ -64,7 +64,6 @@ const EditUserProfile = () => {
         event.preventDefault()
         try {
             const userDataToUpdate = { ...editData }
-            console.log("mobileNumberChanged", mobileNumberChanged)
             if (!mobileNumberChanged) {
                 delete userDataToUpdate.mobileNumber
             }

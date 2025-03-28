@@ -245,11 +245,10 @@ const ShippingAddress = () => {
 			return
 		}
 		if (!formData.phonenumber) {
-			toast.error("Please fill phonenumber")
+			toast.error("Please fill phone number")
 			return
 		}
 
-		// appply phone number validation
 		if (!/^\d{10}$/.test(formData.phonenumber)) {
 			toast.error("Please enter a valid 10-digit phone number")
 			return
@@ -351,7 +350,6 @@ const ShippingAddress = () => {
 								required
 							/>
 						</div>
-
 						<input
 							type="text"
 							name="phonenumber"
@@ -359,6 +357,7 @@ const ShippingAddress = () => {
 							value={formData.phonenumber}
 							onChange={handleInputChange}
 							required
+							maxLength={10}
 							
 						/>
 						<textarea

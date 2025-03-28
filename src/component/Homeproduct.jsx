@@ -117,7 +117,7 @@ function Homeproduct() {
       <div className="homeproduct_container_main_div" >
         {/* top heading */}
         <div className="homeproduct_top_heading_div" >
-          Best Seller
+          BEST SELLERS
         </div>
         <div className="homeproduct_product_main_div" >
           {products.slice(0, 4).map((product) => (

@@ -24,7 +24,8 @@ const categories = [
   {
     img: assets.category4,
     name: "Cakes",
-    color: "#E75866"
+    color: "#E75866",
+    nav: "67b451f7ec3a4e4a3bbe5633"
   },
 ]
 

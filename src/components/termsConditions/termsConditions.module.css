@@ -2,7 +2,7 @@
 
 .termsection {
   padding-top: 100px;
-  min-height: 100vh;
+  min-height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,9 +18,9 @@
 }
 
 .termsection h1 {
-  font-size: 7.2rem;
+  font-size: 5.2rem;
   text-align: center;
-  margin-bottom: 5%;
+  margin-bottom: 1%;
   color: var(--redPink);
   font-weight: 700;
 }
