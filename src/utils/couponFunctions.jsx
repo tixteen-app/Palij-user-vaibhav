@@ -4,8 +4,10 @@ import { fetchCart } from "../utils/productFunction";
 import CartCalculation from "../components/CartCalculation/cartCalculation";
 import { makeApi } from "../api/callApi.tsx";
 import styles from "./CouponSection.module.css";
+import { useNavigate } from "react-router";
 
 const CouponFunctions = ({ updateCart }) => {
+  const navigate = useNavigate();
   const [cartItems, setCartItems] = useState([]);
   const [completeCart, setCompleteCart] = useState({});
   const [fetchCartLoader, setFetchCartLoader] = useState(false);
@@ -32,6 +34,9 @@ const CouponFunctions = ({ updateCart }) => {
       setAppliedCoupon(true);
     }
   }, [completeCart]);
+  const handelbuttonclick = () => {
+    navigate("/cart/checkout");
+  }
 
   const handleApplyCoupon = async () => {
     if (!couponCode) {
@@ -136,6 +141,7 @@ const CouponFunctions = ({ updateCart }) => {
               ButtonName="PROCEED TO CHECKOUT"
               disabled={false}
               pricewithdevverycharge={completeCart?.totalPrice}
+              onButtonClick={handelbuttonclick}
             />
           </div>
         </div>

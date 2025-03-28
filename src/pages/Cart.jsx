@@ -312,7 +312,7 @@ import { Link } from "react-router-dom";
 import { fetchCart, addToCart, removeFromCart, deleteproductFromCart } from "../utils/productFunction";
 import CouponFunctions from "../utils/couponFunctions";
 import { makeApi } from "../api/callApi";
-import SkeletonLoader from "../components/products/SkeletonLoader";
+
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
   const [fetchCartLoader, setFetchCartLoader] = useState(true); // Initialize as true
