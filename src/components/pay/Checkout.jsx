@@ -677,9 +677,6 @@ function Checkout() {
 					{currentPage === "CHECKOUT" ? (
 						<div>
 							<Orderbar activeOptionName="CHECKOUT" />
-							{/* <div className="checkout_to_cart">
-								<BackButton pageLocation="/cart" />
-							</div> */}
 							<div className="main_checkout_div">
 								{/* Shipping and Billing Addresses */}
 								<div className="shipping-address-container Order_page_display_none">
@@ -783,7 +780,9 @@ function Checkout() {
 
 								{/* Proceed to Payment */}
 								<div className="styles_checkout_coupan">
-									<div onClick={(e) => manageCurrentPage(e)}>
+									<div
+									//  onClick={(e) => manageCurrentPage(e)}
+									 >
 										<CartCalculation
 											tax={cartTotalWithGST}
 											shipping={deliverycharge}
@@ -795,6 +794,7 @@ function Checkout() {
 											totalwithoutgst={totalAmountWithoutGST}
 											pricewithdevverycharge={finaltotal}
 											Razopaydiscount={0}
+											onButtonClick={(e) => manageCurrentPage(e)}
 										/>
 									</div>
 								</div>
@@ -865,7 +865,9 @@ function Checkout() {
 										</div>
 									</div>
 								</div>
-								<div onClick={(e) => handleSubmit(e)}>
+								<div 
+								// onClick={(e) => handleSubmit(e)}
+								>
 									<CartCalculation
 										tax={cartTotalWithGST}
 										shipping={deliverycharge}
@@ -879,6 +881,7 @@ function Checkout() {
 										totalwithoutgst={totalAmountWithoutGST}
 										pricewithdevverycharge={finaltotal}
 										Razopaydiscount={Razopaydiscount}
+										onButtonClick={(e) => handleSubmit(e)}
 									/>
 								</div>
 								
