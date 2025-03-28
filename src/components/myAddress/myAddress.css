@@ -19,6 +19,9 @@
   padding: 10px 10px;
   border-radius: 8px;
   background: #EE5564 !important;
+  color: white !important;
+  border: none;
+  font-weight: 500;
 }
 
 .shipping-billing-flex {
