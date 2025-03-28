@@ -85,7 +85,15 @@
 } */
 
 
-
+.invoiceButton{
+  background-color: var(--redPink);
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
 
 .invoiceContainer {
   max-width: 800px;
