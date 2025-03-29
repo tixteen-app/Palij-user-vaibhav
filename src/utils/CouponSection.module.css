@@ -102,7 +102,7 @@
   }
 
   .couponSection {
-    width: 70%;
+    width: 92%;
   }
   .button {
     padding: 10px 20px;
@@ -114,7 +114,7 @@
     border: 1px solid rgb(0, 0, 0);
     color: white;
     transition: all 0.5s ease;
-    width: 70%;
+    width: 100%;
   }
   .input {
     width: 100%;
