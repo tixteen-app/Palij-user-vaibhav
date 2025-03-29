@@ -283,7 +283,7 @@ const ShippingAddress = () => {
 			)
 			console.log("Address created successfully:", response.data)
 			if (response.data.success === true) {
-				toast.success(response.data.message, {
+				toast.success("Shipping Address Added Successfully", {
 					onClose: () => {
 						navigate("/userprofile/myaddress")
 					},

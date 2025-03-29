@@ -90,7 +90,6 @@ const AddShippingAddress = () => {
 				"POST",
 				formData
 			)
-			console.log("Address created successfully:", response.data)
 			if (response.data.success === true) {
 				toast.success(response.data.message, {
 					onClose: () => {
@@ -153,7 +152,6 @@ const AddShippingAddress = () => {
 								required
 							/>
 						</div>
-
 						<input
 							type="text"
 							name="phonenumber"
