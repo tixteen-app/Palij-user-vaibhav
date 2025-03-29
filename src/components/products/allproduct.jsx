@@ -545,6 +545,10 @@
 // }
 
 // export default Allproduct;
+
+
+
+
 import React, { useEffect, useState } from "react";
 import styles from "../../pages/CSS/product/allProduct.module.css";
 import { makeApi } from "../../api/callApi";
@@ -570,7 +574,7 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
     const [AddTocartLoader, setAddTocartLoader] = useState({});
     const [displayedProducts, setDisplayedProducts] = useState([]);
     const [visibleProducts, setVisibleProducts] = useState(20);
-    const [sortBy, setSortBy] = useState("");
+    const [sortBy, setSortBy] = useState("hight");
     const [hasFetched, setHasFetched] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [minLoadTimePassed, setMinLoadTimePassed] = useState(false);

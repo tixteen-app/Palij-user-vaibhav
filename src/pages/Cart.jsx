@@ -44,7 +44,7 @@
 
 //   // Handle removing a product from cart
 //   const handleRemoveFromCart = async (productId, selectedSize) => {
-    
+
 //     await removeFromCart(productId, setProductLoaders, setCartItems, fetchCartItems, selectedSize);
 //     updateCart();
 //   };
@@ -118,7 +118,7 @@
 //   return (
 //     <>
 //       <ToastContainer />
-      
+
 //       {/* Show loader while loading and we haven't completed initial fetch */}
 //       {fetchCartLoader && !hasFetched ? (
 //         <div className="loader_container_cart_page">
@@ -328,7 +328,7 @@ const Cart = () => {
   const handleRemoveFromCart = async (productId, selectedSize) => {
     try {
       setProductLoaders(prev => ({ ...prev, [productId]: true }));
-      
+
       // Optimistic update
       setCompleteCart(prev => {
         const updatedItems = prev.orderItems.map(item => {
@@ -342,9 +342,9 @@ const Cart = () => {
         });
         return { ...prev, orderItems: updatedItems };
       });
-  
+
       await removeFromCart(productId, setProductLoaders, setCartItems, fetchCartItems, selectedSize);
-      
+
       updateCart();
     } catch (error) {
       console.error("Error removing from cart:", error);
@@ -362,7 +362,7 @@ const Cart = () => {
   const handleAddToCart = async (productId, selectedSize) => {
     try {
       setProductLoaders(prev => ({ ...prev, [productId]: true }));
-      
+
       // Optimistic update
       setCompleteCart(prev => {
         const updatedItems = prev.orderItems.map(item => {
@@ -376,7 +376,7 @@ const Cart = () => {
         });
         return { ...prev, orderItems: updatedItems };
       });
-  
+
       await addToCart(productId, setIsLogin, setShowPopup, fetchCartItems, setCartItems, setProductLoaders, selectedSize);
       updateCart();
     } catch (error) {
@@ -449,13 +449,13 @@ const Cart = () => {
   return (
     <>
       <ToastContainer />
-      
+
       {/* Show loader while loading and we haven't completed initial fetch */}
       {fetchCartLoader && !hasFetched ? (
         <div className="loader_container_cart_page">
           {/* Use your preferred loader here - could be a spinner, skeleton, etc. */}
           {/* <SkeletonLoader items={3} /> Adjust based on your loader component */}
-           <div className="loader_for_cart"></div>
+          <div className="loader_for_cart"></div>
         </div>
       ) : (
         <>
@@ -529,34 +529,34 @@ const Cart = () => {
                           </svg>
                         </div> */}
                         <div className="cartPageButton">
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    onClick={() => handleRemoveFromCart(item.productId._id, item.size._id)}
-    fill="currentColor"
-    className="bi bi-dash text-black cart_buutons_plus_minus"
-    style={{ cursor: "pointer" }}
-    viewBox="0 0 16 16"
-  >
-    <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" />
-  </svg>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            onClick={() => handleRemoveFromCart(item.productId._id, item.size._id)}
+                            fill="currentColor"
+                            className="bi bi-dash text-black cart_buutons_plus_minus"
+                            style={{ cursor: "pointer" }}
+                            viewBox="0 0 16 16"
+                          >
+                            <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" />
+                          </svg>
 
-  {productLoaders[item.productId._id] ? (
-    <div className="loader_for_cart"></div>
-  ) : (
-    <p className="text-black">{item.quantity}</p>
-  )}
+                          {productLoaders[item.productId._id] ? (
+                            <div className="loader_for_cart"></div>
+                          ) : (
+                            <p className="text-black">{item.quantity}</p>
+                          )}
 
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    onClick={() => handleAddToCart(item.productId._id, item.size._id)}
-    fill="currentColor"
-    className="bi bi-plus text-black cart_buutons_plus_minus "
-    style={{ cursor: "pointer" }}
-    viewBox="0 0 16 16"
-  >
-    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
-  </svg>
-</div>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            onClick={() => handleAddToCart(item.productId._id, item.size._id)}
+                            fill="currentColor"
+                            className="bi bi-plus text-black cart_buutons_plus_minus "
+                            style={{ cursor: "pointer" }}
+                            viewBox="0 0 16 16"
+                          >
+                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+                          </svg>
+                        </div>
 
                         <p className="cartItemTotal">₹{(item.size.FinalPrice * item.quantity).toFixed(2)}</p>
                       </div>
