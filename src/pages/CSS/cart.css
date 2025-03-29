@@ -692,9 +692,20 @@
   .productItemName1 {
     width: 85%;
   }
+  .all_added_cart_list .cross {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    right: 12px;
+    top: -14% !important;
+    border: 1px solid red;
+    border-radius: 50%;
+    padding: 1px;
+}
 }
 
 @media (max-width:550px) {
+
   .cart-items-item .productthumbnailname {
     margin-left: -10px;
   }
