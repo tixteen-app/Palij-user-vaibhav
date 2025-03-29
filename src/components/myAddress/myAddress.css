@@ -63,7 +63,9 @@
   gap: 10px;
   /* margin-top: -10px; */
 }
-
+.user_Details_my_Address_page{
+padding: 5px;
+}
 /* .a_shipp_bill {
   margin-top: -60px;
 } */
@@ -248,9 +250,22 @@
     min-width: 20px;
   }
 }
-@media (max-width: 360px) {
+@media (max-width: 400px) {
   .billing-address {
     /* width: 0%; */
-    width: 115px;
+    width: 100px !important;
+
   }
+  .shipping_Address_main_div_my_profile{
+    width: 100px !important;
+  }
+  .shipping-billing-flex{
+    width: 80%;
+    width: 100px ;
+
+  }
+  .a_shipp_bill{
+    width: 100px !important;
+  }
+ 
 }

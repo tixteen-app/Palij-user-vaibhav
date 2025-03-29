@@ -134,7 +134,7 @@ const MyAddress = () => {
                         </button>
                       </div>
                     </div>
-                    <p className="p-1" >
+                    <p className="user_Details_my_Address_page" >
                       {`${address.firstname}, ${address.lastname}, ${address.address}, ${address.city}, ${address.state} ${address.pincode}`}
                     </p>
                   </div>
