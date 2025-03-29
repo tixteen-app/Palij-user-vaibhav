@@ -664,11 +664,11 @@ const ProductSidebar = () => {
 					<div className="product_sliderbar_options a_product_sliderbar_options">
 						<div className="proudct_sidebar_heading"> Product Category:</div>
 						{/* Show selected category name if available */}
-						{categoryName && (
+						{/* {categoryName && (
 							<div className={styles.selectedCategoryName}>
 								Selected: {categoryName}
 							</div>
-						)}
+						)} */}
 						{/* drop down */}
 						<div className={styles.categories}>
 							{catloader ? (
