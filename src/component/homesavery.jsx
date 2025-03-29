@@ -56,6 +56,7 @@ function Homesavery() {
     }, []);
 
     function handleNavigate(id) {
+        navigate(`/product/product-details/${id}`);
     }
 
     const handleCategoryClick = () => {
@@ -129,7 +130,7 @@ function Homesavery() {
                         <div key={product.id} className="homeproduct_product_sub_div" >
                             {/* image */}
                             <div className="homeproduct_product_div_image" >
-                                <img src={product.thumbnail} alt={product.name} />
+                                <img src={product.thumbnail} alt={product.name} onClick={() => handleNavigate(product._id)}  />
                             </div>
                             {/* details */}
                             <div className="homeproduct_product_div_details" >

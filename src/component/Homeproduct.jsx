@@ -6,8 +6,10 @@ import LoginPopup from "../components/LoginPopup/LoginPopup";
 import { addToCart, removeFromCart, fetchCart } from "../utils/productFunction";
 import { makeApi } from "../api/callApi";
 import SkeletonLoader from "../components/products/SkeletonLoader";
+import { useNavigate } from "react-router-dom";
 
 function Homeproduct() {
+  const navigate = useNavigate();
 
 
 
@@ -56,6 +58,7 @@ function Homeproduct() {
   }, []);
 
   function handleNavigate(id) {
+    navigate(`/product/product-details/${id}`);
   }
 
   const handleCategoryClick = () => {
@@ -124,7 +127,7 @@ function Homeproduct() {
             <div key={product.id} className="homeproduct_product_sub_div" >
               {/* image */}
               <div className="homeproduct_product_div_image" >
-                <img src={product.thumbnail} alt={product.name} />
+                <img src={product.thumbnail} alt={product.name} onClick={() => handleNavigate(product._id)}  />
               </div>
               {/* details */}
               <div className="homeproduct_product_div_details" >
