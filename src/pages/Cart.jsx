@@ -368,6 +368,7 @@ const Cart = () => {
   const confirmDelete = async () => {
     if (productToDelete) {
       const { productId, selectProductSize, quantity } = productToDelete;
+      // await deleteproductFromCart(productId, setProductLoaders, setCartItems, fetchCart, selectProductSize, quantity);
       await deleteproductFromCart(productId, setProductLoaders, setCartItems, fetchCart, selectProductSize, quantity);
       setProductToDelete(null);
       setShowConfirmDialog(false);

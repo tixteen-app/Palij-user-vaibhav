@@ -403,10 +403,10 @@ export const deleteproductFromCart = async (
 	quantity
 ) => {
 	try {
-		setProductLoaders((prevState) => ({
-			...prevState,
-			[productId]: true,
-		}));
+		// setProductLoaders((prevState) => ({
+		// 	...prevState,
+		// 	[productId]: true,
+		// }));
 		const method = "POST";
 		const endpoint = "/api/delete-product-from-cart";
 		await makeApi(endpoint, method, { productId, selectProductSize, productQuantity: quantity });
@@ -420,10 +420,10 @@ export const deleteproductFromCart = async (
 	} finally {
 		fetchCart(setCartItems);
 
-		setProductLoaders((prevState) => ({
-			...prevState,
-			[productId]: false,
-		}));
+		// setProductLoaders((prevState) => ({
+		// 	...prevState,
+		// 	[productId]: false,
+		// }));
 		// RemoveCoupan()
 	}
 };

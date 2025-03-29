@@ -730,7 +730,7 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
                                             <div className={styles.customDropdown}>
                                                 <div className={styles.sortLabel}>Sort By:</div>
                                                 <div className={styles.dropdownHeader} onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
-                                                    {sortBy === "hight" ? "Price Low to High" : "Price High to Low"}
+                                                    {sortBy === "hight" ? "Price: Low to High" : "Price: High to Low"}
                                                     <span className={`${styles.arrow} ${isDropdownOpen ? styles.open : ""}`}>
                                                         ▼
                                                     </span>
@@ -764,7 +764,7 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
                                     )}
 
                                     <div className={styles.productsContainer}>
-                                        {displayedProducts.length > 0 && <h2>{categoryName}</h2>}
+                                        {displayedProducts.length > 0 && <div className={styles.home_page_selcte_cat_name} >{categoryName}</div>}
                                         <div className={styles.allProductsList}>
                                             {displayedProducts.map(item => (
                                                 <div key={item._id} className={styles.products}>
