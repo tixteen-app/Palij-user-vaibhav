@@ -18,30 +18,31 @@
 .result-item {
   display: flex;
   align-items: center;
-  padding: 8px 12px;
+  padding: 4px 12px;
   text-decoration: none;
   color: #333;
   transition: background-color 0.2s ease;
+ 
 }
 
 .result-item:hover {
   background-color: #f5f5f5;
 }
-
+/* 
 .result-item img {
   width: 40px;
   height: 40px;
   object-fit: cover;
   border-radius: 4px;
   margin-right: 12px;
-}
+} */
 
 .result-info {
   flex: 1;
   overflow: hidden;
 }
 
-.result-info div {
+/* .result-info div {
   margin: 0;
   font-size: 14px;
   font-weight: 400;
@@ -49,7 +50,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   color: black;
-}
+} */
 
 .result-info p {
   margin: 2px 0 0;
@@ -102,6 +103,86 @@
 .nav-search-list::-webkit-scrollbar-thumb:hover {
   background: #aaa;
 }
+
+
+.main_search_result_div{
+  border-top: none;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  border-radius: 10px;
+}
+.searched_product_details_div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 10px;
+  border-top: 1px solid rgba(128, 124, 124, 0.671);
+  padding-top: 10px;
+  width: 250px;
+}
+.searched_product_details_div_img{
+  width: 20%;
+}
+.searched_product_details_img{
+  width: 53px;
+  height: 53px;
+  object-fit: cover
+}
+
+.searched_product_details_div_info_name{
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.searched_product_details_div_info{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: space-between;
+  gap: 10px;
+}
+.searched_product_details_div_info_btn{
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+}
+.searched_product_details_div_info_btn_view{
+  width: 100%;
+  text-align: center;
+  background: white;
+  border: 1px solid black;
+  color: black;
+  font-size: 13px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+
+}
+.searched_product_details_div_info_btn_cart{
+  width: 100%;
+  text-align: center;
+  background: #e74c3c;
+  border: none;
+  color: white;
+  font-size: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+
+}
+
+
+
+
+
+
 
 @media (max-width: 1100px) {
   .nav-search-list {

@@ -450,11 +450,8 @@ const Cart = () => {
     <>
       <ToastContainer />
 
-      {/* Show loader while loading and we haven't completed initial fetch */}
       {fetchCartLoader && !hasFetched ? (
         <div className="loader_container_cart_page">
-          {/* Use your preferred loader here - could be a spinner, skeleton, etc. */}
-          {/* <SkeletonLoader items={3} /> Adjust based on your loader component */}
           <div className="loader_for_cart"></div>
         </div>
       ) : (

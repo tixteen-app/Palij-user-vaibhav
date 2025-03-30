@@ -43,7 +43,6 @@ const Navbar = () => {
 
 	const fetchData = async (value) => {
 		try {
-			console.log("-=-=-1", value)
 			setSearchLoading(true);
 			const response = await makeApi(
 				`/api/get-all-products?perPage=1550&page=1`,
