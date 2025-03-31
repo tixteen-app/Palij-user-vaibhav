@@ -830,7 +830,7 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
                                                     <div className="homeproduct_product_div_details" >
                                                         <div>
                                                             <div className="bold_details_homeproduct">
-                                                                {product.name.split(' ').slice(0, 2).join(' ')}
+                                                                {product.name}
                                                             </div>
 
                                                             <div className="homeproduct_product_div_details_category" >{product.category.name}</div>
@@ -850,7 +850,6 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
                                                     {/* add to cart options */}
                                                     <div className="homeproduct_product_div_addtocart" >
                                                         <div>
-
 
                                                             {product.size && product.size.length > 0 && (
                                                                 <>

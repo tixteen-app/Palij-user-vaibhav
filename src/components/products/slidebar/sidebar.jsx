@@ -9,7 +9,6 @@ import { RiArrowDropDownLine } from "react-icons/ri";
 import { useLocation } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 
-
 const ProductSidebar = () => {
 	const location = useLocation();
 	const queryParams = new URLSearchParams(location.search);
@@ -126,13 +125,7 @@ const ProductSidebar = () => {
 					{/* product category */}
 					<div className="product_sliderbar_options a_product_sliderbar_options">
 						<div className="proudct_sidebar_heading"> Product Category:</div>
-						{/* Show selected category name if available */}
-						{/* {categoryName && (
-							<div className={styles.selectedCategoryName}>
-								Selected: {categoryName}
-							</div>
-						)} */}
-						{/* drop down */}
+						
 						<div className={styles.categories}>
 							{catloader ? (
 								<>
@@ -231,7 +224,7 @@ const ProductSidebar = () => {
 				<div className="media_product_sidebar">
 					<div className="media_all_product_search">
 						<input
-							type="text"
+							type="text" 
 							placeholder="Search"
 							value={search}
 							onChange={(e) => setSearch(e.target.value)}
