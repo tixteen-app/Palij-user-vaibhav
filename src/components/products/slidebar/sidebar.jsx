@@ -19,7 +19,6 @@ const ProductSidebar = () => {
 	const [search, setSearch] = useState("");
 	const [selectedCategory, setSelectedCategory] = useState();
 	const [categoryName, setCategoryName] = useState("");
-	console.log("categoryName", categoryName);
 	const [selectedPriceRange, setSelectedPriceRange] = useState({ min: 0, max: 1000000 }); // No filter by default
 	const [isInitialLoad, setIsInitialLoad] = useState(true);
 	const [showDropdown, setShowDropdown] = useState(false);
@@ -193,7 +192,7 @@ const ProductSidebar = () => {
 							</div>
 							{priceRanges.map((range, index) => (
 								<div key={index} className={styles.priceFilterOption}>
-									<input
+									<input 
 										type="radio"
 										id={`price-${index}`}
 										name="price-range"

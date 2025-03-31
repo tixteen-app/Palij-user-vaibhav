@@ -273,6 +273,7 @@ import { Navigate } from "react-router-dom";
 import PaljiSignUp from "./components/signup/PaljiSignUp.jsx"
 import Homepage from "./pages/Homepage.jsx"
 import Taxinvoice from "./pages/Taxinvoice.jsx"
+import Newcart from "./pages/Newcart.jsx"
 
 function App() {
   const location = useLocation();  // Use useLocation hook to get the current location
@@ -295,6 +296,7 @@ function App() {
         <Route path="/product/*" element={<Products />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/newcart" element={<Newcart />} />
         <Route path="/login" element={<Login />} />
         <Route path="/taxinvoice/:ordersummary" element={<Taxinvoice />} />
         <Route path="/palji-login" element={<Signup />} />

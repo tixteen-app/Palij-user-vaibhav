@@ -467,65 +467,131 @@ const Cart = () => {
             </div>
           ) : (
             <div className="cart-container">
-              <div className="cart-item">
-                <div className="cart-items-title cart-items-title2">
-                  <p><span className="productItemName1span">Product</span> Name</p>
-                  <p>Price</p>
-                  <p className="quantity_heading">Qty</p>
-                  <p className="cartItemTotal">Total:</p>
-                </div>
-                <br />
-                <hr />
-                <div></div>
-                {completeCart?.orderItems?.map((item, index) => (
-                  <div className="all_added_cart_list" key={index}>
-                    <div className="cross" onClick={() => handleDeleteClick(item.productId._id, item.size._id, item.quantity)}>
-                      <img className="remove-cart" src={assets.cart_remove} alt="Remove" />
-                    </div>
+              <div className="cart_UI_for_dektop_view" >
+                <div className="cart-item">
+                  <div className="cart-items-title cart-items-title2">
+                    <p><span className="productItemName1span">Product</span> Name</p>
+                    <p>Price</p>
+                    <p className="quantity_heading">Qty</p>
+                    <p className="cartItemTotal">Total:</p>
+                  </div>
+                  <br />
+                  <hr />
+                  <div></div>
+                  {completeCart?.orderItems?.map((item, index) => (
+                    <div className="all_added_cart_list" key={index}>
+                      <div className="cross" onClick={() => handleDeleteClick(item.productId._id, item.size._id, item.quantity)}>
+                        <img className="remove-cart" src={assets.cart_remove} alt="Remove" />
+                      </div>
 
-                    <div className="cart_items_div_cart">
-                      <div className="cart-items-title cart-items-item">
-                        <div className="productthumbnailname">
-                          <img src={item?.productId?.thumbnail} alt="" />
-                          <p className="productItemName1">{item.productId?.name}</p>
+                      <div className="cart_items_div_cart">
+                        <div className="cart-items-title cart-items-item">
+                          <div className="productthumbnailname">
+                            <img src={item?.productId?.thumbnail} alt="" />
+                            <p className="productItemName1">{item.productId?.name}</p>
+                          </div>
+
+                          <p className="item-price">{`₹${item.size.FinalPrice} x ${item?.quantity}`}</p>
+
+                          <div className="cartPageButton">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              onClick={() => handleRemoveFromCart(item.productId._id, item.size._id)}
+                              fill="currentColor"
+                              className="bi bi-dash text-black cart_buutons_plus_minus"
+                              style={{ cursor: "pointer" }}
+                              viewBox="0 0 16 16"
+                            >
+                              <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" />
+                            </svg>
+
+                            {productLoaders[item.productId._id] ? (
+                              <div className="loader_for_cart"></div>
+                            ) : (
+                              <p className="text-black">{item.quantity}</p>
+                            )}
+
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              onClick={() => handleAddToCart(item.productId._id, item.size._id)}
+                              fill="currentColor"
+                              className="bi bi-plus text-black cart_buutons_plus_minus "
+                              style={{ cursor: "pointer" }}
+                              viewBox="0 0 16 16"
+                            >
+                              <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+                            </svg>
+                          </div>
+
+                          <p className="cartItemTotal">₹{(item.size.FinalPrice * item.quantity).toFixed(2)}</p>
                         </div>
+                      </div>
 
-                        <p className="item-price">{`₹${item.size.FinalPrice} x ${item?.quantity}`}</p>
 
-                        {/* <div className="cartPageButton">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            onClick={() => handleRemoveFromCart(item.productId._id, item.size._id)}
-                            // width="30"
-                            // height="30"
 
-                            fill="currentColor"
-                            className="bi bi-dash text-black cart_buutons_plus_minus"
-                            style={{ cursor: "pointer" }}
-                            viewBox="0 0 16 16"
-                          >
-                            <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" />
-                          </svg>
 
-                          {productLoaders[item.productId._id] ? (
-                            <div className="loader_for_cart"></div>
-                          ) : (
-                            <p className="text-black">{item.quantity}</p>
+                      {item?.productId?.category?._id == "67b451f7ec3a4e4a3bbe5633" && (
+                        <div className="cart-cake-message px-3">
+                          <span className="message-label">Message:</span>
+                          {item.productId?.category?._id === "67b451f7ec3a4e4a3bbe5633" && (
+                            <div className="message-input-wrapper">
+                              <input
+                                type="text"
+                                value={editingMessages[item._id] || item.cakemessage || ""}
+                                onChange={(e) => handleMessageChange(item._id, e.target.value)}
+                                onBlur={() => handleMessageBlur(item.productId._id, item.size._id, item._id)}
+                                placeholder="Add message..."
+                                maxLength={20}
+                                className="message-input-bottom-border"
+                              />
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                fill="#EE5564"
+                                className="edit-icon-inside"
+                                viewBox="0 0 16 16"
+                              >
+                                <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001m-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708z" />
+                              </svg>
+                            </div>
                           )}
+                        </div>
+                      )}
+                    </div>
+                  ))}
 
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            onClick={() => handleAddToCart(item.productId._id, item.size._id)}
-                            // width="30"
-                            // height="30"
-                            fill="currentColor"
-                            className="bi bi-plus text-black cart_buutons_plus_minus "
-                            style={{ cursor: "pointer" }}
-                            viewBox="0 0 16 16"
-                          >
-                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
-                          </svg>
-                        </div> */}
+
+
+                </div>
+              </div>
+
+              <div className="cart_UI_for_mobile_view" >
+                <div className="cart_items_for_mobile_view" >
+                  <div className="cart_items_top_bar_for_mobile_view"  >
+                    <div></div>
+                    {/* <div></div> */}
+                    <div>Product:</div>
+                    <div>Price:</div>
+                    <div>Qty:</div>
+                    <div>Total:</div>
+
+                  </div>
+                  <div className="cart_items_details_for_mobile_view" >
+                    {completeCart?.orderItems?.map((item, index) => (
+                      <div key={index} className="cart_items_details_inside_for_mobile_view" >
+                        
+                        <div className="cross_icon_mobile" onClick={() => handleDeleteClick(item.productId._id, item.size._id, item.quantity)}>
+                          <img className="remove-cart" src={assets.cart_remove} alt="Remove" />
+                        </div>
+                        <div className="product_thubnil_for_mobile">
+                          <img src={item?.productId?.thumbnail} alt="" />
+                        </div>
+                        
+                        <div className="product_name_for_mobile" >
+                          {item.productId?.name}
+                        </div>
+                        <div className="item_price_for_mobile">{`₹${item.size.FinalPrice} `}</div>
                         <div className="cartPageButton">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -541,7 +607,7 @@ const Cart = () => {
                           {productLoaders[item.productId._id] ? (
                             <div className="loader_for_cart"></div>
                           ) : (
-                            <p className="text-black">{item.quantity}</p>
+                            <p className="text-black cart_page_quntity ">{item.quantity}</p>
                           )}
 
                           <svg
@@ -555,48 +621,15 @@ const Cart = () => {
                             <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
                           </svg>
                         </div>
+                        <div className="cart_total_for_mobile">₹{(item.size.FinalPrice * item.quantity).toFixed(2)}</div>
 
-                        <p className="cartItemTotal">₹{(item.size.FinalPrice * item.quantity).toFixed(2)}</p>
                       </div>
-                    </div>
+                    ))}
 
-
-
-
-                    {item?.productId?.category?._id == "67b451f7ec3a4e4a3bbe5633" && (
-                      <div className="cart-cake-message px-3">
-                        <span className="message-label">Message:</span>
-                        {item.productId?.category?._id === "67b451f7ec3a4e4a3bbe5633" && (
-                          <div className="message-input-wrapper">
-                            <input
-                              type="text"
-                              value={editingMessages[item._id] || item.cakemessage || ""}
-                              onChange={(e) => handleMessageChange(item._id, e.target.value)}
-                              onBlur={() => handleMessageBlur(item.productId._id, item.size._id, item._id)}
-                              placeholder="Add message..."
-                              maxLength={20}
-                              className="message-input-bottom-border"
-                            />
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width="16"
-                              height="16"
-                              fill="#EE5564"
-                              className="edit-icon-inside"
-                              viewBox="0 0 16 16"
-                            >
-                              <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001m-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708z" />
-                            </svg>
-                          </div>
-                        )}
-                      </div>
-                    )}
                   </div>
-                ))}
-
-
-               
+                </div>
               </div>
+
 
               <div className="cartcalulaction-comp">
                 <CouponFunctions updateCart={updateCart} toastContainer={<ToastContainer position="top-right"
