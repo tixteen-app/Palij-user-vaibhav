@@ -570,9 +570,9 @@ const Cart = () => {
                 <div className="cart_items_for_mobile_view" >
                   <div className="cart_items_top_bar_for_mobile_view"  >
                     <div></div>
-                    {/* <div></div> */}
+                    <div style={{width:"50%"}} ></div>
                     <div>Product:</div>
-                    <div>Price:</div>
+                    {/* <div>Price:</div> */}
                     <div>Qty:</div>
                     <div>Total:</div>
 
@@ -589,10 +589,14 @@ const Cart = () => {
                         </div>
                         
                         <div className="product_name_for_mobile" >
+                          <span style={{fontWeight:"500"}} >
                           {item.productId?.name}
+                          </span>
+                          <div>
+                          ₹{item.size.FinalPrice}
+                          </div>
                         </div>
-                        <div className="item_price_for_mobile">{`₹${item.size.FinalPrice} `}</div>
-                        <div className="cartPageButton">
+                        <div className="cartPageButton cartPageButton_for_cart_mobile_view">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             onClick={() => handleRemoveFromCart(item.productId._id, item.size._id)}
@@ -605,9 +609,9 @@ const Cart = () => {
                           </svg>
 
                           {productLoaders[item.productId._id] ? (
-                            <div className="loader_for_cart"></div>
+                            <div className="loader_for_mobile_cart"></div>
                           ) : (
-                            <p className="text-black cart_page_quntity ">{item.quantity}</p>
+                            <p className="text-black">{item.quantity}</p>
                           )}
 
                           <svg

@@ -17,7 +17,6 @@ function CartCalculation({
 	Razopaydiscount,
 	onButtonClick 
 }) {
-	console.log("Razopaydiscount", Razopaydiscount)
 
 	const [loadingData, setLoadingData] = useState({
 		final: true,
