@@ -163,6 +163,7 @@ function ProductDetails() {
   };
 
   const handleIncreaseQuantity = async () => {
+    setQuantityLoading(true);
     if (!isLogin) {
       setShowPopup(true);
       return;
@@ -176,7 +177,6 @@ function ProductDetails() {
       return;
     }
     try {
-      setQuantityLoading(true);
       await addToCart(productId, setIsLogin, setShowPopup, fetchCartItems, setCartItems, setProductLoaders, selectedSize._id);
     } catch (error) {
       console.error("Error increasing quantity:", error);
@@ -368,7 +368,6 @@ function ProductDetails() {
                         </div>
                       ) : (
                         fetchCartLoader ? (
-                          // <PrimaryLoader />
                           <div className={styles.countLoaderss}>
                             </div>
                         ) : (

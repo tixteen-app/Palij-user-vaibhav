@@ -10,7 +10,7 @@
   overflow: hidden;
   max-height: 300px;
   overflow-y: auto;
-  width: 250px;
+  width: 238px;
   margin-top: 5px;
   padding: 5px;
 }
@@ -22,11 +22,10 @@
   text-decoration: none;
   color: #333;
   transition: background-color 0.2s ease;
- 
 }
 
 .result-item:hover {
-  background-color: #f5f5f5;
+  /* background-color: #f5f5f5; */
 }
 /* 
 .result-item img {
@@ -41,8 +40,6 @@
   flex: 1;
   overflow: hidden;
 }
-
-
 
 .result-info p {
   margin: 2px 0 0;
@@ -96,15 +93,15 @@
   background: #aaa;
 }
 
-
-.main_search_result_div{
+.main_search_result_div {
   border-top: none;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
-  border-bottom: 1px solid black;
-  border-radius: 10px;
+  border-left: 1px solid rgba(128, 124, 124, 0.671);
+  border-right: 1px solid rgba(128, 124, 124, 0.671);
+  border-bottom: 1px solid rgba(128, 124, 124, 0.671);
+  border-radius: 0px 0px 10px 10px;
+  width: 100%;
 }
-.searched_product_details_div{
+.searched_product_details_div {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -114,23 +111,23 @@
   padding-top: 10px;
   width: 250px;
 }
-.searched_product_details_div_img{
+.searched_product_details_div_img {
   width: 20%;
 }
-.searched_product_details_img{
+.searched_product_details_img {
   width: 53px;
   height: 53px;
-  object-fit: cover
+  object-fit: cover;
 }
 
-.searched_product_details_div_info_name{
+.searched_product_details_div_info_name {
   display: flex;
   justify-content: space-between;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 500;
 }
 
-.searched_product_details_div_info{
+.searched_product_details_div_info {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -138,12 +135,12 @@
   align-items: space-between;
   gap: 11px;
 }
-.searched_product_details_div_info_btn{
+.searched_product_details_div_info_btn {
   display: flex;
   justify-content: center;
   gap: 2px;
 }
-.searched_product_details_div_info_btn_view{
+.searched_product_details_div_info_btn_view {
   width: 90%;
   text-align: center;
   background: white;
@@ -154,9 +151,8 @@
   justify-content: center;
   align-items: center;
   border-radius: 3px;
-
 }
-.searched_product_details_div_info_btn_cart{
+.searched_product_details_div_info_btn_cart {
   width: 100%;
   text-align: center;
   background: #e74c3c;
@@ -167,14 +163,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 3px;
-
 }
-
-
-
-
-
-
 
 @media (max-width: 1100px) {
   .nav-search-list {
@@ -196,10 +185,107 @@
   cursor: pointer;
   color: var(--redPink);
   z-index: 1;
-
 }
 
 .close-btn:hover {
   color: red;
   /* Optional hover effect */
+}
+
+@media (max-width: 600px) {
+  .search_bar_card_for_mobile {
+    max-height: 400px;
+    overflow-y: scroll;
+    padding: 0px 10px;
+    margin: 20px;
+    /* border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black; */
+    border-radius: 10px;
+    position: fixed;
+    background: white;
+    z-index: 1000;
+    width: 80%;
+    top: 19%;
+  }
+  .searched_product_details_img {
+    width: 80px;
+    height: 57px;
+    object-fit: contain;
+  }
+  .searched_product_details_div {
+    gap: 18px;
+    margin-bottom: 10px;
+    border-top: 1px solid rgba(128, 124, 124, 0.671);
+    padding-top: 7px;
+  }
+  .searched_product_details_div_img {
+    width: 25%;
+  }
+  .searched_product_details_img {
+    width: 63px;
+    height: 63px;
+    object-fit: contain;
+  }
+
+  .searched_product_details_div_info_name {
+    font-size: 14px;
+  }
+
+
+  /* Add these styles */
+.searchPopupActive {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
+  z-index: 1000;
+  background: white;
+}
+
+/* This prevents body scrolling when popup is open */
+body.no-scroll {
+  overflow: hidden;
+}
+
+  .searched_product_details_div_info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: space-between;
+    gap: 11px;
+  }
+  .searched_product_details_div_info_btn {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  .searched_product_details_div_info_btn_view {
+    width: 90%;
+    text-align: center;
+    background: white;
+    border: 1px solid black;
+    color: black;
+    font-size: 12px;
+    padding: 3px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+  }
+  .searched_product_details_div_info_btn_cart {
+    width: 100%;
+    text-align: center;
+    background: #e74c3c;
+    border: none;
+    color: white;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+  }
 }

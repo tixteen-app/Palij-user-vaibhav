@@ -21,7 +21,7 @@ const ProductSidebar = () => {
 	const [selectedPriceRange, setSelectedPriceRange] = useState({ min: 0, max: 1000000 }); // No filter by default
 	const [isInitialLoad, setIsInitialLoad] = useState(true);
 	const [showDropdown, setShowDropdown] = useState(false);
-	const [catloader , setCatloader] = useState(false);
+	const [catloader, setCatloader] = useState(false);
 	useEffect(() => {
 		if (isInitialLoad) {
 			window.scrollTo(0, 0);
@@ -36,16 +36,16 @@ const ProductSidebar = () => {
 				const response = await makeApi("/api/get-all-categories", "GET");
 				if (response.status === 200) {
 					setCategories(response.data.categories);
-					
+
 					// Get category ID from URL
 					const urlCategoryId = queryParams.get("category");
-					
+
 					if (urlCategoryId) {
 						// Find the category that matches the ID from URL
 						const matchedCategory = response.data.categories.find(
 							(category) => category._id === urlCategoryId
 						);
-						
+
 						if (matchedCategory) {
 							setSelectedCategory(matchedCategory._id);
 							setCategoryName(matchedCategory.name);
@@ -57,7 +57,7 @@ const ProductSidebar = () => {
 				}
 			} catch (error) {
 				console.log("Error fetching categories:", error);
-			}finally{
+			} finally {
 				setCatloader(false);
 			}
 		}
@@ -82,7 +82,7 @@ const ProductSidebar = () => {
 		setSelectedSubcategory(subcategoryId);
 	};
 
-	const handleFilterApply = (categoryId, minPrice, maxPrice, subcategoryId,selectedCategoryname) => {
+	const handleFilterApply = (categoryId, minPrice, maxPrice, subcategoryId, selectedCategoryname) => {
 		setSelectedCategory(categoryId);
 		setSelectedPriceRange({ min: minPrice, max: maxPrice });
 		setSelectedSubcategory(subcategoryId);
@@ -125,47 +125,47 @@ const ProductSidebar = () => {
 					{/* product category */}
 					<div className="product_sliderbar_options a_product_sliderbar_options">
 						<div className="proudct_sidebar_heading"> Product Category:</div>
-						
+
 						<div className={styles.categories}>
 							{catloader ? (
 								<>
-											<Skeleton height={`200px`} width={`100%`} />
+									<Skeleton height={`200px`} width={`100%`} />
 								</>
-							):(
+							) : (
 								<>
 									<div>
-								<p
-									onClick={() => handleCategoryChange("", "")}
-									className={selectedCategory === "" ? styles.active : ""}
-								>
-									All
-								</p>
-								{categories.map((category) => (
-									<div key={category._id}>
 										<p
-											onClick={() => handleCategoryChange(category._id, category.name)}
-											className={selectedCategory === category._id ? styles.activeCategory : ""}
+											onClick={() => handleCategoryChange("", "")}
+											className={selectedCategory === "" ? styles.active : ""}
 										>
-											{category.name}
+											All
 										</p>
-										{category.subcategories && category.subcategories.length > 0 && selectedCategory === category._id && (
-											<div className={styles.subcategories}>
-												{category.subcategories.map((subcategory) => (
-													<p
-														key={subcategory._id}
-														onClick={() => handleSubcategoryChange(subcategory._id)}
-														className={selectedSubcategory === subcategory._id ? styles.activeSubcategory : ""}
-													>
-														{subcategory.name}
-													</p>
-												))}
+										{categories.map((category) => (
+											<div key={category._id}>
+												<p
+													onClick={() => handleCategoryChange(category._id, category.name)}
+													className={selectedCategory === category._id ? styles.activeCategory : ""}
+												>
+													{category.name}
+												</p>
+												{category.subcategories && category.subcategories.length > 0 && selectedCategory === category._id && (
+													<div className={styles.subcategories}>
+														{category.subcategories.map((subcategory) => (
+															<p
+																key={subcategory._id}
+																onClick={() => handleSubcategoryChange(subcategory._id)}
+																className={selectedSubcategory === subcategory._id ? styles.activeSubcategory : ""}
+															>
+																{subcategory.name}
+															</p>
+														))}
+													</div>
+												)}
 											</div>
-										)}
-									</div>
-								))}
-							</div></>
+										))}
+									</div></>
 							)}
-						
+
 						</div>
 					</div>
 					{/* filter by price */}
@@ -185,7 +185,7 @@ const ProductSidebar = () => {
 							</div>
 							{priceRanges.map((range, index) => (
 								<div key={index} className={styles.priceFilterOption}>
-									<input 
+									<input
 										type="radio"
 										id={`price-${index}`}
 										name="price-range"
@@ -224,7 +224,7 @@ const ProductSidebar = () => {
 				<div className="media_product_sidebar">
 					<div className="media_all_product_search">
 						<input
-							type="text" 
+							type="text"
 							placeholder="Search"
 							value={search}
 							onChange={(e) => setSearch(e.target.value)}

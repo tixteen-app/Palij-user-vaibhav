@@ -552,12 +552,15 @@
 import React, { useEffect, useState } from "react";
 import styles from "../../pages/CSS/product/allProduct.module.css";
 import { makeApi } from "../../api/callApi";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import LoginPopup from "../LoginPopup/LoginPopup.jsx";
 import { fetchCart, addToCart, removeFromCart } from "../../utils/productFunction.js";
 import SkeletonLoader from "./SkeletonLoader.jsx";
+import sortimage from "../../assets/sort.svg"
 
 function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcategory }) {
+    const navigate = useNavigate();
+
     const [products, setProducts] = useState([]);
     const [cartItems, setCartItems] = useState([]);
     const [ResultPerPage, setResultPerPage] = useState(50000000);
@@ -574,7 +577,7 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
     const [AddTocartLoader, setAddTocartLoader] = useState({});
     const [displayedProducts, setDisplayedProducts] = useState([]);
     const [visibleProducts, setVisibleProducts] = useState(20);
-    const [sortBy, setSortBy] = useState("hight");
+    const [sortBy, setSortBy] = useState("");
     const [hasFetched, setHasFetched] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [minLoadTimePassed, setMinLoadTimePassed] = useState(false);
@@ -698,6 +701,10 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
             console.error("Error fetching cart items:", error);
         }
     };
+    function handleNavigate(id) {
+        navigate(`/product/product-details/${id}`);
+    }
+
 
     const handleLoadMore = () => {
         const nextVisibleProducts = visibleProducts + 10;
@@ -705,16 +712,85 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
         setDisplayedProducts(products.slice(0, nextVisibleProducts));
     };
 
-    const handleSort = (sortType) => {
-        let sortedProducts = [...products];
-        if (sortType === "hight") {
-            sortedProducts.sort((a, b) => a.size[0].FinalPrice - b.size[0].FinalPrice);
-        } else if (sortType === "low") {
-            sortedProducts.sort((a, b) => b.size[0].FinalPrice - a.size[0].FinalPrice);
+    // const handleSort = (sortType) => {
+    //     let sortedProducts = [...products];
+    //     if (sortType === "hight") {
+    //         sortedProducts.sort((a, b) => a.size[0].FinalPrice - b.size[0].FinalPrice);
+    //     } else if (sortType === "low") {
+    //         sortedProducts.sort((a, b) => b.size[0].FinalPrice - a.size[0].FinalPrice);
+    //     }
+    //     setDisplayedProducts(sortedProducts.slice(0, visibleProducts));
+    // };
+    const handleSort = async (sortType) => {
+        if (sortType === "popularity") {
+          try {
+            setAllProductLoader(true);
+            const response = await makeApi(
+              `/api/get-all-top-saller-products`,
+              "GET"
+            );
+            const sortedProducts = response.data.products;
+            setProducts(sortedProducts);
+            setDisplayedProducts(sortedProducts.slice(0, visibleProducts));
+          } catch (error) {
+            console.error("Error fetching popular products:", error);
+          } finally {
+            setAllProductLoader(false);
+          }
+        } 
+        else {
+          // For price sorting, fetch fresh data with applied filters
+          try {
+            setAllProductLoader(true);
+            
+            // Use props filters if they exist, otherwise fall back to URL params
+            const activeCategory = category || new URLSearchParams(location.search).get("category") || "";
+            const activeSearch = search || new URLSearchParams(location.search).get("search") || "";
+            const activeMinPrice = minPrice !== undefined ? minPrice : new URLSearchParams(location.search).get("minPrice") || "0";
+            const activeMaxPrice = maxPrice !== undefined ? maxPrice : new URLSearchParams(location.search).get("maxPrice") || "1000000";
+            const activeSubcategory = subcategory || "";
+      
+            const response = await makeApi(
+              `/api/get-all-products?name=${activeSearch}&category=${activeCategory}&subcategory=${activeSubcategory}&minPrice=${activeMinPrice}&maxPrice=${activeMaxPrice}&page=1&perPage=${ResultPerPage}&IsOutOfStock=false`,
+              "GET"
+            );
+      
+            let sortedProducts = response.data.products;
+            
+            // Apply sorting
+            if (sortType === "hight") {
+              sortedProducts.sort((a, b) => a.size[0].FinalPrice - b.size[0].FinalPrice);
+            } 
+            else if (sortType === "low") {
+              sortedProducts.sort((a, b) => b.size[0].FinalPrice - a.size[0].FinalPrice);
+            }
+      
+            setProducts(sortedProducts);
+            setDisplayedProducts(sortedProducts.slice(0, visibleProducts));
+          } catch (error) {
+            console.error("Error fetching products:", error);
+          } finally {
+            setAllProductLoader(false);
+          }
         }
-        setDisplayedProducts(sortedProducts.slice(0, visibleProducts));
-    };
+        
+        setSortBy(sortType);
+      };
 
+      useEffect(() => {
+        if (search) {
+            // When search is active (popup is open)
+            document.body.style.overflow = 'hidden';
+        } else {
+            // When search is not active (popup is closed)
+            document.body.style.overflow = 'auto';
+        }
+    
+        // Cleanup function to reset overflow when component unmounts
+        return () => {
+            document.body.style.overflow = 'auto';
+        };
+    }, [search]);
     return (
         <div className={styles.mainContainer}>
             {showPopup && <LoginPopup onClose={closePopup} />}
@@ -723,6 +799,96 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
                 <SkeletonLoader items={12} />
             ) : (
                 <div className={styles.container}>
+                    <>
+                        {search &&
+                            // <div className="search_bar_card_for_mobile" >
+                            <div className={`search_bar_card_for_mobile ${search ? styles.searchPopupActive : ''}`}>
+                                {displayedProducts.map((result, id) => (
+                                        <div className="searched_product_details_div " >
+                                            <div className="searched_product_details_div_img" >
+                                                <img src={result.thumbnail} alt={result.name} className="searched_product_details_img" />
+                                            </div>
+                                            <div className="searched_product_details_div_info" >
+                                                <div className="searched_product_details_div_info_name" >
+                                                    {/* <div>{result.name}</div> */}
+                                                    <div>{result.name}</div>
+
+                                                    <div>
+                                                        {result.size.length > 0 &&
+                                                            <>
+                                                                ₹{result.size[0].FinalPrice}
+                                                            </>
+                                                        }
+                                                    </div>
+                                                </div>
+                                                <div className="searched_product_details_div_info_btn" >
+                                                    <div className="searched_product_details_div_info_btn_view" onClick={() => handleNavigate(result._id)} >View Detail</div>
+                                                    {/* <div className="searched_product_details_div_info_btn_cart" >Add to Cart</div> */}
+                                                    <div className="searched_product_details_div_info_btn_cart">
+                                                            {cartItems.some(cartItem => cartItem.productId === result._id && cartItem.size === result.size[0]._id) ? (
+                                                                <div className="homeproduct_addtocart_and_quantity_div">
+                                                                    <div>
+                                                                        <svg
+                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                            onClick={() => handleDecreaseQuantity(result._id, result.size[0])}
+                                                                            width="30"
+                                                                            height="30"
+                                                                            fill="currentColor"
+                                                                            className="bi bi-dash text-white"
+                                                                            style={{ cursor: "pointer" }}
+                                                                            viewBox="0 0 16 16"
+                                                                        >
+                                                                            <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" />
+                                                                        </svg>
+                                                                    </div>
+
+                                                                    <div style={{ minWidth: "20px", textAlign: "center", paddingTop: "4px" }}>
+                                                                        {quantityLoading[result._id] ? (
+                                                                            <div className="loader_for_home_page"></div>
+                                                                        ) : (
+                                                                            <div  >
+                                                                                {cartItems.find(cartItem => cartItem.productId === result._id && cartItem.size === result.size[0]._id)?.quantity || 0}
+                                                                            </div>
+                                                                        )}
+                                                                    </div>
+
+                                                                    <div>
+                                                                        <svg
+                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                            onClick={() => handleIncreaseQuantity(result._id, result.size[0])}
+                                                                            width="30"
+                                                                            height="30"
+                                                                            fill="currentColor"
+                                                                            className="bi bi-plus text-white"
+                                                                            style={{ cursor: "pointer" }}
+                                                                            viewBox="0 0 16 16"
+                                                                        >
+                                                                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                            ) : (
+                                                                <div
+                                                                    className="searched_product_details_div_info_btn_cart"
+                                                                    onClick={() => handleIncreaseQuantity(result._id, result.size[0])}
+                                                                >
+                                                                    {quantityLoading[result._id] ? (
+                                                                        <div className="loader_for_home_page"></div>
+                                                                    ) : (
+                                                                        "ADD"
+                                                                    )}
+                                                                </div>
+                                                            )}
+                                                        </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                ))}
+                            </div>
+
+                        }
+                    </>
+
                     {hasFetched && (
                         <>
                             {displayedProducts.length === 0 ? (
@@ -732,15 +898,29 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
                                     {displayedProducts.length > 0 && (
                                         <div className={styles.sortContainer}>
                                             <div className={styles.customDropdown}>
-                                                <div className={styles.sortLabel}>Sort By:</div>
+                                                {/* <div className={styles.sortLabel}>Sort By:</div> */}
                                                 <div className={styles.dropdownHeader} onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
-                                                    {sortBy === "hight" ? "Price: Low to High" : "Price: High to Low"}
+                                                    {/* {sortBy === "hight" ? "Price: Low to High" : "Price: High to Low"}
                                                     <span className={`${styles.arrow} ${isDropdownOpen ? styles.open : ""}`}>
                                                         ▼
-                                                    </span>
+                                                    </span> */}
+                                                    <img src={sortimage}  className={styles.sort_image_all_product} />
                                                 </div>
                                                 {isDropdownOpen && (
                                                     <div className={styles.dropdownOptions}>
+                                                          <div
+                                                            className={styles.dropdownOption}
+                                                            onClick={() => {
+                                                                // setSortBy("hight");
+                                                                // handleSort("hight");
+                                                                // setIsDropdownOpen(false);
+
+                                                                handleSort("popularity");
+                                                                setIsDropdownOpen(false);
+                                                            }}
+                                                        >
+                                                            popularity
+                                                        </div>
                                                         <div
                                                             className={styles.dropdownOption}
                                                             onClick={() => {
@@ -771,56 +951,6 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
                                         {displayedProducts.length > 0 && <div className={styles.home_page_selcte_cat_name} >{categoryName}</div>}
                                         <div className={styles.allProductsList}>
                                             {displayedProducts.map(product => (
-                                                // <div key={item._id} className={styles.products}>
-                                                //     <Link to={`/product/product-details/${item._id}`}>
-                                                //         <div className={styles.productImg}>
-                                                //             <img src={item.thumbnail} alt={item.name} />
-                                                //         </div>
-                                                //     </Link>
-                                                //     <div className={styles.productContent}>
-                                                //         <div className={styles.name}>{item.name}</div>
-                                                //         <div className={styles.pricecart}>
-                                                //             {item.size.length > 0 &&
-                                                //                 <div className={styles.productPrice}>
-                                                //                     ₹{item.size[0].FinalPrice}
-                                                //                     {item.size[0].discountPercentage > 0 && (
-                                                //                         <span> ₹{item.size[0].price}</span>
-                                                //                     )}
-                                                //                 </div>
-                                                //             }
-                                                //             <div className={styles.cartActions}>
-                                                //                 {cartItems.some(cartItem => cartItem.productId === item._id && cartItem.size === item.size[0]._id) ? (
-                                                //                     <div className={styles.cartIncDec}>
-                                                //                         <svg xmlns="http://www.w3.org/2000/svg" onClick={() => handleDecreaseQuantity(item._id, item.size[0])} width="30" height="30" fill="currentColor" className="bi bi-dash text-black" style={{ cursor: "pointer" }} viewBox="0 0 16 16">
-                                                //                             <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" />
-                                                //                         </svg>
-                                                //                         {quantityLoading[item._id] ? (
-                                                //                             <div className={styles.loader}>
-                                                //                             </div>
-                                                //                         ) : (
-                                                //                             <p>{cartItems.find(cartItem => cartItem.productId === item._id && cartItem.size === item.size[0]._id)?.quantity || 0}</p>
-                                                //                         )}
-                                                //                         <svg xmlns="http://www.w3.org/2000/svg" onClick={() => handleIncreaseQuantity(item._id, item.size[0])} width="30" height="30" fill="currentColor" className="bi bi-plus text-black" style={{ cursor: "pointer" }} viewBox="0 0 16 16">
-                                                //                             <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
-                                                //                         </svg>
-                                                //                     </div>
-                                                //                 ) : (
-                                                //                     <>
-                                                //                         {quantityLoading[item._id] ?
-                                                //                             <div className={styles.loader} style={{ margin: "auto" }}>
-                                                //                             </div> :
-                                                //                             <button
-                                                //                                 onClick={() => handleIncreaseQuantity(item._id, item.size[0])}
-                                                //                             >
-                                                //                                 Add to Cart
-                                                //                             </button>
-                                                //                         }
-                                                //                     </>
-                                                //                 )}
-                                                //             </div>
-                                                //         </div>
-                                                //     </div>
-                                                // </div>
                                                 <div key={product.id} className="homeproduct_product_sub_div_for_all_prodcut" >
                                                     {/* image */}
                                                     <div className="homeproduct_product_div_image" >

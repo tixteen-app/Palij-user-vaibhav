@@ -44,7 +44,7 @@
 .priceDetails {
   display: flex;
   justify-content: flex-start;
-  gap: 30px;
+  gap: 0px;
 }
 .priceFlexCol{
   width: 100%;
@@ -69,8 +69,8 @@
 
 .allAddToCart {
   display: flex;
-  align-items: end;
-  justify-content: end;
+  /* align-items: end; */
+  justify-content: center;
 }
 .sizeButtondiv{
   display: flex;
@@ -325,6 +325,7 @@
 .actions {
   margin-top: 15px;
   width: 100%;
+  text-align: center;
 }
 
 .productPriceName {

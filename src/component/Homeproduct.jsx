@@ -39,7 +39,8 @@ function Homeproduct() {
       if (categories.length > 0) {
         const categoryId = categories[2]._id;
         const response = await makeApi(
-          `/api/get-all-products-by-category/${categoryId}`,
+          // `/api/get-all-products-by-category/${categoryId}`,
+          `/api/get-all-top-saller-products`,
           "GET"
         );
         setProducts(response.data.products);
@@ -143,10 +144,11 @@ function Homeproduct() {
                   {product.size.length > 0 &&
                     product.size[0].sizetype !== "Pack" && (
                       <>
-                        {product.size[0].size}{product.size[0].sizetype}
+                        <span className="pe-1">{product.size[0].size}</span>{product.size[0].sizetype}
                       </>
                     )
                   }
+                  
 
                 </div>
               </div>
