@@ -198,15 +198,13 @@
     overflow-y: scroll;
     padding: 0px 10px;
     margin: 20px;
-    /* border-left: 1px solid black;
-    border-right: 1px solid black;
-    border-bottom: 1px solid black; */
     border-radius: 10px;
     position: fixed;
     background: white;
     z-index: 1000;
-    width: 80%;
+    width: 75%;
     top: 19%;
+    left: -2%;
   }
   .searched_product_details_img {
     width: 80px;
@@ -229,7 +227,7 @@
   }
 
   .searched_product_details_div_info_name {
-    font-size: 14px;
+    font-size: 15px;
   }
 
 
@@ -261,16 +259,19 @@ body.no-scroll {
   .searched_product_details_div_info_btn {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 3px;
+  }
+  .homeproduct_addtocart_and_quantity_div_for_Search{
+    gap: 1px !important;
   }
   .searched_product_details_div_info_btn_view {
-    width: 90%;
+    width: 100%;
     text-align: center;
     background: white;
     border: 1px solid black;
     color: black;
     font-size: 12px;
-    padding: 3px 10px;
+    padding: 3px 5px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -280,12 +281,13 @@ body.no-scroll {
     width: 100%;
     text-align: center;
     background: #e74c3c;
-    border: none;
     color: white;
     font-size: 14px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 3px;
+    padding: 4px 5px;
+
   }
 }
