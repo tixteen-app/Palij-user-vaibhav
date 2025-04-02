@@ -102,7 +102,7 @@ const ProductSidebar = () => {
 		{ label: "₹2500 to ₹2999", min: 2500, max: 2999 },
 		{ label: "₹3000 and ABOVE", min: 3000, max: 1000000 },
 	];
-
+console.log("selectedCategory",selectedCategory,"-=-=-=")
 	return (
 		<>
 			<div className="main_product_sidebar_top_parent_div">
@@ -134,12 +134,19 @@ const ProductSidebar = () => {
 							) : (
 								<>
 									<div>
-										<p
+										{/* <p
 											onClick={() => handleCategoryChange("", "")}
-											className={selectedCategory === "" ? styles.active : ""}
+											className={selectedCategory === (""|| " " || null || undefined ) ? styles.active : ""}
 										>
 											All
-										</p>
+										</p> */}
+										        <p
+          onClick={() => handleCategoryChange("", "")}
+          className={!selectedCategory ? styles.activeCategory : ""}
+        >
+          All
+        </p>
+
 										{categories.map((category) => (
 											<div key={category._id}>
 												<p
