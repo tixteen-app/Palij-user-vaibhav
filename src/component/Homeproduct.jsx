@@ -146,7 +146,7 @@ function Homeproduct() {
                       <>
                         {/* <span className="pe-1">{product.size[0].size}</span>{product.size[0].sizetype} */}
                         <>
-                                                                            <span className="">{product.size[0].size}</span>
+                                                                            <span className="k">{product.size[0].size}</span>
                                                                             {product.size[0].sizetype.toLowerCase() === "gram" ? " g" :
                                                                                 product.size[0].sizetype.toUpperCase() === "KG" ? " Kg" :
                                                                                     product.size[0].sizetype}
