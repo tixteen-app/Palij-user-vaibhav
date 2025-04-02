@@ -420,8 +420,8 @@
 /* Address section */
 .address-section {
   padding: 1.5rem;
-  display: grid;
-  grid-template-columns: 1fr;
+  /* display: grid;/ */
+  /* grid-template-columns: 1fr; */
   gap: 1.5rem;
 }
 
