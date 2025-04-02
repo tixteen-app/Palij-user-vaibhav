@@ -274,6 +274,7 @@ import PaljiSignUp from "./components/signup/PaljiSignUp.jsx"
 import Homepage from "./pages/Homepage.jsx"
 import Taxinvoice from "./pages/Taxinvoice.jsx"
 import Newcart from "./pages/Newcart.jsx"
+import SortArrows from "./Test.jsx"
 
 function App() {
   const location = useLocation();  // Use useLocation hook to get the current location
@@ -323,7 +324,7 @@ function App() {
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/shipping-policy" element={<ShippingProcess />} />
         <Route path="/otp-verified" element={<OtpVerifiedForm />} />
-        <Route path="/test" element={<LatestOrder />} />
+        <Route path="/test" element={<SortArrows />} />
         <Route path="*" element={<Navigate to="/" replace />} />
         <Route path="/edit-billing-address/:id" element={<AddressForm isBilling={true} />} />
         <Route path="/edit-shipping-address/:id" element={<AddressForm isBilling={false} />} />

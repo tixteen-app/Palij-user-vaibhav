@@ -346,6 +346,8 @@
   }
 }
 
+
+
 @media(max-width:1000px) {
   .productImg img {
     width: 240px;
@@ -505,5 +507,17 @@
     transition: all 0.5s ease-in-out;
     font-family: "Kumbh Sans";
     width: 40%;
+  }
+}
+
+@media (max-width:390px) {
+  .allProductsList {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    align-items: normal;
+    padding: 0px;
+    row-gap: 10px;
+    margin-top: 20px;
   }
 }

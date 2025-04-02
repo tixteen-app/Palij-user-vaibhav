@@ -165,8 +165,8 @@ const NavSearchList = ({ product, clearSearchInput, input, isLoading }) => {
 
 													<div style={{ minWidth: "20px", textAlign: "center" }}>
 														{quantityLoading[result._id] ? (
-															<div >
-																<div className="loader_for_home_page loader_for_search_bar "></div>
+															<div style={{paddingTop: "5px"}} >
+																<div className="loader_for_home_page loader_for_search_bar loader_for_pc_search"  ></div>
 															</div>
 														) : (
 															<div className="" >
@@ -196,7 +196,7 @@ const NavSearchList = ({ product, clearSearchInput, input, isLoading }) => {
 														onClick={() => handleIncreaseQuantity(result._id, result.size[0])}
 													>
 														{quantityLoading[result._id] ? (
-															<div className="loader_for_home_page"></div>
+															<div className="loader_for_home_page loader_for_pc_search mt-1"></div>
 														) : (
 															"ADD"
 														)}

@@ -147,7 +147,13 @@ function Homesavery() {
                                     {/* {product.weight} */}
                                     {product.size.length > 0 &&
                                         <>
-                                            {product.size[0].size}{product.size[0].sizetype}
+                                            {/* {product.size[0].size}{product.size[0].sizetype} */}
+                                            <>
+                                                                            <span className="">{product.size[0].size}</span>
+                                                                            {product.size[0].sizetype.toLowerCase() === "gram" ? " g" :
+                                                                                product.size[0].sizetype.toUpperCase() === "KG" ? " Kg" :
+                                                                                    product.size[0].sizetype}
+                                                                        </>
                                         </>
 
                                     }
@@ -160,12 +166,12 @@ function Homesavery() {
 
                                     {product.size && product.size.length > 0 && (
                                         <>
-                                            <span className="Rs_text_homeproduct">Rs.</span>
+                                            <span className="Rs_text_homeproduct">₹ </span>
                                             <span className="price_text_homeproduct">{product.size[0].FinalPrice}</span>
 
                                             {product.size[0].price - product.size[0].FinalPrice > 1 && (
                                                 <>
-                                                    <span className="original_text_homeproduct">Rs.{product.size[0].price}</span>
+                                                    <span className="original_text_homeproduct">₹{product.size[0].price}</span>
                                                     <span className="discount_text_homeproduct">
                                                         -{Math.round(((product.size[0].price - product.size[0].FinalPrice) / product.size[0].price) * 100)}%
                                                     </span>
