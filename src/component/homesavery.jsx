@@ -15,7 +15,7 @@ function Homesavery() {
     const [products, setProducts] = useState([]);
     const [IsLogin, setIsLogin] = useState(false)
     const [showPopup, setShowPopup] = useState(false)
-    const [cartItems, setCartItems] = useState([])
+    const [cartItems, setCartItems] = useState([]) 
     const [quantityLoading, setQuantityLoading] = useState({});
     const [productLoaders, setProductLoaders] = useState({})
     const [AddTocartLoader, setAddTocartLoader] = useState({})
@@ -35,7 +35,7 @@ function Homesavery() {
             setCategories(categories);
 
             if (categories.length > 0) {
-                const categoryId = categories[1]._id;
+                const categoryId = categories[2]._id;
                 const response = await makeApi(
                     `/api/get-all-products-by-category/${categoryId}`,
                     "GET"

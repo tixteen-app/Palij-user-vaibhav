@@ -33,7 +33,7 @@ function Pcookies() {
             const categories = categoriesResponse.data.categories;
             setCategories(categories);
             if (categories.length > 0) {
-                const categoryId = categories[2]._id;
+                const categoryId = categories[1]._id;
                 const response = await makeApi(
                     `/api/get-all-products-by-category/${categoryId}`,
                     "GET"

@@ -73,7 +73,7 @@
 // 					path="/aboutus"
 // 					element={<AboutUs />}
 // 				/>
-				
+
 // 				<Route
 // 					path="/product/*"
 // 					element={<Products />}
