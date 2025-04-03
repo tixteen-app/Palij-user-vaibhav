@@ -165,9 +165,11 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
     const handleSort = async (sortType) => {
         if (sortType === "popularity") {
             try {
+                const activeCategory = category || new URLSearchParams(location.search).get("category") || "";
                 setAllProductLoader(true);
+                console.log("Fetching popular products...",activeCategory);
                 const response = await makeApi(
-                    `/api/get-all-top-saller-products`,
+                    `/api/get-all-top-saller-products?categoryId=${activeCategory}`,
                     "GET"
                 );
                 const sortedProducts = response.data.products;
@@ -377,73 +379,71 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
                                         </div>
                                     )} */}
                                     {displayedProductslength > 0 && (
-  <div className={styles.sortContainer}>
-    <div className={styles.customDropdown}>
-      <div className={styles.dropdownHeader} onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
-        {/* Custom arrow indicators */}
-        <div className={styles.arrowContainer}>
-          <div>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className={`${styles.sortArrow} ${
-                sortBy === "hight" || sortBy === "popularity" ? styles.activeArrow : ""
-              }`}
-              fill="currentColor"
-              viewBox="0 0 16 16"
-            >
-              <path fillRule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5" />
-            </svg>
-          </div>
-          <div>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className={`${styles.sortArrow} ${
-                sortBy === "low" || sortBy === "popularity" ? styles.activeArrow : ""
-              }`}
-              fill="currentColor"
-              viewBox="0 0 16 16"
-            >
-              <path fillRule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1" />
-            </svg>
-          </div>
-        </div>
-      </div>
-      {isDropdownOpen && (
-        <div className={styles.dropdownOptions}>
-          <div
-            className={styles.dropdownOption}
-            onClick={() => {
-              handleSort("popularity");
-              setIsDropdownOpen(false);
-            }}
-          >
-            popularity
-          </div>
-          <div
-            className={styles.dropdownOption}
-            onClick={() => {
-              setSortBy("hight");
-              handleSort("hight");
-              setIsDropdownOpen(false);
-            }}
-          >
-            Price Low to High
-          </div>
-          <div
-            className={styles.dropdownOption}
-            onClick={() => {
-              setSortBy("low");
-              handleSort("low");
-              setIsDropdownOpen(false);
-            }}
-          >
-            Price High to Low
-          </div>
-        </div>
-      )}
-    </div>
-  </div>
-)}
+                                        <div className={styles.sortContainer}>
+                                            <div className={styles.customDropdown}>
+                                                <div className={styles.dropdownHeader} onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
+                                                    {/* Custom arrow indicators */}
+                                                    <div className={styles.arrowContainer}>
+                                                        <div>
+                                                            <svg
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                className={`${styles.sortArrow} ${sortBy === "hight" || sortBy === "popularity" ? styles.activeArrow : ""
+                                                                    }`}
+                                                                fill="currentColor"
+                                                                viewBox="0 0 16 16"
+                                                            >
+                                                                <path fillRule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5" />
+                                                            </svg>
+                                                        </div>
+                                                        <div>
+                                                            <svg
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                className={`${styles.sortArrow} ${sortBy === "low" || sortBy === "popularity" ? styles.activeArrow : ""
+                                                                    }`}
+                                                                fill="currentColor"
+                                                                viewBox="0 0 16 16"
+                                                            >
+                                                                <path fillRule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1" />
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {isDropdownOpen && (
+                                                    <div className={styles.dropdownOptions}>
+                                                        <div
+                                                            className={styles.dropdownOption}
+                                                            onClick={() => {
+                                                                handleSort("popularity");
+                                                                setIsDropdownOpen(false);
+                                                            }}
+                                                        >
+                                                            popularity
+                                                        </div>
+                                                        <div
+                                                            className={styles.dropdownOption}
+                                                            onClick={() => {
+                                                                setSortBy("hight");
+                                                                handleSort("hight");
+                                                                setIsDropdownOpen(false);
+                                                            }}
+                                                        >
+                                                            Price Low to High
+                                                        </div>
+                                                        <div
+                                                            className={styles.dropdownOption}
+                                                            onClick={() => {
+                                                                setSortBy("low");
+                                                                handleSort("low");
+                                                                setIsDropdownOpen(false);
+                                                            }}
+                                                        >
+                                                            Price High to Low
+                                                        </div>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </div>
+                                    )}
 
                                     <div className={styles.productsContainer}>
                                         {displayedProducts.length > 0 && <div className={styles.home_page_selcte_cat_name}>{categoryName}</div>}
