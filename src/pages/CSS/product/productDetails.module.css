@@ -897,13 +897,21 @@ font-weight: 500;
   /* background: var(--redPink); */
 }
 
+@media (max-width: 300px) {
+  .mainImg img {
+    width: 310px;
+    height: 350px;
+    object-fit: contain;
+    border: 1px solid var(--redPink);
+}
+}
+
 @media (max-width: 600px) {
   .mainImg {
     max-width: 300px;
   }
-
-
 }
+
 
 @media(max-width:800px) {
   .mediaMainImg {
