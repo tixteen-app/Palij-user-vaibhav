@@ -289,7 +289,7 @@ const Navbar = () => {
 				{/* )} */}
 				<div className="media-navbar">
 					<nav>
-						<ul className={moblieMenu ? "" : "hide-mobile-menu"}>
+						<ul className={moblieMenu ? "" : "hide-mobile-menu"} style={{margin: "0px"}} >
 							<li className={location.pathname === "/" ? "active" : ""}>
 								<Link
 									to="/"
