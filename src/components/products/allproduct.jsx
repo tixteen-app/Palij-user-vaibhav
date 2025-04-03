@@ -482,11 +482,11 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
                                                         <div>
                                                             {product.size && product.size.length > 0 && (
                                                                 <>
-                                                                    <span className="Rs_text_homeproduct"> ₹ </span>
+                                                                    <span className="Rs_text_homeproduct"> ₹</span>
                                                                     <span className="price_text_homeproduct">{product.size[0].FinalPrice}</span>
                                                                     {product.size[0].price - product.size[0].FinalPrice > 1 && (
                                                                         <>
-                                                                            <span className="original_text_homeproduct">₹ {product.size[0].price}</span>
+                                                                            <span className="original_text_homeproduct ps-1">₹{product.size[0].price}</span>
                                                                             <span className="discount_text_homeproduct">
                                                                                 -{Math.round(((product.size[0].price - product.size[0].FinalPrice) / product.size[0].price) * 100)}%
                                                                             </span>
@@ -502,10 +502,10 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
                                                                         <svg
                                                                             xmlns="http://www.w3.org/2000/svg"
                                                                             onClick={() => handleDecreaseQuantity(product._id, product.size[0])}
-                                                                            width="30"
-                                                                            height="30"
+                                                                            // width="30"
+                                                                            // height="30"
                                                                             fill="currentColor"
-                                                                            className="bi bi-dash text-black"
+                                                                            className="bi bi-dash text-black plus_button_all_product"
                                                                             style={{ cursor: "pointer" }}
                                                                             viewBox="0 0 16 16"
                                                                         >
@@ -525,10 +525,10 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
                                                                         <svg
                                                                             xmlns="http://www.w3.org/2000/svg"
                                                                             onClick={() => handleIncreaseQuantity(product._id, product.size[0])}
-                                                                            width="30"
-                                                                            height="30"
+                                                                            // width="30"
+                                                                            // height="30"
                                                                             fill="currentColor"
-                                                                            className="bi bi-plus text-black"
+                                                                            className="bi bi-plus text-black plus_button_all_product"
                                                                             style={{ cursor: "pointer" }}
                                                                             viewBox="0 0 16 16"
                                                                         >

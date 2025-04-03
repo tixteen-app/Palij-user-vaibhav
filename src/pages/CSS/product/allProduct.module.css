@@ -367,7 +367,7 @@
   }
   .homeproduct_product_sub_div_for_all_prodcut {
     background: white;
-    padding: 5px;
+    padding: 8px;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
@@ -496,9 +496,10 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     align-items: normal;
-    padding: 10px;
+    padding: 0px;
     row-gap: 30px;
     margin-top: 20px;
+    column-gap: 10px;
   }
 
   .products {
