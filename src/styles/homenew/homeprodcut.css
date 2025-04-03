@@ -380,13 +380,13 @@
 
 @media (max-width: 390px) {
   .homeproduct_product_main_div {
-    gap: 20px;
+    gap: 14px;
   }
   .homeproduct_top_heading_div {
     font-size: 26px;
   }
   .homeproduct_product_sub_div {
-    width: 44%;
+    width: 46%;
     padding: 8px;
   }
   .homeproduct_product_sub_div_for_all_prodcut {
