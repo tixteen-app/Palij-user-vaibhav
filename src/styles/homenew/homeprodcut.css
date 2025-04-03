@@ -376,6 +376,14 @@
     width: 48%;
     padding: 5px;
   }
+  .homeproduct_product_main_div {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 10px !important;
+    padding: 5px;
+  }
 }
 
 @media (max-width: 390px) {
