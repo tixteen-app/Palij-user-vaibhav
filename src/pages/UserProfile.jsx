@@ -8,6 +8,15 @@ import { makeApi } from "../api/callApi";
 import { homeImg } from "../assets/home/home";
 
 const UserProfile = () => {
+
+	useEffect(() => {
+		const token = localStorage.getItem("token");
+
+		if (!token) {
+			window.location.href = "/";
+		}
+	}, []);
+
 	const navigate = useNavigate();
 	const location = useLocation(); // Hook to get current location
 	const [extended, setExtended] = useState(window.innerWidth > 800);
