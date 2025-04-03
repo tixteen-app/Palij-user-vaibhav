@@ -385,7 +385,7 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
                                                     {/* Custom arrow indicators */}
                                                     <div className={styles.arrowContainer}>
                                                         <div>
-                                                            <svg
+                                                             <span className={styles.sort_by_text_desktop} >Sort By:</span>   <svg
                                                                 xmlns="http://www.w3.org/2000/svg"
                                                                 className={`${styles.sortArrow} ${sortBy === "hight" || sortBy === "popularity" ? styles.activeArrow : ""
                                                                     }`}
