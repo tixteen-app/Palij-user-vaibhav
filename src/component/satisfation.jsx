@@ -254,7 +254,7 @@ import React from 'react'
 import "../styles/homenew/satisfation.css";
 import firstimage from "../assets/h-1.png"
 import secondimage from "../assets/h-2.png"
-import thirdimage from "../assets/h-3.png"
+import thirdimage from "../assets/h-9.png"
 import fourthimage from "../assets/h-4.png"
 import fifthimage from "../assets/h-5.png"
 import sixthimage from "../assets/h-6.png"
@@ -263,7 +263,7 @@ import eighthimage from "../assets/h-8.png"
 import { motion } from "framer-motion"
 
 function Satisfation() {
-    // Animation variants
+    // Animation variants 
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
