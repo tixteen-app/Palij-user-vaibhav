@@ -2,6 +2,7 @@ import cup_cakes from "./cupcakes.png"
 import logo from "./logo.png"
 import search_icon from "./Search.png"
 import cart_icon from "./Shopping Bag.png"
+import test12 from "./test-2.jpg"
 import logo2 from "./favicon.svg"
 import newlogo from './png 2.png'
 import chocoChipCookie1 from "./chocoChipCooki1.png"
@@ -103,6 +104,7 @@ export const assets = {
 	cust_review2,
 	cust_review3,
 	insta_icon,
+	test12,
 	youtube_icon,
 	facebook_icon,
 	twitter_icon,

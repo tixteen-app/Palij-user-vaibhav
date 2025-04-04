@@ -9,7 +9,7 @@ import styles from './SecondFooter.module.css'
 
 const SecondFooter = () => {
   return (
-    <div className={styles.container}>
+    <div className={styles.container} style={{margin:"0px"}} >
       <div className={styles.footer}>
         <div className={styles.left}>
           <div className={styles.logos}>

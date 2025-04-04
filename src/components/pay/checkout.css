@@ -106,8 +106,8 @@
 /* Input Fields */
 .cart_page-popup input {
   width: 100%;
-  padding: 12px;
-  margin-bottom: 12px;
+  padding: 11px;
+  margin-bottom: 8px;
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 14px;
@@ -213,6 +213,12 @@
   background-color: #EE5564;
   border: none;
   color: white;
+}
+.form-group-edit-adrress{
+  text-align: left;
+}
+.form-group-edit-adrress label{
+  font-size: 13px;
 }
 
 /* Responsive */

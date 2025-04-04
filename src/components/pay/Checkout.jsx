@@ -743,23 +743,105 @@ function Checkout() {
 										</div>
 									</div>
 									{isEditPopupOpen && (
-										<div className="cart_page-popup-overlay">
-											<div className="cart_page-popup">
-												<h2>Edit Address</h2>
-												<input type="text" name="firstname" value={editAddress.firstname} onChange={handleInputChange} placeholder="First Name" />
-												<input type="text" name="lastname" value={editAddress.lastname} onChange={handleInputChange} placeholder="Last Name" />
-												<input type="text" name="address" value={editAddress.address} onChange={handleInputChange} placeholder="Address" />
-												<input type="text" name="pincode" value={editAddress.pincode} onChange={handleInputChange} placeholder="Pincode" />
-												<input type="text" name="city" readOnly value={editAddress.city} onChange={handleInputChange} placeholder="City" />
-												<input type="text" name="state" readOnly value={editAddress.state} onChange={handleInputChange} placeholder="State" />
-												<input type="text" name="country" readOnly value={editAddress.country} onChange={handleInputChange} placeholder="Country" />
-
-												<div className="cart_page-popup-buttons">
-													<button className="" onClick={handleSaveAddress}> {saveaddloader ? <div>Saving...</div> : "Save"} </button>
-													<button className="" onClick={closeEditPopup}>Cancel</button>
-												</div>
-											</div>
-										</div>
+									<div className="cart_page-popup-overlay">
+									<div className="cart_page-popup">
+									  <h2>Edit Address</h2>
+									  
+									  <div className="form-group-edit-adrress">
+										<label htmlFor="firstname">First Name</label>
+										<input 
+										  type="text" 
+										  id="firstname" 
+										  name="firstname" 
+										  value={editAddress.firstname} 
+										  onChange={handleInputChange} 
+										  placeholder="Enter first name" 
+										/>
+									  </div>
+									  
+									  <div className="form-group-edit-adrress">
+										<label htmlFor="lastname">Last Name</label>
+										<input 
+										  type="text" 
+										  id="lastname" 
+										  name="lastname" 
+										  value={editAddress.lastname} 
+										  onChange={handleInputChange} 
+										  placeholder="Enter last name" 
+										/>
+									  </div>
+									  
+									  <div className="form-group-edit-adrress">
+										<label htmlFor="address">Address</label>
+										<input 
+										  type="text" 
+										  id="address" 
+										  name="address" 
+										  value={editAddress.address} 
+										  onChange={handleInputChange} 
+										  placeholder="Enter full address" 
+										/>
+									  </div>
+									  
+									  <div className="form-group-edit-adrress">
+										<label htmlFor="pincode">Pincode</label>
+										<input 
+										  type="text" 
+										  id="pincode" 
+										  name="pincode" 
+										  value={editAddress.pincode} 
+										  onChange={handleInputChange} 
+										  placeholder="Enter pincode" 
+										/>
+									  </div>
+									  
+									  <div className="form-group-edit-adrress">
+										<label htmlFor="city">City</label>
+										<input 
+										  type="text" 
+										  id="city" 
+										  name="city" 
+										  readOnly 
+										  value={editAddress.city} 
+										  onChange={handleInputChange} 
+										  placeholder="City will auto-fill" 
+										/>
+									  </div>
+									  
+									  <div className="form-group-edit-adrress">
+										<label htmlFor="state">State</label>
+										<input 
+										  type="text" 
+										  id="state" 
+										  name="state" 
+										  readOnly 
+										  value={editAddress.state} 
+										  onChange={handleInputChange} 
+										  placeholder="State will auto-fill" 
+										/>
+									  </div>
+									  
+									  <div className="form-group-edit-adrress">
+										<label htmlFor="country">Country</label>
+										<input 
+										  type="text" 
+										  id="country" 
+										  name="country" 
+										  readOnly 
+										  value={editAddress.country} 
+										  onChange={handleInputChange} 
+										  placeholder="Country will auto-fill" 
+										/>
+									  </div>
+								  
+									  <div className="cart_page-popup-buttons">
+										<button onClick={handleSaveAddress}>
+										  {saveaddloader ? <div>Saving...</div> : "Save"}
+										</button>
+										<button onClick={closeEditPopup}>Cancel</button>
+									  </div>
+									</div>
+								  </div>
 									)}
 
 								</div>
