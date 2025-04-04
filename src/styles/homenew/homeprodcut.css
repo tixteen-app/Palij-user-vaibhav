@@ -1,117 +1,3 @@
-/* .homeproduct_container_main_div{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-}
-.homeproduct_product_main_div{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    width: 80%;
-    gap: 30px;
-    padding: 5px;
-}
-.homeproduct_top_heading_div{
-    width: 80%;
-    font-size: 30px;
-    font-weight: 600;
-    color: #A95800;
-}
-.homeproduct_product_sub_div{
-    width: 22%;
-    background: white;
-    padding: 10px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.homeproduct_product_div_image{
-    width: 100%;
-    border-radius: 10px;
-    background: #f1f0f5;
-
-}
-.homeproduct_product_div_image img{
-    width: 100%;
-}
-.homeproduct_product_div_details{
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    padding-top: 4px;
-}
-.homeproduct_product_div_addtocart{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 10px 0px;
-}
-.homeproduct_product_div_addtocart_Add_button{
-    border: 1px solid black;
-    padding: 3px 15px;
-    cursor: pointer;
-    color: black;
-    font-weight: 400;
-    border-radius: 5px;
-}
-.bold_details_homeproduct{
-    font-weight: 600;
-    font-size: 18px;
-    color: black;
-}
-.Rs_text_homeproduct{
-    font-size: 18px;
-}
-.original_text_homeproduct{
-    color: rgba(0, 0, 0, 0.708);
-    font-size: 13px;
-}
-.price_text_homeproduct{
-    color: black;
-    font-size: 20px;
-    font-weight: 600;
-}
-.discount_text_homeproduct{
-    color: red;
-    font-size: 13px;
-    font-weight: 500;
-}
-.homeproduct_addtocart_and_quantity_div{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-.homeproduct_addtocart_and_quantity_div div{
-    width: 100%;
-}
-
-.loader_for_home_page {
-  width: 20px !important ;
-  height: 20px !important;
-  border: 4px solid black;
-  border-bottom-color: transparent;
-  border-radius: 100%;
-  display: inline-block;
-  box-sizing: border-box;
-  animation: rotation 1s linear infinite;
-}
-
- @keyframes rotation {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-} 
- */
 
 .homeproduct_top_heading_div_for_Savory {
   display: flex;
@@ -187,9 +73,8 @@
 
 .homeproduct_product_div_image img {
   width: 100%;
-  max-height: 220px;
+  max-height: 235px;
   min-height: 220px;
-  /* object-fit: cove/r; */
   object-fit: contain;
 }
 
