@@ -35,7 +35,7 @@ const UserProfile = () => {
 		return () => {
 			window.removeEventListener("resize", handleResize);
 		};
-	}, []);
+	}, []); 
 
 
 

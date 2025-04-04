@@ -3,19 +3,10 @@ import React from "react"
 import "../../pages/CSS/loaders/primaryloader.css"
 function Primaryloader() {
 	return (
-		<div>
-			<div className="dot-spinner">
-				<div className="dot-spinner__dot"></div>
-				<div className="dot-spinner__dot"></div>
-				<div className="dot-spinner__dot"></div>
-				<div className="dot-spinner__dot"></div>
-				<div className="dot-spinner__dot"></div>
-				<div className="dot-spinner__dot"></div>
-				<div className="dot-spinner__dot"></div>
-				<div className="dot-spinner__dot"></div>
-			</div>
-		</div>
-	)
+		<div className="loader_container_cart_page">
+		<div className="loader_for_cart"></div>
+	  </div>
+	) 
 }
 
 export default Primaryloader

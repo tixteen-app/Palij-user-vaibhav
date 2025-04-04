@@ -12,6 +12,13 @@
     align-items: center;
   }
   
+  .loader_container_profile_page{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
   .cart-container {
     min-height: 100vh;
     width: 100%;
