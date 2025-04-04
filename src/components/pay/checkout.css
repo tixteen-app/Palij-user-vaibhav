@@ -93,6 +93,8 @@
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
   text-align: center;
   animation: fadeIn 0.3s ease-in-out;
+  max-height: 95vh;
+  overflow-y: scroll;
 }
 
 /* Popup Title */
