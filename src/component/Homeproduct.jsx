@@ -129,8 +129,8 @@ function Homeproduct() {
             <div key={product.id} className="homeproduct_product_sub_div" >
               {/* image */}
               <div className="homeproduct_product_div_image" >
-                <img src={assets.test12} alt={product.name} onClick={() => handleNavigate(product._id)}  />
-                {/* <img src={product.thumbnail} alt={product.name} onClick={() => handleNavigate(product._id)}  /> */}
+                {/* <img src={assets.test12} alt={product.name} onClick={() => handleNavigate(product._id)}  /> */}
+                <img src={product.thumbnail} alt={product.name} onClick={() => handleNavigate(product._id)}  />
               </div>
               {/* details */}
               <div className="homeproduct_product_div_details" >

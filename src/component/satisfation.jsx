@@ -503,7 +503,7 @@ function Satisfation() {
                                 variants={mobileCenterItemVariants}
                             >
                                 <motion.img 
-                                    src={sixthimage} 
+                                    src={thirdimage} 
                                     alt="" 
                                     className="satisfaction_image_for_mobile_center_image" 
                                     whileHover={{ scale: 1.05 }}

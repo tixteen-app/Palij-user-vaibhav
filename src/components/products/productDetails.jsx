@@ -103,11 +103,11 @@ function ProductDetails() {
     try {
       setLoading(true);
       const response = await makeApi(`/api/get-single-product/${productId}`, "GET");
-
+console.log("response.data.product",response.data.product.image[0])
       setProduct(response.data.product);
       setSizes(response.data.sizes);
       setIncludes(response.data.include)
-      setSelectedImage(response.data.product.thumbnail)
+      setSelectedImage(response.data.product.image[0])
       setProductNuturitions(response.data.productNuturitions)
       if (response.data.sizes.length > 0) {
         // const availableSize = response.data.sizes.find(size => size.IsOutOfStock === "false");
@@ -261,9 +261,7 @@ function ProductDetails() {
       <div>
         <div className={styles.backButton} >
           {/* <BackButton pageLocation="/product/all-products" /> */}
-          <Link to="/product/all-products" >
-            <GoArrowLeft />
-          </Link>
+            <GoArrowLeft onClick={() => navigate(-1)} />
         </div>
         <div className={styles.productContainer}>
           <div className={styles.imgContainer}>
@@ -312,7 +310,7 @@ function ProductDetails() {
                   </button>
                 )}
                 <div className={styles.subImg} ref={scrollContainerRef}>
-                  {[product.thumbnail, ...product.image].slice(startIndex, startIndex + 4).map((imgUrl, index) => (
+                  {[...product.image].slice(startIndex, startIndex + 4).map((imgUrl, index) => (
                     <div
                       key={startIndex + index}
                       className={`${styles.subImg1} ${selectedImage === imgUrl ? styles.activeImage : ""}`}
