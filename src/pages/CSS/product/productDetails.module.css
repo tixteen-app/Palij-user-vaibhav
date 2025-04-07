@@ -696,8 +696,8 @@ font-weight: 500;
     border: 1px solid var(--redPink);
   }
   .subImg img {
-    width: 65px;
-    height: 72px;
+    width: 79px;
+    height: 79px;
     object-fit: contain;
   }
   .productdetailsname{
