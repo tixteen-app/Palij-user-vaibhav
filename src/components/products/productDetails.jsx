@@ -304,13 +304,13 @@ console.log("response.data.product",response.data.product.image[0])
               </div>
 
               <div className={styles.subImgContainer}>
-                {(product.image.length + 1) > 4 && (
+                {(product.image.length + 1) > 3 && (
                   <button className={styles.scrollButton} onClick={scrollLeft} disabled={startIndex === 0}>
                     <FaChevronLeft />
                   </button>
                 )}
                 <div className={styles.subImg} ref={scrollContainerRef}>
-                  {[...product.image].slice(startIndex, startIndex + 4).map((imgUrl, index) => (
+                  {product.image.slice(startIndex, startIndex + 3).map((imgUrl, index) => (
                     <div
                       key={startIndex + index}
                       className={`${styles.subImg1} ${selectedImage === imgUrl ? styles.activeImage : ""}`}
@@ -320,7 +320,7 @@ console.log("response.data.product",response.data.product.image[0])
                     </div>
                   ))}
                 </div>
-                {(product.image.length + 1) > 4 && (
+                {(product.image.length + 1) > 3 && (
                   <button className={styles.scrollButton} onClick={scrollRight} disabled={startIndex + 4 >= product.image.length + 1}>
                     <FaChevronRight />
                   </button>

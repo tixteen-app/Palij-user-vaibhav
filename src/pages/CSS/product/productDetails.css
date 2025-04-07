@@ -276,7 +276,6 @@
     margin-bottom: 5px;
     font-weight: 600;
     line-height: 1.1;
-
   }
 
   .product-display-right p {
@@ -284,7 +283,6 @@
     font-family: Kumbh Sans;
     font-size: 18px;
     text-align: justify;
-
   }
 
   .product-display-left {
@@ -361,8 +359,6 @@
     margin: auto;
   }
 
-
-
   .productdisplay-img-list {
     margin-top: -20px;
   }
@@ -370,7 +366,6 @@
   .product-display-right {
     align-items: start;
     width: 100%;
-
   }
 
   .product-display-right button,
