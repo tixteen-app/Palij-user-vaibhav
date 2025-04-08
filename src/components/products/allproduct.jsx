@@ -240,7 +240,9 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
             {showPopup && <LoginPopup onClose={closePopup} />}
 
             {AllProductLoader ? (
+                <div className={styles.containerforshoploader} >
                 <SkeletonLoader items={12} />
+                </div>
             ) : (
                 <div className={styles.container}>
                     {search ? (

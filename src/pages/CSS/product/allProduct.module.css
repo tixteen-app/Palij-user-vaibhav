@@ -1,9 +1,13 @@
 /* ==========products======== */
+.containerforshoploader{
+  margin-top: 30vh !important;
+}
 .mainContainer {
   margin-top: 15vh;
 }
 .container{
   position: relative;
+  margin-bottom: 20px;
 }
 
 .productsContainer {
