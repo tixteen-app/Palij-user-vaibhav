@@ -6,6 +6,7 @@ import LoginPopup from "../LoginPopup/LoginPopup.jsx";
 import { fetchCart, addToCart, removeFromCart } from "../../utils/productFunction.js";
 import SkeletonLoader from "./SkeletonLoader.jsx";
 import sortimage from "../../assets/sort.svg"
+import SkeletonLoaderforshop from "./skelentonstore.jsx";
 
 function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcategory }) {
     const navigate = useNavigate();
@@ -241,7 +242,7 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
 
             {AllProductLoader ? (
                 <div className={styles.containerforshoploader} >
-                <SkeletonLoader items={12} />
+                <SkeletonLoaderforshop items={12} />
                 </div>
             ) : (
                 <div className={styles.container}>

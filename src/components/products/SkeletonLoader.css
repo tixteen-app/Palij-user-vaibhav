@@ -5,6 +5,11 @@
     gap: 20px;
     padding: 20px;
   }
+  .skeleton-grid-for-store{
+    grid-template-columns: repeat(3, 1fr);
+    gap: 65px;
+  }
+  
   
   /* Skeleton Card */
   .skeleton-card {
@@ -62,12 +67,13 @@
   @media (max-width: 768px) {
     .skeleton-grid {
       grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
     }
   }
   
-  @media (max-width: 480px) {
+  /* @media (max-width: 480px) {
     .skeleton-grid {
       grid-template-columns: 1fr;
     }
-  }
+  } */
   

@@ -260,6 +260,7 @@ import fifthimage from "../assets/h-5.png"
 import sixthimage from "../assets/h-6.png"
 import seventhimage from "../assets/h-7.png"
 import eighthimage from "../assets/h-8.png"
+import ninthimage from "../assets/h-10.png"
 import { motion } from "framer-motion"
 
 function Satisfation() {
@@ -503,7 +504,7 @@ function Satisfation() {
                                 variants={mobileCenterItemVariants}
                             >
                                 <motion.img 
-                                    src={thirdimage} 
+                                    src={ninthimage} 
                                     alt="" 
                                     className="satisfaction_image_for_mobile_center_image" 
                                     whileHover={{ scale: 1.05 }}
