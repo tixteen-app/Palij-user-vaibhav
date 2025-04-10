@@ -464,7 +464,7 @@ function Newnavbar() {
 
 	return (
 		<>
-			<div className='main_new_navbar_haldi' >
+			{/* <div className='main_new_navbar_haldi' >
 				<div className='top_new_navbar_scroll_haldi' >
 					<MarqueeComponent />
 				</div>
@@ -529,6 +529,87 @@ function Newnavbar() {
 						</div>
 				</div>
 
+			</div> */}
+
+
+			<div className='main_new_navbar_haldi_ram' >
+
+
+
+
+
+				<div className="top_section_haldiram" >
+					<div className="left_section_new_nav_haldi_ram" >
+						<div>
+							<img className="center-logo m-1" src={assets.newlogo} alt="" onClick={() => navigate("/")} style={{ cursor: "pointer" }} />
+						</div>
+					</div>
+					<div className="right_section_new_nav_haldi_ram" >
+						<div className="right_top_section_haldi_ram" >
+							<div className="right_search_section_haldi_Ram" >
+								<div className='serach_icon_new_nav_haldi' >
+									<IoSearch className="search_icon_new_nav" />
+								</div>
+								<div >
+									<input
+										type="text"
+										placeholder="Search here..."
+										value={input}
+										onChange={(e) => handleChange(e.target.value)}
+										className="new_search_input_fileds"
+									/>
+								</div>
+							</div>
+							<div className="right_cart_section_haldi_ram" >
+								<div className='cart_section_new_nav_haldi_icons' >
+									<div>
+										{/* <img
+											src={homeImg.cart}
+											alt=""
+											className="cart-icon m-0"
+										/> */}
+										<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 2L3 6V20C3 20.5304 3.21071 21.0391 3.58579 21.4142C3.96086 21.7893 4.46957 22 5 22H19C19.5304 22 20.0391 21.7893 20.4142 21.4142C20.7893 21.0391 21 20.5304 21 20V6L18 2H6Z" stroke="#1E1E1E" stroke-linecap="round" stroke-linejoin="round"></path><path d="M3 6H21" stroke="#1E1E1E" stroke-linecap="round" stroke-linejoin="round"></path><path d="M16 10C16 11.0609 15.5786 12.0783 14.8284 12.8284C14.0783 13.5786 13.0609 14 12 14C10.9391 14 9.92172 13.5786 9.17157 12.8284C8.42143 12.0783 8 11.0609 8 10" stroke="#1E1E1E" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+									</div>
+								</div>
+
+							</div>
+						</div>
+
+
+						<div className="right_bottom_section_haldi_ram" >
+							{/* show categories */}
+							<div className='nav_cat_list'>
+								{formatCategories().map((item, index) => {
+									return (
+										<div className='nav_cat_list_item' key={index}>
+											<div
+												className='nav_nav_cat_options'
+												onClick={() => handleCategoryClick(item.nav)}
+											>
+												{item.name}
+											</div>
+										</div>
+									)
+								})}
+							</div>
+							{/* user profile  */}
+								<div className="right_profile_section_haldi_ram" >
+									<div>
+									<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="#1E1E1E" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="#1E1E1E" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+									</div>
+								</div>
+					</div>
+					</div>
+
+				</div>
+
+
+
+
+
+				<div className="new_nav_bottom_section_haldi_ram" >
+					<MarqueeComponent />
+				</div>
 			</div>
 
 
