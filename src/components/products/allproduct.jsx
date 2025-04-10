@@ -236,6 +236,25 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
         };
     }, [search]);
 
+    useEffect(() => {
+        const handleScroll = () => {
+            // Calculate 70% of the document height
+            const scrollThreshold = document.documentElement.scrollHeight * 0.7;
+            
+            if (
+                window.innerHeight + document.documentElement.scrollTop >= scrollThreshold &&
+                visibleProducts < products.length
+            ) {
+                const nextVisibleProducts = visibleProducts + 10;
+                setVisibleProducts(nextVisibleProducts);
+                setDisplayedProducts(products.slice(0, nextVisibleProducts));
+            }
+        };
+    
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [visibleProducts, products]);
+
     return (
         <div className={styles.mainContainer}>
             {showPopup && <LoginPopup onClose={closePopup} />}
@@ -557,13 +576,13 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
                                             ))}
                                         </div>
                                     </div>
-                                    {visibleProducts < products.length && (
+                                    {/* {visibleProducts < products.length && (
                                         <div className={styles.loadMoreContainer}>
                                             <button className={styles.loadMoreButton} onClick={handleLoadMore} style={{ color: "black" }}>
                                                 Load More
                                             </button>
                                         </div>
-                                    )}
+                                    )} */}
                                 </div>
                             )}
                         </>

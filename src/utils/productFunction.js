@@ -100,7 +100,8 @@ export const addToCart = async (
 	fetchCart, 
 	setCartItems,
 	setProductLoaders,
-	selectProductSize
+	selectProductSize,
+	tempCakeMessage
   ) => {
 	const token = localStorage.getItem("token");
 	if (!token) {
@@ -121,6 +122,7 @@ export const addToCart = async (
 		selectProductSize,
 		quantity: 1,
 		shippingPrice: 0,
+		cakemessage:tempCakeMessage || ""
 	  });
   
 	  // Ensure fetchCart is correctly called
