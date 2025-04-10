@@ -3,12 +3,14 @@
   align-items: center;
   gap: 10px;
   margin-top: 10px;
+  background: #e335a0;
 }
 
 .marquee {
   font-size: 17px;
   font-family: serif;
-  color: #A95800;
+  /* color: #A95800; */
+  color: white;
   font-family: 'Made medium';
   text-transform: uppercase;
   letter-spacing: 1.4px;

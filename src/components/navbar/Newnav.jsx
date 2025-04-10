@@ -463,14 +463,9 @@ function Newnavbar() {
 
 
 	return (
+		<>
 		<div className="main_div_new_haldi_ram">
-
 			<div className='main_new_navbar_haldi_ram' >
-
-
-
-
-
 				<div className="top_section_haldiram" >
 					<div className="left_section_new_nav_haldi_ram" >
 						<div>
@@ -540,9 +535,8 @@ function Newnavbar() {
 					<MarqueeComponent />
 				</div>
 			</div>
-
-
 		</div>
+		</>
 	)
 }
 
