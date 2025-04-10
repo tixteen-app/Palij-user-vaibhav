@@ -181,7 +181,7 @@
  */
 
 
- 
+
 .main_div_new_haldi_ram{
     width: 100%;
     display: flex;
@@ -255,6 +255,7 @@
     border-radius: 20px;
     overflow: hidden;
     background: #e335a0;
+    width: 22%;
  }
 .cart_section_new_nav_haldi_icons{
     display: flex;
@@ -264,6 +265,10 @@
 .serach_icon_new_nav_haldi{
     padding: 6px 10px;
     color: white;
+    width: 16%;
+}
+.new_search_input_div_haldi_ram{
+    width: 100%;
 }
 
 .new_search_input_fileds:focus{
