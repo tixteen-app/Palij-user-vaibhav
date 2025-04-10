@@ -460,24 +460,7 @@ function Newnavbar() {
 		return formatted;
 	};
 
-	useEffect(() => {
-		// Function to handle scroll event
-		const handleScroll = () => {
-			if (window.scrollY > 400) {
-				setIsBottomSectionVisible(false); // Hide the section after scrolling 200px
-			} else {
-				setIsBottomSectionVisible(true); // Show the section when scrolled back above 200px
-			}
-		};
 
-		// Add scroll event listener
-		window.addEventListener('scroll', handleScroll);
-
-		// Cleanup on component unmount
-		return () => {
-			window.removeEventListener('scroll', handleScroll);
-		};
-	}, []);
 
 	return (
 		<>
@@ -528,7 +511,6 @@ function Newnavbar() {
 					</div>
 				</div>
 				<div>
-					{isBottomSectionVisible && (
 						<div className='new_nav_bottom_section'>
 							<div className='nav_cat_list'>
 								{formatCategories().map((item, index) => {
@@ -545,7 +527,6 @@ function Newnavbar() {
 								})}
 							</div>
 						</div>
-					)}
 				</div>
 
 			</div>

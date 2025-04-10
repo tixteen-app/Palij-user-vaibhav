@@ -9,6 +9,15 @@ const MarqueeComponent = () => {
         <img src={assets.dotPoint} alt="dotpoint" />  <span className="text-black" > free shipping </span> <span>on order above ₹750 </span>
         <img src={assets.dotPoint} alt="dotpoint" />  <span className="text-black"> free shipping </span> <span>on order above ₹750 </span>
         <img src={assets.dotPoint} alt="dotpoint" />  <span className="text-black"> free shipping </span> <span>on order above ₹750 </span>
+        <img src={assets.dotPoint} alt="dotpoint" />  <span className="text-black"> free shipping </span> <span>on order above ₹750 </span>
+        <img src={assets.dotPoint} alt="dotpoint" />  <span className="text-black"> free shipping </span> <span>on order above ₹750 </span>
+        <img src={assets.dotPoint} alt="dotpoint" />  <span className="text-black"> free shipping </span> <span>on order above ₹750 </span>
+        <img src={assets.dotPoint} alt="dotpoint" />  <span className="text-black"> free shipping </span> <span>on order above ₹750 </span>
+        <img src={assets.dotPoint} alt="dotpoint" />  <span className="text-black"> free shipping </span> <span>on order above ₹750 </span>
+        <img src={assets.dotPoint} alt="dotpoint" />  <span className="text-black"> free shipping </span> <span>on order above ₹750 </span>
+        <img src={assets.dotPoint} alt="dotpoint" />  <span className="text-black"> free shipping </span> <span>on order above ₹750 </span>
+        <img src={assets.dotPoint} alt="dotpoint" />  <span className="text-black"> free shipping </span> <span>on order above ₹750 </span>
+        <img src={assets.dotPoint} alt="dotpoint" />  <span className="text-black"> free shipping </span> <span>on order above ₹750 </span>
       </div>
     </Marquee>
   )
