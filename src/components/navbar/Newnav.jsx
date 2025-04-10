@@ -463,7 +463,7 @@ function Newnavbar() {
 	useEffect(() => {
 		// Function to handle scroll event
 		const handleScroll = () => {
-			if (window.scrollY > 200) {
+			if (window.scrollY > 400) {
 				setIsBottomSectionVisible(false); // Hide the section after scrolling 200px
 			} else {
 				setIsBottomSectionVisible(true); // Show the section when scrolled back above 200px
