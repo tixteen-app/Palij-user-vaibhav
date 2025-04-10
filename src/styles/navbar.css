@@ -195,6 +195,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background: linear-gradient(0deg, #fbe2ef 0%, #ffffff 100%);
 
  }
  .top_section_haldiram{
@@ -206,7 +207,6 @@
     max-width: 1600px;
     margin: auto;
     width: 100%;
-    background: linear-gradient(0deg, #fbe2ef 0%, #ffffff 100%);
 
  }
  .right_section_new_nav_haldi_ram{
