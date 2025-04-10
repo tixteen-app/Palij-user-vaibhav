@@ -442,9 +442,9 @@ function Newnavbar() {
 		// Add the "Store" category first
 		const formatted = [
 			{
-				name: "Store",
+				name: "STORE",
 				nav: ""
-			}
+			},
 		];
 
 		// Add other categories from API
@@ -463,7 +463,7 @@ function Newnavbar() {
 
 
 	return (
-		<>
+		<div className="main_div_new_haldi_ram">
 			{/* <div className='main_new_navbar_haldi' >
 				<div className='top_new_navbar_scroll_haldi' >
 					<MarqueeComponent />
@@ -603,17 +603,13 @@ function Newnavbar() {
 
 				</div>
 
-
-
-
-
 				<div className="new_nav_bottom_section_haldi_ram" >
 					<MarqueeComponent />
 				</div>
 			</div>
 
 
-		</>
+		</div>
 	)
 }
 
