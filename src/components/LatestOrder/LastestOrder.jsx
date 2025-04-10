@@ -69,7 +69,7 @@ const LatestOrder = () => {
   const [orderSummary, setOrderSummary] = useState(null);
   const { ordersummary } = useParams();
   const navigate = useNavigate()
-  
+    
   useEffect(() => {
     const fetchOrderSummary = async () => {
       try {
