@@ -176,7 +176,7 @@ function App() {
       {!isInvoicePage && <Navbar />}
       
       {/* Add inline style for margin-bottom 100px */}
-      <div style={{ marginTop: "140px" }}>
+      <div style={{ marginTop: "100px" }}  >
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/new" element={<Homepage />} />
