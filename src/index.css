@@ -132,3 +132,43 @@ Link {
   font-weight: normal;
   src: local('Eina03-Light'), url('../src/assets/fonts/MADERegular.otf') format('woff');
 }
+
+/* ===== Custom Global Scrollbar ===== */
+/* For WebKit (Chrome, Safari, Edge) */
+
+/* Vertical Scrollbar */
+::-webkit-scrollbar {
+  width: 12px; /* Width of vertical scrollbar */
+  height: 12px; /* Height of horizontal scrollbar */
+}
+
+/* Track (background) */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 6px;
+}
+
+/* Vertical Scrollbar Thumb */
+::-webkit-scrollbar-thumb {
+  background: #e335a0;
+  border-radius: 6px;
+  height: 50px; /* Minimum height of the thumb */
+}
+
+/* Horizontal Scrollbar Thumb */
+::-webkit-scrollbar-thumb:horizontal {
+  background: #e335a0;
+  border-radius: 6px;
+  width: 50px; /* Minimum width of the thumb */
+}
+
+/* Hover Effects */
+::-webkit-scrollbar-thumb:hover {
+  background: #c12d8a;
+}
+
+/* Firefox Support */
+html {
+  scrollbar-width: thin; /* 'auto' | 'thin' | 'none' */
+  scrollbar-color: #e335a0 #f1f1f1; /* thumb track */
+}
