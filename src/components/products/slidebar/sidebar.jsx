@@ -29,40 +29,112 @@ const ProductSidebar = () => {
 		}
 	}, [isInitialLoad]);
 
+	// useEffect(() => {
+	// 	async function fetchCategories() {
+	// 		try {
+	// 			setCatloader(true);
+	// 			const response = await makeApi("/api/get-all-categories", "GET");
+	// 			if (response.status === 200) {
+	// 				setCategories(response.data.categories);
+
+	// 				// Get category ID from URL
+	// 				const urlCategoryId = queryParams.get("category");
+
+	// 				if (urlCategoryId) {
+	// 					// Find the category that matches the ID from URL
+	// 					const matchedCategory = response.data.categories.find(
+	// 						(category) => category._id === urlCategoryId
+	// 					);
+
+	// 					if (matchedCategory) {
+	// 						setSelectedCategory(matchedCategory._id);
+	// 						setCategoryName(matchedCategory.name);
+	// 					}
+	// 				} else {
+	// 					setSelectedCategory("");
+	// 					setCategoryName("");
+	// 				}
+	// 			}
+	// 		} catch (error) {
+	// 			console.log("Error fetching categories:", error);
+	// 		} finally {
+	// 			setCatloader(false);
+	// 		}
+	// 	}
+	// 	fetchCategories();
+	// }, []);
+
+
 	useEffect(() => {
 		async function fetchCategories() {
-			try {
-				setCatloader(true);
-				const response = await makeApi("/api/get-all-categories", "GET");
-				if (response.status === 200) {
-					setCategories(response.data.categories);
-
-					// Get category ID from URL
-					const urlCategoryId = queryParams.get("category");
-
-					if (urlCategoryId) {
-						// Find the category that matches the ID from URL
-						const matchedCategory = response.data.categories.find(
-							(category) => category._id === urlCategoryId
-						);
-
-						if (matchedCategory) {
-							setSelectedCategory(matchedCategory._id);
-							setCategoryName(matchedCategory.name);
-						}
-					} else {
-						setSelectedCategory("");
-						setCategoryName("");
-					}
-				}
-			} catch (error) {
-				console.log("Error fetching categories:", error);
-			} finally {
-				setCatloader(false);
+		  // Check if categories are in localStorage and still valid (less than 2 minutes old)
+		  const storedCategories = localStorage.getItem('categories');
+		  const storedTimestamp = localStorage.getItem('categoriesTimestamp');
+		  const currentTime = new Date().getTime(); // Current time in milliseconds
+	  
+		  // If categories are in localStorage and within 2 minutes old, use them
+		  if (storedCategories && storedTimestamp && (currentTime - storedTimestamp) < 2 * 60 * 1000) {
+			const categories = JSON.parse(storedCategories);
+			setCategories(categories);
+	  
+			// Get category ID from URL
+			const urlCategoryId = queryParams.get("category");
+	  
+			if (urlCategoryId) {
+			  // Find the category that matches the ID from URL
+			  const matchedCategory = categories.find((category) => category._id === urlCategoryId);
+	  
+			  if (matchedCategory) {
+				setSelectedCategory(matchedCategory._id);
+				setCategoryName(matchedCategory.name);
+			  }
+			} else {
+			  setSelectedCategory("");
+			  setCategoryName("");
 			}
+	  
+			console.log("Categories loaded from localStorage.");
+		  } else {
+			// Otherwise, fetch from the API
+			try {
+			  setCatloader(true);
+			  const response = await makeApi("/api/get-all-categories", "GET");
+	  
+			  if (response.status === 200) {
+				const categories = response.data.categories;
+				setCategories(categories);
+	  
+				// Store the fetched categories in localStorage with the current timestamp
+				localStorage.setItem('categories', JSON.stringify(categories));
+				localStorage.setItem('categoriesTimestamp', currentTime.toString());
+	  
+				// Get category ID from URL
+				const urlCategoryId = queryParams.get("category");
+	  
+				if (urlCategoryId) {
+				  // Find the category that matches the ID from URL
+				  const matchedCategory = categories.find((category) => category._id === urlCategoryId);
+	  
+				  if (matchedCategory) {
+					setSelectedCategory(matchedCategory._id);
+					setCategoryName(matchedCategory.name);
+				  }
+				} else {
+				  setSelectedCategory("");
+				  setCategoryName("");
+				}
+			  }
+			} catch (error) {
+			  console.log("Error fetching categories:", error);
+			} finally {
+			  setCatloader(false);
+			}
+		  }
 		}
+	  
 		fetchCategories();
-	}, []);
+	  }, []);
+	  
 
 	const handleCategoryChange = (categoryId, name) => {
 		const queryParams = new URLSearchParams(location.search);
@@ -102,7 +174,6 @@ const ProductSidebar = () => {
 		{ label: "₹2500 to ₹2999", min: 2500, max: 2999 },
 		{ label: "₹3000 and ABOVE", min: 3000, max: 1000000 },
 	];
-console.log("selectedCategory",selectedCategory,"-=-=-=")
 	return (
 		<>
 			<div className="main_product_sidebar_top_parent_div">

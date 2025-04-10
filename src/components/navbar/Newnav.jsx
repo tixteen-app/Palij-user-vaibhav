@@ -576,14 +576,42 @@ function Newnavbar() {
 	const [allcategories, setAllCategories] = useState([])
 	const [isBottomSectionVisible, setIsBottomSectionVisible] = useState(true);
 
+	// const fetchCategories = async () => {
+	// 	try {
+	// 		const response = await makeApi("/api/get-all-categories", "GET")
+	// 		setAllCategories(response.data.categories)
+	// 	} catch (error) {
+	// 		console.error("Error fetching categories:", error)
+	// 	}
+	// }
 	const fetchCategories = async () => {
-		try {
-			const response = await makeApi("/api/get-all-categories", "GET")
-			setAllCategories(response.data.categories)
-		} catch (error) {
-			console.error("Error fetching categories:", error)
+		// Check if categories are in localStorage and still valid (less than 2 minutes old)
+		const storedCategories = localStorage.getItem('categories');
+		const storedTimestamp = localStorage.getItem('categoriesTimestamp');
+		const currentTime = new Date().getTime(); // Current time in milliseconds
+	  
+		// If categories are in localStorage and within 2 minutes old, use them
+		if (storedCategories && storedTimestamp && (currentTime - storedTimestamp) < 2 * 60 * 1000) {
+		  setAllCategories(JSON.parse(storedCategories));
+		  console.log("Categories loaded from localStorage.");
+		} else {
+		  // Otherwise, fetch from the API
+		  try {
+			const response = await makeApi("/api/get-all-categories", "GET");
+			const categories = response.data.categories;
+	  
+			// Store the fetched categories in localStorage with the current timestamp
+			localStorage.setItem('categories', JSON.stringify(categories));
+			localStorage.setItem('categoriesTimestamp', currentTime.toString());
+	  
+			setAllCategories(categories);
+			console.log("Categories fetched from API and saved to localStorage.");
+		  } catch (error) {
+			console.error("Error fetching categories:", error);
+		  }
 		}
-	}
+	  };
+	  
 
 	const fetchData = async (value) => {
 		try {
@@ -729,9 +757,8 @@ function Newnavbar() {
 			},
 		];
 
-		// Predefined order of categories
 		const predefinedOrder = [
-			"Shop", // Placeholder for shop (not yet in your categories)
+			"Shop", 
 			"PREMIUM COOKIES",
 			"Savouries",
 			"Cakes",

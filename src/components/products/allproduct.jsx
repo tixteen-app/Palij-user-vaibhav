@@ -67,28 +67,81 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
         setIsLogin(!!token);
     }, []);
 
+    // const fetchProduct = async (page, cat, searchTerm, min, max, subcategory) => {
+    //     try {
+    //         setAllProductLoader(true);
+    //         const response = await makeApi(
+    //             `/api/get-all-products?name=${searchTerm}&category=${cat}&subcategory=${subcategory}&minPrice=${min}&maxPrice=${max}&page=${page}&perPage=${ResultPerPage}&IsOutOfStock=false`,
+    //             "GET"
+    //         );
+
+    //         const sortedProducts = await response.data.products.sort((a, b) => a.name.localeCompare(b.name));
+
+    //         await setProducts(sortedProducts);
+    //         await setDisplayedProducts(sortedProducts.slice(0, visibleProducts));
+    //         await setDisplayedProductslength(sortedProducts.length);
+    //         await setToalProduct(response.data.totalProducts);
+    //         await setTotalPages(Math.ceil(response.data.totalProducts / 10));
+    //     } catch (error) {
+    //         console.error("Error fetching products:", error);
+    //     } finally {
+    //         setAllProductLoader(false);
+    //         setHasFetched(true);
+    //     }
+    // };
+
+
     const fetchProduct = async (page, cat, searchTerm, min, max, subcategory) => {
-        try {
+        const cacheKey = `products_${searchTerm}_${cat}_${subcategory}_${min}_${max}_${page}`;
+        const storedProducts = localStorage.getItem(cacheKey);
+        const storedTimestamp = localStorage.getItem(`${cacheKey}_timestamp`);
+        const currentTime = new Date().getTime(); // Current time in milliseconds
+      
+        // Check if products are in localStorage and the cache is still valid (less than 30 seconds old)
+        if (storedProducts && storedTimestamp && (currentTime - storedTimestamp) < 30 * 1000) {
+          // If valid, use the cached products
+          const products = JSON.parse(storedProducts);
+      
+          const sortedProducts = products.sort((a, b) => a.name.localeCompare(b.name));
+      
+          setProducts(sortedProducts);
+          setDisplayedProducts(sortedProducts.slice(0, visibleProducts));
+          setDisplayedProductslength(sortedProducts.length);
+          setToalProduct(products.length);
+          setTotalPages(Math.ceil(products.length / 10));
+      
+          console.log("Products loaded from localStorage.");
+        } else {
+          // Otherwise, fetch from the API
+          try {
             setAllProductLoader(true);
             const response = await makeApi(
-                `/api/get-all-products?name=${searchTerm}&category=${cat}&subcategory=${subcategory}&minPrice=${min}&maxPrice=${max}&page=${page}&perPage=${ResultPerPage}&IsOutOfStock=false`,
-                "GET"
+              `/api/get-all-products?name=${searchTerm}&category=${cat}&subcategory=${subcategory}&minPrice=${min}&maxPrice=${max}&page=${page}&perPage=${ResultPerPage}&IsOutOfStock=false`,
+              "GET"
             );
-
+      
             const sortedProducts = await response.data.products.sort((a, b) => a.name.localeCompare(b.name));
-
-            await setProducts(sortedProducts);
-            await setDisplayedProducts(sortedProducts.slice(0, visibleProducts));
-            await setDisplayedProductslength(sortedProducts.length);
-            await setToalProduct(response.data.totalProducts);
-            await setTotalPages(Math.ceil(response.data.totalProducts / 10));
-        } catch (error) {
+      
+            // Store the fetched products in localStorage with the current timestamp
+            localStorage.setItem(cacheKey, JSON.stringify(sortedProducts));
+            localStorage.setItem(`${cacheKey}_timestamp`, currentTime.toString());
+      
+            setProducts(sortedProducts);
+            setDisplayedProducts(sortedProducts.slice(0, visibleProducts));
+            setDisplayedProductslength(sortedProducts.length);
+            setToalProduct(response.data.totalProducts);
+            setTotalPages(Math.ceil(response.data.totalProducts / 10));
+      
+            console.log("Products fetched from API and saved to localStorage.");
+          } catch (error) {
             console.error("Error fetching products:", error);
-        } finally {
+          } finally {
             setAllProductLoader(false);
             setHasFetched(true);
+          }
         }
-    };
+      };
+      
 
     useEffect(() => {
         const queryParams = new URLSearchParams(location.search);
