@@ -292,3 +292,101 @@
 .new_nav_bottom_section_haldi_ram{
     background: white;
 }
+
+@media (max-width: 1400px) {
+    .right_search_section_haldi_Ram{
+        width: 28%;
+     }
+    .cart_section_new_nav_haldi_icons{
+        display: flex;
+        align-items: center;
+        gap: 30px;
+    }
+    .serach_icon_new_nav_haldi{
+        padding: 6px 10px;
+        color: white;
+        width: 16%;
+    }
+    .new_search_input_div_haldi_ram{
+        width: 100%;
+    }
+}
+@media (max-width: 1200px) {
+    .right_search_section_haldi_Ram{
+        width: 28%;
+     }
+    .serach_icon_new_nav_haldi{
+        width: 20%;
+    }
+}
+@media (max-width: 1100px) {
+    .right_search_section_haldi_Ram{
+        width: 28%;
+     }
+    .serach_icon_new_nav_haldi{
+        width: 20%;
+    }
+    .top_section_haldiram{
+        padding: 0px 100px;
+        gap: 50px;
+        padding-top: 10px;
+     }
+     .nav_nav_cat_options {
+        padding: 2px;
+        font-size: 15px;
+    }
+}
+@media (max-width: 1030px) {
+    .right_search_section_haldi_Ram{
+        width: 28%;
+     }
+    .serach_icon_new_nav_haldi{
+        width: 25%;
+    }
+    .top_section_haldiram{
+        padding: 0px 100px;
+        gap: 50px;
+        padding-top: 20px;
+     }
+     .nav_nav_cat_options {
+        padding: 2px;
+        font-size: 15px;
+    }
+}
+@media (max-width: 900px) {
+    .right_search_section_haldi_Ram{
+        width: 28%;
+     }
+    .serach_icon_new_nav_haldi{
+        width: 20%;
+    }
+    .top_section_haldiram{
+        padding: 0px 60px;
+        gap: 30px;
+        padding-top: 20px;
+     }
+     .nav_nav_cat_options {
+        padding: 2px;
+        font-size: 14px;
+    }
+
+    .search_icon_new_nav{
+        font-size: 22px;
+     }
+     .new_search_input_fileds{
+        height: 20px;
+        padding: 21px 11px;
+        font-size: 14px;
+    }
+    
+    .right_search_section_haldi_Ram{
+        display: flex;
+        align-items: center;
+        border-radius: 20px;
+        overflow: hidden;
+        background: #e335a0;
+        width: 35%;
+     }
+    
+    
+}

@@ -271,12 +271,7 @@
 }
 
 @media screen and (max-width: 1100px) {
-  .navbar {
-    background: none;
-    background-color: var(--redPink);
-    backdrop-filter: none;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
+
 
   .nav-search {
     display: none;
@@ -296,13 +291,7 @@
     width: 50px;
   }
 
-  .navbar {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 10px;
-  }
+
 
   .category-dropdown {
     margin-left: 10px;
@@ -442,9 +431,7 @@
     width: 75px;
   }
 
-  .navbar {
-    height: 75px;
-  }
+  
 
   .cart-icon,
   .special-cart-icon {
