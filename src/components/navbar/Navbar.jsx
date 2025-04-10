@@ -487,6 +487,7 @@ const Navbar = () => {
 	}, [])
 
 	return showNavbar ? (
+		// <div className="navbar">
 		<div className="navbar">
 			<Newnavbar/>
 		</div>

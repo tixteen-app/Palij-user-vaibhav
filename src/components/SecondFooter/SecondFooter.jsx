@@ -61,7 +61,7 @@ const SecondFooter = () => {
       </div>
       <div className={styles.copyRight}>
         <p>Copyright @  {currentYear}  <strong>Palji Bakery</strong>, All rights reserved</p>
-        <p>Created by <Link to={'https://www.pitamaas.com'}><strong>Pitamaas PVT</strong></Link></p>
+        <p>Created by <Link to={'https://www.pitamaas.com'}><strong>Pitamaas Pvt Ltd</strong></Link></p>
       </div>
     </div>
   )
