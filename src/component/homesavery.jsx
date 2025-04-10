@@ -118,7 +118,7 @@ function Homesavery() {
             <div className="homeproduct_container_main_div" >
                 {/* top heading */}
                 <div className="homeproduct_top_heading_div homeproduct_top_heading_div_for_Savory" >
-                    <div>SAVORY</div>
+                    <div>Savouries</div>
                     <div>
                         <div className="homeproduct_top_heading_div_viewall" onClick={handleCategoryClick}>VIEW ALL <img src={assets.brownArrow} alt="" className="homeproduct_top_heading_div_arrow" />
                         </div>
