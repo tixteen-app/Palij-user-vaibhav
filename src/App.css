@@ -67,3 +67,9 @@
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+.new_homepage_div{
+  margin-top: 70px;
+  background: linear-gradient(218deg, #fbe2ef, #fff) !important;
+   padding-bottom: "80px"  
+}

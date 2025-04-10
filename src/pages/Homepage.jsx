@@ -12,7 +12,8 @@ import Gifthamper from '../component/giftham'
 
 function Homepage() {
   return (
-    <div style={{ marginTop: "70px", background: "#f1f0f5", paddingBottom: "80px" }} >
+    <div className='new_homepage_div' >
+    {/* <div style={{ marginTop: "70px", background: "linear-gradient(218deg, #fbe2ef, #fff)", paddingBottom: "80px" }} > */}
       {/* <MarqueeComponent /> */}
       <Slider />
       <Category />
