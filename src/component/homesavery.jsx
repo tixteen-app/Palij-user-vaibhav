@@ -115,7 +115,7 @@ function Homesavery() {
         <>
             {showPopup && <LoginPopup onClose={closePopup} />}
             {AllProductLoader ?
-                <div className="p-5">
+                <div className="p-1">
                     <SkeletonLoader cards={4} />
                 </div> :
                 <>
