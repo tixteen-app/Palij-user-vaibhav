@@ -74,9 +74,7 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
                 `/api/get-all-products?name=${searchTerm}&category=${cat}&subcategory=${subcategory}&minPrice=${min}&maxPrice=${max}&page=${page}&perPage=${ResultPerPage}&IsOutOfStock=false`,
                 "GET"
             );
-
             const sortedProducts = await response.data.products.sort((a, b) => a.name.localeCompare(b.name));
-
             await setProducts(sortedProducts);
             await setDisplayedProducts(sortedProducts.slice(0, visibleProducts));
             await setDisplayedProductslength(sortedProducts.length);

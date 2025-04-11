@@ -25,6 +25,12 @@
     color: #A95800;
     font-family: 'Made medium';
     text-transform: uppercase;
-    letter-spacing: 1.3px;
+    letter-spacing: 0px;
   }
+  .marquee {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  
 }

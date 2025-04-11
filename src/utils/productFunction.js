@@ -137,6 +137,50 @@ export const addToCart = async (
 	}
   };
   
+export const addToCartCake = async (
+	productId,
+	setIsLogin,
+	setShowPopup,
+	fetchCart, 
+	setCartItems,
+	setProductLoaders,
+	selectProductSize,
+	tempCakeMessage
+  ) => {
+	const token = localStorage.getItem("token");
+	if (!token) {
+	  setIsLogin(false);
+	  setShowPopup(true);
+	  return;
+	}
+	try {
+	  setProductLoaders((prevState) => ({
+		...prevState,
+		[productId]: true,
+	  }));
+  
+	  const method = "POST";
+	  const endpoint = "/api/add-to-cart-cake";
+	  await makeApi(endpoint, method, {
+		productId,
+		selectProductSize,
+		quantity: 1,
+		shippingPrice: 0,
+		cakemessage:tempCakeMessage || ""
+	  });
+  
+	  // Ensure fetchCart is correctly called
+	  await fetchCart(setCartItems);
+	} catch (error) {
+	  console.log(error.response.data);
+	} finally {
+	  setProductLoaders((prevState) => ({
+		...prevState,
+		[productId]: false,
+	  }));
+	}
+  };
+  
 // export const addToCart = async (
 // 	productId,
 // 	setIsLogin,
