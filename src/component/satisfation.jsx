@@ -261,6 +261,7 @@ import sixthimage from "../assets/h-6.png"
 import seventhimage from "../assets/h-7.png"
 import eighthimage from "../assets/h-8.png"
 import ninthimage from "../assets/h-10.png"
+import newvideo from "../assets/homevideo.mp4"
 import { motion } from "framer-motion"
 
 function Satisfation() {
@@ -361,7 +362,7 @@ function Satisfation() {
 
     return (
         <>
-            <motion.div
+            {/* <motion.div
                 className='main_satisfaction_top_div'
                 initial="hidden"
                 whileInView="visible"
@@ -382,9 +383,7 @@ function Satisfation() {
                     </motion.div>
                 </div>
 
-                {/* image */}
                 <div className='satisfaction_image_main_div'>
-                    {/* left */}
                     <div className='satisfaction_image_left_div'>
                         <motion.div className='satisfaction_image_left_div1' variants={itemVariants}>
                             <motion.img
@@ -538,7 +537,15 @@ function Satisfation() {
                         </motion.div>
                     </div>
                 </div>
-            </motion.div>
+            </motion.div> */}
+<div  >
+
+            <div className='satisfaction_video_main_div' >
+                <video autoPlay muted loop id="myVideo" className='satisfaction_video' >
+                    <source src={newvideo} type="video/mp4" />
+                </video>
+            </div>
+</div>
         </>
     )
 }
