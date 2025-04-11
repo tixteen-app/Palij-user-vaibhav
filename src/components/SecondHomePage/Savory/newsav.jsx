@@ -112,7 +112,7 @@ const NSavory = () => {
 
       <div className={styles.header}>
         <h2>SAVORY</h2>
-        <h2 style={{ cursor: "pointer" }} onClick={handleCategoryClick}>VIEW ALL <img src={assets.brownArrow} alt="" />
+        <h2 className={styles.view_all_taxt_home_page}  style={{ cursor: "pointer" }} onClick={handleCategoryClick}>VIEW ALL <img src={assets.brownArrow} alt="" />
         </h2>
       </div>
       <div className={styles.content}>

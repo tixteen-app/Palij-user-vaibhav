@@ -222,7 +222,8 @@
 }
 
 @media (max-width: 576px) {
-  .homeproduct_product_div_image img {
+
+  .homeproduct_product_div_image img { 
     max-height: 190px;
     min-height: 190px;
   }

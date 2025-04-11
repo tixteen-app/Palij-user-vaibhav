@@ -262,6 +262,7 @@ import seventhimage from "../assets/h-7.png"
 import eighthimage from "../assets/h-8.png"
 import ninthimage from "../assets/h-10.png"
 import newvideo from "../assets/homevideo.mp4"
+import newvideomobile from "../assets/homevideomobile.mp4"
 import { motion } from "framer-motion"
 
 function Satisfation() {
@@ -543,6 +544,11 @@ function Satisfation() {
             <div className='satisfaction_video_main_div' >
                 <video autoPlay muted loop id="myVideo" className='satisfaction_video' >
                     <source src={newvideo} type="video/mp4" />
+                </video>
+            </div>
+            <div className='satisfaction_video_main_div_mobile' >
+                <video autoPlay muted loop id="myVideo" className='satisfaction_video' >
+                    <source src={newvideomobile} type="video/mp4" />
                 </video>
             </div>
 </div>
