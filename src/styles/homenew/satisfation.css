@@ -18,16 +18,19 @@
   }
 }
 @media (max-width: 550px) {
-  .satisfaction_video_main_div_mobile {
+  /* .satisfaction_video_main_div_mobile {
     display: block;
     padding: 10px 10px;
-  }
-  .satisfaction_video_main_div {
+  } */
+  /* .satisfaction_video_main_div {
     display: none;
-  }
+  } */
   .satisfaction_video_main_div {
     width: 100%;
     padding: 10px 20px;
+  }
+  .satisfaction_video{
+    height: 250px;
   }
 }
 

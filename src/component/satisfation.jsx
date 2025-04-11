@@ -546,11 +546,11 @@ function Satisfation() {
                     <source src={newvideo} type="video/mp4" />
                 </video>
             </div>
-            <div className='satisfaction_video_main_div_mobile' >
+            {/* <div className='satisfaction_video_main_div_mobile' >
                 <video autoPlay muted loop id="myVideo" className='satisfaction_video' >
                     <source src={newvideomobile} type="video/mp4" />
                 </video>
-            </div>
+            </div> */}
 </div>
         </>
     )
