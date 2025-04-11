@@ -7,6 +7,8 @@ import { makeApi } from "../api/callApi";
 import { assets } from "../assets/assets";
 import SkeletonLoader from "../components/products/SkeletonLoader";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+
 
 function Pcookies() {
     const navigate = useNavigate();
@@ -20,6 +22,7 @@ function Pcookies() {
     const [AddTocartLoader, setAddTocartLoader] = useState({})
     const [completeCart, setCompleteCart] = useState([]);
     const [categories, setCategories] = useState([]);
+    const [hoveredProduct, setHoveredProduct] = useState(null);
 
     useEffect(() => {
         const token = localStorage.getItem("token")
@@ -58,7 +61,7 @@ function Pcookies() {
     }
 
     const handleCategoryClick = () => {
-         navigate(`/product/all-products?category=${categories[2]._id}`);
+        navigate(`/product/all-products?category=${categories[2]._id}`);
     };
 
     const fetchCartItems = async () => {
@@ -127,9 +130,23 @@ function Pcookies() {
                             {products.slice(0, 4).map((product) => (
                                 <div key={product.id} className="homeproduct_product_sub_div" >
                                     {/* image */}
-                                    <div className="homeproduct_product_div_image" onClick={() => handleNavigate(product._id)}  >
-                                        <img src={product.thumbnail} alt={product.name} />
-                                    </div>
+                                    <motion.div
+                                        className="homeproduct_product_div_image"
+                                        whileHover={{ scale: 1.03 }}
+                                        onMouseEnter={() => setHoveredProduct(product._id)}
+                                        onMouseLeave={() => setHoveredProduct(null)}
+                                    >
+                                        <motion.img
+                                            key={hoveredProduct === product._id ? "main" : "thumb"}
+                                            src={hoveredProduct === product._id ? product.image[0] : product.thumbnail}
+                                            alt={product.name}
+                                            onClick={() => handleNavigate(product._id)}
+                                            initial={{ opacity: 0 }}
+                                            animate={{ opacity: 1 }}
+                                            exit={{ opacity: 0 }}
+                                            transition={{ duration: 0.3 }}
+                                        />
+                                    </motion.div>
                                     {/* details */}
                                     <div className="homeproduct_product_div_details" >
                                         <div>
@@ -150,11 +167,11 @@ function Pcookies() {
                                                             <>
                                                                 {/* {product.size[0].size}{product.size[0].sizetype} */}
                                                                 <>
-                                                                            <span className="">{product.size[0].size}</span>
-                                                                            {product.size[0].sizetype.toLowerCase() === "gram" ? " g" :
-                                                                                product.size[0].sizetype.toUpperCase() === "KG" ? " Kg" :
-                                                                                    product.size[0].sizetype}
-                                                                        </>
+                                                                    <span className="">{product.size[0].size}</span>
+                                                                    {product.size[0].sizetype.toLowerCase() === "gram" ? " g" :
+                                                                        product.size[0].sizetype.toUpperCase() === "KG" ? " Kg" :
+                                                                            product.size[0].sizetype}
+                                                                </>
                                                             </>
                                                         )
                                                     }
