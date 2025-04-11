@@ -11,7 +11,7 @@ const categories = [
   },
   {
     img: assets.category2,
-    name: "Savory",
+    name: "Savouries",
     color: "#9F65E8",
     nav: "65f3c6ee7fd052885f56d587"
   },
