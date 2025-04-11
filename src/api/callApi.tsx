@@ -21,7 +21,6 @@ export const makeApi = async (
 		const config: AxiosRequestConfig = {
 			method,
 			// url: `http://localhost:5009${endpoint}`,
-			// url: `https://new-palji-backend-1.onrender.com${endpoint}`,
 			url: `https://palji.ritaz.in${endpoint}`,
 			headers,
 			data,

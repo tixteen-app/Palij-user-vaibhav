@@ -3,7 +3,7 @@
   width: 96%;
   margin: auto;
   overflow: hidden;
-  padding-top: 1vh;
+  padding-top: 5vh;
   object-fit: cover;
 }
 
@@ -94,7 +94,7 @@
 }
 @media(max-width: 500px) {
   .slider {
-    padding-top: 6vh;
+    padding-top: 11vh;
   }
 
   .image {

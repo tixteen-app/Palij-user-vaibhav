@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import styles from "../../pages/CSS/product/allProduct.module.css";
 import { makeApi } from "../../api/callApi";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import {  useLocation, useNavigate } from "react-router-dom";
 import LoginPopup from "../LoginPopup/LoginPopup.jsx";
 import { fetchCart, addToCart, removeFromCart } from "../../utils/productFunction.js";
-import SkeletonLoader from "./SkeletonLoader.jsx";
-import sortimage from "../../assets/sort.svg"
 import SkeletonLoaderforshop from "./skelentonstore.jsx";
+import { motion } from "framer-motion";
+
 
 function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcategory }) {
     const navigate = useNavigate();
@@ -31,6 +31,9 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
     const [hasFetched, setHasFetched] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [minLoadTimePassed, setMinLoadTimePassed] = useState(false);
+    const [hoveredProduct, setHoveredProduct] = useState(null);
+
+    
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -470,9 +473,26 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
                                         <div className={styles.allProductsList}>
                                             {displayedProducts.map(product => (
                                                 <div key={product.id} className="homeproduct_product_sub_div_for_all_prodcut">
-                                                    <div className="homeproduct_product_div_image">
+                                                    {/* <div className="homeproduct_product_div_image">
                                                         <img src={product.thumbnail} alt={product.name} onClick={() => handleNavigate(product._id)} />
-                                                    </div>
+                                                    </div> */}
+                                                    <motion.div 
+    className="homeproduct_product_div_image"
+    whileHover={{ scale: 1.03 }}
+    onMouseEnter={() => setHoveredProduct(product._id)}
+    onMouseLeave={() => setHoveredProduct(null)}
+>
+    <motion.img
+        key={hoveredProduct === product._id ? "main" : "thumb"}
+        src={hoveredProduct === product._id ? product.image[0] : product.thumbnail}
+        alt={product.name}
+        onClick={() => handleNavigate(product._id)}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.3 }}
+    />
+</motion.div>
                                                     <div className="homeproduct_product_div_details">
                                                         <div>
                                                             <div className="bold_details_homeproduct">
@@ -574,13 +594,7 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
                                             ))}
                                         </div>
                                     </div>
-                                    {/* {visibleProducts < products.length && (
-                                        <div className={styles.loadMoreContainer}>
-                                            <button className={styles.loadMoreButton} onClick={handleLoadMore} style={{ color: "black" }}>
-                                                Load More
-                                            </button>
-                                        </div>
-                                    )} */}
+                                   
                                 </div>
                             )}
                         </>
@@ -590,295 +604,6 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
         </div>
     );
 
-    // return (
-    //     <div className={styles.mainContainer}>
-    //         {showPopup && <LoginPopup onClose={closePopup} />}
-
-    //         {(!AllProductLoader) ? (
-    //             <div className={styles.container}>
-    //                 <>
-    //                     {search ? <div className="main_search_div_for_mobile_cart">
-    //                         <div className={`search_bar_card_for_mobile ${search ? styles.searchPopupActive : ''}`}>
-    //                             {displayedProducts.map((result, id) => (
-    //                                 <div className="searched_product_details_div " >
-    //                                     <div className="searched_product_details_div_img" >
-    //                                         <img src={result.thumbnail} alt={result.name} className="searched_product_details_img" />
-    //                                     </div>
-    //                                     <div className="searched_product_details_div_info" >
-    //                                         <div className="searched_product_details_div_info_name" >
-    //                                             {/* <div>{result.name}</div> */}
-    //                                             <div>{result.name}</div>
-
-    //                                             <div>
-    //                                                 {result.size.length > 0 &&
-    //                                                     <>
-    //                                                         ₹{result.size[0].FinalPrice}
-    //                                                     </>
-    //                                                 }
-    //                                             </div>
-    //                                         </div>
-    //                                         <div className="searched_product_details_div_info_btn" >
-    //                                             <div className="searched_product_details_div_info_btn_view" onClick={() => handleNavigate(result._id)} >View</div>
-    //                                             {/* <div className="searched_product_details_div_info_btn_cart" >Add to Cart</div> */}
-    //                                             <div className="searched_product_details_div_info_btn_cart">
-    //                                                 {cartItems.some(cartItem => cartItem.productId === result._id && cartItem.size === result.size[0]._id) ? (
-    //                                                     <div className="homeproduct_addtocart_and_quantity_div homeproduct_addtocart_and_quantity_div_for_Search ">
-    //                                                         <div>
-    //                                                             <svg
-    //                                                                 xmlns="http://www.w3.org/2000/svg"
-    //                                                                 onClick={() => handleDecreaseQuantity(result._id, result.size[0])}
-    //                                                                 width="30"
-    //                                                                 height="30"
-    //                                                                 fill="currentColor"
-    //                                                                 className="bi bi-dash text-white"
-    //                                                                 style={{ cursor: "pointer" }}
-    //                                                                 viewBox="0 0 16 16"
-    //                                                             >
-    //                                                                 <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" />
-    //                                                             </svg>
-    //                                                         </div>
-
-    //                                                         <div style={{ minWidth: "20px", textAlign: "center" }}>
-    //                                                             {quantityLoading[result._id] ? (
-    //                                                                 <div style={{ paddingTop: "4px" }}>
-    //                                                                     <div className="loader_for_home_page "></div>
-    //                                                                 </div>
-    //                                                             ) : (
-    //                                                                 <div  >
-    //                                                                     {cartItems.find(cartItem => cartItem.productId === result._id && cartItem.size === result.size[0]._id)?.quantity || 0}
-    //                                                                 </div>
-    //                                                             )}
-    //                                                         </div>
-
-    //                                                         <div>
-    //                                                             <svg
-    //                                                                 xmlns="http://www.w3.org/2000/svg"
-    //                                                                 onClick={() => handleIncreaseQuantity(result._id, result.size[0])}
-    //                                                                 width="30"
-    //                                                                 height="30"
-    //                                                                 fill="currentColor"
-    //                                                                 className="bi bi-plus text-white"
-    //                                                                 style={{ cursor: "pointer" }}
-    //                                                                 viewBox="0 0 16 16"
-    //                                                             >
-    //                                                                 <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
-    //                                                             </svg>
-    //                                                         </div>
-    //                                                     </div>
-    //                                                 ) : (
-    //                                                     <div
-    //                                                         className="searched_product_details_div_info_btn_cart"
-    //                                                         onClick={() => handleIncreaseQuantity(result._id, result.size[0])}
-    //                                                     >
-    //                                                         {quantityLoading[result._id] ? (
-    //                                                             <div className="loader_for_home_page"></div>
-    //                                                         ) : (
-    //                                                             "ADD"
-    //                                                         )}
-    //                                                     </div>
-    //                                                 )}
-    //                                             </div>
-    //                                         </div>
-    //                                     </div>
-    //                                 </div>
-    //                             ))}
-    //                         </div>
-    //                     </div>
-    //                         : <>
-
-    //                             {hasFetched && (
-    //                                 <>
-    //                                     {displayedProducts.length === 0 ? (
-    //                                         <div className={styles.NoProductsFound}>No Products Found</div>
-    //                                     ) : (
-    //                                         <div>
-    //                                             {displayedProducts.length > 0 && (
-    //                                                 <div className={styles.sortContainer}>
-    //                                                     <div className={styles.customDropdown}>
-    //                                                         {/* <div className={styles.sortLabel}>Sort By:</div> */}
-    //                                                         <div className={styles.dropdownHeader} onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
-    //                                                             {/* {sortBy === "hight" ? "Price: Low to High" : "Price: High to Low"}
-    //                                             <span className={`${styles.arrow} ${isDropdownOpen ? styles.open : ""}`}>
-    //                                                 ▼
-    //                                             </span> */}
-    //                                                             <img src={sortimage} className={styles.sort_image_all_product} />
-    //                                                         </div>
-    //                                                         {isDropdownOpen && (
-    //                                                             <div className={styles.dropdownOptions}>
-    //                                                                 <div
-    //                                                                     className={styles.dropdownOption}
-    //                                                                     onClick={() => {
-    //                                                                         // setSortBy("hight");
-    //                                                                         // handleSort("hight");
-    //                                                                         // setIsDropdownOpen(false);
-
-    //                                                                         handleSort("popularity");
-    //                                                                         setIsDropdownOpen(false);
-    //                                                                     }}
-    //                                                                 >
-    //                                                                     popularity
-    //                                                                 </div>
-    //                                                                 <div
-    //                                                                     className={styles.dropdownOption}
-    //                                                                     onClick={() => {
-    //                                                                         setSortBy("hight");
-    //                                                                         handleSort("hight");
-    //                                                                         setIsDropdownOpen(false);
-    //                                                                     }}
-    //                                                                 >
-    //                                                                     Price Low to High
-    //                                                                 </div>
-    //                                                                 <div
-    //                                                                     className={styles.dropdownOption}
-    //                                                                     onClick={() => {
-    //                                                                         setSortBy("low");
-    //                                                                         handleSort("low");
-    //                                                                         setIsDropdownOpen(false);
-    //                                                                     }}
-    //                                                                 >
-    //                                                                     Price High to Low
-    //                                                                 </div>
-    //                                                             </div>
-    //                                                         )}
-    //                                                     </div>
-    //                                                 </div>
-    //                                             )}
-
-    //                                             <div className={styles.productsContainer}>
-    //                                                 {displayedProducts.length > 0 && <div className={styles.home_page_selcte_cat_name} >{categoryName}</div>}
-    //                                                 <div className={styles.allProductsList}>
-    //                                                     {displayedProducts.map(product => (
-    //                                                         <div key={product.id} className="homeproduct_product_sub_div_for_all_prodcut" >
-    //                                                             {/* image */}
-    //                                                             <div className="homeproduct_product_div_image" >
-    //                                                                 <img src={product.thumbnail} alt={product.name} onClick={() => handleNavigate(product._id)} />
-    //                                                             </div>
-    //                                                             {/* details */}
-    //                                                             <div className="homeproduct_product_div_details" >
-    //                                                                 <div>
-    //                                                                     <div className="bold_details_homeproduct">
-    //                                                                         {product.name}
-    //                                                                     </div>
-
-    //                                                                     <div className="homeproduct_product_div_details_category" >{product.category.name}</div>
-    //                                                                 </div>
-    //                                                                 <div className="bold_details_homeproduct">
-    //                                                                     {product.size.length > 0 &&
-    //                                                                         product.size[0].sizetype !== "Pack" &&
-    //                                                                         product.size[0].size !== "null" &&
-    //                                                                         product.size[0].sizetype !== "null" && (
-    //                                                                             <>
-    //                                                                                 <span className="pe-1">{product.size[0].size}</span>{product.size[0].sizetype}
-    //                                                                             </>
-    //                                                                         )
-    //                                                                     }
-    //                                                                 </div>
-    //                                                             </div>
-    //                                                             {/* add to cart options */}
-    //                                                             <div className="homeproduct_product_div_addtocart" >
-    //                                                                 <div>
-
-    //                                                                     {product.size && product.size.length > 0 && (
-    //                                                                         <>
-    //                                                                             <span className="Rs_text_homeproduct">Rs.</span>
-    //                                                                             <span className="price_text_homeproduct">{product.size[0].FinalPrice}</span>
-
-    //                                                                             {product.size[0].price - product.size[0].FinalPrice > 1 && (
-    //                                                                                 <>
-    //                                                                                     <span className="original_text_homeproduct">Rs.{product.size[0].price}</span>
-    //                                                                                     <span className="discount_text_homeproduct">
-    //                                                                                         -{Math.round(((product.size[0].price - product.size[0].FinalPrice) / product.size[0].price) * 100)}%
-    //                                                                                     </span>
-    //                                                                                 </>
-    //                                                                             )}
-    //                                                                         </>
-    //                                                                     )}
-    //                                                                 </div>
-    //                                                                 <div>
-    //                                                                     {cartItems.some(cartItem => cartItem.productId === product._id && cartItem.size === product.size[0]._id) ? (
-    //                                                                         <div className="homeproduct_addtocart_and_quantity_div">
-    //                                                                             <div>
-    //                                                                                 <svg
-    //                                                                                     xmlns="http://www.w3.org/2000/svg"
-    //                                                                                     onClick={() => handleDecreaseQuantity(product._id, product.size[0])}
-    //                                                                                     width="30"
-    //                                                                                     height="30"
-    //                                                                                     fill="currentColor"
-    //                                                                                     className="bi bi-dash text-black"
-    //                                                                                     style={{ cursor: "pointer" }}
-    //                                                                                     viewBox="0 0 16 16"
-    //                                                                                 >
-    //                                                                                     <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" />
-    //                                                                                 </svg>
-    //                                                                             </div>
-
-    //                                                                             <div style={{ minWidth: "20px", textAlign: "center" }}>
-    //                                                                                 {quantityLoading[product._id] ? (
-    //                                                                                     <div className="loader_for_home_page"></div>
-    //                                                                                 ) : (
-    //                                                                                     <div>
-    //                                                                                         {cartItems.find(cartItem => cartItem.productId === product._id && cartItem.size === product.size[0]._id)?.quantity || 0}
-    //                                                                                     </div>
-    //                                                                                 )}
-    //                                                                             </div>
-
-    //                                                                             <div>
-    //                                                                                 <svg
-    //                                                                                     xmlns="http://www.w3.org/2000/svg"
-    //                                                                                     onClick={() => handleIncreaseQuantity(product._id, product.size[0])}
-    //                                                                                     width="30"
-    //                                                                                     height="30"
-    //                                                                                     fill="currentColor"
-    //                                                                                     className="bi bi-plus text-black"
-    //                                                                                     style={{ cursor: "pointer" }}
-    //                                                                                     viewBox="0 0 16 16"
-    //                                                                                 >
-    //                                                                                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
-    //                                                                                 </svg>
-    //                                                                             </div>
-    //                                                                         </div>
-    //                                                                     ) : (
-    //                                                                         <div
-    //                                                                             className="homeproduct_product_div_addtocart_Add_button"
-    //                                                                             onClick={() => handleIncreaseQuantity(product._id, product.size[0])}
-    //                                                                         >
-    //                                                                             {quantityLoading[product._id] ? (
-    //                                                                                 <div className="loader_for_home_page"></div>
-    //                                                                             ) : (
-    //                                                                                 "ADD"
-    //                                                                             )}
-    //                                                                         </div>
-    //                                                                     )}
-    //                                                                 </div>
-
-    //                                                             </div>
-    //                                                         </div>
-    //                                                     ))}
-    //                                                 </div>
-    //                                             </div>
-    //                                             {visibleProducts < products.length && (
-    //                                                 <div className={styles.loadMoreContainer}>
-    //                                                     <button className={styles.loadMoreButton} onClick={handleLoadMore} style={{ color: "black" }}>
-    //                                                         Load More
-    //                                                     </button>
-    //                                                 </div>
-    //                                             )}
-    //                                         </div>
-    //                                     )}
-    //                                 </>
-    //                             )}
-    //                         </>
-    //                     }
-    //                 </>
-
-
-    //             </div>
-    //         ) : (
-    //             <SkeletonLoader items={12} />
-
-    //         )}
-    //     </div>
-    // );
 }
 
 export default Allproduct;
