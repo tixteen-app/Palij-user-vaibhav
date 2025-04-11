@@ -95,7 +95,7 @@ const slidesMobile = [
   },
   {
     id: 2,
-    image: assets.homeBannerMobile3, // Update with the mobile-specific banner
+    image: assets.homeBannerMobile4, // Update with the mobile-specific banner
     title: 'Crispy Treats',
     description: 'Perfect for Your Snack Time',
   },

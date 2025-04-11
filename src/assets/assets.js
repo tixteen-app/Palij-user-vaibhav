@@ -58,6 +58,7 @@ import homeBanner3 from "./new4.jpg"
 import homeBannerMobile1 from "./new1.jpg"
 import homeBannerMobile2 from "./new3.jpg"
 import homeBannerMobile3 from "./new5.jpg"
+import homeBannerMobile4 from "./new6.jpg"
 import homeBanner4 from "./new banner 1.png"
 import aboutLandingbanner1 from "./aboutLandingPage1.png"
 import paljiMainImg from './paljiMainImg.png'
@@ -139,6 +140,7 @@ export const assets = {
 	homeBannerMobile1,
 	homeBannerMobile2,
 	homeBannerMobile3,
+	homeBannerMobile4,
 	paljiMainImg,
 	cart_gif,
 	razorpay_logo,
