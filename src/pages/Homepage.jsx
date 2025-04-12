@@ -9,6 +9,7 @@ import Homesavery from '../component/homesavery'
 import Satisfation from '../component/satisfation'
 import Pcookies from '../component/pcookies'
 import Gifthamper from '../component/giftham'
+import Cake from '../component/cake'
 
 function Homepage() {
   return (
@@ -22,6 +23,7 @@ function Homepage() {
       <Homesavery />
       <Pcookies />
       <Gifthamper />
+      <Cake/>
       <Explore />
       <TestimonialSlider />
 
