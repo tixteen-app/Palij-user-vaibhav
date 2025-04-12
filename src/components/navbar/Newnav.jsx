@@ -253,6 +253,32 @@ function Newnavbar() {
 		}
 	};
 	
+
+	useEffect(() => {
+		const handleClickOutside = (event) => {
+		  const mobileMenu = document.querySelector('.mobile-menu');
+		  const menuIcon = document.querySelector('.mobile-menu-icon');
+		  
+		  // Check if click is outside mobile menu and not on the menu icon
+		  if (moblieMenu && 
+			  !mobileMenu.contains(event.target) && 
+			  !menuIcon.contains(event.target)) {
+			closeMenu();
+		  }
+		};
+	  
+		// Add event listener when mobile menu is open
+		if (moblieMenu) {
+		  document.addEventListener('mousedown', handleClickOutside);
+		}
+	  
+		return () => {
+		  document.removeEventListener('mousedown', handleClickOutside);
+		};
+	  }, [moblieMenu]);
+
+	  const mobileMenuRef = useRef(null);
+	
 	return (
 		<>
 			<div className="main_div_new_haldi_ram">
@@ -385,7 +411,7 @@ function Newnavbar() {
 					</div>
 	
 					{/* Mobile Menu */}
-					<div className={`mobile-menu ${moblieMenu ? 'open' : ''}`}>
+					<div className={`mobile-menu ${moblieMenu ? 'open' : ''}`} ref={mobileMenuRef}>
 							<div className="mobile-top-section">
 								<div className="mobile-category-text-navbar" >
 									All Categories
