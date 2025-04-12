@@ -54,7 +54,6 @@
   
   
   .empty_cart_div h2 {
-    /* border: 2px solid #FFF; */
     color: #fff;
     background: #000;
     padding: 10px 35px;
@@ -623,7 +622,8 @@
     }
   
     .NO_cart_image {
-      width: 100%;
+      width: 55%;
+      margin-top: 155px;
     }
   
     .all_added_cart_list {
@@ -721,6 +721,11 @@
   /* .cart_UI_for_dektop_view{
     display: none;
   } */
+  .empty_cart_div h2 {
+    padding: 10px 35px;
+    font-size: 24px;
+  }
+  
   .cart_items_for_mobile_view{
     width: 100%;
     display: flex;

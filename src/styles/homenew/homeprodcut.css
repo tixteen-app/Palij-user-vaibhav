@@ -4,7 +4,7 @@
   justify-content: space-between;
 }
 .homeproduct_top_heading_div_arrow {
-  width: 30px;
+  width: 24px;
 }
 .homeproduct_top_heading_div_viewall {
   display: flex;
@@ -14,6 +14,7 @@
   cursor: pointer;
   color: #a95800;
   font-weight: 500;
+  font-size: 24px;
 }
 
 .homeproduct_container_main_div {

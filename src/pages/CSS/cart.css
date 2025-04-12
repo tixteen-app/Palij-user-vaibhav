@@ -588,7 +588,8 @@
 
 
   .NO_cart_image {
-    width: 100%;
+    width: 55%;
+    margin-top: 155px;
   }
 
   .all_added_cart_list {
@@ -638,6 +639,11 @@
   height: 20px;
   width: 20px;
 }
+.empty_cart_div h2 {
+  padding: 10px 35px;
+  font-size: 24px;
+}
+
 
 .cart_items_details_inside_for_mobile_view{
   display: flex;
