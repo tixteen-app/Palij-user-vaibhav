@@ -266,27 +266,27 @@ const NavSearchList = ({ product, clearSearchInput, input, isLoading }) => {
 							<div
 								className="result-item_for_bak"
 								key={id}
-								onClick={() => handleNavigate(result._id)}
+								onClick={() => handleNavigate(result?._id)}
 							>
 								<div className="searched_product_details_div_img" >
-									<img src={result.thumbnail} alt={result.name} className="searched_product_details_img_for_bakingo" />
+									<img src={result?.thumbnail} alt={result?.name} className="searched_product_details_img_for_bakingo" />
 								</div>
 								<div className="searched_product_details_div_info_for_baking" >
-									<div className="searched_product_details_div_info_name_for_baking" >{result.name}</div>
+									<div className="searched_product_details_div_info_name_for_baking" >{result?.name}</div>
 									{/* price */}
 									<div className="searched_product_details_div_info_price_for_baking" >
-										{result.size && result.size.length > 0 && (
+										{result?.size && result?.size.length > 0 && (
 											<>
 												<span className="Rs_text_homeproduct_search_bakingo"> ₹</span>
-												<span className="price_text_homeproduct_serach_bakingo">{result.size[0].FinalPrice}</span>
-												{result.size[0].price - result.size[0].FinalPrice > 1 && (
+												<span className="price_text_homeproduct_serach_bakingo">{result?.size[0].FinalPrice}</span>
+												{/* {result?.size[0].price - result?.size[0].FinalPrice > 1 && (
 													<>
-														<span className="original_text_homeproduct ps-1">₹{result.size[0].price}</span>
+														<span className="original_text_homeproduct ps-1">₹{result?.size[0].price}</span>
 														<span className="discount_text_homeproduct">
-															-{Math.round(((result.size[0].price - result.size[0].FinalPrice) / product.size[0].price) * 100)}%
+															-{Math.round(((result?.size[0].price - result?.size[0].FinalPrice) / product.size[0].price) * 100)}%
 														</span>
 													</>
-												)}
+												)} */}
 											</>
 										)}
 									</div>
