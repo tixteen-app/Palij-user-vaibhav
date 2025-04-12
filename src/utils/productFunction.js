@@ -24,28 +24,6 @@ export const RemoveCoupan = async (couponCode) => {
 	}
 };
 
-// export const fetchCart = async (setCartItems, setCompleteCart, setFetchCartLoader) => {
-// 	try {
-// 		setFetchCartLoader(true);
-// 		const response = await makeApi("/api/my-cart", "GET");
-// 		const cartItems = response.data.orderItems.map(item => ({
-// 			productId: item.productId._id,
-// 			quantity: item.quantity,
-// 			size: item.size._id,
-// 		}));
-		
-// 		setCartItems(cartItems);
-// 		if (setCompleteCart) {
-// 			setCompleteCart(response.data);
-// 		}
-// 		updateCartCount(cartItems);
-// 	} catch (error) {
-// 		console.log(error);
-// 	} finally {
-// 		// fetchCart(setCartItems);
-// 		setFetchCartLoader(false);
-// 	}
-// };
 export const fetchCart = async (setCartItems, setCompleteCart, setFetchCartLoader) => {
     try {
         setFetchCartLoader(true);
@@ -103,6 +81,7 @@ export const addToCart = async (
 	selectProductSize,
 	tempCakeMessage
   ) => {
+
 	const token = localStorage.getItem("token");
 	if (!token) {
 	  setIsLogin(false);
@@ -147,6 +126,8 @@ export const addToCartCake = async (
 	selectProductSize,
 	tempCakeMessage
   ) => {
+	console.log("tttt",tempCakeMessage)
+
 	const token = localStorage.getItem("token");
 	if (!token) {
 	  setIsLogin(false);

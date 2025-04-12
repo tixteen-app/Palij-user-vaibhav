@@ -333,7 +333,7 @@
 }
 .productdetailsname{
   font-weight: 600;
-  font-size: 50px !important;
+  font-size: 30px !important;
 }
 
 .vegetarian {
@@ -863,7 +863,7 @@ font-weight: 500;
 }
 
 .inclusiveOffAllTax {
-  font-size: 17px;
+  font-size: 14px;
 }
 
 @media(max-width:395px) {
