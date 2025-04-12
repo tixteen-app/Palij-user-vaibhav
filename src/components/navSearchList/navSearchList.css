@@ -422,7 +422,8 @@ body.no-scroll {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    padding: 10px 0;
+    padding: 10px 5px;
+    justify-content: flex-start;
   }
   
   .result-item_for_bak {
