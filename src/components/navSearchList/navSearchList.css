@@ -559,16 +559,16 @@ body.no-scroll {
 
 /* Extra Small Devices (phones under 400px) */
 @media (max-width: 400px) {
-  .result-item_for_bak {
-    width: 100%; /* 1 item per row on very small screens */
-  }
+  /* .result-item_for_bak {
+    width: 100%;
+  } */
 
   .main_search_title_for_baking {
     font-size: 15px;
   }
 
-  .searched_product_details_img_for_bakingo {
+  /* .searched_product_details_img_for_bakingo {
     width: 70px;
     height: 70px;
-  }
+  } */
 }
