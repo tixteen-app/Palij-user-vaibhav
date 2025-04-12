@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "../../pages/CSS/product/allProduct.module.css";
 import { makeApi } from "../../api/callApi";
-import {  useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import LoginPopup from "../LoginPopup/LoginPopup.jsx";
 import { fetchCart, addToCart, removeFromCart } from "../../utils/productFunction.js";
 import SkeletonLoaderforshop from "./skelentonstore.jsx";
@@ -33,7 +33,7 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
     const [minLoadTimePassed, setMinLoadTimePassed] = useState(false);
     const [hoveredProduct, setHoveredProduct] = useState(null);
 
-    
+
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -169,7 +169,7 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
             try {
                 const activeCategory = category || new URLSearchParams(location.search).get("category") || "";
                 setAllProductLoader(true);
-                console.log("Fetching popular products...",activeCategory);
+                console.log("Fetching popular products...", activeCategory);
                 const response = await makeApi(
                     `/api/get-all-top-saller-products?categoryId=${activeCategory}`,
                     "GET"
@@ -241,7 +241,7 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
         const handleScroll = () => {
             // Calculate 70% of the document height
             const scrollThreshold = document.documentElement.scrollHeight * 0.7;
-            
+
             if (
                 window.innerHeight + document.documentElement.scrollTop >= scrollThreshold &&
                 visibleProducts < products.length
@@ -251,7 +251,7 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
                 setDisplayedProducts(products.slice(0, nextVisibleProducts));
             }
         };
-    
+
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, [visibleProducts, products]);
@@ -262,7 +262,7 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
 
             {AllProductLoader ? (
                 <div className={styles.containerforshoploader} >
-                <SkeletonLoaderforshop items={12} />
+                    <SkeletonLoaderforshop items={12} />
                 </div>
             ) : (
                 <div className={styles.container}>
@@ -403,12 +403,16 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
                                     )} */}
                                     {displayedProductslength > 0 && (
                                         <div className={styles.sortContainer}>
+
+                                            <div className={styles.slectedcatnamedesktop}  >
+                                            {displayedProducts.length > 0 && <div >{categoryName}</div>}
+                                            </div>
                                             <div className={styles.customDropdown}>
                                                 <div className={styles.dropdownHeader} onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
                                                     {/* Custom arrow indicators */}
                                                     <div className={styles.arrowContainer}>
                                                         <div>
-                                                             <span className={styles.sort_by_text_desktop} >Sort By:</span>   <svg
+                                                            <span className={styles.sort_by_text_desktop} >Sort By:</span>   <svg
                                                                 xmlns="http://www.w3.org/2000/svg"
                                                                 className={`${styles.sortArrow} ${sortBy === "hight" || sortBy === "popularity" ? styles.activeArrow : ""
                                                                     }`}
@@ -476,23 +480,23 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
                                                     {/* <div className="homeproduct_product_div_image">
                                                         <img src={product.thumbnail} alt={product.name} onClick={() => handleNavigate(product._id)} />
                                                     </div> */}
-                                                    <motion.div 
-    className="homeproduct_product_div_image"
-    whileHover={{ scale: 1.03 }}
-    onMouseEnter={() => setHoveredProduct(product._id)}
-    onMouseLeave={() => setHoveredProduct(null)}
->
-    <motion.img
-        key={hoveredProduct === product._id ? "main" : "thumb"}
-        src={hoveredProduct === product._id ? product.image[0] : product.thumbnail}
-        alt={product.name}
-        onClick={() => handleNavigate(product._id)}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.3 }}
-    />
-</motion.div>
+                                                    <motion.div
+                                                        className="homeproduct_product_div_image"
+                                                        whileHover={{ scale: 1.03 }}
+                                                        onMouseEnter={() => setHoveredProduct(product._id)}
+                                                        onMouseLeave={() => setHoveredProduct(null)}
+                                                    >
+                                                        <motion.img
+                                                            key={hoveredProduct === product._id ? "main" : "thumb"}
+                                                            src={hoveredProduct === product._id ? product.image[0] : product.thumbnail}
+                                                            alt={product.name}
+                                                            onClick={() => handleNavigate(product._id)}
+                                                            initial={{ opacity: 0 }}
+                                                            animate={{ opacity: 1 }}
+                                                            exit={{ opacity: 0 }}
+                                                            transition={{ duration: 0.3 }}
+                                                        />
+                                                    </motion.div>
                                                     <div className="homeproduct_product_div_details">
                                                         <div>
                                                             <div className="bold_details_homeproduct">
@@ -594,7 +598,7 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
                                             ))}
                                         </div>
                                     </div>
-                                   
+
                                 </div>
                             )}
                         </>
