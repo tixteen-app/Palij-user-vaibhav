@@ -237,6 +237,7 @@
     align-items: center;
     gap: 20px;
     justify-content: flex-end;
+    position: relative;
  }
 
  .search_icon_new_nav{

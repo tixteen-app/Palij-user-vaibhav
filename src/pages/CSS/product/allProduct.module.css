@@ -329,6 +329,9 @@
   font-size: 33px !important;
   display: block !important;
 }
+.slectedcatnamedesktopcatname{
+  text-transform:uppercase !important;
+}
 .home_page_selcte_cat_name{
   display: none;
 }

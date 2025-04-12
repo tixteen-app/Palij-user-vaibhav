@@ -1,7 +1,7 @@
-.nav-search-list {
+/* .nav-search-list {
   position: absolute;
   top: 100%;
-  left: 0;
+  left: -100px;
   right: 0;
   z-index: 1000;
   background-color: #fff;
@@ -10,7 +10,7 @@
   overflow: hidden;
   max-height: 300px;
   overflow-y: auto;
-  width: 238px;
+  width: 438px;
   margin-top: 5px;
   padding: 5px;
 }
@@ -22,19 +22,8 @@
   text-decoration: none;
   color: #333;
   transition: background-color 0.2s ease;
+  width: 49%;
 }
-
-.result-item:hover {
-  /* background-color: #f5f5f5; */
-}
-/* 
-.result-item img {
-  width: 40px;
-  height: 40px;
-  object-fit: cover;
-  border-radius: 4px;
-  margin-right: 12px;
-} */
 
 .result-info {
   flex: 1;
@@ -55,7 +44,6 @@
   font-size: 14px;
 }
 
-/* Loader styles */
 .loader {
   border: 2px solid #f3f3f3;
   border-top: 2px solid #3498db;
@@ -66,7 +54,6 @@
   margin: 20px auto;
 }
 .loader_for_pc_search{
-  /* border-color: white !important; */
   width: 20px !important;
   height: 20px !important;
   border: 4px solid white !important;
@@ -76,8 +63,6 @@
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
 }
-
-
 
 
 @keyframes rotation {
@@ -124,6 +109,8 @@
   border-bottom: 1px solid rgba(128, 124, 124, 0.671);
   border-radius: 0px 0px 10px 10px;
   width: 100%;
+  display: flex;
+  flex-wrap: wrap;
 }
 .searched_product_details_div {
   display: flex;
@@ -131,16 +118,17 @@
   justify-content: center;
   gap: 18px;
   margin-bottom: 10px;
-  border-top: 1px solid rgba(128, 124, 124, 0.671);
   padding-top: 10px;
   width: 250px;
+  height: 100px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 }
 .searched_product_details_div_img {
-  width: 20%;
 }
 .searched_product_details_img {
-  width: 53px;
-  height: 53px;
+  width: 83px;
+  height: 83px;
   object-fit: cover;
 }
 
@@ -211,8 +199,17 @@
 }
 .search_bar_add_button{
   width: 20px;
-  
 }
+
+
+
+
+
+
+
+
+
+
 
 @media (max-width: 1100px) {
   .nav-search-list {
@@ -221,7 +218,7 @@
 }
 
 .nav-search-list {
-  /* position: relative; */
+  position: relative;
 }
 
 .close-btn {
@@ -238,7 +235,6 @@
 
 .close-btn:hover {
   color: red;
-  /* Optional hover effect */
 }
 
 @media (max-width: 600px) {
@@ -280,7 +276,6 @@
   }
 
 
-  /* Add these styles */
 .searchPopupActive {
   position: fixed;
   top: 0;
@@ -292,7 +287,6 @@
   background: white;
 }
 
-/* This prevents body scrolling when popup is open */
 body.no-scroll {
   overflow: hidden;
 }
@@ -348,7 +342,232 @@ body.no-scroll {
     background: rgba(0, 0, 0, 0.1) !important;
   }
  
+} */
+
+
+
+.nav-search-list {
+  position: absolute;
+  top: 100%;
+  left: -100px;
+  right: 0;
+  z-index: 1000;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  max-height: 300px;
+  overflow-y: auto;
+  width: 438px;
+  margin-top: 5px;
+  padding: 5px;
+}
+
+.main_search_div_for_baki{
+  display: flex;
+  flex-direction: column;
+}
+.main_search_title_for_baking{
+  font-weight: bold;
+  font-size: 18px;
+  padding: 10px 10px;
+  border-bottom: 1px solid rgba(128, 124, 124, 0.671);
 }
 
 
+.main_search_result_div_for_baking{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
 
+.result-item_for_bak{
+  width: 30%;  
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 170px;
+  align-items: center;
+  box-shadow: 0px 12px 27px 0px #0000001A;
+  padding: 5px;
+  }
+.searched_product_details_div_info_name_for_baking{
+  font-size: 13px;
+}
+  
+  .searched_product_details_img_for_bakingo{
+    width: 100px;
+    object-fit: contain;
+  }
+
+  
+
+  .main_search_div_for_baki {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .main_search_title_for_baking {
+    font-weight: bold;
+    font-size: 18px;
+    padding: 10px;
+    border-bottom: 1px solid rgba(128, 124, 124, 0.671);
+    color: #333;
+  }
+  
+  .main_search_result_div_for_baking {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px 0;
+  }
+  
+  .result-item_for_bak {
+    width: calc(33.33% - 10px); /* Adjust for gap */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+  }
+  
+  .result-item_for_bak:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .searched_product_details_div_img {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 8px;
+  }
+  
+  .searched_product_details_img_for_bakingo {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+  }
+  
+  .searched_product_details_div_info_for_baking {
+    width: 100%;
+  }
+  
+  .searched_product_details_div_info_name_for_baking {
+    font-size: 13px;
+    margin-bottom: 1px;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+  }
+  
+  .searched_product_details_div_info_price_for_baking {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  
+  .Rs_text_homeproduct_search_bakingo {
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .price_text_homeproduct_serach_bakingo {
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .original_text_homeproduct {
+    color: #999;
+    text-decoration: line-through;
+    font-size: 12px;
+  }
+  
+  .discount_text_homeproduct {
+    color: #f00;
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  /* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .nav-search-list {
+    width: 100vw;
+    left: -20px;
+    right: -20px;
+    border-radius: 0;
+    max-height: 70vh;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .main_search_title_for_baking {
+    font-size: 16px;
+    padding: 8px 15px;
+  }
+
+  .main_search_result_div_for_baking {
+    gap: 8px;
+    padding: 8px 5px;
+    justify-content: flex-start;
+  }
+
+  .result-item_for_bak {
+    width: calc(50% - 8px); /* 2 items per row on mobile */
+    height: auto;
+    padding: 8px;
+    min-height: 150px;
+  }
+
+  .searched_product_details_img_for_bakingo {
+    /* width: 100px; */
+    /* height: 100px; */
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+  }
+
+  .searched_product_details_div_info_name_for_baking {
+    font-size: 12px;
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 3px;
+  }
+
+  .searched_product_details_div_info_price_for_baking {
+    justify-content: flex-start;
+  }
+
+  .original_text_homeproduct,
+  .discount_text_homeproduct {
+    font-size: 10px;
+  }
+}
+
+/* Extra Small Devices (phones under 400px) */
+@media (max-width: 400px) {
+  .result-item_for_bak {
+    width: 100%; /* 1 item per row on very small screens */
+  }
+
+  .main_search_title_for_baking {
+    font-size: 15px;
+  }
+
+  .searched_product_details_img_for_bakingo {
+    width: 70px;
+    height: 70px;
+  }
+}
