@@ -16,12 +16,11 @@
   min-height: 100vh;
   width: 100%;
   padding: 0 100px;
-  margin: auto;
   background: white;
   padding-top: 25vh;
   display: flex;
   gap: 20px;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 
@@ -125,7 +124,7 @@
 .cart-bottomm {
   display: flex;
   justify-content: space-between;
-  margin-top: 100px;
+  margin-top: 150px;
 }
 
 .cart-address {
@@ -638,7 +637,7 @@
 }
 .cart_items_top_bar_for_mobile_view div{
   width: 100%;
-  font-size: 10px;
+  font-size: 12px;
   text-align: center;
 }
 .cart_items_details_for_mobile_view{
@@ -666,8 +665,8 @@
 }
 
 .product_thubnil_for_mobile img {
-  width: 60px;
-  height: 60px;
+  width: 90px;
+  height: 90px;
   object-fit: contain;
 }
 

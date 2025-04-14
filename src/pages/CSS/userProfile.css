@@ -35,6 +35,14 @@
   display: none;
 }
 
+.button_Setion_new_add_address{
+  width: 75%;
+  margin-top: 20px;
+}
+.new_home_page_add-address-btn {
+  width: 30% !important;
+}
+
 .user-sidebar-info {
   display: flex;
   gap: 20px;
@@ -460,6 +468,12 @@
 }
 
 @media (max-width: 550px) {
+  .new_home_page_address-card{
+    width: 100% !important;
+  }
+  .new_home_page_add-address-btn {
+    width: 100% !important;
+  }
   .dektop_view_for_profile_main_div {
     display: none;
   }
@@ -800,6 +814,7 @@
 .new_home_page_address-tab {
   gap: 1rem;
 }
+
 
 .new_home_page_address-card {
   border: 1px solid #e5e7eb;

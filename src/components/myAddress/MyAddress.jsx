@@ -224,12 +224,12 @@
 //       <div className="address-header">
 //         <h1>MY ADDRESS</h1>
 //       </div> 
-      
+
 //       <div className="address-content">
 //         <p className="address-description">
 //           The following addresses will be used on the checkout page by default.
 //         </p>
-        
+
 //         <div className="address-sections">
 //           <div className="address-section"> 
 //             <h2>SHIPPING ADDRESS</h2>
@@ -240,7 +240,7 @@
 //               >
 //                 Add Shipping Address
 //               </button>
-              
+
 //               <div className="address-list">
 //                 {shippingAddresses.map((address) => (
 //                   <div key={address._id} className="address-card">
@@ -357,13 +357,13 @@ const MyAddress = () => {
         {address.mobileNumber && `Phone: +91 ${address.mobileNumber}`}
       </p>
       <div className="new_home_page_address-actions">
-        <button 
+        <button
           className="new_home_page_edit-btn"
           onClick={() => navigate(isShipping ? `/edit-shipping-address/${address._id}` : `/edit-billing-address/${address._id}`)}
         >
           Edit
         </button>
-        <button 
+        <button
           className="new_home_page_delete-btn"
           onClick={() => setDeleteProductId(address._id)}
         >
@@ -380,20 +380,23 @@ const MyAddress = () => {
       </div>
 
       {shippingAddresses.length > 0 && (
-        <div div className="d-flex flex-wrap gap-5 justify-content-center ">
-          {/* <h3>Shipping Addresses</h3> */}
-          {shippingAddresses.map(address => renderAddressCard(address, true))}
+        <div className="w-100 d-flex justify-content-center flex-column align-items-center" >
+
+          <div className="d-flex flex-wrap gap-3 justify-content-between w-75">
+            {/* <h3>Shipping Addresses</h3> */}
+            {shippingAddresses.map(address => renderAddressCard(address, true))}
+          </div>
+          <div className="button_Setion_new_add_address" >
+            <button
+              className="new_home_page_add-address-btn "
+              onClick={() => navigate("/shipping-address")}
+            >
+              Add New Address
+            </button>
+          </div>
         </div>
       )}
 
-      <div className="w-100  text-center" >
-      <button 
-        className="new_home_page_add-address-btn w-25"
-        onClick={() => navigate("/shipping-address")}
-        >
-        Add New Address
-      </button>
-        </div>
 
       {/* Delete Confirmation Modal */}
       {deleteProductId && (

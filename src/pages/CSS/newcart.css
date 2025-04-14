@@ -721,6 +721,11 @@
   /* .cart_UI_for_dektop_view{
     display: none;
   } */
+  .cart-bottomm {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
+  }
   .empty_cart_div h2 {
     padding: 10px 35px;
     font-size: 24px;
