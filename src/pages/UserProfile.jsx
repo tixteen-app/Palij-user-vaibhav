@@ -484,16 +484,6 @@ const UserProfile = () => {
 											</div>
 										</div>
 
-										{/* <div className="new_home_page_form-group">
-                  <label>DATE OF BIRTH</label>
-                  <input
-                    type="date"
-                    name="dateofbirth"
-                    value={editData.dateofbirth}
-                    onChange={onChangeHandler}
-                  />
-                </div> */}
-
 										<div className="new_home_page_form-group">
 											<label>GENDER</label>
 											<select
@@ -556,7 +546,7 @@ const UserProfile = () => {
 													<img src={homeImg.blackUserProfile} alt="Default Profile" className="new_home_page_profile-image" />
 												)}
 											</div>
-											<button className="new_home_page_change-profile-btn">
+											<button className="new_home_page_change-profile-btn p-0">
 												<label htmlFor="profile-upload">
 													<span>Change profile information</span>
 												</label>
@@ -606,29 +596,29 @@ const UserProfile = () => {
 											<div className="new_home_page_form-group">
 												<div className="new_home_page_profile-name-fields">
 													<div>
-													<label>GENDER</label>
-													<select
-														name="gender"
-														value={editData.gender}
-														onChange={onChangeHandler}
-														className="p-2 w-100"
-														style={{ borderRadius: "5px"  }}
-													>
-														<option value="">Select Gender</option>
-														<option value="male">Male</option>
-														<option value="female">Female</option>
-														<option value="other">Other</option>
-													</select>
+														<label>GENDER</label>
+														<select
+															name="gender"
+															value={editData.gender}
+															onChange={onChangeHandler}
+															className="p-2 w-100"
+															style={{ borderRadius: "5px" }}
+														>
+															<option value="">Select Gender</option>
+															<option value="male">Male</option>
+															<option value="female">Female</option>
+															<option value="other">Other</option>
+														</select>
 													</div>
 													<div>
-													<label>CONTACT NUMBER</label>
-													<input
-														type="tel"
-														name="mobileNumber"
-														value={editData.mobileNumber}
-														onChange={onChangeHandler}
-														placeholder="Phone Number"
-													/>
+														<label>CONTACT NUMBER</label>
+														<input
+															type="tel"
+															name="mobileNumber"
+															value={editData.mobileNumber}
+															onChange={onChangeHandler}
+															placeholder="Phone Number"
+														/>
 													</div>
 												</div>
 											</div>
@@ -638,7 +628,7 @@ const UserProfile = () => {
 											{/* <div className="new_home_page_form-group">
 											</div> */}
 
-											<div className="new_home_page_form-group">
+											<div className="new_home_page_form-group w-50">
 												<label>EMAIL</label>
 												<input
 													type="email"
@@ -650,7 +640,7 @@ const UserProfile = () => {
 												/>
 											</div>
 
-											<button type="submit" className="new_home_page_save-btn">
+											<button type="submit" className="new_home_page_save-btn w-25">
 												Save Changes
 											</button>
 										</form>
