@@ -363,195 +363,23 @@ function Satisfation() {
 
     return (
         <>
-            {/* <motion.div
-                className='main_satisfaction_top_div'
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
-                variants={containerVariants}
-            >
-                <div className="background_shapes">
-                    <motion.div className="background_shapes_1_outer" variants={shapeVariants}>
-                        <div className="background_shapes_1"></div>
-                    </motion.div>
 
-                    <motion.div className="background_shapes_2_outer" variants={shapeVariants}>
-                        <div className="background_shapes_2"></div>
-                    </motion.div>
-
-                    <motion.div className="background_shapes_3_outer" variants={shapeVariants}>
-                        <div className="background_shapes_3"></div>
-                    </motion.div>
+            <div  >
+                <div className="satisfaction_video_main_div">
+                    <video
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        id="myVideo"
+                        className="satisfaction_video"
+                    >
+                        <source src={newvideo} type="video/mp4" />
+                    </video>
                 </div>
 
-                <div className='satisfaction_image_main_div'>
-                    <div className='satisfaction_image_left_div'>
-                        <motion.div className='satisfaction_image_left_div1' variants={itemVariants}>
-                            <motion.img
-                                src={firstimage}
-                                alt=""
-                                className='satisfaction_image'
-                                whileHover={{ scale: 1.05 }}
-                                transition={{ duration: 0.3 }}
-                            />
-                        </motion.div>
-                        <motion.div className='satisfaction_image_left_div1' variants={itemVariants}>
-                            <motion.img
-                                src={secondimage}
-                                alt=""
-                                className='satisfaction_image'
-                                whileHover={{ scale: 1.05 }}
-                                transition={{ duration: 0.3 }}
-                            />
-                        </motion.div>
-                    </div>
 
-                    <div>
-                        <motion.div className='satisfaction_image_center_div' variants={centerImageVariants}>
-                            <motion.img
-                                src={thirdimage}
-                                alt=""
-                                className='satisfaction_image'
-                                whileHover={{ scale: 1.05 }}
-                                transition={{ duration: 0.3 }}
-                            />
-                        </motion.div>
-                    </div>
-
-                    <div className='satisfaction_image_left_div'>
-                        <motion.div className='satisfaction_image_left_div1' variants={itemVariants}>
-                            <motion.img
-                                src={fourthimage}
-                                alt=""
-                                className='satisfaction_image'
-                                whileHover={{ scale: 1.05 }}
-                                transition={{ duration: 0.3 }}
-                            />
-                        </motion.div>
-                        <motion.div className='satisfaction_image_left_div1' variants={itemVariants}>
-                            <motion.img
-                                src={fifthimage}
-                                alt=""
-                                className='satisfaction_image'
-                                whileHover={{ scale: 1.05 }}
-                                transition={{ duration: 0.3 }}
-                            />
-                        </motion.div>
-                    </div>
-                </div>
-            </motion.div>
-
-
-            <motion.div 
-                className='main_satisfaction_top_div_for_mobile'
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-50px" }}
-                variants={mobileContainerVariants}
-            >
-                <div className="background_shapes">
-                    <motion.div className="background_shapes_1_outer" variants={shapeVariants}>
-                        <div className="background_shapes_1"></div>
-                    </motion.div>
-
-                    <motion.div className="background_shapes_2_outer" variants={shapeVariants}>
-                        <div className="background_shapes_2"></div>
-                    </motion.div>
-
-                    <motion.div className="background_shapes_3_outer" variants={shapeVariants}>
-                        <div className="background_shapes_3"></div>
-                    </motion.div>
-                </div>
-
-                <div className='satisfaction_image_main_div_for_mobile'>
-                    <div className='satisfaction_image_for_mobile_main'>
-                        <motion.div 
-                            className='satisfaction_image_parent_left_div_for_mobile'
-                            variants={mobileContainerVariants}
-                        >
-                            <motion.div 
-                                className='satisfaction_image_left_div_for_mobile' 
-                                variants={mobileLeftItemVariants}
-                            >
-                                <motion.img 
-                                    src={firstimage} 
-                                    alt="" 
-                                    className="satisfaction_image" 
-                                    whileHover={{ scale: 1.05 }}
-                                    transition={{ duration: 0.3 }}
-                                />
-                            </motion.div>
-                            <motion.div 
-                                className='satisfaction_image_left_div_for_mobile'
-                                variants={mobileLeftItemVariants}
-                            >
-                                <motion.img 
-                                    src={secondimage} 
-                                    alt="" 
-                                    className="satisfaction_image" 
-                                    whileHover={{ scale: 1.05 }}
-                                    transition={{ duration: 0.3 }}
-                                />
-                            </motion.div>
-                        </motion.div>
-                        
-                        <motion.div 
-                            className='satisfaction_image_parent_right_div_for_mobile'
-                            variants={mobileContainerVariants}
-                        >
-                            <motion.div 
-                                className='satisfaction_image_right_div_for_mobile'
-                                variants={mobileCenterItemVariants}
-                            >
-                                <motion.img 
-                                    src={ninthimage} 
-                                    alt="" 
-                                    className="satisfaction_image_for_mobile_center_image" 
-                                    whileHover={{ scale: 1.05 }}
-                                    transition={{ duration: 0.3 }}
-                                />
-                            </motion.div>
-                            <motion.div 
-                                className='satisfaction_image_right_div_for_mobile'
-                                variants={mobileRightItemVariants}
-                            >
-                                <motion.img 
-                                    src={seventhimage} 
-                                    alt="" 
-                                    className="satisfaction_image_for_mobile_right" 
-                                    whileHover={{ scale: 1.05 }}
-                                    transition={{ duration: 0.3 }}
-                                />
-                            </motion.div>
-                            <motion.div 
-                                className='satisfaction_image_right_div_for_mobile'
-                                variants={mobileRightItemVariants}
-                            >
-                                <motion.img 
-                                    src={eighthimage} 
-                                    alt="" 
-                                    className="satisfaction_image_for_mobile_right" 
-                                    whileHover={{ scale: 1.05 }}
-                                    transition={{ duration: 0.3 }}
-                                />
-                            </motion.div>
-                        </motion.div>
-                    </div>
-                </div>
-            </motion.div> */}
-<div  >
-
-            <div className='satisfaction_video_main_div' >
-                <video autoPlay muted loop id="myVideo" className='satisfaction_video' >
-                    <source src={newvideo} type="video/mp4" />
-                </video>
             </div>
-            {/* <div className='satisfaction_video_main_div_mobile' >
-                <video autoPlay muted loop id="myVideo" className='satisfaction_video' >
-                    <source src={newvideomobile} type="video/mp4" />
-                </video>
-            </div> */}
-</div>
         </>
     )
 }

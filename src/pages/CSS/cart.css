@@ -469,7 +469,18 @@
   height: 100%;
 }
 
-
+@media (max-width:2000px) {
+  .cart-items-item img {
+    width: 180px;
+    height: 180px;
+  }
+}
+@media (max-width:1600px) {
+  .cart-items-item img {
+    width: 120px !important;
+    height: 120px !important;
+  }
+}
 
 @media (max-width:1300px) {
   .cart-container {

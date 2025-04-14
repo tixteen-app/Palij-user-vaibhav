@@ -159,6 +159,7 @@ import PaljiSignUp from "./components/signup/PaljiSignUp.jsx";
 import Homepage from "./pages/Homepage.jsx";
 import Taxinvoice from "./pages/Taxinvoice.jsx";
 import Newcart from "./pages/Newcart.jsx";
+import Test from "./component/Test.jsx";
 
 function App() {
   const location = useLocation(); // Use useLocation hook to get the current location
@@ -172,13 +173,12 @@ function App() {
 
   return (
     <div className="app">
-      {/* {!isInvoicePage && <Navbar />} */}
       {!isInvoicePage && <Navbar />}
-      
-      {/* Add inline style for margin-bottom 100px */}
+
       <div style={{ marginTop: "70px" }}  >
         <Routes>
           <Route path="/" element={<Homepage />} />
+          <Route path="/test" element={<Test />} />
           <Route path="/new" element={<Homepage />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/product/*" element={<Products />} />
