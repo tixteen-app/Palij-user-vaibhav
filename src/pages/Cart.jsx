@@ -568,64 +568,69 @@ const Cart = () => {
 
               <div className="cart_UI_for_mobile_view" >
                 <div className="cart_items_for_mobile_view" >
-                  <div className="cart_items_top_bar_for_mobile_view"  >
+                  {/* <div className="cart_items_top_bar_for_mobile_view"  >
                     <div></div>
-                    <div style={{width:"50%"}} ></div>
+                    <div style={{ width: "50%" }} ></div>
                     <div>Product:</div>
-                    {/* <div>Price:</div> */}
                     <div>Qty:</div>
                     <div>Total:</div>
 
-                  </div>
+                  </div> */}
                   <div className="cart_items_details_for_mobile_view" >
                     {completeCart?.orderItems?.map((item, index) => (
                       <div key={index} className="cart_items_details_inside_for_mobile_view" >
-                        
+
                         <div className="cross_icon_mobile" onClick={() => handleDeleteClick(item.productId._id, item.size._id, item.quantity)}>
                           <img className="remove-cart" src={assets.cart_remove} alt="Remove" />
                         </div>
                         <div className="product_thubnil_for_mobile">
                           <img src={item?.productId?.thumbnail} alt="" />
                         </div>
-                        
-                        <div className="product_name_for_mobile" >
-                          <span style={{fontWeight:"500"}} >
-                          {item.productId?.name}
-                          </span>
-                          <div>
-                          ₹{item.size.FinalPrice}
+                        <div className="mobile_price_name_qunlity_div" >
+                          <div className="product_name_for_mobile" >
+                            <div style={{ fontWeight: "500" }} >
+                              {item.productId?.name}
+                            </div>
+                            <div>
+                              ₹{item.size.FinalPrice}
+                            </div>
+                          </div>
+                          <div className="cartPageButton cartPageButton_for_cart_mobile_view">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              onClick={() => handleRemoveFromCart(item.productId._id, item.size._id)}
+                              fill="currentColor"
+                              className="bi bi-dash text-black cart_buutons_plus_minus cart_buutons_plus_minus_for_mobile"
+                              style={{ cursor: "pointer" }}
+                              viewBox="0 0 16 16"
+                            >
+                              <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" />
+                            </svg>
+
+                            {productLoaders[item.productId._id] ? (
+                              <div className="loader_for_mobile_cart"></div>
+                            ) : (
+                              <p className="text-black card_quntity_mobile">{item.quantity}</p>
+                            )}
+
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              onClick={() => handleAddToCart(item.productId._id, item.size._id)}
+                              fill="currentColor"
+                              className="bi bi-plus text-black cart_buutons_plus_minus cart_buutons_plus_minus_for_mobile"
+                              style={{ cursor: "pointer" }}
+                              viewBox="0 0 16 16"
+                            >
+                              <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+                            </svg>
                           </div>
                         </div>
-                        <div className="cartPageButton cartPageButton_for_cart_mobile_view">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            onClick={() => handleRemoveFromCart(item.productId._id, item.size._id)}
-                            fill="currentColor"
-                            className="bi bi-dash text-black cart_buutons_plus_minus"
-                            style={{ cursor: "pointer" }}
-                            viewBox="0 0 16 16"
-                          >
-                            <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" />
-                          </svg>
-
-                          {productLoaders[item.productId._id] ? (
-                            <div className="loader_for_mobile_cart"></div>
-                          ) : (
-                            <p className="text-black">{item.quantity}</p>
-                          )}
-
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            onClick={() => handleAddToCart(item.productId._id, item.size._id)}
-                            fill="currentColor"
-                            className="bi bi-plus text-black cart_buutons_plus_minus "
-                            style={{ cursor: "pointer" }}
-                            viewBox="0 0 16 16"
-                          >
-                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
-                          </svg>
+                        <div className="cart_total_for_mobile">
+                          <div></div>
+                          <div>
+                            ₹{(item.size.FinalPrice * item.quantity).toFixed(2)}
+                          </div>
                         </div>
-                        <div className="cart_total_for_mobile">₹{(item.size.FinalPrice * item.quantity).toFixed(2)}</div>
 
                       </div>
                     ))}

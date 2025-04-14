@@ -376,7 +376,7 @@ const MyAddress = () => {
   return (
     <div className="new_home_page_tab-content new_home_page_address-tab">
       <div className="new_home_page_section-title">
-        <h2>Saved Addresses</h2>
+        <h2>Saved Address</h2>
       </div>
 
       {shippingAddresses.length > 0 && (

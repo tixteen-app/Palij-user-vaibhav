@@ -108,13 +108,14 @@
     padding: 10px 20px;
     border: none;
     font-size: 13px;
-    font-weight: 600;
+    font-weight: bold;
     cursor: pointer;
     background-color: #000000;
     border: 1px solid rgb(0, 0, 0);
     color: white;
     transition: all 0.5s ease;
     width: 100%;
+    font-family:Arial, sans-serif;
   }
   .input {
     width: 100%;
