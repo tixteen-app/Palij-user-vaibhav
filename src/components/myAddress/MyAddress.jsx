@@ -386,13 +386,14 @@ const MyAddress = () => {
         </div>
       )}
 
-   
+      <div className="w-100  text-center" >
       <button 
-        className="new_home_page_add-address-btn"
+        className="new_home_page_add-address-btn w-25"
         onClick={() => navigate("/shipping-address")}
-      >
+        >
         Add New Address
       </button>
+        </div>
 
       {/* Delete Confirmation Modal */}
       {deleteProductId && (
