@@ -448,7 +448,9 @@ const Cart = () => {
 
   return (
     <>
+    <div style={{ zIndex : 999999999999999}} >
       <ToastContainer />
+    </div>
 
       {fetchCartLoader && !hasFetched ? (
         <div className="loader_container_cart_page">
