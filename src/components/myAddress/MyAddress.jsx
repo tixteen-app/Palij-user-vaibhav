@@ -380,7 +380,7 @@ const MyAddress = () => {
       </div>
 
       {shippingAddresses.length > 0 && (
-        <div div className="d-flex flex-wrap gap-5">
+        <div div className="d-flex flex-wrap gap-5 justify-content-center ">
           {/* <h3>Shipping Addresses</h3> */}
           {shippingAddresses.map(address => renderAddressCard(address, true))}
         </div>
