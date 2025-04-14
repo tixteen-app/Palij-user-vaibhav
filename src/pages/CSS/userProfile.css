@@ -804,10 +804,11 @@
 .new_home_page_address-card {
   border: 1px solid #e5e7eb;
   border-radius: 0.5rem;
-  padding: 1rem;
+  padding: 1rem;  
   display: flex;
   flex-direction: column;
   gap: 0px;
+  width: 40%;
 }
 
 .new_home_page_address-header {
