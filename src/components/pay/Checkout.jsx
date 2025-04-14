@@ -872,7 +872,8 @@ function Checkout() {
 											CoupanApplied={appliedCoupon ? couponDiscount : cartItem?.totalPriceWithoutDiscount}
 											Final={cartItem?.totalPrice}
 											// Final={finaltotal}
-											ButtonName="PROCEED TO PAYMENT"
+											// ButtonName="PROCEED TO PAYMENT"
+											ButtonName="Proceed to Payment"
 											totalwithoutgst={totalAmountWithoutGST}
 											pricewithdevverycharge={finaltotal}
 											Razopaydiscount={0}
@@ -918,7 +919,7 @@ function Checkout() {
 											/>
 											<label
 												htmlFor="CashOnDelivery"
-												className="address-label"
+												className="address-label case_on_delivery_text"
 											>
 												Cash On Delivery
 											</label>
@@ -957,7 +958,8 @@ function Checkout() {
 										CoupanApplied={appliedCoupon ? couponDiscount : cartItem?.totalPriceWithoutDiscount}
 										Final={cartItem?.totalPrice}
 										// Final={finaltotal}
-										ButtonName="PLACE ORDER"
+										// ButtonName="PLACE ORDER"
+										ButtonName="Place order"
 										disabled={isSubmitDisabled}
 										isCashOnDelivery={selectPaymentMethod === "Cash On Delivery"}
 										totalwithoutgst={totalAmountWithoutGST}

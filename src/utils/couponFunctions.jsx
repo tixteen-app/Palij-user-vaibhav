@@ -138,7 +138,8 @@ const CouponFunctions = ({ updateCart }) => {
               CoupanApplied={appliedCoupon ? completeCart?.couapnDiscount : 0}
               Final={completeCart?.totalPrice}
               total={completeCart?.totalPriceWithoutDiscount}
-              ButtonName="PROCEED TO CHECKOUT"
+              // ButtonName="PROCEED TO CHECKOUT"
+              ButtonName="Procced to checkout"
               disabled={false}
               pricewithdevverycharge={completeCart?.totalPrice}
               onButtonClick={handelbuttonclick}
