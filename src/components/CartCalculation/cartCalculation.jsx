@@ -91,7 +91,7 @@ function CartCalculation({
 					</div>
 
 					<div className={styles.finalPrice}>
-						<span>Salling Price:</span>
+						<span>Selling Price:</span>
 						{loadingData.final ? (
 							<ShimmerEffect />
 						) : (
