@@ -1,5 +1,4 @@
-/* MyOrders.module.css */
-
+/* 
 .myOrders {
   width: 100%;
   display: flex;
@@ -96,7 +95,7 @@
 .orderItems {
   padding: 20px;
   max-height: 400px;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 .orderItem {
@@ -168,44 +167,274 @@
 .viewButton:hover {
   background-color: #f03f51;
 }
+ */
 
+ .myOrders {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.header {
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 2.1rem;
+  color: #2c3e50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.header p {
+  color: #7f8c8d;
+  font-size: 1rem;
+}
+
+.loader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  gap: 20px;
+}
+
+.loader p {
+  color: #7f8c8d;
+  font-size: 1.1rem;
+}
+
+.noOrders {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.noOrders h3 {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.noOrders p {
+  color: #7f8c8d;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.shopButton {
+  background-color: #e74c3c;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+}
+
+.shopButton:hover {
+  background-color: #c0392b;
+  transform: translateY(-2px);
+}
+
+.orderList {
+  display: grid;
+  gap: 25px;
+}
+
+.orderCard {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid #eee;
+}
+
+.orderCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.orderHeader {
+  background-color: #f8f9fa;
+  padding: 15px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.orderMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+}
+
+.orderId {
+  font-weight: 600;
+  color: #2c3e50;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.orderDate {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.orderStatus {
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  text-transform: capitalize;
+}
+
+.pending {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.processing {
+  background-color: #cce5ff;
+  color: #004085;
+}
+
+.shipped {
+  background-color: #d1e7dd;
+  color: #0f5132;
+}
+
+.delivered {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.cancelled {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.orderItems {
+  padding: 20px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.orderItem {
+  display: flex;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #f1f1f1;
+  gap: 20px;
+}
+
+.orderItem:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.productImage {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #eee;
+}
+
+.productInfo {
+  flex: 1;
+}
+
+.productInfo h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.productInfo p {
+  margin: 4px 0;
+  font-size: 0.9rem;
+  color: #7f8c8d;
+}
+
+.itemPrice {
+  font-weight: bold;
+  color: #27ae60;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.orderFooter {
+  background-color: #f8f9fa;
+  padding: 15px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #eee;
+}
+
+.orderTotal {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #2c3e50;
+}
+
+.viewButton {
+  background-color: #e74c3c;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.viewButton:hover {
+  background-color: #c0392b;
+  transform: translateY(-2px);
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
-  /* .myOrders {
-    padding: 15px;
-  }
-
-  .heading {
-    font-size: 2rem;
-  }
-
-  .orderCard {
-    border-radius: 8px;
-  }
-
   .orderHeader {
     flex-direction: column;
     align-items: flex-start;
   }
-
-  .orderItem {
-    flex-direction: column;
-  } */
-
-  /* 
-  .productImage {
-    width: 100%;
-    height: auto;
-    margin-right: 0;
-    margin-bottom: 15px;
-  } */
-  /* 
-  .orderFooter {
+  
+  .orderMeta {
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
+    gap: 8px;
   }
-
-  .viewButton {
-    align-self: flex-end;
-  } */
+  
+  .orderStatus {
+    align-self: flex-start;
+  }
 }

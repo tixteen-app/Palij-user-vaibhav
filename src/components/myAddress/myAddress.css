@@ -14,6 +14,10 @@
   margin-bottom: 20px;
   text-align: center;
 }
+.shipping_address_list_new_main_div{
+  width: 75%;
+
+}
 
 /* Content Section */
 .address-content {
@@ -195,6 +199,10 @@
 }
 
 @media (max-width: 550px) {
+  .shipping_address_list_new_main_div{
+    width: 90%;
+    
+  }
   .address-header h1 {
     font-size: 24px;
   }

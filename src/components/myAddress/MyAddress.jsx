@@ -382,7 +382,7 @@ const MyAddress = () => {
       {shippingAddresses.length > 0 && (
         <div className="w-100 d-flex justify-content-center flex-column align-items-center" >
 
-          <div className="d-flex flex-wrap gap-3 justify-content-between w-75">
+          <div className="d-flex flex-wrap gap-3 justify-content-between  shipping_address_list_new_main_div">
             {/* <h3>Shipping Addresses</h3> */}
             {shippingAddresses.map(address => renderAddressCard(address, true))}
           </div>
