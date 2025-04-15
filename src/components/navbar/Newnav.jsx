@@ -486,6 +486,7 @@ function Newnavbar() {
 	const location = useLocation()
 	const navigate = useNavigate()
 	const [moblieMenu, setMobileMenu] = useState(false)
+	console.log("mobile", moblieMenu)
 	const [openProfile, setOpenProfile] = useState(false)
 	const [products, setProducts] = useState([])
 	const [input, setInput] = useState("")
@@ -774,7 +775,7 @@ function Newnavbar() {
 		window.location.reload();
 	}
 	const handelloginclick =() => {
-	
+		setOpenProfile(false);
 	navigate("/palji-login")
 }
 
@@ -885,6 +886,7 @@ function Newnavbar() {
 										)
 									})}
 								</div>
+								{isloggedIn ? (
 								<div
 									className="right_profile_section_haldi_ram profile-icon-container"
 									onClick={handleProfileClick}
@@ -900,13 +902,43 @@ function Newnavbar() {
 												className="user_image_hald_ram_header"
 											/>
 										) : (
+											<>
 											<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 												<path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
 												<path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
 											</svg>
+											
+											</>
 										)}
 									</div>
 								</div>
+								):(
+								<>
+								<div
+									className="right_profile_section_haldi_ram profile-icon-container"
+									onClick={handelloginclick}
+									style={{ cursor: "pointer" }}
+								>
+									<div>
+										{userDatails?.userImage ? (
+											<img
+												src={userDatails.userImage}
+												alt="Profile"
+												className="user_image_hald_ram_header"
+											/>
+										) : (
+											<>
+											<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
+												<path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
+											</svg>
+											
+											</>
+										)}
+									</div>
+								</div>
+								</>	
+								)}
 							</div>
 						</div>
 					</div>
