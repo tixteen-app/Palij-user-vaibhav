@@ -213,7 +213,7 @@ const MyOrders = () => {
                                                 <h3>{item?.productId?.name}</h3>
                                                 <p>Quantity: {item?.quantity}</p>
                                                 <p className={styles.itemPrice}>
-                                                    <FiDollarSign /> ₹{item?.totalPrice.toLocaleString('en-IN')}
+                                                    ₹{item?.totalPrice.toLocaleString('en-IN')}
                                                 </p>
                                             </div>
                                         </div>
