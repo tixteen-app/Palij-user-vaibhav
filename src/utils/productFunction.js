@@ -161,6 +161,71 @@ export const addToCartCake = async (
 	  }));
 	}
   };
+
+  export const removeCakeFromCart = async (
+	itemId,
+	setProductLoaders,
+	setCartItems,
+	fetchCart
+  ) => {
+	const token = localStorage.getItem("token");
+	if (!token) {
+	  return;
+	}
+	try {
+	  setProductLoaders((prevState) => ({
+		...prevState,
+		[itemId]: true,
+	  }));
+  
+	  const method = "POST";
+	  const endpoint = "/api/remove-from-cart-cake";
+	  await makeApi(endpoint, method, { itemId });
+	  
+	  await fetchCart(setCartItems);
+	} catch (error) {
+	  console.log(error.response?.data);
+	} finally {
+	  setProductLoaders((prevState) => ({
+		...prevState,
+		[itemId]: false,
+	  }));
+	}
+  };
+  // Frontend productFunction.js updates
+export const incrementCakeQty = async (productId, sizeId, message) => {
+	const token = localStorage.getItem("token");
+	if (!token) return;
+  
+	try {
+	  const response = await makeApi('/api/increment-cake', 'POST', {
+		productId,
+		sizeId,
+		message
+	  });
+	  return response.data;
+	} catch (error) {
+	  console.error("Error incrementing cake quantity:", error);
+	  throw error;
+	}
+  };
+  
+  export const decrementCakeQty = async (productId, sizeId, message) => {
+	const token = localStorage.getItem("token");
+	if (!token) return;
+  
+	try {
+	  const response = await makeApi('/api/decrement-cake', 'POST', {
+		productId,
+		sizeId,
+		message
+	  });
+	  return response.data;
+	} catch (error) {
+	  console.error("Error decrementing cake quantity:", error);
+	  throw error;
+	}
+  };
   
 // export const addToCart = async (
 // 	productId,
@@ -421,40 +486,63 @@ export const cartItemRemoveFromCart = async (
 		}))
 	}
 }
+// export const deleteproductFromCart = async (
+// 	productId,
+// 	setProductLoaders,
+// 	setCartItems,
+// 	fetchCart,
+// 	selectProductSize,
+// 	quantity
+// ) => {
+// 	try {
+// 		// setProductLoaders((prevState) => ({
+// 		// 	...prevState,
+// 		// 	[productId]: true,
+// 		// }));
+// 		const method = "POST";
+// 		const endpoint = "/api/delete-product-from-cart";
+// 		await makeApi(endpoint, method, { productId, selectProductSize, productQuantity: quantity });
+
+// 		fetchCart(setCartItems);
+// 		let updatedCartItems = Cookies.get("cartItems") ? JSON.parse(Cookies.get("cartItems")) : [];
+// 		updatedCartItems = updatedCartItems.filter(item => item.productId !== productId);
+// 		Cookies.set("cartItems", JSON.stringify(updatedCartItems), { expires: 2 });
+// 	} catch (error) {
+// 		console.log(error);
+// 	} finally {
+// 		fetchCart(setCartItems);
+
+// 		// setProductLoaders((prevState) => ({
+// 		// 	...prevState,
+// 		// 	[productId]: false,
+// 		// }));
+// 		// RemoveCoupan()
+// 	}
+// };
+
+// Frontend productFunction.js Update
 export const deleteproductFromCart = async (
-	productId,
+	itemId,
 	setProductLoaders,
 	setCartItems,
-	fetchCart,
-	selectProductSize,
-	quantity
-) => {
+	fetchCart
+  ) => {
 	try {
-		// setProductLoaders((prevState) => ({
-		// 	...prevState,
-		// 	[productId]: true,
-		// }));
-		const method = "POST";
-		const endpoint = "/api/delete-product-from-cart";
-		await makeApi(endpoint, method, { productId, selectProductSize, productQuantity: quantity });
-
-		fetchCart(setCartItems);
-		let updatedCartItems = Cookies.get("cartItems") ? JSON.parse(Cookies.get("cartItems")) : [];
-		updatedCartItems = updatedCartItems.filter(item => item.productId !== productId);
-		Cookies.set("cartItems", JSON.stringify(updatedCartItems), { expires: 2 });
+	  setProductLoaders(prev => ({ ...prev, [itemId]: true }));
+	  
+	  const method = "POST";
+	  const endpoint = "/api/delete-product-from-cart";
+	  await makeApi(endpoint, method, { itemId });
+  
+	  await fetchCart(setCartItems);
 	} catch (error) {
-		console.log(error);
+	  console.error("Delete error:", error);
+	  toast.error("Failed to remove item");
 	} finally {
-		fetchCart(setCartItems);
-
-		// setProductLoaders((prevState) => ({
-		// 	...prevState,
-		// 	[productId]: false,
-		// }));
-		// RemoveCoupan()
+	  setProductLoaders(prev => ({ ...prev, [itemId]: false }));
+	  fetchCart(setCartItems);
 	}
-};
-
+  };
 
 export const updateCartCount = (cartItems) => {
 	const cartCount = cartItems.reduce((count, item) => count + item.quantity, 0)

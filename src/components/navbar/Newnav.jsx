@@ -486,7 +486,6 @@ function Newnavbar() {
 	const location = useLocation()
 	const navigate = useNavigate()
 	const [moblieMenu, setMobileMenu] = useState(false)
-	console.log("mobile", moblieMenu)
 	const [openProfile, setOpenProfile] = useState(false)
 	const [products, setProducts] = useState([])
 	const [input, setInput] = useState("")
