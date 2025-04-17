@@ -8,16 +8,14 @@ const MarqueeComponent = () => {
       <div className={styles.marquee}>
         <img src={assets.dotPoint} alt="dotpoint" />  <span className="text-black"> free shipping</span><span>on order above ₹750 </span>
         <img src={assets.dotPoint} alt="dotpoint" />  <span className="text-black"> free shipping</span><span>on order above ₹750 </span>
-        <img src={assets.dotPoint} alt="dotpoint" />  <span className="text-black"> free shipping</span><span>on order above ₹750 </span>
-        <img src={assets.dotPoint} alt="dotpoint" />  <span className="text-black"> free shipping</span><span>on order above ₹750 </span>
-        <img src={assets.dotPoint} alt="dotpoint" />  <span className="text-black"> free shipping</span><span>on order above ₹750 </span>
-        <img src={assets.dotPoint} alt="dotpoint" />  <span className="text-black"> free shipping</span><span>on order above ₹750 </span>
-        <img src={assets.dotPoint} alt="dotpoint" />  <span className="text-black"> free shipping</span><span>on order above ₹750 </span>
-        <img src={assets.dotPoint} alt="dotpoint" />  <span className="text-black"> free shipping</span><span>on order above ₹750 </span>
-        <img src={assets.dotPoint} alt="dotpoint" />  <span className="text-black"> free shipping</span><span>on order above ₹750 </span>
-        <img src={assets.dotPoint} alt="dotpoint" />  <span className="text-black"> free shipping</span><span>on order above ₹750 </span>
-        <img src={assets.dotPoint} alt="dotpoint" />  <span className="text-black"> free shipping</span><span>on order above ₹750 </span>
-        <img src={assets.dotPoint} alt="dotpoint" />  <span className="text-black"> free shipping</span><span>on order above ₹750 </span>
+      </div>
+
+      <div className={styles.marquee}>
+        <img src={assets.dotPoint} alt="dotpoint" />  
+        <span className="text-black"> fresh cake only </span>
+        <span>in Ludhiana </span>
+
+        
       </div>
     </Marquee>
   )

@@ -625,7 +625,7 @@ const Cart = () => {
                             <p className="productItemName1">{item.productId?.name}</p>
                           </div>
 
-                          <p className="item-price">{`₹${item.size.FinalPrice} x ${item?.quantity}`}</p>
+                          <p className="item-price"><span className="rs_color_cart" >₹</span>{`${item.size.FinalPrice} x ${item?.quantity}`}</p>
 
                           <div className="cartPageButton">
                             <svg
@@ -656,7 +656,7 @@ const Cart = () => {
                             </svg>
                           </div>
 
-                          <p className="cartItemTotal">₹{(item.size.FinalPrice * item.quantity).toFixed(2)}</p>
+                          <p className="cartItemTotal"><span className="rs_color_cart" >₹</span>{(item.size.FinalPrice * item.quantity).toFixed(2)}</p>
                         </div>
                       </div>
 
@@ -717,7 +717,7 @@ const Cart = () => {
                                 {item.productId?.name}
                               </div>
                               <div>
-                                ₹{item.size.FinalPrice}
+                                <span className="rs_color_cart" >₹</span>{item.size.FinalPrice}
                               </div>
                             </div>
                             <div className="cartPageButton cartPageButton_for_cart_mobile_view">
@@ -753,7 +753,7 @@ const Cart = () => {
                           <div className="cart_total_for_mobile">
                             <div></div>
                             <div>
-                              ₹{(item.size.FinalPrice * item.quantity).toFixed(2)}
+                            <span className="rs_color_cart" >₹</span>{(item.size.FinalPrice * item.quantity).toFixed(2)}
                             </div>
                           </div>
 

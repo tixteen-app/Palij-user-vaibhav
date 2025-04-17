@@ -1,4 +1,21 @@
+/* Simple Ingredients/Allergens Styles */
+.product_details_new_section {
+  margin: 20px 0;
+}
 
+.product_details_new_section h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.product_details_new_text {
+  font-size: 15px;
+  line-height: 1.5;
+  color: #555;
+  white-space: pre-line;
+}
 
 /* Pincode Check Styles */
 .pincodeCheckContainer {

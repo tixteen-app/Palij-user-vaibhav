@@ -1889,43 +1889,6 @@ function ProductDetails() {
 
             <div className={styles.description}>
               {product?.category?._id == "67b451f7ec3a4e4a3bbe5633" && <div className={styles.availableonlyspan}><span> Available Only in </span> <span style={{ textDecoration: 'underline', textUnderlineOffset: "3px" }} > Ludhiana </span> </div>}
-
-             
-
-
-              {/* {!isHoveringImage && <>
-                {product?.category?._id == "67b451f7ec3a4e4a3bbe5633" && isInCart && (
-                  <div className={styles.cakeMessageContainer}>
-                    <div className={styles.cakeMessage}>Cake Message</div>
-                    <input
-                      type="text"
-                      value={cakeMessage}
-                      onChange={(e) => setCakeMessage(e.target.value)}
-                      placeholder="Enter Cake Message..."
-                      maxLength={20}
-                      className={styles.cakeMessageInput}
-                    />
-                    <div className={styles.messageNote}>Max 20 characters</div>
-                  </div>
-                )}
-              </>} */}
-              {/* {isHoveringImage && <>
-                {product?.category?._id == "67b451f7ec3a4e4a3bbe5633" && isInCart && (
-                  <div className={styles.cakeMessageContainer}>
-                    <div className={styles.cakeMessage}>Cake Message</div>
-                    <input
-                      type="text"
-                      value={cakeMessage}
-                      onChange={(e) => setCakeMessage(e.target.value)}
-                      placeholder=""
-                      maxLength={20}
-                      className={styles.cakeMessageInput}
-                    />
-                    <div className={styles.messageNote}>Max 20 characters</div>
-                  </div>
-                )}
-              </>} */}
-
               <p className={styles.description}> </p>
             </div>
 
@@ -1965,6 +1928,24 @@ function ProductDetails() {
                 </div>
               )
             }
+
+{product?.ingridents && (
+  <div className={styles.product_details_new_section}>
+    <h2>INGREDIENTS</h2>
+    <p className={styles.product_details_new_text}>
+      {product.ingridents}
+    </p>
+  </div>
+)}
+
+{product?.allergen && (
+  <div className={styles.product_details_new_section}>
+    <h2>ALLERGENS</h2>
+    <p className={styles.product_details_new_text}>
+      {product.allergen}
+    </p>
+  </div>
+)}
 
           </div>
         </div>

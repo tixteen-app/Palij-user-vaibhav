@@ -4,7 +4,9 @@
   height: 100vh;
   width: 100%;
 }
-
+.rs_color_cart{
+  color: #e335a0;
+}
 .loader_container_cart_page{
   height: 100vh;
   display: flex;
