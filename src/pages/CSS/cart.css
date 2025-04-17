@@ -688,9 +688,12 @@
 .cart_items_details_inside_for_mobile_view{
   display: flex;
   align-items: center;
-  border: 1px solid black;
-  border-radius: 10px;
   padding: 5px;
+  
+}
+.moble_view_for_cart_border{
+  border-radius: 10px;
+  border: 1px solid black;
 
 }
 
