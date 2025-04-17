@@ -53,8 +53,9 @@ import profile_reset from "./profile_reset.png"
 import userprofile_menu from "./menu_icon.png"
 import empty_cart from "./empty-cart.svg"
 import pieceOfCake from "./peiceofCake.png"
-import homeBanner2 from "./new2.jpg"
-import homeBanner3 from "./new4.jpg"
+import homeBanner2 from "./newhomebanner1.jpg"
+import homeBanner3 from "./newhomebanner2.jpg"
+import homeBanner7 from "./newhomebanner3.jpg"
 import homeBannerMobile1 from "./new1.jpg"
 import homeBannerMobile2 from "./new3.jpg"
 import homeBannerMobile3 from "./new5.jpg"
@@ -137,6 +138,7 @@ export const assets = {
 	aboutLandingbanner1,
 	homeBanner3,
 	homeBanner4,
+	homeBanner7,
 	homeBannerMobile1,
 	homeBannerMobile2,
 	homeBannerMobile3,

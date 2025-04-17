@@ -61,7 +61,7 @@ function Cake() {
     }
 
     const handleCategoryClick = () => {
-        navigate(`/product/all-products?category=${categories[0]._id}`);
+        navigate(`/product/all-products?category=${categories[3]._id}`);
     };
 
     const fetchCartItems = async () => {

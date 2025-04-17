@@ -261,7 +261,7 @@ import sixthimage from "../assets/h-6.png"
 import seventhimage from "../assets/h-7.png"
 import eighthimage from "../assets/h-8.png"
 import ninthimage from "../assets/h-10.png"
-import newvideo from "../assets/homevideo.mp4"
+import newvideo from "../assets/homevideo1.mp4"
 import newvideomobile from "../assets/homevideomobile.mp4"
 import { motion } from "framer-motion"
 
