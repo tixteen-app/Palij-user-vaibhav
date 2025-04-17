@@ -1,4 +1,77 @@
 
+
+/* Pincode Check Styles */
+.pincodeCheckContainer {
+  margin: 20px 0;
+  padding: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  width: 50%;
+}
+
+.pincodeCheckTitle {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.pincodeInputGroup {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.pincodeInput {
+  flex: 1;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.pincodeCheckButton {
+  padding: 10px 20px;
+  background-color: #ff6b6b;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.pincodeCheckButton:hover {
+  background-color: #ff5252;
+}
+
+.pincodeCheckButton:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pincodeResult {
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pincodeAvailable {
+  background-color: #e6f7ee;
+  color: #28a745;
+  border: 1px solid #c3e6cb;
+}
+
+.pincodeNotAvailable {
+  background-color: #f8d7da;
+  color: #dc3545;
+  border: 1px solid #f5c6cb;
+}
+
 .productContainer {
   padding-top: 150px;
   margin: auto;
@@ -7,6 +80,7 @@
   /* align-items: start; */
   gap: 30px;
   position: relative;
+  padding-bottom: 50px;
 }
 
 

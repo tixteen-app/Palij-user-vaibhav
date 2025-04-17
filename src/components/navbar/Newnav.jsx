@@ -644,14 +644,11 @@ function Newnavbar() {
 		}
 
 		const formatted = [
-			{
-				name: "STORE",
-				nav: ""
-			},
+			
 		];
 
 		const predefinedOrder = [
-			"Shop",
+			"DRY CAKE",
 			"PREMIUM COOKIES",
 			"Savouries",
 			"Cakes",
