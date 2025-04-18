@@ -1733,7 +1733,6 @@ function ProductDetails() {
                             </div>
                           ) : (
                             <>
-                              {/* <p>{cartQuantity}</p> */}
                               {
                                 countProductsWithSameId(productId) > 1 ? (
                                   <p>{countProductsWithSameId(productId)}</p>
@@ -1741,7 +1740,6 @@ function ProductDetails() {
                                   <p>{cartQuantity}</p>
                                 )
                               }
-                              {/* <p>{countProductsWithSameId(productId)}</p>  */}
                             </>
                           )}
                           <svg xmlns="http://www.w3.org/2000/svg" onClick={handleIncreaseQuantity} width="30" height="30" fill="currentColor" class="bi bi-plus text-black" style={{ cursor: "pointer" }} viewBox="0 0 16 16">

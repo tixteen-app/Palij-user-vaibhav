@@ -256,6 +256,14 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
         return () => window.removeEventListener('scroll', handleScroll);
     }, [visibleProducts, products]);
 
+    const countProductsWithSameId = (productId) => {
+        if (!completeCart?.orderItems) return 0;
+
+        return completeCart.orderItems.reduce((count, item) => {
+            return item.productId._id === productId ? count + 1 : count;
+        }, 0);
+    };
+
     return (
         <div className={styles.mainContainer}>
             {showPopup && <LoginPopup onClose={closePopup} />}
@@ -270,110 +278,37 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
                         <div className="main_search_div_for_mobile_cart">
                             <div className={`search_bar_card_for_mobile main_search_result_div_for_baking ${search ? styles.searchPopupActive : ''}`}>
                                 {displayedProducts.map((result, id) => (
-                                    // <div className="searched_product_details_div" key={id}>
-                                    //     <div className="searched_product_details_div_img">
-                                    //         <img src={result.thumbnail} alt={result.name} className="searched_product_details_img" />
-                                    //     </div>
-                                    //     <div className="searched_product_details_div_info">
-                                    //         <div className="searched_product_details_div_info_name">
-                                    //             <div>{result.name}</div>
-                                    //             <div>
-                                    //                 {result.size.length > 0 && (
-                                    //                     <>₹{result.size[0].FinalPrice}</>
-                                    //                 )}
-                                    //             </div>
-                                    //         </div>
-                                    //         <div className="searched_product_details_div_info_btn">
-                                    //             <div className="searched_product_details_div_info_btn_view" onClick={() => handleNavigate(result._id)}>View</div>
-                                    //             <div className="searched_product_details_div_info_btn_cart">
-                                    //                 {cartItems.some(cartItem => cartItem.productId === result._id && cartItem.size === result.size[0]._id) ? (
-                                    //                     <div className="homeproduct_addtocart_and_quantity_div homeproduct_addtocart_and_quantity_div_for_Search">
-                                    //                         <div>
-                                    //                             <svg
-                                    //                                 xmlns="http://www.w3.org/2000/svg"
-                                    //                                 onClick={() => handleDecreaseQuantity(result._id, result.size[0])}
-                                    //                                 width="30"
-                                    //                                 height="30"
-                                    //                                 fill="currentColor"
-                                    //                                 className="bi bi-dash text-white"
-                                    //                                 style={{ cursor: "pointer" }}
-                                    //                                 viewBox="0 0 16 16"
-                                    //                             >
-                                    //                                 <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" />
-                                    //                             </svg>
-                                    //                         </div>
-                                    //                         <div style={{ minWidth: "20px", textAlign: "center" }}>
-                                    //                             {quantityLoading[result._id] ? (
-                                    //                                 <div style={{ paddingTop: "4px" }}>
-                                    //                                     <div className="loader_for_home_page"></div>
-                                    //                                 </div>
-                                    //                             ) : (
-                                    //                                 <div>
-                                    //                                     {cartItems.find(cartItem => cartItem.productId === result._id && cartItem.size === result.size[0]._id)?.quantity || 0}
-                                    //                                 </div>
-                                    //                             )}
-                                    //                         </div>
-                                    //                         <div>
-                                    //                             <svg
-                                    //                                 xmlns="http://www.w3.org/2000/svg"
-                                    //                                 onClick={() => handleIncreaseQuantity(result._id, result.size[0])}
-                                    //                                 width="30"
-                                    //                                 height="30"
-                                    //                                 fill="currentColor"
-                                    //                                 className="bi bi-plus text-white"
-                                    //                                 style={{ cursor: "pointer" }}
-                                    //                                 viewBox="0 0 16 16"
-                                    //                             >
-                                    //                                 <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
-                                    //                             </svg>
-                                    //                         </div>
-                                    //                     </div>
-                                    //                 ) : (
-                                    //                     <div
-                                    //                         className="searched_product_details_div_info_btn_cart"
-                                    //                         onClick={() => handleIncreaseQuantity(result._id, result.size[0])}
-                                    //                     >
-                                    //                         {quantityLoading[result._id] ? (
-                                    //                             <div className="loader_for_home_page"></div>
-                                    //                         ) : (
-                                    //                             "ADD"
-                                    //                         )}
-                                    //                     </div>
-                                    //                 )}
-                                    //             </div>
-                                    //         </div>
-                                    //     </div>
-                                    // </div>
-                                    <div
-								className="result-item_for_bak"
-								key={id}
-								onClick={() => handleNavigate(result._id)}
-							>
-								<div className="searched_product_details_div_img" >
-									<img src={result.thumbnail} alt={result.name} className="searched_product_details_img_for_bakingo" />
-								</div>
-								<div className="searched_product_details_div_info_for_baking" >
-									<div className="searched_product_details_div_info_name_for_baking" >{result.name}</div>
-									{/* price */}
-									<div className="searched_product_details_div_info_price_for_baking" >
-										{result.size && result.size.length > 0 && (
-											<>
-												<span className="Rs_text_homeproduct_search_bakingo"> ₹</span>
-												<span className="price_text_homeproduct_serach_bakingo">{result.size[0].FinalPrice}</span>
-												{result.size[0].price - result.size[0].FinalPrice > 1 && (
-													<>
-														<span className="original_text_homeproduct ps-1">₹{result.size[0].price}</span>
-														<span className="discount_text_homeproduct">
-															-{Math.round(((result.size[0].price - result.size[0].FinalPrice) / product.size[0].price) * 100)}%
-														</span>
-													</>
-												)}
-											</>
-										)}
-									</div>
-								</div>
 
-							</div>
+                                    <div
+                                        className="result-item_for_bak"
+                                        key={id}
+                                        onClick={() => handleNavigate(result._id)}
+                                    >
+                                        <div className="searched_product_details_div_img" >
+                                            <img src={result.thumbnail} alt={result.name} className="searched_product_details_img_for_bakingo" />
+                                        </div>
+                                        <div className="searched_product_details_div_info_for_baking" >
+                                            <div className="searched_product_details_div_info_name_for_baking" >{result.name}</div>
+                                            {/* price */}
+                                            <div className="searched_product_details_div_info_price_for_baking" >
+                                                {result.size && result.size.length > 0 && (
+                                                    <>
+                                                        <span className="Rs_text_homeproduct_search_bakingo"> ₹</span>
+                                                        <span className="price_text_homeproduct_serach_bakingo">{result.size[0].FinalPrice}</span>
+                                                        {result.size[0].price - result.size[0].FinalPrice > 1 && (
+                                                            <>
+                                                                <span className="original_text_homeproduct ps-1">₹{result.size[0].price}</span>
+                                                                <span className="discount_text_homeproduct">
+                                                                    -{Math.round(((result.size[0].price - result.size[0].FinalPrice) / product.size[0].price) * 100)}%
+                                                                </span>
+                                                            </>
+                                                        )}
+                                                    </>
+                                                )}
+                                            </div>
+                                        </div>
+
+                                    </div>
                                 ))}
                             </div>
                         </div>
@@ -435,7 +370,7 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
                                         <div className={styles.sortContainer}>
 
                                             <div className={styles.slectedcatnamedesktop}  >
-                                            {displayedProducts.length > 0 && <div className={styles.slectedcatnamedesktopcatname} >{categoryName}</div>}
+                                                {displayedProducts.length > 0 && <div className={styles.slectedcatnamedesktopcatname} >{categoryName}</div>}
                                             </div>
                                             <div className={styles.customDropdown}>
                                                 <div className={styles.dropdownHeader} onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
@@ -591,7 +526,16 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
                                                                             <div className="loader_for_home_page"></div>
                                                                         ) : (
                                                                             <div>
-                                                                                {cartItems.find(cartItem => cartItem.productId === product._id && cartItem.size === product.size[0]._id)?.quantity || 0}
+                                                                                {/* {cartItems.find(cartItem => cartItem.productId === product._id && cartItem.size === product.size[0]._id)?.quantity || 0} */}
+                                                                                {
+                                                                                    countProductsWithSameId(product._id) > 1 ? (
+                                                                                        <>{countProductsWithSameId(product._id)}</>
+                                                                                    ) : (
+                                                                                        <>
+                                                                                            {cartItems.find(cartItem => cartItem.productId === product._id && cartItem.size === product.size[0]._id)?.quantity || 0}
+                                                                                        </>
+                                                                                    )
+                                                                                }
                                                                             </div>
                                                                         )}
                                                                     </div>
