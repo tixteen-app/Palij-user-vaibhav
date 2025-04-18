@@ -1,0 +1,394 @@
+/* Main section */
+.palji_instagram_section {
+    position: relative;
+    padding: 4rem 0;
+    overflow: hidden;
+    font-family: "Playfair Display", serif;
+    background-color: #fff9fb;
+  }
+  
+  .palji_container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Decorative elements */
+  .palji_decorative_circle_left {
+    position: absolute;
+    left: -5rem;
+    top: 20%;
+    width: 15rem;
+    height: 15rem;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,77,141,0.15) 0%, rgba(255,77,141,0) 70%);
+    z-index: 0;
+  }
+  
+  .palji_decorative_circle_right {
+    position: absolute;
+    right: -7rem;
+    bottom: 15%;
+    width: 20rem;
+    height: 20rem;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(142,36,170,0.1) 0%, rgba(142,36,170,0) 70%);
+    z-index: 0;
+  }
+  
+  .palji_decorative_dots {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(#ff4d8d 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.05;
+    z-index: 0;
+  }
+  
+  /* Header section */
+  .palji_header {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .palji_title {
+    font-size: 2.75rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    font-family: "Playfair Display", serif;
+    color: #2d2d2d;
+    line-height: 1.2;
+  }
+  
+  .palji_highlight {
+    color: #ff4d8d;
+    position: relative;
+    display: inline-block;
+  }
+/*   
+  .palji_highlight:after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background-color: rgba(255, 77, 141, 0.2);
+    z-index: -1;
+    border-radius: 4px;
+  } */
+  
+  .palji_subtitle {
+    color: #666;
+    max-width: 36rem;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+  
+  /* Loading spinner */
+  .palji_loading_spinner {
+    width: 60px;
+    height: 60px;
+    border: 5px solid rgba(255, 77, 141, 0.1);
+    border-top: 5px solid #ff4d8d;
+    border-radius: 50%;
+    animation: palji_spin 1s linear infinite;
+    margin: 3rem auto;
+    position: relative;
+    z-index: 1;
+  }
+  
+  @keyframes palji_spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Feed container */
+  .palji_feed_container {
+    position: relative;
+    margin: 0 -1.5rem;
+    padding: 1rem 0;
+  }
+  
+  /* Navigation buttons */
+  .palji_nav_button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background-color: white;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .palji_nav_button:hover {
+    background-color: #ff4d8d;
+    box-shadow: 0 6px 20px rgba(255, 77, 141, 0.3);
+  }
+  
+  .palji_nav_button:hover .palji_nav_icon {
+    stroke: white;
+  }
+  
+  .palji_nav_left {
+    left: 0.5rem;
+  }
+  
+  .palji_nav_right {
+    right: 0.5rem;
+  }
+  
+  .palji_nav_disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    background-color: #f5f5f5;
+  }
+  
+  .palji_nav_disabled:hover {
+    background-color: #f5f5f5;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .palji_nav_disabled .palji_nav_icon {
+    stroke: #999;
+  }
+  
+  .palji_nav_icon {
+    stroke: #ff4d8d;
+    transition: stroke 0.3s ease;
+  }
+  
+  /* Posts container */
+  .palji_posts_container {
+    display: flex;
+    overflow-x: auto;
+    gap: 1.5rem;
+    padding: 0.5rem 1.5rem;
+    scroll-snap-type: x mandatory;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+  }
+  
+  .palji_posts_container::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Instagram post */
+  .palji_instagram_post {
+    flex-shrink: 0;
+    scroll-snap-align: center;
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    display: block;
+    text-decoration: none;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  
+  .palji_instagram_post:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(255, 77, 141, 0.2);
+  }
+  
+  .palji_post_image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+  
+  .palji_instagram_post:hover .palji_post_image {
+    transform: scale(1.05);
+  }
+  
+  .palji_post_overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 60%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem;
+  }
+  
+  .palji_instagram_post:hover .palji_post_overlay {
+    opacity: 1;
+  }
+  
+  .palji_post_icon {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease 0.1s;
+  }
+  
+  .palji_instagram_post:hover .palji_post_icon {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .palji_instagram_svg {
+    stroke: white;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  }
+  
+  .palji_post_stats {
+    display: flex;
+    gap: 1.5rem;
+    align-self: stretch;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+  }
+  
+  .palji_instagram_post:hover .palji_post_stats {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s;
+  }
+  
+  .palji_stat_item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+  
+  .palji_stat_icon {
+    stroke: white;
+    stroke-width: 2;
+    width: 18px;
+    height: 18px;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+  }
+  
+  /* Footer */
+  .palji_footer {
+    text-align: center;
+    margin-top: 4rem;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .palji_follow_button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: linear-gradient(to right, #ff4d8d, #8e24aa);
+    color: white;
+    padding: 1rem 2.25rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 77, 141, 0.3);
+    border: none;
+    cursor: pointer;
+    font-size: 1.05rem;
+  }
+  
+  .palji_follow_button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 77, 141, 0.4);
+    opacity: 1;
+  }
+  
+  .palji_follow_icon {
+    stroke: white;
+    stroke-width: 1.5;
+  }
+  
+  /* Media queries */
+  @media (max-width: 992px) {
+    .palji_container {
+      padding: 0 1.5rem;
+    }
+    
+    .palji_title {
+      font-size: 2.25rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .palji_instagram_section {
+      padding: 3rem 0;
+    }
+    
+    .palji_title {
+      font-size: 2rem;
+    }
+    
+    .palji_subtitle {
+      font-size: 1rem;
+    }
+    
+    .palji_instagram_post {
+      width: 260px;
+      height: 260px;
+    }
+    
+    .palji_feed_container {
+      margin: 0 -1rem;
+    }
+    
+    .palji_posts_container {
+      padding: 0.5rem 1rem;
+      gap: 1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .palji_container {
+      padding: 0 1rem;
+    }
+    
+    .palji_title {
+      font-size: 1.75rem;
+    }
+    
+    .palji_header {
+      margin-bottom: 2rem;
+    }
+    
+    .palji_instagram_post {
+      width: 240px;
+      height: 240px;
+    }
+    
+    .palji_footer {
+      margin-top: 3rem;
+    }
+    
+    .palji_follow_button {
+      padding: 0.85rem 1.75rem;
+      font-size: 1rem;
+    }
+  }

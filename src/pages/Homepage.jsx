@@ -10,6 +10,7 @@ import Satisfation from '../component/satisfation'
 import Pcookies from '../component/pcookies'
 import Gifthamper from '../component/giftham'
 import Cake from '../component/cake'
+import Livefeed from '../component/livefeed'
 
 function Homepage() {
   return (
@@ -25,6 +26,7 @@ function Homepage() {
       <Gifthamper />
       <Cake/>
       <Explore />
+      <Livefeed/>
       <TestimonialSlider />
 
     </div>

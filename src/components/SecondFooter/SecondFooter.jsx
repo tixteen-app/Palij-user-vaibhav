@@ -1,10 +1,13 @@
 import React from 'react';
 import './SecondFooter.css'
 import { assets } from '../../assets/assets';
+import FloatingButton from '../../component/whatapp';
 
 
 const Footer = () => {
   return (
+    <>
+    <FloatingButton/>
     <footer className="new_footer">
       <div className="new_footer_container">
         <div className="new_footer_content">
@@ -87,6 +90,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
+    </>
   );
 };
 

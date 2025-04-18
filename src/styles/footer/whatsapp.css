@@ -1,0 +1,12 @@
+.whatsapp-floating-icon {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    left: 40px;
+    z-index: 100;
+  }
+
+.whatsapp-floating-icon .whatsapp-floating-icon__my-float {
+    margin-top: 16px; 
+}
