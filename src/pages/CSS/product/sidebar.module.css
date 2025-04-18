@@ -1,3 +1,37 @@
+.categoryItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  gap: 40px;
+}
+
+.subcategoryIcon {
+  color: #666;
+  font-size: 1.2rem;
+  transition: transform 0.2s ease;
+}
+
+.rotateIcon {
+  transform: rotate(90deg);
+}
+
+
+
+.subcategories {
+  padding-left: 15px;
+  margin-top: 5px;
+}
+
+.activeCategory {
+  /* Your existing active category styles */
+}
+
+.activeSubcategory {
+  /* Your existing active subcategory styles */
+}
+
+
 .categories div {
   display: flex;
   flex-direction: column;
@@ -73,3 +107,4 @@
 .sidebar_hr {
   border: 1px solid #b5651d;
 }
+

@@ -178,7 +178,6 @@ const FilterDropdown = ({ show, onClose, onApply }) => {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedCategoryname, setSelectedCategoryname] = useState("");  // New state for category name
-  console.log("[[[[",selectedCategoryname);
   const [selectedSubcategory, setSelectedSubcategory] = useState("");
   const [priceRange, setPriceRange] = useState([50, 5000]);
 
