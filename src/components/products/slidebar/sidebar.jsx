@@ -60,26 +60,116 @@ const ProductSidebar = () => {
   //   }, []);
 
 
+  // useEffect(() => {
+  //   async function fetchCategories() {
+  //     try {
+  //       setCatloader(true);
+
+  //       // Check if categories exist in localStorage and are not expired
+  //       const cachedCategories = localStorage.getItem('cachedCategories');
+  //       const cachedTimestamp = localStorage.getItem('categoriesTimestamp');
+  //       const currentTime = new Date().getTime();
+  //       const twoMinutes = 2 * 60 * 1000; // 2 minutes in milliseconds
+
+  //       if (cachedCategories && cachedTimestamp && (currentTime - cachedTimestamp < twoMinutes)) {
+  //         // Use cached categories if they exist and are fresh
+  //         const parsedCategories = JSON.parse(cachedCategories);
+  //         setCategories(parsedCategories);
+
+  //         // Sync with URL using cached categories
+  //         const urlCategoryId = queryParams.get("category");
+  //         if (urlCategoryId) {
+  //           const matchedCategory = parsedCategories.find(
+  //             (category) => category._id === urlCategoryId
+  //           );
+  //           if (matchedCategory) {
+  //             setCategoryName(matchedCategory.name);
+  //           }
+  //         }
+  //       } else {
+  //         // Fetch fresh data from API
+  //         const response = await makeApi("/api/get-all-categories", "GET");
+  //         if (response.status === 200) {
+  //           const freshCategories = response.data.categories;
+  //           setCategories(freshCategories);
+
+  //           // Cache the fresh data with current timestamp
+  //           localStorage.setItem('cachedCategories', JSON.stringify(freshCategories));
+  //           localStorage.setItem('categoriesTimestamp', currentTime.toString());
+
+  //           // Sync with URL using fresh categories
+  //           const urlCategoryId = queryParams.get("category");
+  //           if (urlCategoryId) {
+  //             const matchedCategory = freshCategories.find(
+  //               (category) => category._id === urlCategoryId
+  //             );
+  //             if (matchedCategory) {
+  //               setCategoryName(matchedCategory.name);
+  //             }
+  //           }
+  //         }
+  //       }
+  //     } catch (error) {
+  //       console.log("Error fetching categories:", error);
+  //       // If API fails but we have cached data, use that as fallback
+  //       const cachedCategories = localStorage.getItem('cachedCategories');
+  //       if (cachedCategories) {
+  //         const parsedCategories = JSON.parse(cachedCategories);
+  //         setCategories(parsedCategories);
+  //       }
+  //     } finally {
+  //       setCatloader(false);
+  //     }
+  //   }
+
+  //   fetchCategories();
+  // }, []);
   useEffect(() => {
+    const categoryOrder = [
+      "PREMIUM COOKIES",
+      "Savouries",
+      "Cakes",
+      "DRY CAKE",
+      "GIFT HAMPERS",
+    ];
+  
+    function sortCategoriesByOrder(categories) {
+      return categories.sort((a, b) => {
+        const indexA = categoryOrder.findIndex(
+          (name) => name.toLowerCase() === a.name.toLowerCase()
+        );
+        const indexB = categoryOrder.findIndex(
+          (name) => name.toLowerCase() === b.name.toLowerCase()
+        );
+    
+        const safeIndexA = indexA === -1 ? categoryOrder.length : indexA;
+        const safeIndexB = indexB === -1 ? categoryOrder.length : indexB;
+    
+        return safeIndexA - safeIndexB;
+      });
+    }
+    
+  
     async function fetchCategories() {
       try {
         setCatloader(true);
-
+  
         // Check if categories exist in localStorage and are not expired
         const cachedCategories = localStorage.getItem('cachedCategories');
         const cachedTimestamp = localStorage.getItem('categoriesTimestamp');
         const currentTime = new Date().getTime();
         const twoMinutes = 2 * 60 * 1000; // 2 minutes in milliseconds
-
+  
         if (cachedCategories && cachedTimestamp && (currentTime - cachedTimestamp < twoMinutes)) {
           // Use cached categories if they exist and are fresh
           const parsedCategories = JSON.parse(cachedCategories);
-          setCategories(parsedCategories);
-
+          const sortedCategories = sortCategoriesByOrder(parsedCategories);
+          setCategories(sortedCategories);
+  
           // Sync with URL using cached categories
           const urlCategoryId = queryParams.get("category");
           if (urlCategoryId) {
-            const matchedCategory = parsedCategories.find(
+            const matchedCategory = sortedCategories.find(
               (category) => category._id === urlCategoryId
             );
             if (matchedCategory) {
@@ -91,16 +181,17 @@ const ProductSidebar = () => {
           const response = await makeApi("/api/get-all-categories", "GET");
           if (response.status === 200) {
             const freshCategories = response.data.categories;
-            setCategories(freshCategories);
-
+            const sortedCategories = sortCategoriesByOrder(freshCategories);
+            setCategories(sortedCategories);
+  
             // Cache the fresh data with current timestamp
             localStorage.setItem('cachedCategories', JSON.stringify(freshCategories));
             localStorage.setItem('categoriesTimestamp', currentTime.toString());
-
+  
             // Sync with URL using fresh categories
             const urlCategoryId = queryParams.get("category");
             if (urlCategoryId) {
-              const matchedCategory = freshCategories.find(
+              const matchedCategory = sortedCategories.find(
                 (category) => category._id === urlCategoryId
               );
               if (matchedCategory) {
@@ -115,15 +206,17 @@ const ProductSidebar = () => {
         const cachedCategories = localStorage.getItem('cachedCategories');
         if (cachedCategories) {
           const parsedCategories = JSON.parse(cachedCategories);
-          setCategories(parsedCategories);
+          const sortedCategories = sortCategoriesByOrder(parsedCategories);
+          setCategories(sortedCategories);
         }
       } finally {
         setCatloader(false);
       }
     }
-
+  
     fetchCategories();
   }, []);
+  
 
   useEffect(() => {
     // This effect syncs the selected category with URL changes

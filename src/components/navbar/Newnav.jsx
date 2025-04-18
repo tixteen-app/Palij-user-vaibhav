@@ -648,10 +648,10 @@ function Newnavbar() {
 		];
 
 		const predefinedOrder = [
-			"DRY CAKE",
 			"PREMIUM COOKIES",
 			"Savouries",
 			"Cakes",
+			"DRY CAKE",
 			"GIFT HAMPERS"
 		];
 
