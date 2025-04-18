@@ -1039,3 +1039,77 @@
   transform: translateY(-50%);
   cursor: pointer;
 }
+
+
+
+
+/* Message Display Container */
+.new_message_popup__display_container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+  border-bottom: 1px solid transparent;
+}
+
+.new_message_popup__display_text {
+  color: #333;
+  font-size: 0.9rem;
+  font-style: italic;
+  text-decoration: underline ;
+}
+
+.new_message_popup__edit_icon {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.new_message_popup__edit_icon:hover {
+  transform: scale(1.1);
+}
+
+/* Edit Container */
+.new_message_popup__edit_container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.new_message_popup__update_btn {
+  background: linear-gradient(135deg, #ff6b9e 0%, #ff8fab 100%);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 12px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.new_message_popup__update_btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(255, 107, 158, 0.3);
+}
+
+.new_message_popup__update_btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Keep existing message input styles */
+.message-input-bottom-border {
+  width: 100%;
+  padding: 4px 0;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  font-size: 0.9rem;
+  background: transparent;
+  transition: border-color 0.3s;
+}
+
+.message-input-bottom-border:focus {
+  outline: none;
+  border-bottom-color: #EE5564;
+}

@@ -108,6 +108,15 @@ function Cake() {
         setShowPopup(false);
     };
 
+    const countProductsWithSameId = (productId) => {
+        if (!completeCart?.orderItems) return 0;
+    
+        return completeCart.orderItems.reduce((count, item) => {
+          return item.productId._id === productId ? count + 1 : count;
+        }, 0);
+      };
+    
+
     return (
         <>
             {showPopup && <LoginPopup onClose={closePopup} />}
@@ -225,7 +234,16 @@ function Cake() {
                                                             <div className="loader_for_home_page"></div>
                                                         ) : (
                                                             <div>
-                                                                {cartItems.find(cartItem => cartItem.productId === product._id && cartItem.size === product.size[0]._id)?.quantity || 0}
+                                                                {/* {cartItems.find(cartItem => cartItem.productId === product._id && cartItem.size === product.size[0]._id)?.quantity || 0} */}
+                                                                {
+                                                                                    countProductsWithSameId(product._id) > 1 ? (
+                                                                                        <>{countProductsWithSameId(product._id)}</>
+                                                                                    ) : (
+                                                                                        <>
+                                                                                            {cartItems.find(cartItem => cartItem.productId === product._id && cartItem.size === product.size[0]._id)?.quantity || 0}
+                                                                                        </>
+                                                                                    )
+                                                                                }
                                                             </div>
                                                         )}
                                                     </div>

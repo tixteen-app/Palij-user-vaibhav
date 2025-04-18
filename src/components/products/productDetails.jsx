@@ -1764,6 +1764,54 @@ function ProductDetails() {
                     </div>
                   </div>
                   {showCakeMessagePopup && (
+                    <div className="new_message_popup__overlay">
+                      <div className="new_message_popup__popup">
+                        <div className="new_message_popup__header">
+                          <h3 className="new_message_popup__title">Personalize Your Cake</h3>
+                          <p className="new_message_popup__subtitle">Add a special message to make it unique!</p>
+                        </div>
+                        <div className="new_message_popup__content">
+                          <textarea
+                            className="new_message_popup__textarea"
+                            value={tempCakeMessage}
+                            onChange={(e) => setTempCakeMessage(e.target.value)}
+                            placeholder="Happy Birthday! 🎂 (max 20 characters)"
+                            maxLength={20}
+                          />
+                          <div className="new_message_popup__counter">
+                            {tempCakeMessage.length}/20 characters
+                          </div>
+                        </div>
+                        <div className="new_message_popup__buttons">
+                          <button
+                            className="new_message_popup__button new_message_popup__button--cancel"
+                            onClick={() => {
+                              setShowCakeMessagePopup(false);
+                              setTempCakeMessage("");
+                            }}
+                            disabled={isAddingToCart}
+                          >
+                            Cancel
+                          </button>
+                          <button
+                            className="new_message_popup__button new_message_popup__button--save"
+                            onClick={handleAddToCartWithMessage}
+                          // disabled={isAddingToCart || !tempCakeMessage.trim()}
+                          >
+                            {isAddingToCart ? (
+                              <>
+                                <span className="new_message_popup__spinner"></span>
+                                Adding to Cart...
+                              </>
+                            ) : (
+                              'Add Message'
+                            )}
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  {/* {showCakeMessagePopup && (
                     <div className="message_popup_cake__overlay">
                       <div className="message_popup_cake__popup">
                         <h3>Add a Message for Your Cake</h3>
@@ -1795,7 +1843,7 @@ function ProductDetails() {
                         </div>
                       </div>
                     </div>
-                  )}
+                  )} */}
                   <div className={styles.allAddToCart}>
                     {sizes.length > 1 && sizes.some(size => size.size && size.size.toLowerCase() !== 'null') && (
                       <div className={styles.sizeOptions}>
@@ -1908,7 +1956,7 @@ function ProductDetails() {
 
             {product?.ingridents && (
               <div className={styles.product_details_new_section}>
-                <h2>INGREDIENTS</h2>
+                <h2 className={styles.title_for_ingredients} >INGREDIENTS</h2>
                 <p className={styles.product_details_new_text}>
                   {product.ingridents}
                 </p>
@@ -1917,7 +1965,7 @@ function ProductDetails() {
 
             {product?.allergen && (
               <div className={styles.product_details_new_section}>
-                <h2>ALLERGENS</h2>
+                <h2 className={styles.title_for_ingredients}>ALLERGENS</h2>
                 <p className={styles.product_details_new_text}>
                   {product.allergen}
                 </p>
