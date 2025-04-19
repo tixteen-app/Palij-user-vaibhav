@@ -167,7 +167,7 @@
 .sizeButtondiv{
   display: flex;
   justify-content: space-between;
-  background: #ffffff;
+  background: rgb(208 149 159 / 39%);
   color: #000000;
   width: 150px;
   border: 2px solid #e74c3c;
@@ -180,10 +180,12 @@
   transition: all 0.3s ease-in-out;
 }
 .selectedSizeButton{
-  background: #d9d9d9;
+  background: white;
   color: #000000;
   font-weight: 400;
-  border: 2px solid #6d6d6d;
+  /* border: 2px solid #6d6d6d; */
+  border: 2px solid #e74c3c;
+
   transition: all 0.3s ease-in-out;
 }
 .selectQuntitytext{
@@ -739,8 +741,8 @@ font-weight: 500;
 }
 
 .subImg1 img {
-  width: 120px;
-  height: 120px;
+  width: 90px;
+  height: 90px;
   object-fit: contain;
   border: 1px solid var(--redPink);
   padding: 10px;
@@ -1046,3 +1048,7 @@ font-weight: 500;
 }
 
 /* Adjust other styles as needed */
+
+
+
+
