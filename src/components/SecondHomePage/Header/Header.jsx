@@ -40,7 +40,7 @@ const slidesMobile = [
   },
   {
     id: 4,
-    image: assets.homeBanner7,
+    image: assets.homeBannerMobile5,
     title: 'Butter Garlic Rusk',
     description: 'Deliciously Baked & Crispy',
   },

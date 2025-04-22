@@ -119,24 +119,24 @@ const Cart = () => {
           ...prev,
           [productToDelete._id]: true
         }));
-  
+
         await deleteproductFromCart(
           productToDelete._id,
           setProductLoaders,
           setCartItems,
           fetchCart
         );
-  
+
         // Optimistically update the UI
         setCompleteCart(prev => ({
           ...prev,
           orderItems: prev.orderItems.filter(item => item._id !== productToDelete._id)
         }));
-  
+
         setShowConfirmDialog(false);
         setProductToDelete(null);
         updateCart();
-        
+
         // toast.success("Item removed successfully");
       } catch (error) {
         console.error("Error deleting item:", error);
@@ -473,22 +473,11 @@ const Cart = () => {
 
 
               <div className="cartcalulaction-comp">
-                <CouponFunctions updateCart={updateCart} toastContainer={<ToastContainer position="top-right"
-                  autoClose={3000}
-                  hideProgressBar={false}
-                  newestOnTop={false}
-                  closeOnClick
-                  rtl={false}
-                  pauseOnFocusLoss
-                  draggable
-                  pauseOnHover
-                  theme="light"
-                  style={{
-                    position: 'fixed',
-                    top: '1rem',
-                    right: '1rem',
-                    zIndex: 99999999999999
-                  }} />} />
+                <CouponFunctions
+                  updateCart={updateCart}
+                  toastContainer={<ToastContainer position="top-right"
+                    autoClose={1000}
+                  />} />
               </div>
 
               {/* Confirmation Dialog for product deletion */}
@@ -503,11 +492,11 @@ const Cart = () => {
                     </div>
                   </div>
                 </div>
-              )}  
+              )}
             </div>
           )}
         </>
-      )} 
+      )}
     </>
   );
 };

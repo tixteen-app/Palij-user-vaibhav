@@ -75,23 +75,7 @@ const CouponFunctions = ({ updateCart }) => {
 
   return (
     <>
-      <ToastContainer position="top-right"
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-        style={{
-          position: 'fixed',
-          top: '5rem',
-          right: '1rem',
-          zIndex: 99999999999999
-
-        }} />
+      <ToastContainer position="bottom-right" autoClose={1000} />
       <div>
         <div className="cart-bottomm">
           <div className="cart-address">
@@ -118,7 +102,7 @@ const CouponFunctions = ({ updateCart }) => {
                     {loading ? "Applying..." : "Apply"}
                   </button>
                 </div>
-              )}
+              )}  
               {appliedCoupon && (
                 <div className={styles.appliedCoupon}>
                   <span>Coupon applied: {couponCode}</span>
