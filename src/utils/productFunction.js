@@ -532,18 +532,17 @@ export const deleteproductFromCart = async (
 	  
 	  const method = "POST";
 	  const endpoint = "/api/delete-product-from-cart";
-	  await makeApi(endpoint, method, { itemId });
+	  const response = await makeApi(endpoint, method, { itemId });
   
-	  await fetchCart(setCartItems);
+	  // Return the updated cart data
+	  return response.data.cart;
 	} catch (error) {
 	  console.error("Delete error:", error);
-	  toast.error("Failed to remove item");
+	  throw error;
 	} finally {
 	  setProductLoaders(prev => ({ ...prev, [itemId]: false }));
-	  fetchCart(setCartItems);
 	}
   };
-
 export const updateCartCount = (cartItems) => {
 	const cartCount = cartItems.reduce((count, item) => count + item.quantity, 0)
 	cartCountListeners.forEach((listener) => listener(cartCount))

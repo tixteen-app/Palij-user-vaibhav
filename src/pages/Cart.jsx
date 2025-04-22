@@ -119,22 +119,33 @@ const Cart = () => {
           ...prev,
           [productToDelete._id]: true
         }));
-
+  
         await deleteproductFromCart(
           productToDelete._id,
           setProductLoaders,
           setCartItems,
           fetchCart
         );
-
+  
+        // Optimistically update the UI
+        setCompleteCart(prev => ({
+          ...prev,
+          orderItems: prev.orderItems.filter(item => item._id !== productToDelete._id)
+        }));
+  
         setShowConfirmDialog(false);
+        setProductToDelete(null);
         updateCart();
+        
+        toast.success("Item removed successfully");
+      } catch (error) {
+        console.error("Error deleting item:", error);
+        toast.error("Failed to remove item");
       } finally {
         setProductLoaders(prev => ({
           ...prev,
           [productToDelete._id]: false
         }));
-        setProductToDelete(null);
       }
     }
   };
@@ -492,11 +503,11 @@ const Cart = () => {
                     </div>
                   </div>
                 </div>
-              )}
+              )}  
             </div>
           )}
         </>
-      )}
+      )} 
     </>
   );
 };

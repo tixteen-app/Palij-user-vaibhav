@@ -38,6 +38,12 @@ const slidesMobile = [
     title: 'Crispy Treats',
     description: 'Perfect for Your Snack Time',
   },
+  {
+    id: 4,
+    image: assets.homeBanner7,
+    title: 'Butter Garlic Rusk',
+    description: 'Deliciously Baked & Crispy',
+  },
   // {
   //   id: 3,
   //   image: assets.homeBannerMobile2, // Update with the mobile-specific banner
