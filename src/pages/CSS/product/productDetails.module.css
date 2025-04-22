@@ -606,6 +606,53 @@ font-weight: 500;
 
 }
 
+@media (max-width:550px) {
+  .pincodeCheckContainer {
+    margin: 10px 0;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    width: 100%;
+  }
+  
+.pincodeCheckTitle {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.pincodeInputGroup {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.pincodeInput {
+  flex: 1;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.pincodeCheckButton {
+  padding: 7px 10px;
+  background-color: #ff6b6b;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+.pincodeCheckButton{
+  margin-top: 0px !important;
+}
+
+  
+}
+
 @media(max-width:450px) {
   .title h1 {
     font-size: 2.5rem;

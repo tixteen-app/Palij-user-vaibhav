@@ -836,7 +836,8 @@ function Newnavbar() {
 									</div>
 									<div
 										className="profile-icon-container user_profile_for_mobile_view_icon"
-										onClick={handleProfileClick}
+										// onClick={handleProfileClick}
+										onClick={() => navigate(isloggedIn ? "/userprofile" : "/palji-login")}
 										onMouseEnter={handleProfileHover}
 										onMouseLeave={handleProfileLeave}
 										style={{ cursor: "pointer" }}
