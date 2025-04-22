@@ -391,7 +391,7 @@ function Checkout() {
 			}
 			fetchCartItems();
 			setShowModal(false);
-			navigate("/cart");
+			// navigate("/cart");
 		} catch (error) {
 			console.error("Error removing products:", error);
 		}
