@@ -299,7 +299,7 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
                                                             <>
                                                                 <span className="original_text_homeproduct ps-1">₹{result.size[0].price}</span>
                                                                 <span className="discount_text_homeproduct">
-                                                                    -{Math.round(((result.size[0].price - result.size[0].FinalPrice) / product.size[0].price) * 100)}%
+                                                                    -{Math.round(((result.size[0].price - result.size[0].FinalPrice) / result.size[0].price) * 100)}%
                                                                 </span>
                                                             </>
                                                         )}

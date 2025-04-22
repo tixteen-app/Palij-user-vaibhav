@@ -64,10 +64,10 @@ const CouponFunctions = ({ updateCart }) => {
       await makeApi("/api/remove-coupon", "POST");
       setCouponCode("");  // Clear the input field after coupon removal
       setAppliedCoupon(false);  // Mark coupon as removed
-      toast.success("Coupon removed successfully!");
       fetchCartItem();  // Refresh cart after removing coupon
     } catch (error) {
-      toast.error(error.response.data.message || "Failed to remove coupon.");
+      // toast.error(error.response.data.message || "Failed to remove coupon.");
+      console.error("Error removing coupon:", error);
     } finally {
       setLoading(false);
     }
