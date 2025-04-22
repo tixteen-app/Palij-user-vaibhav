@@ -43,6 +43,7 @@ function Checkout() {
 	const [deliverycharge, setDeliveryCharge] = useState(0)
 	const [finaltotal, setFinalTotal] = useState(0)
 	const [Razopaydiscount, setRazopayDiscount] = useState(0)
+	const [coupandis, setCoupandis] = useState(0)
 	const {
 		couponCode,
 		setCouponCode,
@@ -186,7 +187,6 @@ function Checkout() {
 						totalGstAmount += gstAmount;
 					});
 
-					console.log(response.data.totalPrice)
 
 					if (response.data.totalPrice < 500) {
 						setDeliveryCharge(75)
@@ -198,7 +198,7 @@ function Checkout() {
 
 					// Store the total GST amount in state
 					setCartTotalWithGST(totalGstAmount);
-					setTotalAmountWithoutGST(totalAmountNoGST);
+					setTotalAmountWithoutGST(totalAmountNoGST - response.data.couapnDiscount);
 				}
 			} catch (error) {
 				console.error("Error fetching cart items:", error);
@@ -225,6 +225,7 @@ function Checkout() {
 
 	useEffect(() => {
 		fetchCartItems();
+		setCoupandis(27)
 	}, []);
 
 
@@ -934,6 +935,7 @@ function Checkout() {
 										pricewithdevverycharge={finaltotal}
 										Razopaydiscount={Razopaydiscount}
 										onButtonClick={(e) => handleSubmit(e)}
+										coupandis= {27}
 									/>
 								</div>
 
