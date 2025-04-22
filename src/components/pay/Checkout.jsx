@@ -15,8 +15,6 @@ import { assets } from "../../assets/assets.js"
 import styles from './checkout.module.css'
 import axios from "axios"
 
-
-
 function Checkout() {
 	const navigate = useNavigate()
 	const [shippingAddresses, setShippingAddresses] = useState([])
