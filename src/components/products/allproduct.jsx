@@ -264,6 +264,18 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
         }, 0);
     };
 
+
+    // Helper function to get the display size based on current price filter
+    const getDisplaySize = (sizes, minPrice, maxPrice) => {
+        if (minPrice === 0 && maxPrice === 1000000) {
+            return sizes[0]; // Default to first size when no filter is applied
+        }
+        const matchingSize = sizes.find(size =>
+            size.FinalPrice >= minPrice && size.FinalPrice <= maxPrice
+        );
+        return matchingSize || sizes[0]; // Fallback to first size if no match (shouldn't occur if API filters correctly)
+    };
+
     return (
         <div className={styles.mainContainer}>
             {showPopup && <LoginPopup onClose={closePopup} />}
@@ -277,9 +289,9 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
                     {search ? (
                         <div className="main_search_div_for_mobile_cart">
                             <div className={`search_bar_card_for_mobile main_search_result_div_for_baking ${search ? styles.searchPopupActive : ''}`}>
-                                {displayedProducts.map((result, id) => (
-
-                                    <div
+                                {displayedProducts.map((result, id) => {
+                                    const displaySize = getDisplaySize(result.size, minPrice, maxPrice);
+                                    return <div
                                         className="result-item_for_bak"
                                         key={id}
                                         onClick={() => handleNavigate(result._id)}
@@ -294,12 +306,12 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
                                                 {result.size && result.size.length > 0 && (
                                                     <>
                                                         <span className="Rs_text_homeproduct_search_bakingo"> ₹</span>
-                                                        <span className="price_text_homeproduct_serach_bakingo">{result.size[0].FinalPrice}</span>
-                                                        {result.size[0].price - result.size[0].FinalPrice > 1 && (
+                                                        <span className="price_text_homeproduct_serach_bakingo">{displaySize.FinalPrice}</span>
+                                                        {displaySize.price - displaySize.FinalPrice > 1 && (
                                                             <>
-                                                                <span className="original_text_homeproduct ps-1">₹{result.size[0].price}</span>
+                                                                {/* <span className="original_text_homeproduct ps-1">₹{displaySize.price}</span> */}
                                                                 <span className="discount_text_homeproduct">
-                                                                    -{Math.round(((result.size[0].price - result.size[0].FinalPrice) / result.size[0].price) * 100)}%
+                                                                    -{Math.round(((displaySize.price - displaySize.FinalPrice) / displaySize.price) * 100)}%
                                                                 </span>
                                                             </>
                                                         )}
@@ -309,7 +321,7 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
                                         </div>
 
                                     </div>
-                                ))}
+                                })}
                             </div>
                         </div>
                     ) : (
@@ -440,136 +452,145 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
                                     <div className={styles.productsContainer}>
                                         {displayedProducts.length > 0 && <div className={styles.home_page_selcte_cat_name}>{categoryName}</div>}
                                         <div className={styles.allProductsList}>
-                                            {displayedProducts.map(product => (
-                                                <div key={product.id} className="homeproduct_product_sub_div_for_all_prodcut">
-                                                    {/* <div className="homeproduct_product_div_image">
-                                                        <img src={product.thumbnail} alt={product.name} onClick={() => handleNavigate(product._id)} />
-                                                    </div> */}
-                                                    <motion.div
-                                                        className="homeproduct_product_div_image"
-                                                        whileHover={{ scale: 1.03 }}
-                                                        onMouseEnter={() => setHoveredProduct(product._id)}
-                                                        onMouseLeave={() => setHoveredProduct(null)}
-                                                    >
-                                                        <motion.img
-                                                            key={hoveredProduct === product._id ? "main" : "thumb"}
-                                                            src={hoveredProduct === product._id ? product.image[0] : product.thumbnail}
-                                                            alt={product.name}
-                                                            onClick={() => handleNavigate(product._id)}
-                                                            initial={{ opacity: 0 }}
-                                                            animate={{ opacity: 1 }}
-                                                            exit={{ opacity: 0 }}
-                                                            transition={{ duration: 0.3 }}
-                                                        />
-                                                    </motion.div>
-                                                    <div className="homeproduct_product_div_details">
-                                                        <div>
-                                                            <div className="bold_details_homeproduct">
-                                                                {product.name}
+                                            {displayedProducts.map(product => {
+
+                                                const displaySize = getDisplaySize(product.size, minPrice, maxPrice);
+                                                return (
+                                                    <div key={product.id} className="homeproduct_product_sub_div_for_all_prodcut">
+
+                                                        <motion.div
+                                                            className="homeproduct_product_div_image"
+                                                            whileHover={{ scale: 1.03 }}
+                                                            onMouseEnter={() => setHoveredProduct(product._id)}
+                                                            onMouseLeave={() => setHoveredProduct(null)}
+                                                        >
+                                                            <motion.img
+                                                                key={hoveredProduct === product._id ? "main" : "thumb"}
+                                                                src={hoveredProduct === product._id ? product.image[0] : product.thumbnail}
+                                                                alt={product.name}
+                                                                onClick={() => handleNavigate(product._id)}
+                                                                initial={{ opacity: 0 }}
+                                                                animate={{ opacity: 1 }}
+                                                                exit={{ opacity: 0 }}
+                                                                transition={{ duration: 0.3 }}
+                                                            />
+                                                        </motion.div>
+                                                        <div className="homeproduct_product_div_details">
+                                                            <div>
+                                                                <div className="bold_details_homeproduct">
+                                                                    {product.name}
+                                                                </div>
+                                                                <div className="homeproduct_product_div_details_category">{product.category.name}</div>
                                                             </div>
-                                                            <div className="homeproduct_product_div_details_category">{product.category.name}</div>
-                                                        </div>
-                                                        <div className="bold_details_homeproduct">
-                                                            {product.size.length > 0 &&
-                                                                product.size[0].sizetype !== "Pack" &&
-                                                                product.size[0].size !== "null" &&
-                                                                product.size[0].sizetype !== "null" && (
-                                                                    <>
-                                                                        {/* <span className="pe-1">{product.size[0].size}</span>{product.size[0].sizetype} */}
+                                                            <div className="bold_details_homeproduct">
+                                                                {/* {product.size.length > 0 &&
+                                                                    product.size[0].sizetype !== "Pack" &&
+                                                                    product.size[0].size !== "null" &&
+                                                                    product.size[0].sizetype !== "null" && (
+                                                                            <>
+                                                                                <span className="">{product.size[0].size}</span>
+                                                                                {product.size[0].sizetype.toLowerCase() === "gram" ? " g" :
+                                                                                    product.size[0].sizetype.toUpperCase() === "KG" ? " Kg" :
+                                                                                        product.size[0].sizetype}
+                                                                            </>
+                                                                        
+                                                                    )
+                                                                } */}
+                                                                {displaySize.sizetype !== "Pack" &&
+                                                                    displaySize.size !== "null" &&
+                                                                    displaySize.sizetype !== "null" && (
                                                                         <>
-                                                                            <span className="">{product.size[0].size}</span>
-                                                                            {product.size[0].sizetype.toLowerCase() === "gram" ? " g" :
-                                                                                product.size[0].sizetype.toUpperCase() === "KG" ? " Kg" :
-                                                                                    product.size[0].sizetype}
-                                                                        </>
-                                                                    </>
-                                                                )
-                                                            }
-                                                        </div>
-                                                    </div>
-                                                    <div className="homeproduct_product_div_addtocart">
-                                                        <div>
-                                                            {product.size && product.size.length > 0 && (
-                                                                <>
-                                                                    <span className="Rs_text_homeproduct"> ₹</span>
-                                                                    <span className="price_text_homeproduct">{product.size[0].FinalPrice}</span>
-                                                                    {product.size[0].price - product.size[0].FinalPrice > 1 && (
-                                                                        <>
-                                                                            <span className="original_text_homeproduct ps-1">₹{product.size[0].price}</span>
-                                                                            <span className="discount_text_homeproduct">
-                                                                                -{Math.round(((product.size[0].price - product.size[0].FinalPrice) / product.size[0].price) * 100)}%
-                                                                            </span>
+                                                                            <span>{displaySize.size}</span>
+                                                                            {displaySize.sizetype.toLowerCase() === "gram" ? " g" :
+                                                                                displaySize.sizetype === "KG" ? " Kg" : ` ${displaySize.sizetype}`}
                                                                         </>
                                                                     )}
-                                                                </>
-                                                            )}
+                                                            </div>
                                                         </div>
-                                                        <div>
-                                                            {cartItems.some(cartItem => cartItem.productId === product._id && cartItem.size === product.size[0]._id) ? (
-                                                                <div className="homeproduct_addtocart_and_quantity_div">
-                                                                    <div>
-                                                                        <svg
-                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                            onClick={() => handleDecreaseQuantity(product._id, product.size[0])}
-                                                                            // width="30"
-                                                                            // height="30"
-                                                                            fill="currentColor"
-                                                                            className="bi bi-dash text-black plus_button_all_product"
-                                                                            style={{ cursor: "pointer" }}
-                                                                            viewBox="0 0 16 16"
-                                                                        >
-                                                                            <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" />
-                                                                        </svg>
+                                                        <div className="homeproduct_product_div_addtocart">
+                                                            <div>
+                                                                {product.size && product.size.length > 0 && (
+                                                                    <>
+                                                                        <span className="Rs_text_homeproduct"> ₹</span>
+                                                                        <span className="price_text_homeproduct">{displaySize.FinalPrice}</span>
+                                                                        {displaySize.price - displaySize.FinalPrice > 1 && (
+                                                                            <>
+                                                                                <span className="original_text_homeproduct ps-1">₹{displaySize.price}</span>
+                                                                                <span className="discount_text_homeproduct">
+                                                                                    -{Math.round(((displaySize.price - displaySize.FinalPrice) / displaySize.price) * 100)}%
+                                                                                </span>
+                                                                            </>
+                                                                        )}
+                                                                    </>
+                                                                )}
+                                                            </div>
+                                                            <div>
+                                                                {cartItems.some(cartItem => cartItem.productId === product._id && cartItem.size === displaySize._id) ? (
+                                                                    <div className="homeproduct_addtocart_and_quantity_div">
+                                                                        <div>
+                                                                            <svg
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                onClick={() => handleDecreaseQuantity(product._id, displaySize)}
+                                                                                // width="30"
+                                                                                // height="30"
+                                                                                fill="currentColor"
+                                                                                className="bi bi-dash text-black plus_button_all_product"
+                                                                                style={{ cursor: "pointer" }}
+                                                                                viewBox="0 0 16 16"
+                                                                            >
+                                                                                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" />
+                                                                            </svg>
+                                                                        </div>
+                                                                        <div style={{ minWidth: "20px", textAlign: "center" }}>
+                                                                            {quantityLoading[product._id] ? (
+                                                                                <div className="loader_for_home_page"></div>
+                                                                            ) : (
+                                                                                <div>
+                                                                                    {/* {cartItems.find(cartItem => cartItem.productId === product._id && cartItem.size === displaySize._id)?.quantity || 0} */}
+                                                                                    {
+                                                                                        countProductsWithSameId(product._id) > 1 ? (
+                                                                                            <>{countProductsWithSameId(product._id)}</>
+                                                                                        ) : (
+                                                                                            <>
+                                                                                                {cartItems.find(cartItem => cartItem.productId === product._id && cartItem.size === displaySize._id)?.quantity || 0}
+                                                                                            </>
+                                                                                        )
+                                                                                    }
+                                                                                </div>
+                                                                            )}
+                                                                        </div>
+                                                                        <div>
+                                                                            <svg
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                onClick={() => handleIncreaseQuantity(product._id, displaySize)}
+                                                                                // width="30"
+                                                                                // height="30"
+                                                                                fill="currentColor"
+                                                                                className="bi bi-plus text-black plus_button_all_product"
+                                                                                style={{ cursor: "pointer" }}
+                                                                                viewBox="0 0 16 16"
+                                                                            >
+                                                                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+                                                                            </svg>
+                                                                        </div>
                                                                     </div>
-                                                                    <div style={{ minWidth: "20px", textAlign: "center" }}>
+                                                                ) : (
+                                                                    <div
+                                                                        className="homeproduct_product_div_addtocart_Add_button"
+                                                                        onClick={() => handleIncreaseQuantity(product._id, displaySize)}
+                                                                    >
                                                                         {quantityLoading[product._id] ? (
                                                                             <div className="loader_for_home_page"></div>
                                                                         ) : (
-                                                                            <div>
-                                                                                {/* {cartItems.find(cartItem => cartItem.productId === product._id && cartItem.size === product.size[0]._id)?.quantity || 0} */}
-                                                                                {
-                                                                                    countProductsWithSameId(product._id) > 1 ? (
-                                                                                        <>{countProductsWithSameId(product._id)}</>
-                                                                                    ) : (
-                                                                                        <>
-                                                                                            {cartItems.find(cartItem => cartItem.productId === product._id && cartItem.size === product.size[0]._id)?.quantity || 0}
-                                                                                        </>
-                                                                                    )
-                                                                                }
-                                                                            </div>
+                                                                            "ADD"
                                                                         )}
                                                                     </div>
-                                                                    <div>
-                                                                        <svg
-                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                            onClick={() => handleIncreaseQuantity(product._id, product.size[0])}
-                                                                            // width="30"
-                                                                            // height="30"
-                                                                            fill="currentColor"
-                                                                            className="bi bi-plus text-black plus_button_all_product"
-                                                                            style={{ cursor: "pointer" }}
-                                                                            viewBox="0 0 16 16"
-                                                                        >
-                                                                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
-                                                                        </svg>
-                                                                    </div>
-                                                                </div>
-                                                            ) : (
-                                                                <div
-                                                                    className="homeproduct_product_div_addtocart_Add_button"
-                                                                    onClick={() => handleIncreaseQuantity(product._id, product.size[0])}
-                                                                >
-                                                                    {quantityLoading[product._id] ? (
-                                                                        <div className="loader_for_home_page"></div>
-                                                                    ) : (
-                                                                        "ADD"
-                                                                    )}
-                                                                </div>
-                                                            )}
+                                                                )}
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            ))}
+                                                )
+                                            })}
                                         </div>
                                     </div>
 

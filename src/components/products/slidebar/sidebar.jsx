@@ -231,30 +231,6 @@ const handleFilterApply = (categoryId, minPrice, maxPrice, subcategoryId, select
   categories={categories}
 />
 
-  // const handleFilterApply = (categoryId, minPrice, maxPrice, subcategoryId, selectedCategoryname) => {
-  //   const newQueryParams = new URLSearchParams(location.search);
-
-  //   if (categoryId) {
-  //     newQueryParams.set("category", categoryId);
-  //     setSelectedCategory(categoryId);
-  //     setCategoryName(selectedCategoryname);
-  //     // Expand the category when filtered
-  //     setExpandedCategories(prev => ({ ...prev, [categoryId]: true }));
-  //   }
-
-  //   if (subcategoryId) {
-  //     newQueryParams.set("subcategory", subcategoryId);
-  //     setSelectedSubcategory(subcategoryId);
-  //   }
-
-  //   if (minPrice !== undefined && maxPrice !== undefined) {
-  //     newQueryParams.set("minPrice", minPrice);
-  //     newQueryParams.set("maxPrice", maxPrice);
-  //     setSelectedPriceRange({ min: minPrice, max: maxPrice });
-  //   }
-
-  //   navigate(`?${newQueryParams.toString()}`);
-  // };
 
   const handleResetPriceFilter = () => {
     setSelectedPriceRange({ min: 0, max: 1000000 });
