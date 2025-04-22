@@ -95,7 +95,7 @@ function Checkout() {
 
 
 
-	
+
 	const openEditPopup = (address) => {
 		setEditAddress(address);
 		setIsEditPopupOpen(true);
@@ -108,7 +108,7 @@ function Checkout() {
 	const handleInputChange = (e) => {
 		const { name, value } = e.target;
 		if (name === "pincode" && value.length === 6) {
-		fetchCityStateCountry(value);
+			fetchCityStateCountry(value);
 		}
 
 		setEditAddress((prevState) => ({
@@ -186,13 +186,13 @@ function Checkout() {
 						totalGstAmount += gstAmount;
 					});
 
-					console.log(response.data.totalPrice)					
+					console.log(response.data.totalPrice)
 
-					if(response.data.totalPrice <500){
-						setDeliveryCharge( 75)
+					if (response.data.totalPrice < 500) {
+						setDeliveryCharge(75)
 						setFinalTotal(response.data.totalPrice + 75)
-					}else{
-						setDeliveryCharge( 0)
+					} else {
+						setDeliveryCharge(0)
 						setFinalTotal(response.data.totalPrice)
 					}
 
@@ -259,9 +259,9 @@ function Checkout() {
 
 	const handlePaymentMethodSelect = (payment) => {
 		setSelectPaymentMethod(payment)
-		if(payment === "Razorpay"){
+		if (payment === "Razorpay") {
 			setRazopayDiscount(25)
-		}else{
+		} else {
 			setRazopayDiscount(0)
 		}
 	}
@@ -292,19 +292,19 @@ function Checkout() {
 			paymentMethod: selectPaymentMethod,
 			taxprice: cartTotalWithGST,
 			CartId: cartItem._id,
-			
+
 		};
 		if (selectPaymentMethod === "Razorpay") {
 			if (!availablePincodes.pincode.some(p => p.pincode == data.shippingAddress.pincode)) {
-				createRazorpayOrder(cartItem.totalPrice + deliverycharge - Razopaydiscount  );
+				createRazorpayOrder(cartItem.totalPrice + deliverycharge - Razopaydiscount);
 			} else {
-				createRazorpayOrderforlocal(cartItem.totalPrice +  deliverycharge -  Razopaydiscount );
+				createRazorpayOrderforlocal(cartItem.totalPrice + deliverycharge - Razopaydiscount);
 			}
 		} else {
 			if (!availablePincodes.pincode.some(p => p.pincode == data.shippingAddress.pincode)) {
-				await submitOrder(data, setLoading, setOrderPlaced, navigate,deliverycharge);
+				await submitOrder(data, setLoading, setOrderPlaced, navigate, deliverycharge);
 			} else {
-				await submitOrderforlocal(data, setLoading, setOrderPlaced, navigate,deliverycharge);
+				await submitOrderforlocal(data, setLoading, setOrderPlaced, navigate, deliverycharge);
 
 			}
 		}
@@ -365,38 +365,38 @@ function Checkout() {
 		try {
 			// Call API to delete product from the cart using cart item ID
 			await deleteproductFromCart(
-			  cartItemId,
-			  setProductLoaders,
-			  setCartItems,
-			  fetchCart
+				cartItemId,
+				setProductLoaders,
+				setCartItems,
+				fetchCart
 			);
-			
+
 			fetchCartItems(); // Refresh cart items
 			setShowModal(false);
-			navigate("/cart");
-		  } catch (error) {
-			console.error("Error deleting product from cart:", error);
-		  }
-	  };
-	  
-	  const handleRemoveAllClick = async () => {
-		try {
-		  for (const item of nonDeliverableProducts) {
-			await deleteproductFromCart(
-			  item._id, // Use cart item ID instead of product ID
-			  setProductLoaders,
-			  setCartItems,
-			  fetchCart
-			);
-		  }
-		  fetchCartItems();
-		  setShowModal(false);
-		  navigate("/cart");
+			// navigate("/cart");
 		} catch (error) {
-		  console.error("Error removing products:", error);
+			console.error("Error deleting product from cart:", error);
 		}
-	  };
-	  
+	};
+
+	const handleRemoveAllClick = async () => {
+		try {
+			for (const item of nonDeliverableProducts) {
+				await deleteproductFromCart(
+					item._id, // Use cart item ID instead of product ID
+					setProductLoaders,
+					setCartItems,
+					fetchCart
+				);
+			}
+			fetchCartItems();
+			setShowModal(false);
+			navigate("/cart");
+		} catch (error) {
+			console.error("Error removing products:", error);
+		}
+	};
+
 
 	// Razopay
 	const loadRazorpayScript = (src) => {
@@ -414,7 +414,7 @@ function Checkout() {
 	};
 	const createRazorpayOrder = async (amount) => {
 		const data = {
-			amount: amount  , // Razorpay accepts amount in paise, so multiply by 100
+			amount: amount, // Razorpay accepts amount in paise, so multiply by 100
 			currency: "INR",
 		};
 		try {
@@ -473,7 +473,7 @@ function Checkout() {
 					paymentMethod: selectPaymentMethod,
 					CartId: cartItem._id,
 				};
-				submitOrder(data, setLoading, setOrderPlaced, navigate,deliverycharge)
+				submitOrder(data, setLoading, setOrderPlaced, navigate, deliverycharge)
 
 					;
 			},
@@ -525,7 +525,7 @@ function Checkout() {
 					paymentMethod: selectPaymentMethod,
 					CartId: cartItem._id,
 				};
-				submitOrderforlocal(data, setLoading, setOrderPlaced, navigate,deliverycharge);
+				submitOrderforlocal(data, setLoading, setOrderPlaced, navigate, deliverycharge);
 			},
 			prefill: {
 				name: "Vaibhav",
@@ -672,8 +672,9 @@ function Checkout() {
 													<div
 														key={index}
 														className="address-item"
+														style={{justifyContent: "space-between"}}
 													>
-														<input
+					 									<input
 															type="radio"
 															id={`shipping-address-${index}`}
 															name="shippingAddress"
@@ -690,122 +691,125 @@ function Checkout() {
 														>
 															{`${address.firstname} ${address.lastname}, ${address.address}, ${address.city}, ${address.state}, ${address.country}, ${address.pincode}`}
 														</label>
+														<div className="d-flex gap-3" >
 
-														<div>
-															<svg onClick={() => openEditPopup(address)}
-																xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
-																<path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.5.5 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11z" />
-															</svg>
-														</div>
-														<div>
-															<svg onClick={() => openDeletePopup(address)} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
-																<path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5" />
-															</svg>
+
+															<div>
+																<svg onClick={() => openEditPopup(address)}
+																	xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+																	<path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.5.5 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11z" />
+																</svg>
+															</div>
+															<div>
+																<svg onClick={() => openDeletePopup(address)} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+																	<path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5" />
+																</svg>
+															</div>
 														</div>
 													</div>
 												))}
 										</div>
 									</div>
 									{isEditPopupOpen && (
-									<div className="cart_page-popup-overlay">
-									<div className="cart_page-popup">
-									  <h2>Edit Address</h2>
-									  
-									  <div className="form-group-edit-adrress">
-										<label htmlFor="firstname">First Name</label>
-										<input 
-										  type="text" 
-										  id="firstname" 
-										  name="firstname" 
-										  value={editAddress.firstname} 
-										  onChange={handleInputChange} 
-										  placeholder="Enter first name" 
-										/>
-									  </div>
-									  
-									  <div className="form-group-edit-adrress">
-										<label htmlFor="lastname">Last Name</label>
-										<input 
-										  type="text" 
-										  id="lastname" 
-										  name="lastname" 
-										  value={editAddress.lastname} 
-										  onChange={handleInputChange} 
-										  placeholder="Enter last name" 
-										/>
-									  </div>
-									  
-									  <div className="form-group-edit-adrress">
-										<label htmlFor="address">Address</label>
-										<input 
-										  type="text" 
-										  id="address" 
-										  name="address" 
-										  value={editAddress.address} 
-										  onChange={handleInputChange} 
-										  placeholder="Enter full address" 
-										/>
-									  </div>
-									  
-									  <div className="form-group-edit-adrress">
-										<label htmlFor="pincode">Pincode</label>
-										<input 
-										  type="text" 
-										  id="pincode" 
-										  name="pincode" 
-										  value={editAddress.pincode} 
-										  onChange={handleInputChange} 
-										  placeholder="Enter pincode" 
-										/>
-									  </div>
-									  
-									  <div className="form-group-edit-adrress">
-										<label htmlFor="city">City</label>
-										<input 
-										  type="text" 
-										  id="city" 
-										  name="city" 
-										  readOnly 
-										  value={editAddress.city} 
-										  onChange={handleInputChange} 
-										  placeholder="City will auto-fill" 
-										/>
-									  </div>
-									  
-									  <div className="form-group-edit-adrress">
-										<label htmlFor="state">State</label>
-										<input 
-										  type="text" 
-										  id="state" 
-										  name="state" 
-										  readOnly 
-										  value={editAddress.state} 
-										  onChange={handleInputChange} 
-										  placeholder="State will auto-fill" 
-										/>
-									  </div>
-									  
-									  <div className="form-group-edit-adrress">
-										<label htmlFor="country">Country</label>
-										<input 
-										  type="text" 
-										  id="country" 
-										  name="country" 
-										  readOnly 
-										  value={editAddress.country} 
-										  onChange={handleInputChange} 
-										  placeholder="Country will auto-fill" 
-										/>
-									  </div>
-								  
-									  <div className="cart_page-popup-buttons">
-										<button onClick={handleSaveAddress}>
-										  {saveaddloader ? <div>Saving...</div> : "Save"}
-										</button>
-										<button onClick={closeEditPopup}>Cancel</button>
-									  </div>
-									</div>
-								  </div>
+										<div className="cart_page-popup-overlay">
+											<div className="cart_page-popup">
+												<h2>Edit Address</h2>
+
+												<div className="form-group-edit-adrress">
+													<label htmlFor="firstname">First Name</label>
+													<input
+														type="text"
+														id="firstname"
+														name="firstname"
+														value={editAddress.firstname}
+														onChange={handleInputChange}
+														placeholder="Enter first name"
+													/>
+												</div>
+
+												<div className="form-group-edit-adrress">
+													<label htmlFor="lastname">Last Name</label>
+													<input
+														type="text"
+														id="lastname"
+														name="lastname"
+														value={editAddress.lastname}
+														onChange={handleInputChange}
+														placeholder="Enter last name"
+													/>
+												</div>
+
+												<div className="form-group-edit-adrress">
+													<label htmlFor="address">Address</label>
+													<input
+														type="text"
+														id="address"
+														name="address"
+														value={editAddress.address}
+														onChange={handleInputChange}
+														placeholder="Enter full address"
+													/>
+												</div>
+
+												<div className="form-group-edit-adrress">
+													<label htmlFor="pincode">Pincode</label>
+													<input
+														type="text"
+														id="pincode"
+														name="pincode"
+														value={editAddress.pincode}
+														onChange={handleInputChange}
+														placeholder="Enter pincode"
+													/>
+												</div>
+
+												<div className="form-group-edit-adrress">
+													<label htmlFor="city">City</label>
+													<input
+														type="text"
+														id="city"
+														name="city"
+														readOnly
+														value={editAddress.city}
+														onChange={handleInputChange}
+														placeholder="City will auto-fill"
+													/>
+												</div>
+
+												<div className="form-group-edit-adrress">
+													<label htmlFor="state">State</label>
+													<input
+														type="text"
+														id="state"
+														name="state"
+														readOnly
+														value={editAddress.state}
+														onChange={handleInputChange}
+														placeholder="State will auto-fill"
+													/>
+												</div>
+
+												<div className="form-group-edit-adrress">
+													<label htmlFor="country">Country</label>
+													<input
+														type="text"
+														id="country"
+														name="country"
+														readOnly
+														value={editAddress.country}
+														onChange={handleInputChange}
+														placeholder="Country will auto-fill"
+													/>
+												</div>
+
+												<div className="cart_page-popup-buttons">
+													<button onClick={handleSaveAddress}>
+														{saveaddloader ? <div>Saving...</div> : "Save"}
+													</button>
+													<button onClick={closeEditPopup}>Cancel</button>
+												</div>
+											</div>
+										</div>
 									)}
 
 								</div>
@@ -828,7 +832,7 @@ function Checkout() {
 								<div className="styles_checkout_coupan">
 									<div
 									//  onClick={(e) => manageCurrentPage(e)}
-									 >
+									>
 										<CartCalculation
 											tax={cartTotalWithGST}
 											shipping={deliverycharge}
@@ -850,7 +854,7 @@ function Checkout() {
 					) : (
 						<div>
 							<Orderbar activeOptionName="PAYMENT" />
-							
+
 							<div className="main_checkout_div">
 								{/* Payment Method */}
 								<div className="shipping-address-container">
@@ -908,11 +912,11 @@ function Checkout() {
 												<img src={assets.razorpay_logo} alt="" />
 
 											</label>
-											<br/>
+											<br />
 										</div>
 									</div>
 								</div>
-								<div 
+								<div
 								// onClick={(e) => handleSubmit(e)}
 								>
 									<CartCalculation
@@ -932,8 +936,8 @@ function Checkout() {
 										onButtonClick={(e) => handleSubmit(e)}
 									/>
 								</div>
-								
-							
+
+
 							</div>
 						</div>
 					)}

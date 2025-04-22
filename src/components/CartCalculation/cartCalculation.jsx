@@ -15,7 +15,7 @@ function CartCalculation({
 	totalwithoutgst,
 	pricewithdevverycharge,
 	Razopaydiscount,
-	onButtonClick 
+	onButtonClick
 }) {
 
 	const [loadingData, setLoadingData] = useState({
@@ -137,10 +137,10 @@ function CartCalculation({
 				</div>
 
 				{isCashOnDelivery && (
-  <div className={styles.codMessage}>
-    <span>Save ₹25 on prepaid orders</span>
-  </div>
-)}
+					<div className={styles.codMessage}>
+						<span>Save ₹25 on prepaid orders</span>
+					</div>
+				)}
 
 
 				<div className={styles.row}>
@@ -160,13 +160,13 @@ function CartCalculation({
 				<div className={styles.total}>
 					<span>Order Total:</span>
 					{loadingData.final ? (
-						<ShimmerEffect />
+						<ShimmerEffect /> 
 					) : (
 						<>
 							{
 								!isCashOnDelivery && Razopaydiscount ? (
 									<>
-										 		<span>{formatNumber(isCashOnDelivery ? (roundedFinal - 25) : (pricewithdevverycharge - 25))}</span>
+										<span>{formatNumber(isCashOnDelivery ? (roundedFinal - 25) : (pricewithdevverycharge - 25))}</span>
 									</>
 								) : (
 									<>
