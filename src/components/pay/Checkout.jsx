@@ -361,75 +361,39 @@ function Checkout() {
 	};
 
 
-	// const handleDeleteClick = async (productId, selectProductSize, quantity) => {
-	// 	await deleteproductFromCart(productId, setProductLoaders, setCartItems, fetchCart, selectProductSize, quantity);
-
-	// 	fetchCartItems();
-	// 	setShowModal(false);
-
-	// 	// Check if cartItems state is empty
-	// 	if (cartItems.length === 0) {
-	// 		navigate("/cart");
-	// 	}
-
-	// };
 	const handleDeleteClick = async (productId, selectProductSize, quantity) => {
 		try {
-		  // Call API to delete product from the cart
-		  const deleteSuccess = await deleteproductFromCart(productId, setProductLoaders, setCartItems, fetchCart, selectProductSize, quantity);
-	  
-		  // If the deletion was successful, close the modal
-			fetchCartItems();
-			setShowModal(false);
-			  navigate("/cart");
-		
-		} catch (error) {
-		  console.error("Error deleting product from cart:", error);
-		}
-	  };
-	  
-	// const handleRemoveAllClick = async () => {
-	// 	// Loop through non-deliverable products and delete them one by one
-	// 	for (const item of nonDeliverableProducts) {
-	// 		await deleteproductFromCart(
-	// 			item.productId._id,        
-	// 			setProductLoaders,         
-	// 			setCartItems,              
-	// 			fetchCart,                  
-	// 			item.size._id,             
-	// 			item.quantity              
-	// 		);
-	// 	}
-
-	// 	fetchCartItems();
-
-	// 	// If cart is empty, redirect to cart page
-	// 		navigate("/cart");
-	// 	setShowModal(false);
-	// };
-	const handleRemoveAllClick = async () => {
-		try {
-		  // Loop through non-deliverable products and delete them one by one
-		  for (const item of nonDeliverableProducts) {
+			// Call API to delete product from the cart using cart item ID
 			await deleteproductFromCart(
-			  item.productId._id,
+			  cartItemId,
 			  setProductLoaders,
 			  setCartItems,
-			  fetchCart,
-			  item.size._id,
-			  item.quantity
+			  fetchCart
+			);
+			
+			fetchCartItems(); // Refresh cart items
+			setShowModal(false);
+			navigate("/cart");
+		  } catch (error) {
+			console.error("Error deleting product from cart:", error);
+		  }
+	  };
+	  
+	  const handleRemoveAllClick = async () => {
+		try {
+		  for (const item of nonDeliverableProducts) {
+			await deleteproductFromCart(
+			  item._id, // Use cart item ID instead of product ID
+			  setProductLoaders,
+			  setCartItems,
+			  fetchCart
 			);
 		  }
-	  
-		  // Fetch updated cart items after removing products
 		  fetchCartItems();
-	  
-		  // After everything is done, close the modal and redirect to the cart page
 		  setShowModal(false);
 		  navigate("/cart");
 		} catch (error) {
-		  console.error("Error removing products from cart:", error);
-		  // You can handle errors, like showing a message to the user, if needed
+		  console.error("Error removing products:", error);
 		}
 	  };
 	  
@@ -625,7 +589,7 @@ function Checkout() {
 									</div>
 									<div>
 
-										<div className={styles.remove}><button onClick={() => handleDeleteClick(item.productId._id, item.size._id, item?.quantity)}>Remove</button></div>
+										<div className={styles.remove}><button onClick={() => handleDeleteClick(item._id)}>Remove</button></div>
 									</div>
 								</li>
 							))}
