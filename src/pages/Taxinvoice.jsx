@@ -378,43 +378,62 @@ export default function Taxinvoice() {
         // If order summary is successful, set it to state
         const fetchedOrderSummary = response.data.secondorder;
         setOrderSummary(fetchedOrderSummary);
-
+  
         // Calculate tax details
         if (fetchedOrderSummary?.CartId?.orderItems?.length > 0) {
           let totalGstAmount = 0;
           let totalAmountNoGST = 0;
-          const discountPercentage = 10; // Assuming 10% cart-level discount
-
-          fetchedOrderSummary.CartId.orderItems.forEach(item => {
-            const finalPrice = item.singleProductPrice || 0;
-            const taxPercentage = item.productId?.category?.tax || 18;
-            
-            // Step 1: Get base price without GST
-            const basePrice = finalPrice / (1 + taxPercentage / 100);
-            
-            // Step 2: Apply discount to base price
-            const discountedBase = basePrice * (1 - discountPercentage / 100);
-            
-            // Step 3: Calculate GST on discounted base
-            const gstAmount = discountedBase * (taxPercentage / 100);
-
-            totalAmountNoGST += discountedBase * item.quantity;
-            totalGstAmount += gstAmount * item.quantity;
-          });
-
-          // Calculate delivery charges based on discounted total + GST
-          const subtotal = totalAmountNoGST + totalGstAmount;
-          const deliveryCharge = subtotal < 500 ? 75 : 0;
-          const finalTotal = subtotal + deliveryCharge;
-
+          let totalDiscountedBase = 0;
+  
+          // Without coupon calculation
+          if (!fetchedOrderSummary.CartId.couapnDiscount) {
+            fetchedOrderSummary.CartId.orderItems.forEach(item => {
+              const finalPrice = item.singleProductPrice || 0;
+              const gstPercentage = item.productId?.category?.tax || 12;
+              const basePrice = finalPrice / (1 + gstPercentage / 100);
+  
+              totalAmountNoGST += basePrice * item.quantity;
+              totalGstAmount += (finalPrice - basePrice) * item.quantity;
+            });
+          }
+          // With coupon calculation
+          else {
+            const totalDiscount = fetchedOrderSummary.CartId.couapnDiscount;
+            const originalTotal = fetchedOrderSummary.CartId.totalPriceWithoutDiscount;
+  
+            fetchedOrderSummary.CartId.orderItems.forEach(item => {
+              const finalPrice = item.singleProductPrice || 0;
+              const gstPercentage = item.productId?.category?.tax || 12;
+  
+              // Calculate base price after item discount
+              const itemBasePrice = finalPrice / (1 + gstPercentage / 100);
+  
+              // Calculate coupon discount proportion
+              const itemShare = (item.singleProductPrice * item.quantity) / originalTotal;
+              const itemDiscount = totalDiscount * itemShare;
+  
+              // Apply coupon discount to base price PER UNIT
+              const discountedBasePerUnit = itemBasePrice - (itemDiscount / (1 + gstPercentage / 100)) / item.quantity;
+  
+              totalDiscountedBase += discountedBasePerUnit * item.quantity;
+              totalGstAmount += discountedBasePerUnit * (gstPercentage / 100) * item.quantity;
+            });
+  
+            totalAmountNoGST = totalDiscountedBase;
+          }
+  
+          // Common calculations for both cases
+          const deliveryCharge = fetchedOrderSummary.CartId.totalPrice < 500 ? 75 : 0;
+          const finalTotal = fetchedOrderSummary.CartId.totalPrice + deliveryCharge;
+  
           setTaxDetails({
             totalGstAmount,
-            totalAmountNoGST,
+            totalAmountNoGST: fetchedOrderSummary.CartId.couapnDiscount ? totalDiscountedBase : totalAmountNoGST,
             deliveryCharge,
             finalTotal
           });
         }
-
+  
         // Once orderSummary is set, check if shiprocketOrderId is available
         if (fetchedOrderSummary?.shiprocketOrderId) {
           const Shipresponse = await makeApi(
@@ -427,7 +446,7 @@ export default function Taxinvoice() {
         console.log(error);
       }
     };
-
+  
     // Call the function to fetch order summary
     fetchOrderSummary();
   }, [ordersummary]);
@@ -629,44 +648,69 @@ export default function Taxinvoice() {
                 </tr>
               </thead>
               <tbody>
-                {orderSummary?.CartId?.orderItems?.map((item, index) => {
-                  const taxRate = item?.productId?.category?.tax || 18;
-                  const finalPrice = item.singleProductPrice || 0;
-                  const basePrice = finalPrice / (1 + taxRate / 100);
-                  const discountedBase = basePrice * 0.9; // 10% discount
-                  const gstAmount = discountedBase * (taxRate / 100);
-                  const halfGST = gstAmount / 2;
-                  const total = (discountedBase + gstAmount) * item.quantity;
+              {orderSummary?.CartId?.orderItems?.map((item, index) => {
+  const taxRate = item?.productId?.category?.tax || 12;
+  const finalPrice = item.singleProductPrice || 0;
+  
+  let basePrice, gstAmount, halfGST, total;
+  
+  // Without coupon
+  if (!orderSummary.CartId.couapnDiscount) {
+    basePrice = finalPrice / (1 + taxRate / 100);
+    gstAmount = finalPrice - basePrice;
+    halfGST = gstAmount / 2;
+    total = finalPrice * item.quantity;
+  } 
+  // With coupon
+  else {
+    const totalDiscount = orderSummary.CartId.couapnDiscount;
+    const originalTotal = orderSummary.CartId.totalPriceWithoutDiscount;
+    
+    // Calculate base price
+    basePrice = finalPrice / (1 + taxRate / 100);
+    
+    // Calculate coupon discount proportion
+    const itemShare = (finalPrice * item.quantity) / originalTotal;
+    const itemDiscount = totalDiscount * itemShare;
+    
+    // Apply coupon discount to base price PER UNIT
+    const discountedBasePerUnit = basePrice - (itemDiscount / (1 + taxRate / 100)) / item.quantity;
+    
+    basePrice = discountedBasePerUnit;
+    gstAmount = discountedBasePerUnit * (taxRate / 100);
+    halfGST = gstAmount / 2;
+    total = (discountedBasePerUnit + gstAmount) * item.quantity;
+  }
 
-                  return (
-                    <tr key={item?._id} className={index % 2 === 0 ? "" : "alt-row"}>
-                      <td>{index + 1}</td>
-                      <td>
-                        <strong>{item?.productId?.name || "N/A"}</strong>
-                        <div className="product-description">
-                          {item?.size?.size} {item?.size?.sizetype}
-                        </div>
-                      </td>
-                      <td>{item?.quantity || 0}</td>
-                      <td>{(discountedBase + gstAmount).toFixed(2)}</td>
-                      <td>{(discountedBase * item.quantity).toFixed(2)}</td>
-                      {isPunjab ? (
-                        <>
-                          <td>{(taxRate/2).toFixed(2)}%</td>
-                          <td>{(halfGST * item.quantity).toFixed(2)}</td>
-                          <td>{(taxRate/2).toFixed(2)}%</td>
-                          <td>{(halfGST * item.quantity).toFixed(2)}</td>
-                        </>
-                      ) : (
-                        <>
-                          <td>{taxRate.toFixed(2)}%</td>
-                          <td>{(gstAmount * item.quantity).toFixed(2)}</td>
-                        </>
-                      )}
-                      <td className="total-cell">{total.toFixed(2)}</td>
-                    </tr>
-                  );
-                })}
+  return (
+    <tr key={item?._id} className={index % 2 === 0 ? "" : "alt-row"}>
+      <td>{index + 1}</td>
+      <td>
+        <strong>{item?.productId?.name || "N/A"}</strong>
+        <div className="product-description">
+          {item?.size?.size} {item?.size?.sizetype}
+        </div>
+      </td>
+      <td>{item?.quantity || 0}</td>
+      <td>{((basePrice + gstAmount)).toFixed(2)}</td>
+      <td>{(basePrice * item.quantity).toFixed(2)}</td>
+      {isPunjab ? (
+        <>
+          <td>{(taxRate/2).toFixed(2)}%</td>
+          <td>{(halfGST * item.quantity).toFixed(2)}</td>
+          <td>{(taxRate/2).toFixed(2)}%</td>
+          <td>{(halfGST * item.quantity).toFixed(2)}</td>
+        </>
+      ) : (
+        <>
+          <td>{taxRate.toFixed(2)}%</td>
+          <td>{(gstAmount * item.quantity).toFixed(2)}</td>
+        </>
+      )}
+      <td className="total-cell">{total.toFixed(2)}</td>
+    </tr>
+  );
+})}
               </tbody>
             </table>
           </div>

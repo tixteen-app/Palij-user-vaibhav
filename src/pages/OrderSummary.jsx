@@ -176,7 +176,7 @@ const OrderSummary = () => {
         
         <div className={styles.footerSection}>
           <div className={styles.totalSection}>
-            <div className={styles.totalRow}>
+            <div className={styles.totalRow}> 
               <span><strong>Subtotal:</strong></span>
               <span>₹{subtotal.toFixed(2)}</span>
             </div>
