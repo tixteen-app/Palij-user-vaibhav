@@ -141,7 +141,9 @@ function Homesavery() {
                                     >
                                         <motion.img
                                             key={hoveredProduct === product._id ? "main" : "thumb"}
-                                            src={hoveredProduct === product._id ? product.image[0] : product.thumbnail}
+                                             src={                                         hoveredProduct === product._id                                                 ? (product.image?.[1] ? product.image[1] : product.image?.[0] || product.thumbnail)
+                                                                        : product.thumbnail
+                                                                }
                                             alt={product.name}
                                             onClick={() => handleNavigate(product._id)}
                                             initial={{ opacity: 0 }}
