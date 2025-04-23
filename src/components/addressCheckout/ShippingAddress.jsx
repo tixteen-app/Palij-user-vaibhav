@@ -83,6 +83,10 @@ const AddShippingAddress = () => {
 			toast.error("Please fill city")
 			return
 		}
+		if (!formData.phonenumber || formData.phonenumber.length !== 10) {
+			toast.error("Please enter a valid 10-digit phone number");
+			return;
+		  }
 
 		try {
 			const response = await makeApi(
@@ -117,7 +121,7 @@ const AddShippingAddress = () => {
 	return (
 		<>
 			<ToastContainer autoClose={1000} />
-			<div  className="d-flex align-items-center mb-2 my_cart_add_addreess_page_back_button"  >
+			<div className="d-flex align-items-center mb-2 my_cart_add_addreess_page_back_button"  >
 				<BackButton pageLocation="/cart/checkout/" />
 			</div>
 			<div className="my-shipping-belling-address">
@@ -157,9 +161,17 @@ const AddShippingAddress = () => {
 							name="phonenumber"
 							placeholder="Phone Number"
 							value={formData.phonenumber}
-							onChange={handleInputChange}
+							onChange={(e) => {
+								const value = e.target.value.replace(/\D/g, '');
+								if (value.length <= 10) {
+									setFormData({
+										...formData,
+										phonenumber: value
+									});
+								}
+							}}
 							required
-							max={10}
+							maxLength={10}
 						/>
 						<textarea
 							name="address"

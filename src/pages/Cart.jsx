@@ -18,6 +18,7 @@
 //   const [cartUpdated, setCartUpdated] = useState(false);
 //   const [editingMessages, setEditingMessages] = useState({});
 //   const [hasFetched, setHasFetched] = useState(false);
+//   const [showMessageInputs, setShowMessageInputs] = useState({});
 
 //   // Fetch Cart Items
 //   const fetchCartItems = async () => {
@@ -39,6 +40,13 @@
 
 //   const updateCart = () => {
 //     setCartUpdated((prev) => !prev);
+//   };
+
+//   const toggleMessageInput = (itemId) => {
+//     setShowMessageInputs(prev => ({
+//       ...prev,
+//       [itemId]: !prev[itemId]
+//     }));
 //   };
 
 //   const handleRemoveFromCart = async (item) => {
@@ -97,7 +105,6 @@
 //     }
 //   };
 
-//   // Modified to delete directly without confirmation
 //   const handleDeleteItem = async (item) => {
 //     try {
 //       setProductLoaders(prev => ({ ...prev, [item._id]: true }));
@@ -109,7 +116,6 @@
 //         fetchCart
 //       );
 
-//       // Optimistically update the UI
 //       setCompleteCart(prev => ({
 //         ...prev,
 //         orderItems: prev.orderItems.filter(cartItem => cartItem._id !== item._id)
@@ -130,7 +136,7 @@
 //     }));
 //   };
 
-//   const handleMessageBlur = async (itemId) => {
+//   const handleSaveMessage = async (itemId) => {
 //     const newMessage = editingMessages[itemId];
 //     const originalMessage = completeCart.orderItems.find(
 //       item => item._id === itemId
@@ -138,10 +144,12 @@
 
 //     if (newMessage !== undefined && newMessage !== originalMessage) {
 //       try {
-//         const response = await makeApi('/api/update-cart-message', 'PUT', {
+//         await makeApi('/api/update-cart-message', 'PUT', {
 //           itemId,
 //           message: newMessage
 //         });
+//         setShowMessageInputs(prev => ({ ...prev, [itemId]: false }));
+//         fetchCartItems(); // Refresh to get updated message
 //       } catch (error) {
 //         console.error("Error updating cake message:", error);
 //         setEditingMessages(prev => ({
@@ -154,7 +162,6 @@
 
 //   return (
 //     <>
-//       <ToastContainer />
 
 //       {fetchCartLoader && !hasFetched ? (
 //         <div className="loader_container_cart_page">
@@ -234,25 +241,43 @@
 //                       {item?.productId?.category?._id === "67b451f7ec3a4e4a3bbe5633" && (
 //                         <div className="cart-cake-message px-3">
 //                           <span className="message-label">Message:</span>
-//                           <div className="message-input-wrapper">
-//                             <div className="new_message_popup__edit_container">
-//                               <input
-//                                 type="text"
-//                                 value={editingMessages[item._id] ?? item.cakemessage ?? ""}
-//                                 onChange={(e) => handleMessageChange(item._id, e.target.value)}
-//                                 placeholder="Add your cake message"
-//                                 maxLength={20}
-//                                 className="message-input-bottom-border"
-//                               />
-//                               <button
-//                                 className="new_message_popup__update_btn"
-//                                 onClick={() => handleMessageBlur(item._id)}
-//                                 disabled={!editingMessages[item._id] || editingMessages[item._id] === item.cakemessage}
-//                               >
-//                                 Update
-//                               </button>
-//                             </div>
-//                           </div>
+//                           {showMessageInputs[item._id] || item.cakemessage ? (
+//   <div className="message-input-wrapper">
+//     <div className="new_message_popup__edit_container">
+//       <input
+//         type="text"
+//         value={editingMessages[item._id] ?? item.cakemessage ?? ""}
+//         onChange={(e) => handleMessageChange(item._id, e.target.value)}
+//         placeholder="Add your cake message"
+//         maxLength={20}
+//         className="message-input-bottom-border"
+//       />
+//       <button
+//         className="new_message_popup__update_btn"
+//         onClick={() => handleSaveMessage(item._id)}
+//         disabled={!editingMessages[item._id] || editingMessages[item._id] === item.cakemessage}
+//       >
+//         {item.cakemessage ? "Update" : "Add"}
+//       </button>
+//     </div>
+//   </div>
+// ) : (
+//   <div className="add-message-container">
+//     <span className="no-message-text me-2 text-black">Add message</span>
+//     <svg
+//       xmlns="http://www.w3.org/2000/svg"
+//       width="24"
+//       height="24"
+//       fill="#EE5564"
+//       className="add-message-icon"
+//       viewBox="0 0 16 16"
+//       onClick={() => toggleMessageInput(item._id)}
+//       style={{ cursor: "pointer" }}
+//     >
+//       <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+//     </svg>
+//   </div>
+// )}
 //                         </div>
 //                       )}
 //                     </div>
@@ -261,9 +286,9 @@
 //               </div>
 
 //               <div className="cart_UI_for_mobile_view">
-//                 <div className="cart_items_for_mobile_view">
-//                   <div className="cart_items_details_for_mobile_view">
-//                     {completeCart?.orderItems?.map((item, index) => (
+//                <div className="cart_items_for_mobile_view">
+//                  <div className="cart_items_details_for_mobile_view">
+//                    {completeCart?.orderItems?.map((item, index) => (
 //                       <div className="moble_view_for_cart_border">
 //                         <div key={index} className="cart_items_details_inside_for_mobile_view">
 //                           <div className="cross_icon_mobile" onClick={() => handleDeleteItem(item)}>
@@ -354,12 +379,11 @@
 //                 </div>
 //               </div>
 
+
 //               <div className="cartcalulaction-comp">
 //                 <CouponFunctions
 //                   updateCart={updateCart}
-//                   toastContainer={<ToastContainer position="top-right"
-//                     autoClose={1000}
-//                   />} />
+//                   />
 //               </div>
 //             </div>
 //           )}
@@ -392,6 +416,7 @@ const Cart = () => {
   const [editingMessages, setEditingMessages] = useState({});
   const [hasFetched, setHasFetched] = useState(false);
   const [showMessageInputs, setShowMessageInputs] = useState({});
+  const [messageSaveStates, setMessageSaveStates] = useState({}); // New state for tracking save states
 
   // Fetch Cart Items
   const fetchCartItems = async () => {
@@ -420,6 +445,17 @@ const Cart = () => {
       ...prev,
       [itemId]: !prev[itemId]
     }));
+    
+    // Initialize editing message with current value when opening
+    if (!showMessageInputs[itemId]) {
+      const currentItem = completeCart.orderItems.find(item => item._id === itemId);
+      if (currentItem) {
+        setEditingMessages(prev => ({
+          ...prev,
+          [itemId]: currentItem.cakemessage || ""
+        }));
+      }
+    }
   };
 
   const handleRemoveFromCart = async (item) => {
@@ -515,13 +551,28 @@ const Cart = () => {
       item => item._id === itemId
     )?.cakemessage;
 
-    if (newMessage !== undefined && newMessage !== originalMessage) {
+    if (newMessage !== undefined) {
       try {
+        // Set saving state
+        setMessageSaveStates(prev => ({ ...prev, [itemId]: 'saving' }));
+        
         await makeApi('/api/update-cart-message', 'PUT', {
           itemId,
           message: newMessage
         });
-        setShowMessageInputs(prev => ({ ...prev, [itemId]: false }));
+        
+        // Set saved state
+        setMessageSaveStates(prev => ({ ...prev, [itemId]: 'saved' }));
+        
+        // Reset to update state after 2 seconds if message is different
+        setTimeout(() => {
+          if (newMessage !== originalMessage) {
+            setMessageSaveStates(prev => ({ ...prev, [itemId]: 'update' }));
+          } else {
+            setMessageSaveStates(prev => ({ ...prev, [itemId]: 'saved' }));
+          }
+        }, 2000);
+        
         fetchCartItems(); // Refresh to get updated message
       } catch (error) {
         console.error("Error updating cake message:", error);
@@ -529,13 +580,34 @@ const Cart = () => {
           ...prev,
           [itemId]: originalMessage
         }));
+        setMessageSaveStates(prev => ({ ...prev, [itemId]: 'error' }));
       }
+    }
+  };
+
+  const getButtonText = (itemId, hasExistingMessage) => {
+    const saveState = messageSaveStates[itemId];
+    
+    if (!saveState) {
+      return hasExistingMessage ? "Update" : "Add";
+    }
+    
+    switch(saveState) {
+      case 'saving':
+        return "Saving...";
+      case 'saved':
+        return "Saved";
+      case 'update':
+        return "Update";
+      case 'error':
+        return "Error";
+      default:
+        return hasExistingMessage ? "Update" : "Add";
     }
   };
 
   return (
     <>
-
       {fetchCartLoader && !hasFetched ? (
         <div className="loader_container_cart_page">
           <div className="loader_for_cart"></div>
@@ -615,42 +687,49 @@ const Cart = () => {
                         <div className="cart-cake-message px-3">
                           <span className="message-label">Message:</span>
                           {showMessageInputs[item._id] || item.cakemessage ? (
-  <div className="message-input-wrapper">
-    <div className="new_message_popup__edit_container">
-      <input
-        type="text"
-        value={editingMessages[item._id] ?? item.cakemessage ?? ""}
-        onChange={(e) => handleMessageChange(item._id, e.target.value)}
-        placeholder="Add your cake message"
-        maxLength={20}
-        className="message-input-bottom-border"
-      />
-      <button
-        className="new_message_popup__update_btn"
-        onClick={() => handleSaveMessage(item._id)}
-        disabled={!editingMessages[item._id] || editingMessages[item._id] === item.cakemessage}
-      >
-        {item.cakemessage ? "Update" : "Add"}
-      </button>
-    </div>
-  </div>
-) : (
-  <div className="add-message-container">
-    <span className="no-message-text me-2 text-black">Add message</span>
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      fill="#EE5564"
-      className="add-message-icon"
-      viewBox="0 0 16 16"
-      onClick={() => toggleMessageInput(item._id)}
-      style={{ cursor: "pointer" }}
-    >
-      <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-    </svg>
-  </div>
-)}
+                            <div className="message-input-wrapper">
+                              <div className="new_message_popup__edit_container">
+                                <input
+                                  type="text"
+                                  value={editingMessages[item._id] ?? item.cakemessage ?? ""}
+                                  onChange={(e) => handleMessageChange(item._id, e.target.value)}
+                                  placeholder="Add your cake message"
+                                  maxLength={20}
+                                  className="message-input-bottom-border"
+                                />
+                                <button
+                                  className={`new_message_popup__update_btn ${
+                                    messageSaveStates[item._id] === 'saved' ? 'saved' : 
+                                    messageSaveStates[item._id] === 'saving' ? 'saving' : ''
+                                  }`}
+                                  onClick={() => handleSaveMessage(item._id)}
+                                  disabled={
+                                    messageSaveStates[item._id] === 'saving' || 
+                                    (editingMessages[item._id] === undefined && item.cakemessage) ||
+                                    (editingMessages[item._id] === item.cakemessage)
+                                  }
+                                >
+                                  {getButtonText(item._id, item.cakemessage)}
+                                </button>
+                              </div>
+                            </div>
+                          ) : (
+                            <div className="add-message-container">
+                              <span className="no-message-text me-2 text-black">Add message</span>
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                fill="#EE5564"
+                                className="add-message-icon"
+                                viewBox="0 0 16 16"
+                                onClick={() => toggleMessageInput(item._id)}
+                                style={{ cursor: "pointer" }}
+                              >
+                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                              </svg>
+                            </div>
+                          )}
                         </div>
                       )}
                     </div>
@@ -659,9 +738,9 @@ const Cart = () => {
               </div>
 
               <div className="cart_UI_for_mobile_view">
-               <div className="cart_items_for_mobile_view">
-                 <div className="cart_items_details_for_mobile_view">
-                   {completeCart?.orderItems?.map((item, index) => (
+                <div className="cart_items_for_mobile_view">
+                  <div className="cart_items_details_for_mobile_view">
+                    {completeCart?.orderItems?.map((item, index) => (
                       <div className="moble_view_for_cart_border">
                         <div key={index} className="cart_items_details_inside_for_mobile_view">
                           <div className="cross_icon_mobile" onClick={() => handleDeleteItem(item)}>
@@ -726,21 +805,24 @@ const Cart = () => {
                                     type="text"
                                     value={editingMessages[item._id] || item.cakemessage || ""}
                                     onChange={(e) => handleMessageChange(item._id, e.target.value)}
-                                    onBlur={() => handleMessageBlur(item._id)}
                                     placeholder="Add message"
                                     maxLength={20}
                                     className="message-input-bottom-border"
                                   />
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="16"
-                                    height="16"
-                                    fill="#EE5564"
-                                    className="edit-icon-inside"
-                                    viewBox="0 0 16 16"
+                                  <button
+                                    className={`new_message_popup__update_btn ${
+                                      messageSaveStates[item._id] === 'saved' ? 'saved' : 
+                                      messageSaveStates[item._id] === 'saving' ? 'saving' : ''
+                                    }`}
+                                    onClick={() => handleSaveMessage(item._id)}
+                                    disabled={
+                                      messageSaveStates[item._id] === 'saving' || 
+                                      (editingMessages[item._id] === undefined && item.cakemessage) ||
+                                      (editingMessages[item._id] === item.cakemessage)
+                                    }
                                   >
-                                    <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001m-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708z" />
-                                  </svg>
+                                    {getButtonText(item._id, item.cakemessage)}
+                                  </button>
                                 </div>
                               )}
                             </div>
@@ -752,11 +834,10 @@ const Cart = () => {
                 </div>
               </div>
 
-
               <div className="cartcalulaction-comp">
                 <CouponFunctions
                   updateCart={updateCart}
-                  />
+                />
               </div>
             </div>
           )}

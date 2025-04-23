@@ -1113,3 +1113,18 @@
   outline: none;
   border-bottom-color: #EE5564;
 }
+
+.new_message_popup__update_btn.saving {
+  background-color: #ffc107;
+  color: #000;
+}
+
+.new_message_popup__update_btn.saved {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.new_message_popup__update_btn[disabled] {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
