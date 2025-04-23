@@ -2,8 +2,12 @@
   padding: 0 50px;
   padding-top: 20vh;
   background: #F2D6CC;
+}
 
-
+.cart_Address_input_address{
+  display: flex;
+  align-items: center;
+  gap: 3px;
 }
 
 .two-payment {

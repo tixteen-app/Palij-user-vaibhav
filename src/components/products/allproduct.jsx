@@ -160,6 +160,10 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
     function handleNavigate(id) {
         navigate(`/product/product-details/${id}`);
     }
+    // function handleNavigate(id) {
+    //     window.open(`/product/product-details/${id}`, '_blank');
+    // }
+    
 
 
     const handleLoadMore = () => {
