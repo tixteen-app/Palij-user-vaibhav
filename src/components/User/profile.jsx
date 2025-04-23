@@ -47,9 +47,7 @@ const MyAccount = () => {
                             <BackButton pageLocation="/user/user-profile" />
                         </div>
                         <div className="myaccount w-100">
-                            {/* <div className="userprofile-heading my_wishlist_mobile_view">
-                    <h1>PERSONAL INFORMATION</h1>
-                </div> */}
+
                             {/* {userDatails && ( */}
                             <div className="myaccount-info userprofile-info-css">
 

@@ -60,6 +60,7 @@ const UserProfile = () => {
 				mobileNumber: user.mobileNumber ? user.mobileNumber.toString() : "",
 				userImage: user.userImage || "",
 			});
+			setMobileNumberChanged(false); // Reset the changed flag when loading user data
 		} catch (error) {
 			console.log(error);
 		} finally {
@@ -75,12 +76,22 @@ const UserProfile = () => {
 	const isActive = (path) => location.pathname === path;
 	const toggleLogoutDialog = () => setShowLogoutDialog((prev) => !prev);
 
+	// const onChangeHandler = (event) => {
+	// 	setEditData({
+	// 		...editData,
+	// 		[event.target.name]: event.target.value,
+	// 	});
+	// 	if (event.target.name === "mobileNumber") {
+	// 		setMobileNumberChanged(true);
+	// 	}
+	// };
 	const onChangeHandler = (event) => {
+		const { name, value } = event.target;
 		setEditData({
 			...editData,
-			[event.target.name]: event.target.value,
+			[name]: value,
 		});
-		if (event.target.name === "mobileNumber") {
+		if (name === "mobileNumber" && value !== (userDetails.mobileNumber ? userDetails.mobileNumber.toString() : "")) {
 			setMobileNumberChanged(true);
 		}
 	};
@@ -94,15 +105,23 @@ const UserProfile = () => {
 		event.preventDefault();
 		try {
 			const userDataToUpdate = { ...editData };
+			
+			// Only validate mobile number if it was changed or is being added for the first time
+			if ((mobileNumberChanged || !userDetails.mobileNumber) && editData.mobileNumber) {
+				if (!isValidMobileNumber(editData.mobileNumber)) {
+					toast.error("Please enter a valid 10-digit mobile number");
+					return;
+				}
+			}
+			
+			// If mobile number wasn't changed, don't send it in the update
 			if (!mobileNumberChanged) {
 				delete userDataToUpdate.mobileNumber;
 			}
-			if (mobileNumberChanged && !isValidMobileNumber(editData.mobileNumber)) {
-				toast.error("Please enter a valid 10-digit mobile number");
-				return;
-			}
+			
 			const response = await makeApi("/api/update-user", "PUT", userDataToUpdate);
 			toast.success(response.data.message);
+			setMobileNumberChanged(false); // Reset the changed flag after successful update
 			fetchUserDetail(); // Refresh user data after update
 		} catch (error) {
 			console.log("Error updating user details:", error);
@@ -289,7 +308,7 @@ const UserProfile = () => {
 											/>
 										</div>
 
-										<div className="new_home_page_form-group">
+										<div className="new_home_page_form-group ">
 											<label>EMAIL</label>
 											<input
 												type="email"
@@ -415,6 +434,7 @@ const UserProfile = () => {
 													onChange={onChangeHandler}
 													placeholder="Email Address"
 													disabled
+													className="inpur_file_for_email_profile"
 												/>
 											</div>
 

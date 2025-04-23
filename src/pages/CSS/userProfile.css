@@ -731,6 +731,10 @@
   width: 100%;
 }
 
+.inpur_file_for_email_profile{
+  width: 98% !important;
+}
+
 .new_home_page_save-btn {
   width: 100%;
   padding: 0.5rem;
