@@ -163,7 +163,7 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
     // function handleNavigate(id) {
     //     window.open(`/product/product-details/${id}`, '_blank');
     // }
-    
+
 
 
     const handleLoadMore = () => {
@@ -474,7 +474,11 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
                                                         >
                                                             <motion.img
                                                                 key={hoveredProduct === product._id ? "main" : "thumb"}
-                                                                src={hoveredProduct === product._id ? product.image[0] : product.thumbnail}
+                                                                src={
+                                                                    hoveredProduct === product._id
+                                                                        ? (product.image?.[1] ? product.image[1] : product.image?.[0] || product.thumbnail)
+                                                                        : product.thumbnail
+                                                                }
                                                                 alt={product.name}
                                                                 onClick={() => handleNavigate(product._id)}
                                                                 initial={{ opacity: 0 }}
@@ -482,6 +486,7 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
                                                                 exit={{ opacity: 0 }}
                                                                 transition={{ duration: 0.3 }}
                                                             />
+
                                                         </motion.div>
                                                         <div className="homeproduct_product_div_details">
                                                             <div>
