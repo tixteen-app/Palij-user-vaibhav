@@ -33,6 +33,10 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
     const [minLoadTimePassed, setMinLoadTimePassed] = useState(false);
     const [hoveredProduct, setHoveredProduct] = useState(null);
 
+    useEffect(() => {
+        // Reset sort when any of these filters change
+        setSortBy("");
+    }, [category, minPrice, maxPrice, categoryName, subcategory]);
 
 
     useEffect(() => {
