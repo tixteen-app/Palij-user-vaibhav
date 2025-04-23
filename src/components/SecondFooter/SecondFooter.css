@@ -162,6 +162,8 @@
     text-align: center;
     font-size: 14px;
     color: #8a7d68;
+    display: flex;
+    justify-content: space-between;
 }
 
 /* Mobile Responsive Styles */

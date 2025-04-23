@@ -48,7 +48,7 @@ const CouponFunctions = ({ updateCart }) => {
     try {
       const response = await makeApi("/api/apply-coupon", "POST", { coupon: couponCode });
       if (response.data) {
-        toast.success("Coupon applied successfully!");
+        // toast.success("Coupon applied successfully!");
         fetchCartItem();
       }
     } catch (error) {

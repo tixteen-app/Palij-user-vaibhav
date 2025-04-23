@@ -11,9 +11,13 @@
   font-size: 1.2rem;
   transition: transform 0.2s ease;
 }
-
-.rotateIcon {
+.normalIcon{
   transform: rotate(90deg);
+
+}
+.rotateIcon {
+  transform: rotate(275deg);
+
 }
 
 

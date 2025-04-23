@@ -473,6 +473,7 @@ import {
 } from "../../utils/productFunction"
 import NavSearchList from "../navSearchList/NavSearchList"
 import MarqueeComponent from "../SecondHomePage/Marquee/Marquee"
+import { FiShoppingBag } from "react-icons/fi"
 
 function Newnavbar() {
 	const [showNavbar, setShowNavbar] = useState(false)
@@ -1013,14 +1014,16 @@ function Newnavbar() {
 							</Link>
 
 							<Link to="/userprofile/myorders" className="profile-sidebar-link" onClick={() => setOpenProfile(false)}>
-								<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+								{/* <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 									<path d="M9 5H21" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
 									<path d="M9 12H21" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
 									<path d="M9 19H21" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
 									<path d="M5 5L5.01 5" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
 									<path d="M5 12L5.01 12" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
 									<path d="M5 19L5.01 19" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
-								</svg>
+								</svg> */}
+								<FiShoppingBag size={17} />
+
 								My Orders
 							</Link>
 

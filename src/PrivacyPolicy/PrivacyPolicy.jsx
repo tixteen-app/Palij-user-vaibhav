@@ -66,7 +66,7 @@ const PrivacyPolicy = () => {
       </div>
       <div>
         <h2>9. Contact Us</h2>
-        <p>If you have any questions or concerns regarding this Privacy Policy, please contact us at [customer support email] or call us at [phone number].</p>
+        <p>If you have any questions or concerns regarding this Privacy Policy, please contact us at paljibakery.shop@gmail.com or call us at +91 9814367260.</p>
       </div>
     </div>
   )

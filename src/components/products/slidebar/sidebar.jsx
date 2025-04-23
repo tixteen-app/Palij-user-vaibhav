@@ -7,6 +7,8 @@ import { IoSearch } from "react-icons/io5";
 import FilterDropdown from "./FilterPopup";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { RiArrowRightSLine } from "react-icons/ri";
+import {  FiShoppingBag } from "react-icons/fi";
+
 import { useLocation, useNavigate } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 
@@ -305,7 +307,7 @@ const handleFilterApply = (categoryId, minPrice, maxPrice, subcategoryId, select
                               e.stopPropagation();
                               toggleCategory(category._id);
                             }}
-                            className={`${styles.subcategoryIcon} ${expandedCategories[category._id] ? styles.rotateIcon : ""
+                            className={`${styles.subcategoryIcon} ${expandedCategories[category._id] ? styles.rotateIcon : styles.normalIcon
                               }`}
                           />
                         )}
