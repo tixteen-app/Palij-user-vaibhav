@@ -92,9 +92,6 @@ function Checkout() {
 		}
 	};
 
-
-
-
 	const openEditPopup = (address) => {
 		setEditAddress(address);
 		setIsEditPopupOpen(true);
@@ -202,63 +199,6 @@ function Checkout() {
 	// 	fetchCartItem();
 	// }, []);
 
-
-	// chat gpt
-	// useEffect(() => {
-	// 	const fetchCartItem = async () => {
-	// 		try {
-	// 			const response = await makeApi("/api/my-cart", "GET");
-	// 			setCartItem(response.data);
-
-	// 			if (response?.data?.orderItems?.length > 0) {
-	// 				let totalGstAmount = 0;
-	// 				let totalAmountNoGST = 0;
-
-	// 				const totalBeforeCoupon = response.data.totalPriceWithoutDiscount || 0;
-	// 				const couponDiscount = response.data.couapnDiscount || 0;
-
-	// 				response.data.orderItems.forEach(item => {
-	// 					const quantity = item.quantity || 1;
-	// 					const finalPrice = item.size?.FinalPrice || 0;
-	// 					const itemTotal = finalPrice * quantity;
-
-	// 					// Step 1: Calculate item proportion
-	// 					const proportion = itemTotal / totalBeforeCoupon;
-
-	// 					// Step 2: Apply coupon proportionally
-	// 					const discountedTotal = itemTotal - (couponDiscount * proportion);
-
-	// 					// Step 3: GST logic
-	// 					const gstPercentage = item.productId?.category?.tax || 0;
-
-	// 					// Reverse GST to find base price
-	// 					const priceExclGst = discountedTotal / (1 + gstPercentage / 100);
-	// 					const gstAmount = discountedTotal - priceExclGst;
-
-	// 					totalAmountNoGST += priceExclGst;
-	// 					totalGstAmount += gstAmount;
-	// 				});
-
-	// 				// Delivery Charges Logic
-	// 				if (response.data.totalPrice < 500) {
-	// 					setDeliveryCharge(75);
-	// 					setFinalTotal(response.data.totalPrice + 75);
-	// 				} else {
-	// 					setDeliveryCharge(0);
-	// 					setFinalTotal(response.data.totalPrice);
-	// 				}
-
-	// 				// Update UI state
-	// 				setCartTotalWithGST(parseFloat(totalGstAmount.toFixed(2)));
-	// 				setTotalAmountWithoutGST(parseFloat(totalAmountNoGST.toFixed(2)));
-	// 			}
-	// 		} catch (error) {
-	// 			console.error("Error fetching cart items:", error);
-	// 		}
-	// 	};
-
-	// 	fetchCartItem();
-	// }, []);
 
 	// deep seek
 	useEffect(() => {

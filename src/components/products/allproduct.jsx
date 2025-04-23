@@ -8,6 +8,7 @@ import SkeletonLoaderforshop from "./skelentonstore.jsx";
 import { motion } from "framer-motion";
 
 
+
 function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcategory }) {
     const navigate = useNavigate();
     const [products, setProducts] = useState([]);

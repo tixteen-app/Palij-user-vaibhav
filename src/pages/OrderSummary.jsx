@@ -52,31 +52,64 @@ const OrderSummary = () => {
   };
 
   // Calculate order summary values
+  // const calculateOrderSummary = () => {
+  //   const cart = orderSummary.CartId;
+  //   const subtotal = cart.totalPriceWithoutDiscount || 0;
+  //   const deliveryCharges = cart.deliveryCharges || 0;
+  //   const couponDiscount = cart.couapnDiscount || 0;
+  //   const totalBeforeDiscount = subtotal + deliveryCharges;
+  //   const finalTotal = cart.totalPrice || 0;
+  //   const otherDiscounts = Math.max(0, (totalBeforeDiscount - couponDiscount) - finalTotal);
+
+  //   return {
+  //     subtotal,
+  //     deliveryCharges,
+  //     couponDiscount,
+  //     totalBeforeDiscount,
+  //     otherDiscounts,
+  //     finalTotal
+  //   };
+  // };
+
+  // const {
+  //   subtotal,
+  //   deliveryCharges,
+  //   couponDiscount,
+  //   totalBeforeDiscount,
+  //   otherDiscounts,
+  //   finalTotal
+  // } = calculateOrderSummary();
+
+
   const calculateOrderSummary = () => {
     const cart = orderSummary.CartId;
     const subtotal = cart.totalPriceWithoutDiscount || 0;
     const deliveryCharges = cart.deliveryCharges || 0;
     const couponDiscount = cart.couapnDiscount || 0;
-    const totalBeforeDiscount = subtotal + deliveryCharges;
-    const finalTotal = cart.totalPrice || 0;
-    const otherDiscounts = Math.max(0, (totalBeforeDiscount - couponDiscount) - finalTotal);
-
+    
+    // Calculate tax amount (from your data it's 15.788... for this order)
+    const taxAmount = parseFloat(orderSummary.taxprice) || 0;
+    
+    // Calculate final total components
+    const taxableAmount = subtotal - couponDiscount;
+    const finalTotal = taxableAmount + taxAmount + deliveryCharges;
+  
     return {
       subtotal,
       deliveryCharges,
       couponDiscount,
-      totalBeforeDiscount,
-      otherDiscounts,
+      taxAmount,
+      taxableAmount,
       finalTotal
     };
   };
-
+  
   const {
     subtotal,
     deliveryCharges,
     couponDiscount,
-    totalBeforeDiscount,
-    otherDiscounts,
+    taxAmount,
+    taxableAmount,
     finalTotal
   } = calculateOrderSummary();
 
@@ -174,7 +207,7 @@ const OrderSummary = () => {
           </tbody>
         </table>
         
-        <div className={styles.footerSection}>
+        {/* <div className={styles.footerSection}>
           <div className={styles.totalSection}>
             <div className={styles.totalRow}> 
               <span><strong>Subtotal:</strong></span>
@@ -210,7 +243,45 @@ const OrderSummary = () => {
               <span>₹{finalTotal.toFixed(2)}</span>
             </div>
           </div>
-        </div>
+        </div> */}
+
+        <div className={styles.footerSection}>
+  <div className={styles.totalSection}>
+    <div className={styles.totalRow}> 
+      <span><strong>Subtotal:</strong></span>
+      <span>₹{subtotal.toFixed(2)}</span>
+    </div>
+    
+    {couponDiscount > 0 && (
+      <div className={styles.totalRow}>
+        <span><strong>Coupon Discount ({orderSummary.CartId.coupancode}):</strong></span>
+        <span>-₹{couponDiscount.toFixed(2)}</span>
+      </div>
+    )}
+    
+    <div className={styles.totalRow}>
+      <span><strong>Taxable Amount:</strong></span>
+      <span>₹{taxableAmount.toFixed(2)}</span>
+    </div>
+    
+    <div className={styles.totalRow}>
+      <span><strong>Tax (GST):</strong></span>
+      <span>₹{taxAmount.toFixed(2)}</span>
+    </div>
+    
+    <div className={styles.totalRow}>
+      <span><strong>Delivery Charges:</strong></span>
+      <span>₹{deliveryCharges.toFixed(2)}</span>
+    </div>
+    
+    <div className={styles.totalRow} style={{ borderTop: '1px solid #ddd', paddingTop: '8px' }}>
+      <span><strong>Final Total:</strong></span>
+      <span>₹{finalTotal.toFixed(2)}</span>
+    </div>
+  </div>
+</div>
+
+
       </div>
 
       {showInvoice && (
