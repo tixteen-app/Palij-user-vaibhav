@@ -299,11 +299,11 @@ useEffect(() => {
 			  const itemShare = (item.size.price * item.quantity) / originalTotal;
 			  const itemDiscount = totalDiscount * itemShare;
 			  
-			  // Apply coupon discount to base price
-			  const discountedBase = itemBasePrice - (itemDiscount / (1 + gstPercentage/100));
+			  // Apply coupon discount to base price PER UNIT
+			  const discountedBasePerUnit = itemBasePrice - (itemDiscount / (1 + gstPercentage/100)) / item.quantity;
 			  
-			  totalDiscountedBase += discountedBase * item.quantity;
-			  totalGstAmount += discountedBase * (gstPercentage/100) * item.quantity;
+			  totalDiscountedBase += discountedBasePerUnit * item.quantity;
+			  totalGstAmount += discountedBasePerUnit * (gstPercentage/100) * item.quantity;
 			});
 			
 			totalAmountNoGST = totalDiscountedBase;
