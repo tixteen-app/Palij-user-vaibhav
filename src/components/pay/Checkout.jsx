@@ -152,105 +152,180 @@ function Checkout() {
 
 		}
 	};
-
-	useEffect(() => {
-		const fetchCartItem = async () => {
-			try {
-				const response = await makeApi("/api/my-cart", "GET");
-				// Set the cart items after fetching the data
-				setCartItem(response.data);
-
-				if (response?.data?.orderItems?.length > 0) {
-					let totalGstAmount = 0;
-					let totalAmountNoGST = 0
-
-					// Loop through each item and calculate GST, accounting for quantity and custom tax percentage
-					response.data.orderItems.forEach(item => {
-						let finalPrice = item.size?.FinalPrice || 0;
-
-						// Get the tax percentage for each product from the product data
-						let gstPercentage = item.productId?.category?.tax; // Default to 18% if no tax percentage is provided
-
-						// Calculate the actual price before GST
-						let actualPrice = finalPrice / (1 + gstPercentage / 100);
-						totalAmountNoGST += actualPrice * item.quantity;
-
-						// Calculate the GST amount for this item
-						let gstAmount = finalPrice - actualPrice;
-
-						// Multiply by quantity to account for multiple items of the same product
-						gstAmount *= item.quantity;
-
-						// Add the GST amount to the total GST amount
-						totalGstAmount += gstAmount;
-					});
-
-
-					if (response.data.totalPrice < 500) {
-						setDeliveryCharge(75)
-						setFinalTotal(response.data.totalPrice + 75)
-					} else {
-						setDeliveryCharge(0)
-						setFinalTotal(response.data.totalPrice)
-					}
-
-					// Store the total GST amount in state
-					setCartTotalWithGST(totalGstAmount);
-					setTotalAmountWithoutGST(totalAmountNoGST - response.data.couapnDiscount);
-				}
-			} catch (error) {
-				console.error("Error fetching cart items:", error);
-			}
-		};
-
-		fetchCartItem();
-	}, []);
+// old working 
 	// useEffect(() => {
 	// 	const fetchCartItem = async () => {
-	// 	  try {
-	// 		const response = await makeApi("/api/my-cart", "GET");
-	// 		setCartItem(response.data);
-	  
-	// 		if (response?.data?.orderItems?.length > 0) {
-	// 		  let totalGstAmount = 0;
-	// 		  let totalAmountNoGST = 0;
-	// 		  const discountPercentage = 10; // Assuming 10% cart-level discount
-	  
-	// 		  response.data.orderItems.forEach(item => {
-	// 			const finalPrice = item.size?.FinalPrice || 0;
-	// 			const taxPercentage = item.productId?.category?.tax || 18;
-				
-	// 			// Step 1: Get base price without GST
-	// 			const basePrice = finalPrice / (1 + taxPercentage / 100);
-				
-	// 			// Step 2: Apply discount to base price
-	// 			const discountedBase = basePrice * (1 - discountPercentage / 100);
-				
-	// 			// Step 3: Calculate GST on discounted base
-	// 			const gstAmount = discountedBase * (taxPercentage / 100);
-	  
-	// 			totalAmountNoGST += discountedBase * item.quantity;
-	// 			totalGstAmount += gstAmount * item.quantity;
-	// 		  });
-	  
-	// 		  // Calculate delivery charges based on discounted total + GST
-	// 		  const subtotal = totalAmountNoGST + totalGstAmount;
-	// 		  const deliveryCharge = subtotal < 500 ? 75 : 0;
-	// 		  const finalTotal = subtotal + deliveryCharge;
-	  
-	// 		  setDeliveryCharge(deliveryCharge);
-	// 		  setFinalTotal(finalTotal);
-	// 		  setCartTotalWithGST(totalGstAmount);
-	// 		  setTotalAmountWithoutGST(totalAmountNoGST);
-	// 		}
-	// 	  } catch (error) {
-	// 		console.error("Error fetching cart items:", error);
-	// 	  }
-	// 	};
-	  
-	// 	fetchCartItem();
-	//   }, []);
+	// 		try {
+	// 			const response = await makeApi("/api/my-cart", "GET");
+	// 			// Set the cart items after fetching the data
+	// 			setCartItem(response.data);
 
+	// 			if (response?.data?.orderItems?.length > 0) {
+	// 				let totalGstAmount = 0;
+	// 				let totalAmountNoGST = 0
+
+	// 				// Loop through each item and calculate GST, accounting for quantity and custom tax percentage
+	// 				response.data.orderItems.forEach(item => {
+	// 					let finalPrice = item.size?.FinalPrice || 0;
+
+	// 					let gstPercentage = item.productId?.category?.tax; 
+
+	// 					let actualPrice = finalPrice / (1 + gstPercentage / 100);
+	// 					totalAmountNoGST += actualPrice * item.quantity;
+
+	// 					let gstAmount = finalPrice - actualPrice;
+
+	// 					gstAmount *= item.quantity;
+
+	// 					// Add the GST amount to the total GST amount
+	// 					totalGstAmount += gstAmount;
+	// 				});
+
+
+	// 				if (response.data.totalPrice < 500) {
+	// 					setDeliveryCharge(75)
+	// 					setFinalTotal(response.data.totalPrice + 75)
+	// 				} else {
+	// 					setDeliveryCharge(0)
+	// 					setFinalTotal(response.data.totalPrice)
+	// 				}
+
+	// 				// Store the total GST amount in state
+	// 				setCartTotalWithGST(totalGstAmount);
+	// 				setTotalAmountWithoutGST(totalAmountNoGST - response.data.couapnDiscount);
+	// 			}
+	// 		} catch (error) {
+	// 			console.error("Error fetching cart items:", error);
+	// 		}
+	// 	};
+
+	// 	fetchCartItem();
+	// }, []);
+
+
+// chat gpt
+// useEffect(() => {
+// 	const fetchCartItem = async () => {
+// 		try {
+// 			const response = await makeApi("/api/my-cart", "GET");
+// 			setCartItem(response.data);
+
+// 			if (response?.data?.orderItems?.length > 0) {
+// 				let totalGstAmount = 0;
+// 				let totalAmountNoGST = 0;
+
+// 				const totalBeforeCoupon = response.data.totalPriceWithoutDiscount || 0;
+// 				const couponDiscount = response.data.couapnDiscount || 0;
+
+// 				response.data.orderItems.forEach(item => {
+// 					const quantity = item.quantity || 1;
+// 					const finalPrice = item.size?.FinalPrice || 0;
+// 					const itemTotal = finalPrice * quantity;
+
+// 					// Step 1: Calculate item proportion
+// 					const proportion = itemTotal / totalBeforeCoupon;
+
+// 					// Step 2: Apply coupon proportionally
+// 					const discountedTotal = itemTotal - (couponDiscount * proportion);
+
+// 					// Step 3: GST logic
+// 					const gstPercentage = item.productId?.category?.tax || 0;
+
+// 					// Reverse GST to find base price
+// 					const priceExclGst = discountedTotal / (1 + gstPercentage / 100);
+// 					const gstAmount = discountedTotal - priceExclGst;
+
+// 					totalAmountNoGST += priceExclGst;
+// 					totalGstAmount += gstAmount;
+// 				});
+
+// 				// Delivery Charges Logic
+// 				if (response.data.totalPrice < 500) {
+// 					setDeliveryCharge(75);
+// 					setFinalTotal(response.data.totalPrice + 75);
+// 				} else {
+// 					setDeliveryCharge(0);
+// 					setFinalTotal(response.data.totalPrice);
+// 				}
+
+// 				// Update UI state
+// 				setCartTotalWithGST(parseFloat(totalGstAmount.toFixed(2)));
+// 				setTotalAmountWithoutGST(parseFloat(totalAmountNoGST.toFixed(2)));
+// 			}
+// 		} catch (error) {
+// 			console.error("Error fetching cart items:", error);
+// 		}
+// 	};
+
+// 	fetchCartItem();
+// }, []);
+
+// deep seek
+useEffect(() => {
+	const fetchCartItem = async () => {
+	  try {
+		const response = await makeApi("/api/my-cart", "GET");
+		setCartItem(response.data);
+  
+		if (response?.data?.orderItems?.length > 0) {
+		  let totalGstAmount = 0;
+		  let totalAmountNoGST = 0;
+		  let totalDiscountedBase = 0;
+  
+		  // Without coupon calculation
+		  if (!response.data.couapnDiscount) {
+			response.data.orderItems.forEach(item => {
+			  const finalPrice = item.size?.FinalPrice || 0;
+			  const gstPercentage = item.productId?.category?.tax || 12;
+			  const basePrice = finalPrice / (1 + gstPercentage / 100);
+			  
+			  totalAmountNoGST += basePrice * item.quantity;
+			  totalGstAmount += (finalPrice - basePrice) * item.quantity;
+			});
+		  }
+		  // With coupon calculation
+		  else {
+			const totalDiscount = response.data.couapnDiscount;
+			const originalTotal = response.data.totalPriceWithoutDiscount;
+			
+			response.data.orderItems.forEach(item => {
+			  const finalPrice = item.size?.FinalPrice || 0;
+			  const gstPercentage = item.productId?.category?.tax || 12;
+			  
+			  // Calculate base price after item discount
+			  const itemBasePrice = (item.size.price * (1 - item.size.discountPercentage/100)) / (1 + gstPercentage/100);
+			  
+			  // Calculate coupon discount proportion
+			  const itemShare = (item.size.price * item.quantity) / originalTotal;
+			  const itemDiscount = totalDiscount * itemShare;
+			  
+			  // Apply coupon discount to base price
+			  const discountedBase = itemBasePrice - (itemDiscount / (1 + gstPercentage/100));
+			  
+			  totalDiscountedBase += discountedBase * item.quantity;
+			  totalGstAmount += discountedBase * (gstPercentage/100) * item.quantity;
+			});
+			
+			totalAmountNoGST = totalDiscountedBase;
+		  }
+  
+		  // Common calculations for both cases
+		  const deliveryCharge = response.data.totalPrice < 500 ? 75 : 0;
+		  const finalTotal = response.data.totalPrice + deliveryCharge;
+  
+		  setDeliveryCharge(deliveryCharge);
+		  setFinalTotal(finalTotal);
+		  setCartTotalWithGST(totalGstAmount);
+		  setTotalAmountWithoutGST(response.data.couapnDiscount ? totalDiscountedBase : totalAmountNoGST);
+		}
+	  } catch (error) {
+		console.error("Error fetching cart items:", error);
+	  }
+	};
+  
+	fetchCartItem();
+  }, []);
+	
 	useEffect(() => {
 		const fetchpincode = async () => {
 			const response = await makeApi("/api/get-all-available-pincode", "GET")
