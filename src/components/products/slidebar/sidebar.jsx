@@ -131,20 +131,47 @@ const ProductSidebar = () => {
   }, []);
   
 
-  useEffect(() => {
-    // This effect syncs the selected category with URL changes
-    const categoryId = queryParams.get("category");
-    setSelectedCategory(categoryId || "");
+  // useEffect(() => {
+  //   // This effect syncs the selected category with URL changes
+  //   const categoryId = queryParams.get("category");
+  //   setSelectedCategory(categoryId || "");
 
-    if (categoryId && categories.length > 0) {
-      const matchedCategory = categories.find(
-        (category) => category._id === categoryId
-      );
-      if (matchedCategory) {
-        setCategoryName(matchedCategory.name);
+  //   if (categoryId && categories.length > 0) {
+  //     const matchedCategory = categories.find(
+  //       (category) => category._id === categoryId
+  //     );
+  //     if (matchedCategory) {
+  //       setCategoryName(matchedCategory.name);
+  //     }
+  //   } else {
+  //     setCategoryName("");
+  //   }
+  // }, [location.search, categories]);
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const categoryId = queryParams.get("category") || "";
+    
+    // Only update if category actually changed
+    if (categoryId !== selectedCategory) {
+      setSelectedCategory(categoryId);
+      
+      // Find and set the category name
+      if (categoryId && categories.length > 0) {
+        const matchedCategory = categories.find(
+          (category) => category._id === categoryId
+        );
+        if (matchedCategory) {
+          setCategoryName(matchedCategory.name);
+          // Expand the category if it's selected
+          setExpandedCategories(prev => ({ ...prev, [categoryId]: true }));
+        }
+      } else {
+        setCategoryName("");
       }
-    } else {
-      setCategoryName("");
+      
+      // Reset other filters when category changes
+      setSelectedSubcategory("");
+      setSelectedPriceRange({ min: 0, max: 1000000 });
     }
   }, [location.search, categories]);
 
