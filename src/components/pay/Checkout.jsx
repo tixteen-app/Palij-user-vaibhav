@@ -345,13 +345,25 @@ function Checkout() {
 		}
 
 		setIsSubmitDisabled(true);
+
+
+
+		// check payment method 
+		const roundValue = (value) => {
+			return selectPaymentMethod === "Cash On Delivery" ? Math.round(value) : value;
+		}
+
+		const finaldiscount = cartItem?.totalPriceWithoutDiscount - cartItem?.totalPrice
+		const roundedDiscount = roundValue(finaldiscount);
 		const data = {
 			shippingAddress: selectedShippingAddress,
 			billingAddress: selectedBillingAddress,
 			paymentMethod: selectPaymentMethod,
 			taxprice: cartTotalWithGST,
 			CartId: cartItem._id,
-
+			taxableamount: totalAmountWithoutGST,
+			addedtax : cartTotalWithGST,
+			overalldiscount :  selectPaymentMethod === "Cash On Delivery" ? roundedDiscount : finaldiscount
 		};
 		if (selectPaymentMethod === "Razorpay") {
 			if (!availablePincodes.pincode.some(p => p.pincode == data.shippingAddress.pincode)) {
@@ -560,6 +572,13 @@ function Checkout() {
 			alert("Razorpay SDK failed to load");
 			return;
 		}
+			// check payment method 
+			const roundValue = (value) => {
+				return selectPaymentMethod === "Cash On Delivery" ? Math.round(value) : value;
+			}
+	
+			const finaldiscount = cartItem?.totalPriceWithoutDiscount - cartItem?.totalPrice
+			const roundedDiscount = roundValue(finaldiscount);
 
 		const options = {
 			key: "rzp_test_DaA1MMEW2IUUYe",
@@ -584,6 +603,9 @@ function Checkout() {
 					billingAddress: selectedBillingAddress,
 					paymentMethod: selectPaymentMethod,
 					CartId: cartItem._id,
+					taxableamount: totalAmountWithoutGST,
+					addedtax : cartTotalWithGST,
+					overalldiscount :  selectPaymentMethod === "Cash On Delivery" ? roundedDiscount : finaldiscount 
 				};
 				submitOrder(data, setLoading, setOrderPlaced, navigate, deliverycharge)
 
@@ -610,6 +632,12 @@ function Checkout() {
 			alert("Razorpay SDK failed to load");
 			return;
 		}
+		const roundValue = (value) => {
+			return selectPaymentMethod === "Cash On Delivery" ? Math.round(value) : value;
+		}
+
+		const finaldiscount = cartItem?.totalPriceWithoutDiscount - cartItem?.totalPrice
+		const roundedDiscount = roundValue(finaldiscount);
 
 		const options = {
 			key: "rzp_test_DaA1MMEW2IUUYe",
@@ -636,6 +664,9 @@ function Checkout() {
 					billingAddress: selectedBillingAddress,
 					paymentMethod: selectPaymentMethod,
 					CartId: cartItem._id,
+					taxableamount: totalAmountWithoutGST,
+					addedtax : cartTotalWithGST,
+					overalldiscount :  selectPaymentMethod === "Cash On Delivery" ? roundedDiscount : finaldiscount
 				};
 				submitOrderforlocal(data, setLoading, setOrderPlaced, navigate, deliverycharge);
 			},
@@ -855,6 +886,17 @@ function Checkout() {
 														value={editAddress.lastname}
 														onChange={handleInputChange}
 														placeholder="Enter last name"
+													/>
+												</div>
+												<div className="form-group-edit-adrress">
+													<label htmlFor="lastname">Mobile Number</label>
+													<input
+														type="number"
+														id="phonenumber"
+														name="phonenumber"
+														value={editAddress.phonenumber}
+														onChange={handleInputChange}
+														placeholder="Enter mobile number"
 													/>
 												</div>
 

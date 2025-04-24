@@ -15,7 +15,7 @@ function CartCalculation({
 	totalwithoutgst,
 	pricewithdevverycharge,
 	Razopaydiscount,
-	onButtonClick 
+	onButtonClick
 }) {
 
 	const [loadingData, setLoadingData] = useState({
@@ -28,15 +28,7 @@ function CartCalculation({
 		return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(number);
 	};
 
-	const {
-		couponCode,
-		setCouponCode,
-		appliedCoupon,
-		couponDiscount,
-		applyCoupon,
-		removeCoupon,
-	} = useCoupon();
-	const navigate = useNavigate();
+
 
 	useEffect(() => {
 		// Simulate data fetching
@@ -137,10 +129,10 @@ function CartCalculation({
 				</div>
 
 				{isCashOnDelivery && (
-  <div className={styles.codMessage}>
-    <span>Save ₹25 on prepaid orders</span>
-  </div>
-)}
+					<div className={styles.codMessage}>
+						<span>Save ₹25 on prepaid orders</span>
+					</div>
+				)}
 
 
 				<div className={styles.row}>
@@ -166,7 +158,7 @@ function CartCalculation({
 							{
 								!isCashOnDelivery && Razopaydiscount ? (
 									<>
-										 		<span>{formatNumber(isCashOnDelivery ? (roundedFinal - 25) : (pricewithdevverycharge - 25))}</span>
+										<span>{formatNumber(isCashOnDelivery ? (roundedFinal - 25) : (pricewithdevverycharge - 25))}</span>
 									</>
 								) : (
 									<>
@@ -194,7 +186,7 @@ function CartCalculation({
 				</div>
 			</div>
 
-			
+
 		</>
 
 	);
