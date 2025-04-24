@@ -370,71 +370,69 @@ export default function Taxinvoice() {
   useEffect(() => {
     const fetchOrderSummary = async () => {
       try {
-        // Fetch order summary data
         const response = await makeApi(
           `/api/get-second-order-by-id/${ordersummary}`,
           "GET"
         );
-        // If order summary is successful, set it to state
         const fetchedOrderSummary = response.data.secondorder;
         setOrderSummary(fetchedOrderSummary);
-  
-        // Calculate tax details
+
+        // Calculate tax details using the same logic as in cart
         if (fetchedOrderSummary?.CartId?.orderItems?.length > 0) {
           let totalGstAmount = 0;
           let totalAmountNoGST = 0;
           let totalDiscountedBase = 0;
-  
+          const cart = fetchedOrderSummary.CartId;
+
           // Without coupon calculation
-          if (!fetchedOrderSummary.CartId.couapnDiscount) {
-            fetchedOrderSummary.CartId.orderItems.forEach(item => {
+          if (!cart.couapnDiscount) {
+            cart.orderItems.forEach(item => {
               const finalPrice = item.singleProductPrice || 0;
-              const gstPercentage = item.productId?.category?.tax || 12;
+              const gstPercentage = item.productId?.Tax || item.productId?.category?.tax || 12;
               const basePrice = finalPrice / (1 + gstPercentage / 100);
-  
+
               totalAmountNoGST += basePrice * item.quantity;
               totalGstAmount += (finalPrice - basePrice) * item.quantity;
             });
           }
           // With coupon calculation
           else {
-            const totalDiscount = fetchedOrderSummary.CartId.couapnDiscount;
-            const originalTotal = fetchedOrderSummary.CartId.totalPriceWithoutDiscount;
-  
-            fetchedOrderSummary.CartId.orderItems.forEach(item => {
+            const totalDiscount = cart.couapnDiscount;
+            const originalTotal = cart.totalPriceWithoutDiscount;
+
+            cart.orderItems.forEach(item => {
               const finalPrice = item.singleProductPrice || 0;
-              const gstPercentage = item.productId?.category?.tax || 12;
-  
-              // Calculate base price after item discount
+              const gstPercentage = item.productId?.Tax || item.productId?.category?.tax || 12;
+
+              // Calculate base price
               const itemBasePrice = finalPrice / (1 + gstPercentage / 100);
-  
+
               // Calculate coupon discount proportion
-              const itemShare = (item.singleProductPrice * item.quantity) / originalTotal;
+              const itemShare = (finalPrice * item.quantity) / originalTotal;
               const itemDiscount = totalDiscount * itemShare;
-  
+
               // Apply coupon discount to base price PER UNIT
               const discountedBasePerUnit = itemBasePrice - (itemDiscount / (1 + gstPercentage / 100)) / item.quantity;
-  
+
               totalDiscountedBase += discountedBasePerUnit * item.quantity;
               totalGstAmount += discountedBasePerUnit * (gstPercentage / 100) * item.quantity;
             });
-  
+
             totalAmountNoGST = totalDiscountedBase;
           }
-  
-          // Common calculations for both cases
-          const deliveryCharge = fetchedOrderSummary.CartId.totalPrice < 500 ? 75 : 0;
-          const finalTotal = fetchedOrderSummary.CartId.totalPrice + deliveryCharge;
-  
+
+          // Use the actual paid amount from the order
+          const finalTotal = cart.totalPrice || 0;
+          const deliveryCharge = cart.deliveryCharges || 0;
+
           setTaxDetails({
             totalGstAmount,
-            totalAmountNoGST: fetchedOrderSummary.CartId.couapnDiscount ? totalDiscountedBase : totalAmountNoGST,
+            totalAmountNoGST: cart.couapnDiscount ? totalDiscountedBase : totalAmountNoGST,
             deliveryCharge,
             finalTotal
           });
         }
-  
-        // Once orderSummary is set, check if shiprocketOrderId is available
+
         if (fetchedOrderSummary?.shiprocketOrderId) {
           const Shipresponse = await makeApi(
             `/api/shiprocket/get-order-by-id/${fetchedOrderSummary.shiprocketOrderId}`,
@@ -446,8 +444,7 @@ export default function Taxinvoice() {
         console.log(error);
       }
     };
-  
-    // Call the function to fetch order summary
+
     fetchOrderSummary();
   }, [ordersummary]);
 
