@@ -51,6 +51,10 @@ function Checkout() {
 		removeCoupon,
 	} = useCoupon()
 
+	const [deleteLoading, setDeleteLoading] = useState(false);
+const [deleteAllLoading, setDeleteAllLoading] = useState(false);
+
+
 
 	const [cartTotalWithGST, setCartTotalWithGST] = useState(0);
 	const [totalAmountWithoutGST, setTotalAmountWithoutGST] = useState(0);
@@ -392,8 +396,9 @@ function Checkout() {
 	//   };
 
 	  const handleDeleteClick = async (item) => {
-		console.log("item",item)
 		try {
+			setDeleteLoading(true);
+
 		  // Call API to delete product from the cart using cart item ID
 		  await deleteproductFromCart(
 			item, // This should be the cart item ID
@@ -404,7 +409,7 @@ function Checkout() {
 	  
 		  // Refresh cart and check if empty
 		  const updatedCart = await fetchCartItems();
-
+		  setShowModal(false);
 		  const response = await makeApi("/api/my-cart", "GET");
 		  	  setCartItem(response.data);
 		  
@@ -425,11 +430,14 @@ function Checkout() {
 		  
 		} catch (error) {
 		  console.error("Error deleting product from cart:", error);
-		}
+		}finally {
+			setDeleteLoading(false);
+		  }
 	  };
 
 	  const handleRemoveAllClick = async () => {
 		try {
+			setDeleteAllLoading(true);
 		  for (const item of nonDeliverableProducts) {
 			await deleteproductFromCart(
 			  item._id, // Use cart item ID instead of product ID
@@ -441,7 +449,7 @@ function Checkout() {
 		  
 		  // Refresh both cart states
 		  await fetchCartItems();
-		  
+		  setShowModal(false);
 		  // Also fetch the cart item data again to update totals
 		  const response = await makeApi("/api/my-cart", "GET");
 		  setCartItem(response.data);
@@ -454,7 +462,9 @@ function Checkout() {
 		  setShowModal(false);
 		} catch (error) {
 		  console.error("Error removing products:", error);
-		}
+		}finally {
+			setDeleteAllLoading(false);
+		  }
 	  };
 
 
@@ -636,19 +646,19 @@ function Checkout() {
 			try {
 				const response = await makeApi("/api/my-cart", "GET");
 				setCartItem(response.data);
-
+	
 				if (response?.data?.orderItems?.length > 0) {
 					let totalGstAmount = 0;
 					let totalAmountNoGST = 0;
 					let totalDiscountedBase = 0;
-
+	
 					// Without coupon calculation
 					if (!response.data.couapnDiscount) {
 						response.data.orderItems.forEach(item => {
 							const finalPrice = item.size?.FinalPrice || 0;
 							const gstPercentage = item.productId?.category?.tax || 12;
 							const basePrice = finalPrice / (1 + gstPercentage / 100);
-
+	
 							totalAmountNoGST += basePrice * item.quantity;
 							totalGstAmount += (finalPrice - basePrice) * item.quantity;
 						});
@@ -657,32 +667,32 @@ function Checkout() {
 					else {
 						const totalDiscount = response.data.couapnDiscount;
 						const originalTotal = response.data.totalPriceWithoutDiscount;
-
+	
 						response.data.orderItems.forEach(item => {
 							const finalPrice = item.size?.FinalPrice || 0;
 							const gstPercentage = item.productId?.category?.tax || 12;
-
+	
 							// Calculate base price after item discount
 							const itemBasePrice = (item.size.price * (1 - item.size.discountPercentage / 100)) / (1 + gstPercentage / 100);
-
+	
 							// Calculate coupon discount proportion
 							const itemShare = (item.size.price * item.quantity) / originalTotal;
 							const itemDiscount = totalDiscount * itemShare;
-
+	
 							// Apply coupon discount to base price PER UNIT
 							const discountedBasePerUnit = itemBasePrice - (itemDiscount / (1 + gstPercentage / 100)) / item.quantity;
-
+	
 							totalDiscountedBase += discountedBasePerUnit * item.quantity;
 							totalGstAmount += discountedBasePerUnit * (gstPercentage / 100) * item.quantity;
 						});
-
+	
 						totalAmountNoGST = totalDiscountedBase;
 					}
-
+	
 					// Common calculations for both cases
 					const deliveryCharge = response.data.totalPrice < 500 ? 75 : 0;
 					const finalTotal = response.data.totalPrice + deliveryCharge;
-
+	
 					setDeliveryCharge(deliveryCharge);
 					setFinalTotal(finalTotal);
 					setCartTotalWithGST(totalGstAmount);
@@ -710,66 +720,146 @@ function Checkout() {
 				draggable
 				pauseOnHover
 			/>
+{showModal && (
+  <div className={styles.popupOverlay}>
+    <div className={styles.popupContent}>
+      <div className={styles.popupHeader}>
+        <h4 className={styles.popupTitle}>UNAVAILABLE FOR DELIVERY</h4>
+        <p className={styles.popupSubtitle}>The following item(s) are not deliverable to the selected address:</p>
+      </div>
+      
+      <div className={styles.popupScrollContainer}>
+        <ul className={styles.popupList}>
+          {nonDeliverableProducts.map((item, index) => (
+            <li key={index} className={styles.popupItem}>
+              <div className={styles.popupImageName}>
+                <div className={styles.popupImagethumbnail}>
+                  <img
+                    src={item.productId.thumbnail}
+                    alt={item.productId.name}
+                    className={styles.popupThumbnail}
+                    loading="lazy"
+                  />
+                </div>
+                <div className={styles.popupproductdetails}>
+                  <h5 className={styles.productName}>{item.productId.name}</h5>
+                  <p className={styles.productPrice}>Price: ₹{item.singleProductPrice}</p>
+                </div>
+              </div>
+              <div className={styles.remove}>
+                <button 
+                  onClick={() => handleDeleteClick(item._id)}
+                  disabled={deleteLoading}
+                  className={styles.removeButton}
+                >
+                  {deleteLoading ? (
+                    <span className={styles.loadingText}>Removing...</span>
+                  ) : (
+                    <>
+                      <span className={styles.removeText}>Remove</span>
+                      <span className={styles.removeIcon}>×</span>
+                    </>
+                  )}
+                </button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
 
-			{showModal && (
-				<div className={styles.popupOverlay}>
-					<div className={styles.popupContent}>
-						<h4> UNAVAILABLE FOR DELIVERY </h4>
-						<p>The following item(s) are not deliverable to the selected address:</p>
-						<ul className={styles.popupList}>
-							{nonDeliverableProducts.map((item, index) => (
-								<li key={index} className={styles.popupItem}>
-									<div className={styles.popupImageName}>
-										<div className={styles.popupImagethumbnail} >
-											<img
-												src={item.productId.thumbnail}
-												alt={item.productId.name}
-												className={styles.popupThumbnail}
-											/>
-										</div>
-										<div className={styles.popupproductdetails} >
-											<div>{item.productId.name}</div>
-											<div>Price: ₹{item.singleProductPrice}</div>
-										</div>
-									</div>
-									<div>
+      <div className={styles.popupButtonscart}>
+        <button
+          className={styles.popupButtonforremoveall}
+          onClick={!deleteAllLoading ? handleRemoveAllClick : undefined}
+          disabled={deleteAllLoading}
+        >
+          {deleteAllLoading ? (
+            <span className={styles.loadingText}>Removing All...</span>
+          ) : (
+            'Remove All'
+          )}
+        </button>
+        <button
+          className={styles.closepopupButton}
+          onClick={() => setShowModal(false)}
+          disabled={deleteLoading || deleteAllLoading}
+        >
+          Close
+        </button>
+      </div>
 
-										<div className={styles.remove}><button onClick={() => handleDeleteClick(item._id)}>Remove</button></div>
-									</div>
-								</li>
-							))}
-						</ul>
-						<div className={styles.popupButtonscart} >
-							<div
-								className={styles.popupButtonforremovealldiv}
-
-								onClick={handleRemoveAllClick}
-							>
-								<button
-									className={styles.popupButtonforremoveall}
-
-								>
-									Remove All
-								</button>
-							</div>
-							<div
-								className={styles.popupButtonforremovealldiv}
-
-							>
-								<button
-									className={styles.closepopupButton}
-									onClick={() => {
-										setShowModal(false);
-
-									}} // Close the popup
-								>
-									Close
-								</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			)}
+      {(deleteLoading || deleteAllLoading) && (
+        <div className={styles.modalLoader}>
+          <div className={styles.loader}></div>
+        </div>
+      )}
+    </div>
+  </div>
+)}
+{/* {showModal && (
+  <div className={styles.popupOverlay}>
+    <div className={styles.popupContent}>
+      <h4> UNAVAILABLE FOR DELIVERY </h4>
+      <p>The following item(s) are not deliverable to the selected address:</p>
+      <ul className={styles.popupList}>
+        {nonDeliverableProducts.map((item, index) => (
+          <li key={index} className={styles.popupItem}>
+            <div className={styles.popupImageName}>
+              <div className={styles.popupImagethumbnail}>
+                <img
+                  src={item.productId.thumbnail}
+                  alt={item.productId.name}
+                  className={styles.popupThumbnail}
+                />
+              </div>
+              <div className={styles.popupproductdetails}>
+                <div>{item.productId.name}</div>
+                <div>Price: ₹{item.singleProductPrice}</div>
+              </div>
+            </div>
+            <div>
+              <div className={styles.remove}>
+                <button 
+                  onClick={() => handleDeleteClick(item._id)}
+                  disabled={deleteLoading}
+                >
+                  {deleteLoading ? "Removing.." : "Remove"}
+                </button>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ul>
+      <div className={styles.popupButtonscart}>
+        <div
+          className={styles.popupButtonforremovealldiv}
+          onClick={!deleteAllLoading ? handleRemoveAllClick : undefined}
+        >
+          <button
+            className={styles.popupButtonforremoveall}
+            disabled={deleteAllLoading}
+          >
+            {deleteAllLoading ? "Removing All.." : "Remove All"}
+          </button>
+        </div>
+        <div className={styles.popupButtonforremovealldiv}>
+          <button
+            className={styles.closepopupButton}
+            onClick={() => setShowModal(false)}
+            disabled={deleteLoading || deleteAllLoading}
+          >
+            Close
+          </button>
+        </div>
+      </div>
+      {(deleteLoading || deleteAllLoading) && (
+        <div className={styles.modalLoader}>
+          <div className={styles.loader}></div>
+        </div>
+      )}
+    </div>
+  </div>
+)} */}
 
 			{orderPlaced && (
 				<div className="success-gif-container">
