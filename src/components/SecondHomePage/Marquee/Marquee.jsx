@@ -16,8 +16,8 @@ const MarqueeComponent = () => {
         
         <div className={styles.marquee_item}>
           <img src={assets.dotPoint} alt="dotpoint" />
-          <span className="text-black">fresh cake only</span>
-          <span>in Ludhiana</span>
+          <span className="text-black">Delivering Fresh Cakes with Love — </span>
+          <span> Only in Ludhiana</span>
         </div>
         <div className={styles.marquee_spacer}></div>
 
@@ -31,8 +31,8 @@ const MarqueeComponent = () => {
         
         <div className={styles.marquee_item}>
           <img src={assets.dotPoint} alt="dotpoint" />
-          <span className="text-black">fresh cake only</span>
-          <span>in Ludhiana</span>
+          <span className="text-black">Delivering Fresh Cakes with Love — </span>
+          <span> Only in Ludhiana</span>
         </div>
 
         <div className={styles.marquee_spacer}></div>
