@@ -164,11 +164,13 @@ const UserProfile = () => {
 			if (file) {
 				const data = new FormData();
 				data.append("file", file);
-				data.append("upload_preset", "pfendx01");
+				data.append("upload_preset", "grzbbapu");
+				// data.append("upload_preset", "pfendx01");
 				data.append("folder", "palji");
 	
 				const response = await axios.post(
-					`https://api.cloudinary.com/v1_1/dwxtuqnty/upload`,
+					// `https://api.cloudinary.com/v1_1/dwxtuqnty/upload`,
+					`https://api.cloudinary.com/v1_1/dh74mrqe0/upload`,
 					data
 				);
 				if (response.status === 200) {
