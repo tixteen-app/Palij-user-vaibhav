@@ -285,12 +285,12 @@ const OrderSummary = () => {
               <span>₹{subtotal.toFixed(2)}</span>
             </div> */}
 
-            {couponDiscount > 0 && (
+            {/* {couponDiscount > 0 && (
               <div className={styles.totalRow}>
                 <span><strong>Coupon Discount ({orderSummary.CartId.coupancode}):</strong></span>
                 <span>-₹{couponDiscount.toFixed(2)}</span>
               </div>
-            )}
+            )} */}
 
             <div className={styles.totalRow}>
               <span><strong>Taxable Amount:</strong></span>
