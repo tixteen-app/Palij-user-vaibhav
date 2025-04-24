@@ -87,23 +87,56 @@ const OrderSummary = () => {
     const deliveryCharges = cart.deliveryCharges || 0;
     const couponDiscount = cart.couapnDiscount || 0;
     
-    // Calculate tax amount (from your data it's 15.788... for this order)
-    const taxAmount = parseFloat(orderSummary.taxprice) || 0;
-    
-    // Calculate final total components
-    const taxableAmount = subtotal - couponDiscount;
-    const finalTotal = taxableAmount + taxAmount + deliveryCharges;
+    // Calculate GST like in your cart logic
+    let totalGstAmount = 0;
+    let taxableAmount = 0;
+  
+    // Without coupon calculation
+    if (!couponDiscount) {
+      cart.orderItems.forEach(item => {
+        const finalPrice = item.singleProductPrice || 0;
+        const gstPercentage = item.productId?.category?.tax || 12;
+        const basePrice = finalPrice / (1 + gstPercentage / 100);
+  
+        taxableAmount += basePrice * item.quantity;
+        totalGstAmount += (finalPrice - basePrice) * item.quantity;
+      });
+    }
+    // With coupon calculation
+    else {
+      const originalTotal = subtotal;
+  
+      cart.orderItems.forEach(item => {
+        const finalPrice = item.singleProductPrice || 0;
+        const gstPercentage = item.productId?.category?.tax || 12;
+  
+        // Calculate base price after item discount
+        const itemBasePrice = finalPrice / (1 + gstPercentage / 100);
+  
+        // Calculate coupon discount proportion
+        const itemShare = (finalPrice * item.quantity) / originalTotal;
+        const itemDiscount = couponDiscount * itemShare;
+  
+        // Apply coupon discount to base price PER UNIT
+        const discountedBasePerUnit = itemBasePrice - (itemDiscount / (1 + gstPercentage / 100)) / item.quantity;
+  
+        taxableAmount += discountedBasePerUnit * item.quantity;
+        totalGstAmount += discountedBasePerUnit * (gstPercentage / 100) * item.quantity;
+      });
+    }
+  
+    // Use the actual paid amount from the order
+    const finalTotal = cart.totalPrice || 0;
   
     return {
       subtotal,
       deliveryCharges,
       couponDiscount,
-      taxAmount,
+      taxAmount: totalGstAmount,
       taxableAmount,
       finalTotal
     };
   };
-  
   const {
     subtotal,
     deliveryCharges,
@@ -195,7 +228,7 @@ const OrderSummary = () => {
                     <span>{item.productId?.name}</span>
                   </div>
                   <div>
-                  {/* <div> cake message : {item?.cakemessage}</div> */}
+                    {/* <div> cake message : {item?.cakemessage}</div> */}
 
                   </div>
                 </td>
@@ -206,7 +239,7 @@ const OrderSummary = () => {
             ))}
           </tbody>
         </table>
-        
+
         {/* <div className={styles.footerSection}>
           <div className={styles.totalSection}>
             <div className={styles.totalRow}> 
@@ -246,40 +279,40 @@ const OrderSummary = () => {
         </div> */}
 
         <div className={styles.footerSection}>
-  <div className={styles.totalSection}>
-    <div className={styles.totalRow}> 
-      <span><strong>Subtotal:</strong></span>
-      <span>₹{subtotal.toFixed(2)}</span>
-    </div>
-    
-    {couponDiscount > 0 && (
-      <div className={styles.totalRow}>
-        <span><strong>Coupon Discount ({orderSummary.CartId.coupancode}):</strong></span>
-        <span>-₹{couponDiscount.toFixed(2)}</span>
-      </div>
-    )}
-    
-    <div className={styles.totalRow}>
-      <span><strong>Taxable Amount:</strong></span>
-      <span>₹{taxableAmount.toFixed(2)}</span>
-    </div>
-    
-    <div className={styles.totalRow}>
-      <span><strong>Tax (GST):</strong></span>
-      <span>₹{taxAmount.toFixed(2)}</span>
-    </div>
-    
-    <div className={styles.totalRow}>
-      <span><strong>Delivery Charges:</strong></span>
-      <span>₹{deliveryCharges.toFixed(2)}</span>
-    </div>
-    
-    <div className={styles.totalRow} style={{ borderTop: '1px solid #ddd', paddingTop: '8px' }}>
-      <span><strong>Final Total:</strong></span>
-      <span>₹{finalTotal.toFixed(2)}</span>
-    </div>
-  </div>
-</div>
+          <div className={styles.totalSection}>
+            <div className={styles.totalRow}>
+              <span><strong>Subtotal:</strong></span>
+              <span>₹{subtotal.toFixed(2)}</span>
+            </div>
+
+            {couponDiscount > 0 && (
+              <div className={styles.totalRow}>
+                <span><strong>Coupon Discount ({orderSummary.CartId.coupancode}):</strong></span>
+                <span>-₹{couponDiscount.toFixed(2)}</span>
+              </div>
+            )}
+
+            <div className={styles.totalRow}>
+              <span><strong>Taxable Amount:</strong></span>
+              <span>₹{taxableAmount.toFixed(2)}</span>
+            </div>
+
+            <div className={styles.totalRow}>
+              <span><strong>Tax (GST):</strong></span>
+              <span>₹{taxAmount.toFixed(2)}</span>
+            </div>
+
+            <div className={styles.totalRow}>
+              <span><strong>Delivery Charges:</strong></span>
+              <span>₹{deliveryCharges.toFixed(2)}</span>
+            </div>
+
+            <div className={styles.totalRow} style={{ borderTop: '1px solid #ddd', paddingTop: '8px' }}>
+              <span><strong>Final Total:</strong></span>
+              <span>₹{finalTotal.toFixed(2)}</span>
+            </div>
+          </div>
+        </div>
 
 
       </div>
