@@ -406,6 +406,7 @@
   border: 1px solid #000;
   border-radius: 12px;
   margin-bottom: 15px;
+  
 }
 
 .all_added_cart_list .cross {
@@ -475,18 +476,28 @@
     width: 180px;
     height: 180px;
   }
+  .all_added_cart_list {
+min-width: 1030px;    
+  }
+  
 }
 @media (max-width:1600px) {
   .cart-items-item img {
     width: 120px !important;
     height: 120px !important;
   }
+  .all_added_cart_list {
+    min-width: 900px;    
+      }
 }
 
 @media (max-width:1300px) {
   .cart-container {
     padding: 0 80px;
   }
+  .all_added_cart_list {
+    min-width: 500px;    
+      }
 }
 
 @media (max-width:1200px) {
@@ -746,6 +757,7 @@
   width: 55% !important;
   font-size: 10px;
   margin: 0px;
+  z-index: 10000000000000000000000 !important;
 }
 
 
