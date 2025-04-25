@@ -119,7 +119,7 @@ const [deleteAllLoading, setDeleteAllLoading] = useState(false);
 				}
 
 				// Common calculations for both cases
-				const deliveryCharge = response.data.totalPrice < 500 ? 75 : 0;
+				const deliveryCharge = response.data.totalPrice < 750 ? 75 : 0;
 				const finalTotal = response.data.totalPrice + deliveryCharge;
 
 				setDeliveryCharge(deliveryCharge);
