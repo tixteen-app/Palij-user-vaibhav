@@ -306,6 +306,13 @@ const OrderSummary = () => {
               <span><strong>Delivery Charges:</strong></span>
               <span>₹{deliveryCharges.toFixed(2)}</span>
             </div>
+            {orderSummary?.paymentMethod === "Razorpay" && (
+            <div className={styles.totalRow}>
+              <span><strong>Pre Paid discount :</strong></span>
+              <span>₹-25</span>
+            </div>
+              
+            )}
 
             <div className={styles.totalRow} style={{ borderTop: '1px solid #ddd', paddingTop: '8px' }}>
               <span><strong>Final Total:</strong></span>
