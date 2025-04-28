@@ -612,7 +612,7 @@ function ProductDetails() {
                                   ₹{size.FinalPrice}
                                 </div>
                                 <div className={styles.sizetypebutton}>
-                                  {size.size}{size.sizetype}
+                                  {size.size}{size.sizetype === 'Gram' ? 'g' : size.sizetype}
                                 </div>
                               </div>
                             )
