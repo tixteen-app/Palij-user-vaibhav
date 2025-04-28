@@ -41,7 +41,6 @@ function ProductDetails() {
   const [pincodeCheckResult, setPincodeCheckResult] = useState(null);
   const [checkingPincode, setCheckingPincode] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
-  console.log("-=-=-=-", selectedIndex);
 
 
   const checkPincodeAvailability = async () => {
@@ -85,6 +84,8 @@ function ProductDetails() {
 
   const handleAddToCartWithMessage = async () => {
     if (!isLogin) {
+      console.log("----1")
+      setShowCakeMessagePopup(false)
       setShowPopup(true);
       return;
     }
