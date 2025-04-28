@@ -193,7 +193,7 @@
 }
 
 .new_message_popup__button--save {
-  background: linear-gradient(135deg, #ff6b9e 0%, #ff8fab 100%);
+  background: var(--shadebuttncolor);
   color: white;
   box-shadow: 0 2px 5px rgba(255, 107, 158, 0.3);
 }

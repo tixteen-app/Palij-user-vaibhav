@@ -51,7 +51,9 @@
 
 .pincodeCheckButton {
   padding: 10px 20px;
-  background-color: #ff6b6b;
+  /* background-color: #ff6b6b; */
+  background: var(--shadebuttncolor);
+
   color: white;
   border: none;
   border-radius: 4px;
@@ -255,7 +257,9 @@
 .addTocart {
   padding: 8px 26px;
   border-radius: 10px;
-  background: var(--redPink);
+  /* background: var(--redPink); */
+  background: var(--shadebuttncolor);
+
   color: #fff;
   font-size: 20px;
   cursor: pointer;
@@ -638,7 +642,9 @@ font-weight: 500;
 
 .pincodeCheckButton {
   padding: 7px 10px;
-  background-color: #ff6b6b;
+  /* background-color: #ff6b6b; */
+  background: var(--shadebuttncolor);
+
   color: white;
   border: none;
   border-radius: 4px;
