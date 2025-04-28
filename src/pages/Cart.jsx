@@ -775,7 +775,6 @@ const Cart = () => {
                                   value={editingMessages[item._id] ?? item.cakemessage ?? ""}
                                   onChange={(e) => handleMessageChange(item._id, e.target.value)}
                                   placeholder="Add your cake message"
-                                  maxLength={20}
                                   className="message-input-bottom-border"
                                 />
                                 <button
@@ -886,7 +885,6 @@ const Cart = () => {
                                     value={editingMessages[item._id] ?? item.cakemessage ?? ""}
                                     onChange={(e) => handleMessageChange(item._id, e.target.value)}
                                     placeholder="Add your cake message"
-                                    maxLength={20}
                                     className="message-input-bottom-border"
                                   />
                                   <button
