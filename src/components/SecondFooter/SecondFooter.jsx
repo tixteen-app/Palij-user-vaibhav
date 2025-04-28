@@ -101,7 +101,7 @@ const Footer = () => {
             </div>
             <div>
               <p>
-                design & develop by : <a href="https://www.pitamaas.com/" target="_blank">Pitamaas Pvt. Ltd. </a>
+                Created by : <a href="https://www.pitamaas.com/" target="_blank">Pitamaas Pvt. Ltd. </a>
               </p>
             </div>
           </div>

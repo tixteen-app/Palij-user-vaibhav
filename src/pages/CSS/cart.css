@@ -1,3 +1,6 @@
+.add-message-container{
+  z-index: 999999999999999999;
+}
 .All_Product_loader {
   display: flex;
   align-items: center;
@@ -5,7 +8,7 @@
   width: 100%;
 }
 .rs_color_cart{
-  color: #e335a0;
+  color: #000000;
 }
 .loader_container_cart_page{
   height: 100vh;
@@ -1036,6 +1039,7 @@ min-width: 1030px;
   font-size: 0.9rem;
   background: transparent;
   transition: border-color 0.3s;
+  z-index: 99999999999999;
 }
 
 .message-input-bottom-border:focus {
@@ -1098,6 +1102,7 @@ min-width: 1030px;
   cursor: pointer;
   transition: all 0.2s;
   white-space: nowrap;
+  z-index: 9999999;
 }
 
 .new_message_popup__update_btn:hover {

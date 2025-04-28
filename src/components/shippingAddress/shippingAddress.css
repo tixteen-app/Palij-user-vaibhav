@@ -91,7 +91,7 @@
 .edit-address-btn {
   font-size: 20px;
   padding: 10px;
-  background: #E5087E;
+  background: #E5087E !important;
   border: 0;
   outline: 0;
   border-radius: 5px;
