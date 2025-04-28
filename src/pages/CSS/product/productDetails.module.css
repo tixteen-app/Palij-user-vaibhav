@@ -861,7 +861,8 @@ font-weight: 500;
 .addTocart {
   padding: 8px 0px;
   border-radius: 10px;
-  background: var(--redPink);
+  /* background: var(--redPink); */
+  background: var(--shadebuttncolor);
   color: #fff;
   font-size: 17px;
   cursor: pointer;

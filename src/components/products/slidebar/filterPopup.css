@@ -8,7 +8,7 @@
 .filter-dropdown {
   position: absolute;
   background: white;
-  padding: 20px 20px 70px 20px;
+  padding: 20px 20px 150px 20px;
   border-radius: 8px;
   width: 90%;
   max-width: 600px;
@@ -38,15 +38,14 @@
   display: flex;
 
 }
-
+/* 
 .filter-dropdown-body {
   max-height: 400px;
   overflow-y: auto;
 
-}
+} */
 
 .filter-dropdown-body::-webkit-scrollbar {
-  /* For Chrome, Safari, and Opera */
   display: none;
 }
 
