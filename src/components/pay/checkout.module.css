@@ -132,7 +132,8 @@
 }
 
 .popupButtonforremoveall {
-  background-color: #d32f2f;
+  background: var(--shadebuttncolor) !important;
+  /* background-color: #d32f2f; */
   color: white;
 }
 
