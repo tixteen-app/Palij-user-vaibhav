@@ -171,69 +171,77 @@ const MyOrders = () => {
                     </Link>
                 </div>
             ) : (
-                <div className={styles.orderList}>
-                    {orders?.map((order) => {
-                        const status = order.shiprocketOrderId ? 
-                            getOrderStatus(order.shiprocketOrderId) : 
-                            getOrderStatus(order._id);
-                        const statusColor = getStatusColor(status);
+                // <div className={styles.orderList}>
+                //     {orders?.map((order) => {
+                //         const status = order.shiprocketOrderId ? 
+                //             getOrderStatus(order.shiprocketOrderId) : 
+                //             getOrderStatus(order._id);
+                //         const statusColor = getStatusColor(status);
                         
-                        return (
-                            <div key={order._id} className={styles.orderCard}>
-                                <div className={styles.orderHeader}>
-                                    <div className={styles.orderMeta}>
-                                        <span className={styles.orderId}>
-                                            <FiPackage /> Order #{order?.orderId || order?._id.slice(-6)}
-                                        </span>
-                                        <span className={styles.orderDate}>
-                                            <FiCalendar /> {new Date(order?.createdAt).toLocaleDateString('en-IN', {
-                                                day: 'numeric',
-                                                month: 'long',
-                                                year: 'numeric'
-                                            })}
-                                        </span>
-                                    </div>
-                                    <span className={`${styles.orderStatus} ${styles[statusColor]}`}>
-                                        {status}
-                                    </span>
-                                </div>
+                //         return (
+                //             <div key={order._id} className={styles.orderCard}>
+                //                 <div className={styles.orderHeader}>
+                //                     <div className={styles.orderMeta}>
+                //                         <span className={styles.orderId}>
+                //                             <FiPackage /> Order #{order?.orderId || order?._id.slice(-6)}
+                //                         </span>
+                //                         <span className={styles.orderDate}>
+                //                             <FiCalendar /> {new Date(order?.createdAt).toLocaleDateString('en-IN', {
+                //                                 day: 'numeric',
+                //                                 month: 'long',
+                //                                 year: 'numeric'
+                //                             })}
+                //                         </span>
+                //                     </div>
+                //                     <span className={`${styles.orderStatus} ${styles[statusColor]}`}>
+                //                         {status}
+                //                     </span>
+                //                 </div>
                                 
-                                <div className={styles.orderItems}>
-                                    {order?.CartId?.orderItems.map((item) => (
-                                        <div key={item._id} className={styles.orderItem}>
-                                            <img
-                                                src={item?.productId?.thumbnail}
-                                                alt={item?.productId?.name}
-                                                className={styles.productImage}
-                                                onError={(e) => {
-                                                    e.target.src = '/path-to-default-image.jpg';
-                                                }}
-                                            />
-                                            <div className={styles.productInfo}>
-                                                <h3>{item?.productId?.name}</h3>
-                                                <p>Quantity: {item?.quantity}</p>
-                                                <p className={styles.itemPrice}>
-                                                    ₹{item?.totalPrice.toLocaleString('en-IN')}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
+                //                 <div className={styles.orderItems}>
+                //                     {order?.CartId?.orderItems.map((item) => (
+                //                         <div key={item._id} className={styles.orderItem}>
+                //                             <img
+                //                                 src={item?.productId?.thumbnail}
+                //                                 alt={item?.productId?.name}
+                //                                 className={styles.productImage}
+                //                                 onError={(e) => {
+                //                                     e.target.src = '/path-to-default-image.jpg';
+                //                                 }}
+                //                             />
+                //                             <div className={styles.productInfo}>
+                //                                 <h3>{item?.productId?.name}</h3>
+                //                                 <p>Quantity: {item?.quantity}</p>
+                //                                 <p className={styles.itemPrice}>
+                //                                     ₹{item?.totalPrice.toLocaleString('en-IN')}
+                //                                 </p>
+                //                             </div>
+                //                         </div>
+                //                     ))}
+                //                 </div>
                                 
-                                <div className={styles.orderFooter}>
-                                    <span className={styles.orderTotal}>
-                                        Total: ₹{order?.CartId?.totalPrice.toLocaleString('en-IN')}
-                                    </span>
-                                    <Link 
-                                        to={`/userprofile/myorders/${order._id}`} 
-                                        className={styles.viewButton}
-                                    >
-                                        View Details
-                                    </Link>
-                                </div>
-                            </div>
-                        );
-                    })}
+                //                 <div className={styles.orderFooter}>
+                //                     <span className={styles.orderTotal}>
+                //                         Total: ₹{order?.CartId?.totalPrice.toLocaleString('en-IN')}
+                //                     </span>
+                //                     <Link 
+                //                         to={`/userprofile/myorders/${order._id}`} 
+                //                         className={styles.viewButton}
+                //                     >
+                //                         View Details
+                //                     </Link>
+                //                 </div>
+                //             </div>
+                //         );
+                //     })}
+                // </div>
+                <div className={styles.noOrders}>
+                    <FiPackage size={48} />
+                    <h3>No Orders Found</h3>
+                    <p>You haven't placed any orders yet.</p>
+                    <Link to="/products" className={styles.shopButton}>
+                        Start Shopping
+                    </Link>
                 </div>
             )}
         </div>

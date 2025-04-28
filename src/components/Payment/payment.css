@@ -49,6 +49,9 @@
   font-weight: 400 !important;
   margin: 10px 0px  !important;
   transition: all 0.9 ease !important;
+  background: var(--shadebuttncolor) !important;
+  color: white !important;
+  border: none !important;
 }
 .add_new_address_button_cart_page:hover{
   background-color: black !important;

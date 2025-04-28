@@ -688,7 +688,7 @@ const Cart = () => {
               <img src={assets.cart_gif} alt="Empty Cart" className="NO_cart_image" />
               <Link to="/product/all-products">
                 <p>Your Cart is Empty</p>
-                <h2>Start Shopping</h2>
+                <h2 style={{ background: 'var(--shadebuttncolor)' }} >Start Shopping</h2>
               </Link>
             </div>
           ) : (

@@ -236,7 +236,9 @@
 }
 
 .shopButton {
-  background-color: #ec4899;
+  /* background-color: #ec4899; */
+  background: var(--shadebuttncolor );
+
   color: white;
   padding: 10px 25px;
   border-radius: 25px;

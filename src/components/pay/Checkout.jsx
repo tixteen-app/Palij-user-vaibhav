@@ -1057,8 +1057,9 @@ const [deleteAllLoading, setDeleteAllLoading] = useState(false);
 													/>
 												</div>
 
-												<div className="cart_page-popup-buttons">
-													<button onClick={handleSaveAddress}>
+												<div className="cart_page-popup-buttons" >
+													<button onClick={handleSaveAddress} style={{ background: 'var(--shadebuttncolor)' }}
+													>
 														{saveaddloader ? <div>Saving...</div> : "Save"}
 													</button>
 													<button onClick={closeEditPopup}>Cancel</button>
@@ -1076,7 +1077,7 @@ const [deleteAllLoading, setDeleteAllLoading] = useState(false);
 											<h2>Confirm Deletion</h2>
 											<p>Are you sure you want to remove this address ?</p>
 											<div className="dialog-buttons_both">
-												<button onClick={handleDeleteAddress} className="confirm-button">Confirm</button>
+												<button onClick={handleDeleteAddress} className="confirm-button" style={{ background: 'var(--shadebuttncolor)' }} >Confirm</button>
 												<button onClick={closeDeletePopup} className="cancel-button">Cancel</button>
 											</div>
 										</div>

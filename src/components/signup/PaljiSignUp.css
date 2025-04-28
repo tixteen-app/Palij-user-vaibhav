@@ -182,7 +182,8 @@
   
   .palji-button {
     padding: 14px 0;
-    background-color: #e5087e;
+    /* background-color: #e5087e; */
+    background: var(--shadebuttncolor);
     color: #fff;
     font-size: 16px;
     font-weight: 600;

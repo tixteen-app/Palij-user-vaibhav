@@ -164,13 +164,14 @@
 }
 
 .confirm-btn {
-  background: #EE5564;
+  /* background: #EE5564; */
+  background: var(--shadebuttncolor);
   color: white;
   border: none;
 }
 
 .confirm-btn:hover {
-  background: #d44c5a;
+  /* background: #d44c5a; */
 }
 
 .cancel-btn {
