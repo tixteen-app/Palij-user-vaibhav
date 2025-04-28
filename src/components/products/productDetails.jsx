@@ -560,12 +560,11 @@ function ProductDetails() {
                             className="new_message_popup__textarea"
                             value={tempCakeMessage}
                             onChange={(e) => setTempCakeMessage(e.target.value)}
-                            placeholder="Happy Birthday! 🎂 (max 20 characters)"
-                            maxLength={20}
+                            placeholder="Happy Birthday! 🎂 "
                           />
-                          <div className="new_message_popup__counter">
+                          {/* <div className="new_message_popup__counter">
                             {tempCakeMessage.length}/20 characters
-                          </div>
+                          </div> */}
                         </div>
                         <div className="new_message_popup__buttons">
                           <button
