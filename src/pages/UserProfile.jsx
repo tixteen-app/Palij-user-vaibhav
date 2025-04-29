@@ -105,7 +105,7 @@ const UserProfile = () => {
 		event.preventDefault();
 		try {
 			const userDataToUpdate = { ...editData };
-			
+
 			// Only validate mobile number if it was changed or is being added for the first time
 			if ((mobileNumberChanged || !userDetails.mobileNumber) && editData.mobileNumber) {
 				if (!isValidMobileNumber(editData.mobileNumber)) {
@@ -113,12 +113,12 @@ const UserProfile = () => {
 					return;
 				}
 			}
-			
+
 			// If mobile number wasn't changed, don't send it in the update
 			if (!mobileNumberChanged) {
 				delete userDataToUpdate.mobileNumber;
 			}
-			
+
 			const response = await makeApi("/api/update-user", "PUT", userDataToUpdate);
 			toast.success(response.data.message);
 			setMobileNumberChanged(false); // Reset the changed flag after successful update
@@ -167,7 +167,7 @@ const UserProfile = () => {
 				data.append("upload_preset", "grzbbapu");
 				// data.append("upload_preset", "pfendx01");
 				data.append("folder", "palji");
-	
+
 				const response = await axios.post(
 					// `https://api.cloudinary.com/v1_1/dwxtuqnty/upload`,
 					`https://api.cloudinary.com/v1_1/dh74mrqe0/upload`,
@@ -179,10 +179,10 @@ const UserProfile = () => {
 						...prevData,
 						userImage: imageURL,
 					}));
-					
+
 					// Save image to your server
 					await makeApi("/api/update-user", "PUT", { userImage: imageURL });
-	
+
 					// Reload page after image upload
 					window.location.reload();
 				}
@@ -192,13 +192,13 @@ const UserProfile = () => {
 			toast.error("Failed to upload image");
 		}
 	};
-	
+
 	return (
 		<div className="userProfile">
 			<ToastContainer position="top-center" />
 			<hr className="userprofile-hr" />
 			<div className="user-sidebar-info">
-		
+
 				<div className="new_home_page_tabs-list">
 					<button
 						className={`new_home_page_tab-trigger ${isActive("/userprofile") ? "new_home_page_active" : ""}`}
@@ -289,8 +289,7 @@ const UserProfile = () => {
 												name="gender"
 												value={editData.gender}
 												onChange={onChangeHandler}
-												className="p-1"
-												style={{ borderRadius: "5px" }}
+												className="new_home_page_form-group"
 											>
 												<option value="">Select Gender</option>
 												<option value="male">Male</option>
