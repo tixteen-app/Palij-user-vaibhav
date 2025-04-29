@@ -1,5 +1,6 @@
 .add-message-container{
-  z-index: 999999999999999999;
+  z-index: 100;
+  /* z-index: 999999999999999999; */
 }
 .All_Product_loader {
   display: flex;
@@ -760,7 +761,7 @@ min-width: 1030px;
   width: 55% !important;
   font-size: 10px;
   margin: 0px;
-  z-index: 10000000000000000000000 !important;
+  z-index: 100 !important;
 }
 
 
@@ -1102,7 +1103,7 @@ min-width: 1030px;
   cursor: pointer;
   transition: all 0.2s;
   white-space: nowrap;
-  z-index: 9999999;
+  z-index: 100;
 }
 
 .new_message_popup__update_btn:hover {
