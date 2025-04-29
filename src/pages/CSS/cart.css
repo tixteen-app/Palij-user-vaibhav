@@ -1040,7 +1040,7 @@ min-width: 1030px;
   font-size: 0.9rem;
   background: transparent;
   transition: border-color 0.3s;
-  z-index: 99999999999999;
+  z-index: 100;
 }
 
 .message-input-bottom-border:focus {
