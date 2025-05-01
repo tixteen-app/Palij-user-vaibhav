@@ -340,8 +340,8 @@ const ShippingAddress = () => {
             
             if (response.data.success) {
                 toast.success("Shipping Address Added Successfully", {
-                    onClose: () => navigate("/userprofile/myaddress"),
-                    autoClose: 1500
+                    onClose: () =>navigate(-1),
+                    autoClose: 700
                 });
                 
                 // Reset form after successful submission

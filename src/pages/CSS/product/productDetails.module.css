@@ -360,6 +360,33 @@
   text-decoration-color: #EE5564;
 }
 
+
+.eggless {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 15px 0;
+  padding: 8px 12px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  border-left: 4px solid #4CAF50;
+}
+
+.eggless p {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.eggless strong {
+  color: #4CAF50;
+  font-weight: 600;
+}
+
+.eggless svg {
+  flex-shrink: 0;
+}
+
 .productPriceName span {
   /* font-size: 20px;
   margin-left: 15px;
