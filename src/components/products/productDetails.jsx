@@ -11,6 +11,7 @@ import { GoArrowLeft } from "react-icons/go";
 import { assets } from "../../assets/assets.js";
 import ReactImageMagnify from 'react-image-magnify';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { motion, AnimatePresence } from "framer-motion";
 
 function ProductDetails() {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ function ProductDetails() {
   const [load, setLoad] = useState(false)
   const [product, setProduct] = useState(null);
   const [selectedImage, setSelectedImage] = useState("");
-
+  const [activeAccordion, setActiveAccordion] = useState(null);
   const [sizes, setSizes] = useState([]);
   const [selectedSize, setSelectedSize] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -400,6 +401,18 @@ function ProductDetails() {
     }, 0);
   };
 
+  const ChevronUp = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+      <path fillRule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708z"/>
+    </svg>
+  );
+  
+  const ChevronDown = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+      <path fillRule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+    </svg>
+  );
+
   return (
     <>
       {showPopup && <LoginPopup onClose={closePopup} />}
@@ -703,6 +716,128 @@ function ProductDetails() {
                 <p>This is an <strong>Eggless Cake</strong></p>
               </div>
             }
+
+{product?.category?._id == "67b451f7ec3a4e4a3bbe5633" && (
+  <div className={styles.accordionContainer}>
+    <motion.div 
+      className={`${styles.accordionItem} ${activeAccordion === 0 ? styles.active : ''}`}
+      initial={false}
+      onClick={() => setActiveAccordion(activeAccordion === 0 ? null : 0)}
+    >
+      <motion.div className={styles.accordionHeader}>
+        <span>Product Description</span>
+        <motion.div
+          animate={{ rotate: activeAccordion === 0 ? 180 : 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          {activeAccordion === 0 ? <ChevronUp /> : <ChevronDown />}
+        </motion.div>
+      </motion.div>
+      <AnimatePresence>
+        {activeAccordion === 0 && (
+          <motion.div
+            className={styles.accordionContent}
+            initial="collapsed"
+            animate="open"
+            exit="collapsed"
+            variants={{
+              open: { opacity: 1, height: "auto" },
+              collapsed: { opacity: 0, height: 0 }
+            }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          >
+            <p>{product?.description}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+
+    <motion.div 
+      className={`${styles.accordionItem} ${activeAccordion === 1 ? styles.active : ''}`}
+      initial={false}
+      onClick={() => setActiveAccordion(activeAccordion === 1 ? null : 1)}
+    >
+      <motion.div className={styles.accordionHeader}>
+        <span>Care Instructions</span>
+        <motion.div
+          animate={{ rotate: activeAccordion === 1 ? 180 : 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          {activeAccordion === 1 ? <ChevronUp /> : <ChevronDown />}
+        </motion.div>
+      </motion.div>
+      <AnimatePresence>
+        {activeAccordion === 1 && (
+          <motion.div
+            className={styles.accordionContent}
+            initial="collapsed"
+            animate="open"
+            exit="collapsed"
+            variants={{
+              open: { opacity: 1, height: "auto" },
+              collapsed: { opacity: 0, height: 0 }
+            }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          >
+            <ul>
+              <motion.li initial={{ x: -10, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.1 }}>Store cream cakes in a refrigerator. Fondant cakes should be stored in an air conditioned environment.</motion.li>
+              <motion.li initial={{ x: -10, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.15 }}>Slice and serve the cake at room temperature and make sure it is not exposed to heat.</motion.li>
+              <motion.li initial={{ x: -10, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.2 }}>Use a serrated knife to cut a fondant cake.</motion.li>
+              <motion.li initial={{ x: -10, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.25 }}>Sculptural elements and figurines may contain wire supports or toothpicks or wooden skewers for support.</motion.li>
+              <motion.li initial={{ x: -10, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.3 }}>Please check the placement of these items before serving to small children.</motion.li>
+              <motion.li initial={{ x: -10, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.35 }}>The cake should be consumed within 24 hours.</motion.li>
+              <motion.li initial={{ x: -10, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.4 }}>Enjoy your cake!</motion.li>
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+
+    <motion.div 
+      className={`${styles.accordionItem} ${activeAccordion === 2 ? styles.active : ''}`}
+      initial={false}
+      onClick={() => setActiveAccordion(activeAccordion === 2 ? null : 2)}
+    >
+      <motion.div className={styles.accordionHeader}>
+        <span>Delivery Information</span>
+        <motion.div
+          animate={{ rotate: activeAccordion === 2 ? 180 : 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          {activeAccordion === 2 ? <ChevronUp /> : <ChevronDown />}
+        </motion.div>
+      </motion.div>
+      <AnimatePresence>
+        {activeAccordion === 2 && (
+          <motion.div
+            className={styles.accordionContent}
+            initial="collapsed"
+            animate="open"
+            exit="collapsed"
+            variants={{
+              open: { opacity: 1, height: "auto" },
+              collapsed: { opacity: 0, height: 0 }
+            }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          >
+            <ul>
+              <motion.li initial={{ x: -10, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.1 }}>Every cake we offer is handcrafted and since each chef has his/her own way of baking and designing a cake, there might be slight variation in the product in terms of design and shape.</motion.li>
+              <motion.li initial={{ x: -10, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.15 }}>The chosen delivery time is an estimate and depends on the availability of the product and the destination to which you want the product to be delivered.</motion.li>
+              <motion.li initial={{ x: -10, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.2 }}>Since cakes are perishable in nature, we attempt delivery of your order only once. The delivery cannot be redirected to any other address.</motion.li>
+              <motion.li initial={{ x: -10, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.25 }}>This product is hand delivered and will not be delivered along with courier products.</motion.li>
+              <motion.li initial={{ x: -10, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.3 }}>Occasionally, substitutions of flavours/designs is necessary due to temporary and/or regional unavailability issues.</motion.li>
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  </div>
+)}
+
+
+
+
+
             {includes && includes.length > 0 && (
               <div className={styles.includes}>
                 <h2>INCLUDES</h2>
