@@ -786,6 +786,7 @@ function ProductDetails() {
                               initial={{ x: -10, opacity: 0 }}
                               animate={{ x: 0, opacity: 1 }}
                               transition={{ delay: index * 0.05 }}
+                              style={{listStyle:"none"}}
                             >
                               {instruction}
                             </motion.li>
@@ -832,6 +833,8 @@ function ProductDetails() {
                               initial={{ x: -10, opacity: 0 }}
                               animate={{ x: 0, opacity: 1 }}
                               transition={{ delay: index * 0.05 }}
+                              style={{listStyle:"none"}}
+
                             >
                               {info}
                             </motion.li>
