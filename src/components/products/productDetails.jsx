@@ -449,6 +449,7 @@ function ProductDetails() {
                       enlargedImageContainerDimensions: {
                         width: "180%",
                         height: "130%",
+                        zIndex: 1000
                       },
                       shouldHideHintAfterFirstActivation: false
                     }}
