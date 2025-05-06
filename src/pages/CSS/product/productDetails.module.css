@@ -1062,18 +1062,13 @@ font-weight: 500;
   margin: 0 auto;
 }
 
-.mainImg>div {
-  /* width: 100% !important;
-  height: auto !important; */
-}
+
 
 .desktopImg {
   display: block;
 }
 
-.largeZoom {
-  /* background: var(--redPink); */
-}
+
 
 @media (max-width: 300px) {
   .mainImg img {

@@ -17,7 +17,6 @@ function ProductDetails() {
   const navigate = useNavigate();
   const { productId } = useParams();
   const [completeCart, setCompleteCart] = useState([]);
-  const [load, setLoad] = useState(false)
   const [product, setProduct] = useState(null);
   const [selectedImage, setSelectedImage] = useState("");
   const [activeAccordion, setActiveAccordion] = useState(null);
@@ -727,7 +726,7 @@ function ProductDetails() {
                 <motion.div className={styles.accordionHeader}>
                   <span>Product Description</span>
                   <motion.div
-                    animate={{ rotate: activeAccordion === 0 ? 180 : 0 }}
+                    animate={{ rotate: activeAccordion === 0 ? 360 : 0 }}
                     transition={{ duration: 0.3 }}
                   >
                     {activeAccordion === 0 ? <ChevronUp /> : <ChevronDown />}
@@ -761,7 +760,7 @@ function ProductDetails() {
                   <motion.div className={styles.accordionHeader}>
                     <span>Care Instructions</span>
                     <motion.div
-                      animate={{ rotate: activeAccordion === 1 ? 180 : 0 }}
+                      animate={{ rotate: activeAccordion === 1 ? 360 : 0 }}
                       transition={{ duration: 0.3 }}
                     >
                       {activeAccordion === 1 ? <ChevronUp /> : <ChevronDown />}
@@ -808,7 +807,7 @@ function ProductDetails() {
                   <motion.div className={styles.accordionHeader}>
                     <span>Delivery Information</span>
                     <motion.div
-                      animate={{ rotate: activeAccordion === 2 ? 180 : 0 }}
+                      animate={{ rotate: activeAccordion === 2 ? 360 : 0 }}
                       transition={{ duration: 0.3 }}
                     >
                       {activeAccordion === 2 ? <ChevronUp /> : <ChevronDown />}
