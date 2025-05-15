@@ -136,6 +136,36 @@
   .user_profile_for_mobile_view_icon{
     display: none;
   }
+
+
+
+
+.center-logo {
+  width: auto; 
+  height: 100px; 
+  object-fit: contain; 
+  margin: 0; 
+}
+
+.top_section_haldiram {
+  height: 100px;
+}
+.center_logo_div_new_navbar{
+    margin-top: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media (max-width: 1400px) {
     .right_search_section_haldi_Ram{
         width: 100%;
@@ -191,8 +221,14 @@
     }
     .top_section_haldiram{
         padding: 0px 40px;
-        gap: 20px;
+        gap: 40px;
         padding-top: 20px;
+     }
+     .right_search_section_haldi_Ram{
+        width: 65%;
+    }
+     .right_top_section_haldi_ram{
+justify-content: center;
      }
      .nav_nav_cat_options {
         padding: 2px;

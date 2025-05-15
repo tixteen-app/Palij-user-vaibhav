@@ -4,7 +4,7 @@ import "../../styles/navbar.css"
 import { assets } from "../../assets/assets"
 import { IoSearch } from "react-icons/io5"
 import { makeApi } from "../../api/callApi"
-import { 
+import {
 	subscribeToCartCount,
 	unsubscribeFromCartCount,
 } from "../../utils/productFunction"
@@ -168,20 +168,20 @@ function Newnavbar() {
 	const handleCategoryClick = (categoryId) => {
 		// Create new URLSearchParams from current location
 		const newQueryParams = new URLSearchParams();
-		
+
 		// Only add category if it exists
 		if (categoryId && categoryId !== "") {
-		  newQueryParams.set("category", categoryId);
+			newQueryParams.set("category", categoryId);
 		}
-		
+
 		// Clear other filters when changing category
 		newQueryParams.delete("subcategory");
 		newQueryParams.delete("minPrice");
 		newQueryParams.delete("maxPrice");
-		
+
 		// Navigate with the new query params
 		navigate(`/product/all-products?${newQueryParams.toString()}`);
-	  };
+	};
 
 	const formatCategories = () => {
 		const cachedCategories = localStorage.getItem('cachedCategories');
@@ -199,7 +199,7 @@ function Newnavbar() {
 		}
 
 		const formatted = [
-			
+
 		];
 
 		const predefinedOrder = [
@@ -325,18 +325,22 @@ function Newnavbar() {
 		localStorage.removeItem("token");
 		window.location.reload();
 	}
-	const handelloginclick =() => {
+	const handelloginclick = () => {
 		setOpenProfile(false);
-	navigate("/palji-login")
-}
+		navigate("/palji-login")
+	}
 
 	return (
 		<>
+		<div className="new_nav_bottom_section_haldi_ram" >
+						<MarqueeComponent />
+					</div>
 			<div className="main_div_new_haldi_ram">
+				
 				<div className='main_new_navbar_haldi_ram' >
 					<div className="top_section_haldiram" >
 						<div className="left_section_new_nav_haldi_ram" >
-							<div>
+							<div className="center_logo_div_new_navbar" >
 								<img
 									className="center-logo m-1"
 									src={assets.newlogo}
@@ -347,7 +351,7 @@ function Newnavbar() {
 							</div>
 						</div>
 						<div className="right_section_new_nav_haldi_ram" >
-							{/* <div className="right_top_section_haldi_ram" >
+							<div className="right_top_section_haldi_ram_hide_on_desktop right_section_old_navbar" >
 								<div className="right_search_section_haldi_Ram mobile-hide" ref={searchRef}>
 									<div className='serach_icon_new_nav_haldi' >
 										<IoSearch className="search_icon_new_nav" />
@@ -418,7 +422,7 @@ function Newnavbar() {
 										<path d="M3 18H21" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
 									</svg>
 								</div>
-							</div> */}
+							</div>
 
 							<div className="right_bottom_section_haldi_ram desktop-nav" >
 								<div className='nav_cat_list'>
@@ -433,136 +437,136 @@ function Newnavbar() {
 													style={{ cursor: "pointer" }}
 												>
 													{displayName}
-												</div>												
+												</div>
 											</div>
 										)
 									})}
 
-										<div className="right_top_section_haldi_ram" >
-								<div className="right_search_section_haldi_Ram mobile-hide" ref={searchRef}>
-									<div className='serach_icon_new_nav_haldi' >
-										<IoSearch className="search_icon_new_nav" />
-									</div>
-									<div className="new_search_input_div_haldi_ram" >
-										<input
-											type="text"
-											placeholder="Search ..."
-											value={input}
-											onChange={(e) => handleChange(e.target.value)}
-											className="new_search_input_fileds"
-										/>
-									</div>
-									{input && (
-										<div className="search-list-result">
-											<NavSearchList
-												product={products}
-												clearSearchInput={clearSearchInput}
-												input={input}
-												isLoading={setsearchloading}
-											/>
-										</div>
-									)}
-								</div>
-								<div className="right_cart_section_haldi_ram" >
-									<div
-										className='cart_section_new_nav_haldi_icons'
-										onClick={handleCartClick}
-										style={{ cursor: "pointer", position: "relative" }}
-									>
-										<div>
-											<svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M6 2L3 6V20C3 20.5304 3.21071 21.0391 3.58579 21.4142C3.96086 21.7893 4.46957 22 5 22H19C19.5304 22 20.0391 21.7893 20.4142 21.4142C20.7893 21.0391 21 20.5304 21 20V6L18 2H6Z" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
-												<path d="M3 6H21" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
-												<path d="M16 10C16 11.0609 15.5786 12.0783 14.8284 12.8284C14.0783 13.5786 13.0609 14 12 14C10.9391 14 9.92172 13.5786 9.17157 12.8284C8.42143 12.0783 8 11.0609 8 10" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
-											</svg>
-											{isloggedIn && cartCount > 0 && (
-												<span className="cart-count-badge">{cartCount}</span>
+									<div className="right_top_section_haldi_ram" >
+										<div className="right_search_section_haldi_Ram mobile-hide" ref={searchRef}>
+											<div className='serach_icon_new_nav_haldi' >
+												<IoSearch className="search_icon_new_nav" />
+											</div>
+											<div className="new_search_input_div_haldi_ram" >
+												<input
+													type="text"
+													placeholder="Search ..."
+													value={input}
+													onChange={(e) => handleChange(e.target.value)}
+													className="new_search_input_fileds"
+												/>
+											</div>
+											{input && (
+												<div className="search-list-result">
+													<NavSearchList
+														product={products}
+														clearSearchInput={clearSearchInput}
+														input={input}
+														isLoading={setsearchloading}
+													/>
+												</div>
 											)}
 										</div>
+										<div className="right_cart_section_haldi_ram" >
+											<div
+												className='cart_section_new_nav_haldi_icons'
+												onClick={handleCartClick}
+												style={{ cursor: "pointer", position: "relative" }}
+											>
+												<div>
+													<svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M6 2L3 6V20C3 20.5304 3.21071 21.0391 3.58579 21.4142C3.96086 21.7893 4.46957 22 5 22H19C19.5304 22 20.0391 21.7893 20.4142 21.4142C20.7893 21.0391 21 20.5304 21 20V6L18 2H6Z" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
+														<path d="M3 6H21" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
+														<path d="M16 10C16 11.0609 15.5786 12.0783 14.8284 12.8284C14.0783 13.5786 13.0609 14 12 14C10.9391 14 9.92172 13.5786 9.17157 12.8284C8.42143 12.0783 8 11.0609 8 10" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
+													</svg>
+													{isloggedIn && cartCount > 0 && (
+														<span className="cart-count-badge">{cartCount}</span>
+													)}
+												</div>
+											</div>
+											<div
+												className="profile-icon-container user_profile_for_mobile_view_icon"
+												// onClick={handleProfileClick}
+												onClick={() => navigate(isloggedIn ? "/userprofile" : "/palji-login")}
+												onMouseEnter={handleProfileHover}
+												onMouseLeave={handleProfileLeave}
+												style={{ cursor: "pointer" }}
+											>
+												{userDatails?.userImage ? (
+													<img
+														src={userDatails.userImage}
+														alt="Profile"
+														className="user_image_hald_ram_header"
+													/>
+												) : (
+													<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
+														<path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
+													</svg>
+												)}
+											</div>
+										</div>
+										<div className="mobile-menu-icon" onClick={toggleMenu}>
+											<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M3 12H21" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
+												<path d="M3 6H21" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
+												<path d="M3 18H21" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
+											</svg>
+										</div>
 									</div>
+								</div>
+								{isloggedIn ? (
 									<div
-										className="profile-icon-container user_profile_for_mobile_view_icon"
-										// onClick={handleProfileClick}
-										onClick={() => navigate(isloggedIn ? "/userprofile" : "/palji-login")}
+										className="right_profile_section_haldi_ram profile-icon-container"
+										onClick={handleProfileClick}
 										onMouseEnter={handleProfileHover}
 										onMouseLeave={handleProfileLeave}
 										style={{ cursor: "pointer" }}
 									>
-										{userDatails?.userImage ? (
-											<img
-												src={userDatails.userImage}
-												alt="Profile"
-												className="user_image_hald_ram_header"
-											/>
-										) : (
-											<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
-												<path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
-											</svg>
-										)}
+										<div>
+											{userDatails?.userImage ? (
+												<img
+													src={userDatails.userImage}
+													alt="Profile"
+													className="user_image_hald_ram_header"
+												/>
+											) : (
+												<>
+													<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
+														<path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
+													</svg>
+
+												</>
+											)}
+										</div>
 									</div>
-								</div>
-								<div className="mobile-menu-icon" onClick={toggleMenu}>
-									<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<path d="M3 12H21" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
-										<path d="M3 6H21" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
-										<path d="M3 18H21" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
-									</svg>
-								</div>
-							</div>
-								</div>
-								{isloggedIn ? (
-								<div
-									className="right_profile_section_haldi_ram profile-icon-container"
-									onClick={handleProfileClick}
-									onMouseEnter={handleProfileHover}
-									onMouseLeave={handleProfileLeave}
-									style={{ cursor: "pointer" }}
-								>
-									<div>
-										{userDatails?.userImage ? (
-											<img
-												src={userDatails.userImage}
-												alt="Profile"
-												className="user_image_hald_ram_header"
-											/>
-										) : (
-											<>
-											<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
-												<path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
-											</svg>
-											
-											</>
-										)}
-									</div>
-								</div>
-								):(
-								<>
-								<div
-									className="right_profile_section_haldi_ram profile-icon-container"
-									onClick={handelloginclick}
-									style={{ cursor: "pointer" }}
-								>
-									<div>
-										{userDatails?.userImage ? (
-											<img
-												src={userDatails.userImage}
-												alt="Profile"
-												className="user_image_hald_ram_header"
-											/>
-										) : (
-											<>
-											<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
-												<path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
-											</svg>
-											
-											</>
-										)}
-									</div>
-								</div>
-								</>	
+								) : (
+									<>
+										<div
+											className="right_profile_section_haldi_ram profile-icon-container"
+											onClick={handelloginclick}
+											style={{ cursor: "pointer" }}
+										>
+											<div>
+												{userDatails?.userImage ? (
+													<img
+														src={userDatails.userImage}
+														alt="Profile"
+														className="user_image_hald_ram_header"
+													/>
+												) : (
+													<>
+														<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+															<path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
+															<path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
+														</svg>
+
+													</>
+												)}
+											</div>
+										</div>
+									</>
 								)}
 							</div>
 						</div>
@@ -631,80 +635,78 @@ function Newnavbar() {
 							<p>{userDatails?.email || ""}</p>
 						</div>
 						{isloggedIn ? (
-						<div className="profile-sidebar-links">
-							<Link to="/userprofile" className="profile-sidebar-link" onClick={() => setOpenProfile(false)}>
-								<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path d="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
-									<path d="M6 20C6 17.7909 7.79086 16 10 16H14C16.2091 16 18 17.7909 18 20" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
-								</svg>
-								My Profile
-							</Link>
+							<div className="profile-sidebar-links">
+								<Link to="/userprofile" className="profile-sidebar-link" onClick={() => setOpenProfile(false)}>
+									<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
+										<path d="M6 20C6 17.7909 7.79086 16 10 16H14C16.2091 16 18 17.7909 18 20" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
+									</svg>
+									My Profile
+								</Link>
 
-							<Link to="/userprofile/myorders" className="profile-sidebar-link" onClick={() => setOpenProfile(false)}>
-								
-								<FiShoppingBag size={17} />
+								<Link to="/userprofile/myorders" className="profile-sidebar-link" onClick={() => setOpenProfile(false)}>
 
-								My Orders
-							</Link>
+									<FiShoppingBag size={17} />
 
-							<Link to="/userprofile/myaddress" className="profile-sidebar-link" onClick={() => setOpenProfile(false)}>
-								<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 7.61305 3.94821 5.32387 5.63604 3.63604C7.32387 1.94821 9.61305 1 12 1C14.3869 1 16.6761 1.94821 18.364 3.63604C20.0518 5.32387 21 7.61305 21 10Z" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
-									<path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
-								</svg>
-								My Addresses
-							</Link>
+									My Orders
+								</Link>
+
+								<Link to="/userprofile/myaddress" className="profile-sidebar-link" onClick={() => setOpenProfile(false)}>
+									<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 7.61305 3.94821 5.32387 5.63604 3.63604C7.32387 1.94821 9.61305 1 12 1C14.3869 1 16.6761 1.94821 18.364 3.63604C20.0518 5.32387 21 7.61305 21 10Z" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
+										<path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
+									</svg>
+									My Addresses
+								</Link>
 
 
-							<div className="auth-section">
-								{isloggedIn ? (
-									<div
-										className="profile-sidebar-link logout-link"
+								<div className="auth-section">
+									{isloggedIn ? (
+										<div
+											className="profile-sidebar-link logout-link"
 
-										onClick={handelogout}
-									>
-										<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-											<path d="M9 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H9" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
-											<path d="M16 17L21 12L16 7" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
-											<path d="M21 12H9" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
-										</svg>
-										Logout
-									</div>
-								) : (
-									
-									<div
-										className="profile-sidebar-link logout-link"
+											onClick={handelogout}
+										>
+											<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M9 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H9" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
+												<path d="M16 17L21 12L16 7" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
+												<path d="M21 12H9" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
+											</svg>
+											Logout
+										</div>
+									) : (
 
-										onClick={handelogout}
-									>
-										<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-											<path d="M9 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H9" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
-											<path d="M16 17L21 12L16 7" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
-											<path d="M21 12H9" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
-										</svg>
-										Logout
-									</div>
-								)}
+										<div
+											className="profile-sidebar-link logout-link"
+
+											onClick={handelogout}
+										>
+											<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M9 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H9" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
+												<path d="M16 17L21 12L16 7" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
+												<path d="M21 12H9" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
+											</svg>
+											Logout
+										</div>
+									)}
+								</div>
+
 							</div>
-
-						</div>
 						) : (
 							<>
-							<div className="profile-sidebar-link logout-link" onClick={handelloginclick}>
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M9 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H9" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
-    <path d="M16 17L21 12L16 7" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
-    <path d="M21 12H9" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
-  </svg>
-  Login
-</div>
+								<div className="profile-sidebar-link logout-link" onClick={handelloginclick}>
+									<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path d="M9 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H9" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
+										<path d="M16 17L21 12L16 7" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
+										<path d="M21 12H9" stroke="#1E1E1E" strokeLinecap="round" strokeLinejoin="round"></path>
+									</svg>
+									Login
+								</div>
 							</>
 						)}
 					</div>
 
-					<div className="new_nav_bottom_section_haldi_ram" >
-						<MarqueeComponent />
-					</div>
+					
 				</div>
 			</div>
 		</>
@@ -712,3 +714,5 @@ function Newnavbar() {
 }
 
 export default Newnavbar
+
+
