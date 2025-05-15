@@ -51,7 +51,7 @@
     display: flex;
     align-items: center;
     gap: 20px;
-    justify-content: flex-end;
+    /* justify-content: flex-end; */
     position: relative;
  }
 
@@ -75,7 +75,7 @@
     border-radius: 20px;
     overflow: hidden;
     background: #e335a0;
-    width: 22%;
+    width: 100%;
  }
 .cart_section_new_nav_haldi_icons{
     display: flex;
@@ -533,3 +533,6 @@
         top: 83%;
     }    
   }
+
+
+  

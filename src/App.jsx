@@ -10,7 +10,7 @@ import Signup from "./components/signup/Signup";
 import UserProfile from "./pages/UserProfile";
 import OpenProduct from "./pages/OpenProduct";
 import Cart from "./pages/Cart";
-import MyAccount from "./components/myAccount/MyAccount";
+import MyAccount from "./components/myAccount/MyAccount"; 
 import MyOrders from "./components/myOrders/MyOrders";
 import MyAddress from "./components/myAddress/MyAddress";
 import ShippingAddress from "./components/shippingAddress/ShippingAddress";
