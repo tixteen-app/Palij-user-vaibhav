@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router';
 import { assets } from '../../../assets/assets'
 import styles from './Explore.module.css'
+import {motion} from 'framer-motion'
 const Explore = () => {
   const navigate = useNavigate()
   const handleCategoryClick = () => {
@@ -10,15 +11,24 @@ const Explore = () => {
   return (
     <div className={styles.container}>
       <div className={styles.imageContainer}>
-        <img src={assets.homeGiftHamper} alt="" />
+        <motion.img
+        initial={{ opacity: 0 , scale: 0.8}}
+        whileInView={{ opacity: 1 , scale: 1}}
+        transition={{ duration: 0.6 }}
+        src={assets.homeGiftHamper} alt="" />
       </div>
-      <div className={styles.contant}>
+      <motion.div className={styles.contant}
+        initial={{ opacity: 0 , y: -400}}
+        whileInView={{ opacity: 1 , y: 0}}
+        transition={{ duration: 0.6 }}
+
+      >
         <h2>More Than a Gift, <br />
           It's a Memory!
         </h2>
         <p>Perfectly Packed for Every Occasion!</p>
         <button onClick={handleCategoryClick} >EXPLORE <img src={assets.crossArrow} alt="" /></button>
-      </div>
+      </motion.div>
     </div>
   )
 }
