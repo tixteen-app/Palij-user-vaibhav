@@ -18,10 +18,9 @@ const Explore = () => {
         src={assets.homeGiftHamper} alt="" />
       </div>
       <motion.div className={styles.contant}
-        initial={{ opacity: 0 , y: -400}}
+        initial={{ opacity: 0 , y: 100}}
         whileInView={{ opacity: 1 , y: 0}}
-        transition={{ duration: 0.6 }}
-
+        transition={{ duration: 0.9 }}
       >
         <h2>More Than a Gift, <br />
           It's a Memory!

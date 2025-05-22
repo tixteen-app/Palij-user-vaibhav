@@ -126,7 +126,11 @@ function Homeproduct() {
             <div className="homeproduct_top_heading_div" >
               BEST SELLERS
             </div>
-            <div className="homeproduct_product_main_div" >
+            <motion.div className="homeproduct_product_main_div"
+            initial={{ opacity: 0 , y: 100}}
+          whileInView={{ opacity: 1 , y: 0}}
+          transition={{ duration: 0.7 }}
+            >
               {products.slice(0, 4).map((product) => (
                 <div key={product.id} className="homeproduct_product_sub_div" >
                   {/* image */}
@@ -258,7 +262,7 @@ function Homeproduct() {
                   </div>
                 </div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </>
       }

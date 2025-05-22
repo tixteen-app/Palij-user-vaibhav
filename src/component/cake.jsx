@@ -137,7 +137,11 @@ function Cake() {
                         {/* products */}
                         <div className="homeproduct_product_main_div" >
                             {products.slice(0, 4).map((product) => (
-                                <div key={product.id} className="homeproduct_product_sub_div" >
+                                <motion.div
+                                initial={{ opacity: 0 , y: 100}}
+          whileInView={{ opacity: 1 , y: 0}}
+          transition={{ duration: 0.7 }}
+                                 key={product.id} className="homeproduct_product_sub_div" >
                                     {/* image */}
                                     <motion.div
                                         className="homeproduct_product_div_image"
@@ -280,7 +284,7 @@ function Cake() {
                                         </div>
 
                                     </div>
-                                </div>
+                                </motion.div>
                             ))}
                         </div>
                     </div>

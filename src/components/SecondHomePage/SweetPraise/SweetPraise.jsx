@@ -1,5 +1,6 @@
 import styles from './SweetPraise.module.css'
 import Marquee from "react-fast-marquee";
+import { motion } from 'framer-motion'
 
 const reviews = [
   {
@@ -22,7 +23,12 @@ const reviews = [
 const SweetPraise = () => {
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>SWEET PRAISE</h2>
+      <motion.h2
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.9 }}
+        className={styles.title}
+      >SWEET PRAISE</motion.h2>
       <Marquee pauseOnHover speed={40}>
         <div className={styles.reviews}>
           {reviews.map(item => (

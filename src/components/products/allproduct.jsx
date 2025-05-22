@@ -417,13 +417,21 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
 
                                                 const displaySize = getDisplaySize(product.size, minPrice, maxPrice);
                                                 return (
-                                                    <div key={product.id} className="homeproduct_product_sub_div_for_all_prodcut">
+                                                    <motion.div
+                                                        initial={{ opacity: 0, y: 100 }}
+                                                        whileInView={{ opacity: 1, y: 0 }}
+                                                        transition={{ duration: 0.9 }}
+
+                                                        key={product.id} className="homeproduct_product_sub_div_for_all_prodcut">
 
                                                         <motion.div
                                                             className="homeproduct_product_div_image"
                                                             whileHover={{ scale: 1.03 }}
                                                             onMouseEnter={() => setHoveredProduct(product._id)}
                                                             onMouseLeave={() => setHoveredProduct(null)}
+
+
+
                                                         >
                                                             <motion.img
                                                                 key={hoveredProduct === product._id ? "main" : "thumb"}
@@ -554,7 +562,7 @@ function Allproduct({ search, category, minPrice, maxPrice, categoryName, subcat
                                                                 )}
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </motion.div>
                                                 )
                                             })}
                                         </div>
