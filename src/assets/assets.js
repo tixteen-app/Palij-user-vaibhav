@@ -4,7 +4,7 @@ import search_icon from "./Search.png"
 import cart_icon from "./Shopping Bag.png"
 import test12 from "./test-2.jpg"
 import logo2 from "./favicon.svg"
-import newlogo from './Nlogolight.png'
+import newlogo from './Nlogodark.png'
 import chocoChipCookie1 from "./chocoChipCooki1.png"
 import chocoChipCookie2 from "./chocoChipCooki2.png"
 import chocoChipCookie3 from "./chocoChipCooki3.png"
