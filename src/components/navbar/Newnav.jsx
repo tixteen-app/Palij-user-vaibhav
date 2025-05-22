@@ -11,6 +11,7 @@ import {
 import NavSearchList from "../navSearchList/NavSearchList"
 import MarqueeComponent from "../SecondHomePage/Marquee/Marquee"
 import { FiShoppingBag } from "react-icons/fi"
+import {motion} from "framer-motion"
 
 function Newnavbar() {
 	const [showNavbar, setShowNavbar] = useState(false)
@@ -341,7 +342,10 @@ function Newnavbar() {
 					<div className="top_section_haldiram" >
 						<div className="left_section_new_nav_haldi_ram" >
 							<div className="center_logo_div_new_navbar" >
-								<img
+								<motion.img
+								initial={{ scale: 0, opacity: 0 }}
+								animate={{ scale: 1, opacity: 1 }}
+								transition={{ duration: 1 }}
 									className="center-logo m-1"
 									src={assets.newlogo}
 									alt=""
@@ -431,13 +435,16 @@ function Newnavbar() {
 
 										return (
 											<div className='nav_cat_list_item' key={index}>
-												<div
+												<motion.div
 													className='nav_nav_cat_options'
 													onClick={() => handleCategoryClick(item.nav)}
 													style={{ cursor: "pointer" }}
+													// initial={{ opacity: 0 , scale: 0.2}}
+													// animate={{ opacity: 1, scale: 1 }}
+													// transition={{ duration: 0.1, delay: index * 0.1 }}
 												>
 													{displayName}
-												</div>
+												</motion.div>
 											</div>
 										)
 									})}

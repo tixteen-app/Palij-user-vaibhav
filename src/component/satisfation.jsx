@@ -250,137 +250,185 @@
 // export default Satisfation
 
 
+// import React from 'react'
+// import "../styles/homenew/satisfation.css";
+// import newvideo from "../assets/homevideo1.mp4"
+// import { motion } from "framer-motion"
+
+// function Satisfation() {
+//     // Animation variants 
+//     const containerVariants = {
+//         hidden: { opacity: 0 },
+//         visible: {
+//             opacity: 1,
+//             transition: {
+//                 staggerChildren: 0.2
+//             }
+//         }
+//     };
+
+//     const itemVariants = {
+//         hidden: { y: 20, opacity: 0 },
+//         visible: {
+//             y: 0,
+//             opacity: 1,
+//             transition: {
+//                 duration: 0.5,
+//                 ease: "easeOut"
+//             }
+//         }
+//     };
+
+//     const shapeVariants = {
+//         hidden: { scale: 0.8, opacity: 0 },
+//         visible: {
+//             scale: 1,
+//             opacity: 1,
+//             transition: {
+//                 duration: 0.8,
+//                 ease: "backOut"
+//             }
+//         }
+//     };
+
+//     const centerImageVariants = {
+//         hidden: { scale: 0.9, opacity: 0 },
+//         visible: {
+//             scale: 1,
+//             opacity: 1,
+//             transition: {
+//                 duration: 0.6,
+//                 ease: "easeOut"
+//             }
+//         }
+//     };
+
+//     // Mobile specific animations
+//     const mobileContainerVariants = {
+//         hidden: { opacity: 0 },
+//         visible: {
+//             opacity: 1,
+//             transition: {
+//                 when: "beforeChildren",
+//                 staggerChildren: 0.2
+//             }
+//         }
+//     };
+
+//     const mobileLeftItemVariants = {
+//         hidden: { x: -50, opacity: 0 },
+//         visible: {
+//             x: 0,
+//             opacity: 1,
+//             transition: {
+//                 duration: 0.6,
+//                 ease: "easeOut"
+//             }
+//         }
+//     };
+
+//     const mobileRightItemVariants = {
+//         hidden: { x: 50, opacity: 0 },
+//         visible: {
+//             x: 0,
+//             opacity: 1,
+//             transition: {
+//                 duration: 0.6,
+//                 ease: "easeOut"
+//             }
+//         }
+//     };
+
+//     const mobileCenterItemVariants = {
+//         hidden: { scale: 0.8, opacity: 0 },
+//         visible: {
+//             scale: 1,
+//             opacity: 1,
+//             transition: {
+//                 duration: 0.7,
+//                 ease: "backOut"
+//             }
+//         }
+//     };
+
+//     return (
+//         <>
+
+//             <div  >
+//                 <div className="satisfaction_video_main_div">
+//                     <video
+//                         autoPlay
+//                         muted
+//                         loop
+//                         playsInline
+//                         id="myVideo"
+//                         className="satisfaction_video"
+//                     >
+//                         <source src={newvideo} type="video/mp4" />
+//                     </video>
+//                 </div>
+
+
+//             </div>
+//         </>
+//     )
+// }
+
+// export default Satisfation
 import React from 'react'
-import "../styles/homenew/satisfation.css";
-import firstimage from "../assets/h-1.png"
-import secondimage from "../assets/h-2.png"
-import thirdimage from "../assets/h-9.png"
-import fourthimage from "../assets/h-4.png"
-import fifthimage from "../assets/h-5.png"
-import sixthimage from "../assets/h-6.png"
-import seventhimage from "../assets/h-7.png"
-import eighthimage from "../assets/h-8.png"
-import ninthimage from "../assets/h-10.png"
+import "../styles/homenew/satisfation.css"
 import newvideo from "../assets/homevideo1.mp4"
-import newvideomobile from "../assets/homevideomobile.mp4"
 import { motion } from "framer-motion"
 
 function Satisfation() {
-    // Animation variants 
+    // Animation variants
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
             opacity: 1,
             transition: {
-                staggerChildren: 0.2
-            }
-        }
-    };
-
-    const itemVariants = {
-        hidden: { y: 20, opacity: 0 },
-        visible: {
-            y: 0,
-            opacity: 1,
-            transition: {
-                duration: 0.5,
-                ease: "easeOut"
-            }
-        }
-    };
-
-    const shapeVariants = {
-        hidden: { scale: 0.8, opacity: 0 },
-        visible: {
-            scale: 1,
-            opacity: 1,
-            transition: {
-                duration: 0.8,
-                ease: "backOut"
-            }
-        }
-    };
-
-    const centerImageVariants = {
-        hidden: { scale: 0.9, opacity: 0 },
-        visible: {
-            scale: 1,
-            opacity: 1,
-            transition: {
-                duration: 0.6,
-                ease: "easeOut"
-            }
-        }
-    };
-
-    // Mobile specific animations
-    const mobileContainerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
                 when: "beforeChildren",
-                staggerChildren: 0.2
+                staggerChildren: 0.3
             }
         }
-    };
+    }
 
-    const mobileLeftItemVariants = {
-        hidden: { x: -50, opacity: 0 },
+    const videoVariants = {
+        hidden: { opacity: 0, scale: 0.95 },
         visible: {
-            x: 0,
             opacity: 1,
-            transition: {
-                duration: 0.6,
-                ease: "easeOut"
-            }
-        }
-    };
-
-    const mobileRightItemVariants = {
-        hidden: { x: 50, opacity: 0 },
-        visible: {
-            x: 0,
-            opacity: 1,
-            transition: {
-                duration: 0.6,
-                ease: "easeOut"
-            }
-        }
-    };
-
-    const mobileCenterItemVariants = {
-        hidden: { scale: 0.8, opacity: 0 },
-        visible: {
             scale: 1,
-            opacity: 1,
             transition: {
-                duration: 0.7,
-                ease: "backOut"
+                duration: 1,
+                ease: "easeOut"
             }
         }
-    };
+    }
 
     return (
-        <>
-
-            <div  >
-                <div className="satisfaction_video_main_div">
-                    <video
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        id="myVideo"
-                        className="satisfaction_video"
-                    >
-                        <source src={newvideo} type="video/mp4" />
-                    </video>
-                </div>
-
-
-            </div>
-        </>
+        <motion.div
+            className="satisfaction_video_main_div"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.4 }}
+        >
+            <motion.div
+                className="satisfaction_video_wrapper"
+                variants={videoVariants}
+            >
+                <video
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    id="myVideo"
+                    className="satisfaction_video"
+                >
+                    <source src={newvideo} type="video/mp4" />
+                </video>
+            </motion.div>
+        </motion.div>
     )
 }
 

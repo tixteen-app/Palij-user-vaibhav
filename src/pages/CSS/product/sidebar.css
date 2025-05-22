@@ -36,7 +36,7 @@
   color: var(--golden-color);
   font-size: 24px;
   /* padding-top: 10vh; */
-  color: #AE7B37;
+  color: #D73A38;
 
 }
 
@@ -123,8 +123,8 @@
 }
 
 .line_btn_sidebar_products {
-  color: #AE7B37;
-  border: 2px solid #AE7B37;
+  color: #D73A38;
+  border: 2px solid #D73A38;
 }
 
 .sidebar_options option:hover {

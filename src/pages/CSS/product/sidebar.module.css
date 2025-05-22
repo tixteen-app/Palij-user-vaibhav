@@ -48,7 +48,7 @@
 }
 
 .activeCategory {
-  color: #b5651d;
+  color: #D73A38;
 }
 
 /* PriceFilter.module.css */
@@ -90,7 +90,7 @@
 .priceFilterOption input[type="radio"]:checked+label {
   font-weight: bold;
   /* Highlight selected option */
-  color: #b5651d;
+  color: #D73A38;
   /* Use a distinct color for the active option */
 }
 
@@ -109,6 +109,6 @@
 }
 
 .sidebar_hr {
-  border: 1px solid #b5651d;
+  border: 1px solid #D73A38;
 }
 

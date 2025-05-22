@@ -11,7 +11,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: linear-gradient(0deg, #fbe2ef 0%, #ffffff 100%);
+    background: linear-gradient(0deg, #64C4B1 0%, #ffffff 100%);
  }
  .top_section_haldiram{
     display: flex;
@@ -71,10 +71,10 @@
 .right_search_section_haldi_Ram{
     display: flex;
     align-items: center;
-    border: 1px solid #e335a0;
+    border: 1px solid #D73A38;
     border-radius: 20px;
     overflow: hidden;
-    background: #e335a0;
+    background: #D73A38;
     width: 100%;
  }
 .cart_section_new_nav_haldi_icons{
@@ -104,9 +104,9 @@
 }
 
 .nav_nav_cat_options:hover {
-    border-bottom: 2px solid #e335a0;
+    border-bottom: 2px solid #D73A38;
     animation: growBorder 0.5s forwards;
-    color: #e335a0;
+    color: #D73A38;
 }
 
 .new_nav_bottom_section_haldi_ram{
@@ -266,7 +266,7 @@ justify-content: center;
         align-items: center;
         border-radius: 20px;
         overflow: hidden;
-        background: #e335a0;
+        background: #D73A38;
         width: 35%;
      }
     
@@ -311,10 +311,10 @@ justify-content: center;
 .mobile-search-container {
     display: flex;
     align-items: center;
-    border: 1px solid #e335a0;
+    border: 1px solid #D73A38;
     border-radius: 20px;
     overflow: hidden;
-    background: #e335a0;
+    background: #D73A38;
     width: 100%;
 }
 
@@ -333,12 +333,12 @@ justify-content: center;
 }
 
 .mobile-nav-item:hover {
-    color: #e335a0;
+    color: #D73A38;
 }
 
 @media (max-width: 768px) {
     .mobile-category-text-navbar {
-        color: #e335a0;
+        color: #D73A38;
         font-size: 20px;
     }
     .top_section_haldiram {
@@ -381,7 +381,7 @@ justify-content: center;
     .mobile-top-section{
         display: flex;
         justify-content: space-between;
-        color: #e335a0;
+        color: #D73A38;
         align-items: center;
         gap: 20px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -462,7 +462,7 @@ justify-content: center;
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 15px;
-    border: 2px solid #e335a0;
+    border: 2px solid #D73A38;
   }
   
   .profile-sidebar-default-icon {
@@ -474,7 +474,7 @@ justify-content: center;
     align-items: center;
     justify-content: center;
     margin: 0 auto 15px;
-    border: 2px solid #e335a0;
+    border: 2px solid #D73A38;
   }
   
   .profile-sidebar-header h3 {
@@ -509,7 +509,7 @@ justify-content: center;
   
   .profile-sidebar-link:hover {
     background: #f8f9fa;
-    color: #e335a0;
+    color: #D73A38;
   }
   
   .profile-sidebar-link.logout-link {

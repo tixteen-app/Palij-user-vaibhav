@@ -71,7 +71,7 @@
   font-weight: 500;
   line-height: 44.65px;
   text-align: left;
-  color: #AE7B37;
+  color: #D73A38;
 
 }
 
@@ -188,7 +188,7 @@ input[type='range']::-webkit-slider-runnable-track {
 }
 
 .product-categories h1, .products-search h1 {
-  color: #AE7B37;
+  color: #D73A38;
   font-family: Kumbh Sans;
   font-size: 36px;
   font-weight: 500;
@@ -298,7 +298,7 @@ input[type='range']::-webkit-slider-runnable-track {
 
 
   .media-product-categories h1 {
-    color: #AE7B37;
+    color: #D73A38;
     padding: 10px;
     font-size: 24px;
   }

@@ -36,7 +36,7 @@ a {
 :root {
   --gay-bg-color: rgb(130, 130, 123);
   --redPink: #EE5564;
-  --volite: #A95800;
+  --volite: #D73A38;
   --Tommay-font-1: 'Made Tommay Soft';
   --shadebuttncolor :  linear-gradient(135deg, #ff6b9e 0%, #ff8fab 100%);
 }
@@ -150,14 +150,14 @@ Link {
 
 /* Vertical Scrollbar Thumb */
 ::-webkit-scrollbar-thumb {
-  background: #e335a0;
+  background: #D73A38;
   border-radius: 6px;
   height: 50px; /* Minimum height of the thumb */
 }
 
 /* Horizontal Scrollbar Thumb */
 ::-webkit-scrollbar-thumb:horizontal {
-  background: #e335a0;
+  background: #D73A38;
   border-radius: 6px;
   width: 50px; /* Minimum width of the thumb */
 }
@@ -170,5 +170,5 @@ Link {
 /* Firefox Support */
 html {
   scrollbar-width: thin; /* 'auto' | 'thin' | 'none' */
-  scrollbar-color: #e335a0 #f1f1f1; /* thumb track */
+  scrollbar-color: #D73A38 #f1f1f1; /* thumb track */
 }

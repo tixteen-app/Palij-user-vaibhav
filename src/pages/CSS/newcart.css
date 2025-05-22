@@ -97,7 +97,7 @@
     margin: auto;
     text-align: center;
     margin: 10px 0;
-    color: #AE7B37;
+    color: #D73A38;
     font-size: 22px;
     font-weight: 600;
     background: #fff;
@@ -157,7 +157,7 @@
     font-size: 20px;
     font-weight: 400;
     line-height: 34.73px;
-    color: #AE7B37;
+    color: #D73A38;
   
   }
   
@@ -171,7 +171,7 @@
     display: flex;
     /* justify-content: space-between; */
     gap: 65%;
-    /* border: 1px solid #AE7B37; */
+    /* border: 1px solid #D73A38; */
   }
   
   .cart-shipping-address-button div {

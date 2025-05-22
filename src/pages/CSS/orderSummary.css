@@ -14,7 +14,7 @@
 .order-address p {
   width: 60%;
   font-size: 17px;
-  color: #AE7B37;
+  color: #D73A38;
 }
 
 .order-address h2 {
@@ -29,7 +29,7 @@
   align-items: center;
   /* margin: auto; */
   column-gap: -20px;
-  color: #AE7B37;
+  color: #D73A38;
   font-size: 17px;
 }
 
@@ -46,7 +46,7 @@
     align-items: center;
     /* margin: auto; */
     column-gap: -20px;
-    color: #AE7B37;
+    color: #D73A38;
     font-size: 17px;
     gap: 50px;
     padding: 0 20px;
@@ -60,7 +60,7 @@
   .order-address p {
     width: 100%;
     font-size: 17px;
-    color: #AE7B37;
+    color: #D73A38;
   }
 }
 

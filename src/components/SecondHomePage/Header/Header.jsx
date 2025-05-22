@@ -2,8 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Slider.module.css';
 import { assets } from '../../../assets/assets';
-
-// Slide definitions for desktop and mobile
+import {motion} from 'framer-motion'
 const slidesDesktop = [
   {
     id: 2,
@@ -44,12 +43,6 @@ const slidesMobile = [
     title: 'Butter Garlic Rusk',
     description: 'Deliciously Baked & Crispy',
   },
-  // {
-  //   id: 3,
-  //   image: assets.homeBannerMobile2, // Update with the mobile-specific banner
-  //   title: 'Crispy Treats',
-  //   description: 'Perfect for Your Snack Time',
-  // },
 ];
 
 const Slider = () => {

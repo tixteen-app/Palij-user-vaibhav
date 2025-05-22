@@ -16,7 +16,7 @@
 
 /* product */
 .product_div_all_product_parent {
-  border: 1px solid #AE7B37;
+  border: 1px solid #D73A38;
   border-radius: 30px;
   padding: 10px;
   background: #f2d6cc;
@@ -84,7 +84,7 @@
   display: flex;
   position: absolute;
   height: 20px;
-  border: 2px solid #AE7B37;
+  border: 2px solid #D73A38;
   height: 40px;
   padding: 5px 20px;
   align-items: center;

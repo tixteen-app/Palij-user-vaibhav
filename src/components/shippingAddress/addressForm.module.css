@@ -19,7 +19,7 @@
 
 .formHeader {
   margin-bottom: 20px;
-  color: #AE7B37;
+  color: #D73A38;
 }
 
 .formHeader h2 {
@@ -96,7 +96,7 @@
 .backButton svg {
   height: 30px;
   width: 30px;
-  color: #AE7B37; /* Match the gold color from your theme */
+  color: #D73A38; /* Match the gold color from your theme */
   transition: transform 0.2s ease;
 }
 
@@ -138,7 +138,7 @@
 
 .formHeader {
   margin-bottom: 25px;
-  color: #AE7B37;
+  color: #D73A38;
   text-align: center;
 }
 
