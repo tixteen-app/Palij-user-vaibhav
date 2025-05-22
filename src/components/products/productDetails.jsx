@@ -426,7 +426,11 @@ function ProductDetails() {
               <div className={styles.mainImg} onMouseEnter={() => setIsHoveringImage(true)}
                 onMouseLeave={() => setIsHoveringImage(false)}
               >
-                <div className={styles.desktopImg}>
+                <motion.div
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.9 }}
+                className={styles.desktopImg}>
                   <ReactImageMagnify
                     {...{
                       smallImage: {
@@ -453,7 +457,7 @@ function ProductDetails() {
                       shouldHideHintAfterFirstActivation: false
                     }}
                   />
-                </div>
+                </motion.div>
                 {/* <img src={selectedImage} alt="Selected" className={styles.mediaMainImg} /> */}
                 <img
                   src={product.image[selectedIndex]}
@@ -484,7 +488,12 @@ function ProductDetails() {
                         className={`${styles.subImg1} ${actualIndex === selectedIndex ? styles.activeImage : ""}`}
                         onClick={() => handleImageClick(actualIndex)}
                       >
-                        <img src={imgUrl} alt={`Product Image ${actualIndex + 1}`} />
+                        <motion.img 
+                        initial={{ opacity: 0, scale: 0.5 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: index * 0.1 }}
+                        
+                        src={imgUrl} alt={`Product Image ${actualIndex + 1}`} />
                       </div>
                     );
                   })}
