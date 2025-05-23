@@ -57,6 +57,12 @@
   background-color: #f0f0f0;
   color: #333;
 }
+.explore_icon_home_page{
+  color: var(--newredcolor);
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+}
 
 .message_popup_cake__save {
   background-color: #ff6b6b;
