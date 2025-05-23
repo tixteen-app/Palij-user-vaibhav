@@ -288,7 +288,9 @@ justify-content: center;
     width: 80%;
     max-width: 350px;
     height: 100vh;
-    background: linear-gradient(0deg, #fbe2ef 0%, #ffffff 100%);
+    /* background: linear-gradient(0deg, #fbe2ef 0%, #ffffff 100%); */
+      background: linear-gradient(218deg,  #fff,#64c4b1e0) !important;
+
 
     z-index: 1000;
     transition: right 0.3s ease;
@@ -437,7 +439,9 @@ justify-content: center;
     right: -100%;
     width: 300px;
     height: 100vh;
-    background: linear-gradient(0deg, #fbe2ef 0%, #ffffff 100%);
+    /* background: linear-gradient(0deg, #fbe2ef 0%, #ffffff 100%); */
+          background: var(--newshadedbacground);
+
     z-index: 1001;
     transition: right 0.3s ease;
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);

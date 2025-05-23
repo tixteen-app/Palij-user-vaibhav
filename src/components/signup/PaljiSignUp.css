@@ -53,7 +53,7 @@
   /* Right Section */
   .palji-right {
     flex: 1;
-    background-color: #fff6fa;
+    background: var(--newshadedbacground);
     padding: 50px 40px;
     display: flex;
     flex-direction: column;
@@ -66,8 +66,8 @@
   }
   
   .palji-logo {
-    width: 70px;
-    height: 70px;
+    width: 95px;
+    height: 80px;
   }
   
   .palji-heading {
@@ -204,7 +204,7 @@
   }
   
   .palji-login-link a {
-    color: #e5087e;
+    color: var(--newredcolor);
     text-decoration: underline;
     font-weight: 600;
   }
@@ -213,7 +213,7 @@
     width: 16px;
     height: 16px;
     border: 3px solid #fff;
-    border-top: 3px solid #e5087e;
+    border-top: 3px solid var(--newredcolor);
     border-radius: 50%;
     animation: spin 1s linear infinite;
   }

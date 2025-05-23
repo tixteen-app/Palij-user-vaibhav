@@ -662,8 +662,8 @@
 }
 
 .new_home_page_tab-trigger.new_home_page_active {
-  color: #ec4899;
-  border-bottom-color: #ec4899;
+  color: var(--newredcolor);
+  border-bottom-color: var(--newredcolor);
 }
 
 .new_home_page_tab-content {

@@ -4,7 +4,7 @@
     padding: 4rem 0;
     overflow: hidden;
     font-family: "Playfair Display", serif;
-    background-color: #fff9fb;
+    background-color: white;
   }
   
   .palji_container {
@@ -69,7 +69,7 @@
   }
   
   .palji_highlight {
-    color: #ff4d8d;
+    color: #D73A38; 
     position: relative;
     display: inline-block;
   }
