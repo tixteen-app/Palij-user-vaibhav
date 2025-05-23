@@ -11,7 +11,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: linear-gradient(0deg, #64C4B1 0%, #ffffff 100%);
+    /* background: linear-gradient(0deg, #64C4B1 0%, #ffffff 100%); */
+    background: #64C4B1 ;
  }
  .top_section_haldiram{
     display: flex;
