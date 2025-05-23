@@ -302,7 +302,8 @@
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
-    background: linear-gradient(to right, #ff4d8d, #8e24aa);
+    /* background: linear-gradient(to right, #ff4d8d, #8e24aa); */
+    background: var(--newredcolor);
     color: white;
     padding: 1rem 2.25rem;
     border-radius: 50px;

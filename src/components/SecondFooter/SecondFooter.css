@@ -127,6 +127,9 @@
     margin-top: 3px;
     color: #D73A38;
 }
+.new_footer_contact_title{
+    color: var(--newredcolor);
+}
 
 .new_footer_contact {
     flex: 1;
