@@ -1,3 +1,10 @@
+.homeproduct_top_heading_div_viewall_arrow{
+  width: 27px !important;
+  height: 27px !important;
+  font-weight: bolder;
+  padding-top: 3px;
+
+}
 
 .homeproduct_top_heading_div_for_Savory {
   display: flex;

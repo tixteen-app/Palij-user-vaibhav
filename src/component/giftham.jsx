@@ -121,14 +121,16 @@ function Gifthamper() {
                         <div className="homeproduct_top_heading_div homeproduct_top_heading_div_for_Savory" >
                             <div>GIFT HAMPER </div>
                             <div>
-                                <div className="homeproduct_top_heading_div_viewall" onClick={handleCategoryClick}>VIEW ALL <img src={assets.brownArrow} alt="" className="homeproduct_top_heading_div_arrow" />
+                                <div className="homeproduct_top_heading_div_viewall" onClick={handleCategoryClick}>VIEW ALL <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" className="bi bi-arrow-right homeproduct_top_heading_div_viewall_arrow" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
+                                </svg>
                                 </div>
                             </div>
                         </div>
                         {/* products */}
                         <div className="homeproduct_product_main_div" >
                             {products.slice(0, 4).map((product) => (
-                                <div
+                                <motion.div
                                     initial={{ opacity: 0, y: 100 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.7 }}
@@ -266,7 +268,7 @@ function Gifthamper() {
                                         </div>
 
                                     </div>
-                                </div>
+                                </motion.div>
                             ))}
                         </div>
                     </div>

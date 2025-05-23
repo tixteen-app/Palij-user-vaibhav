@@ -8,7 +8,7 @@ const MarqueeComponent = () => {
       <div className={styles.marquee_container}>
         <div className={styles.marquee_item}>
           {/* <img src={assets.dotPoint} alt="dotpoint" /> */}
-          <span>🔴</span>
+          <span >🔴</span>
           <span className="text-black">free shipping</span>
           <span>on order above ₹750</span>
         </div>
@@ -17,7 +17,7 @@ const MarqueeComponent = () => {
         
         <div className={styles.marquee_item}>
           {/* <img src={assets.dotPoint} alt="dotpoint" /> */}
-          <span>🔴</span>
+          <span >🔴</span>
 
           <span className="text-black">Delivering Fresh Cakes with Love — </span>
           <span> Only in Ludhiana</span>
@@ -26,7 +26,7 @@ const MarqueeComponent = () => {
 
         <div className={styles.marquee_item}>
           {/* <img src={assets.dotPoint} alt="dotpoint" /> */}
-          <span>🔴</span>
+          <span >🔴</span>
 
           <span className="text-black">free shipping</span>
           <span>on order above ₹750</span>
@@ -35,7 +35,7 @@ const MarqueeComponent = () => {
         <div className={styles.marquee_spacer}></div>
         
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">Delivering Fresh Cakes with Love — </span>
           <span> Only in Ludhiana</span>
@@ -43,7 +43,7 @@ const MarqueeComponent = () => {
 
         <div className={styles.marquee_spacer}></div>
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">free shipping</span>
           <span>on order above ₹750</span>
@@ -52,7 +52,7 @@ const MarqueeComponent = () => {
         <div className={styles.marquee_spacer}></div>
         
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">Delivering Fresh Cakes with Love — </span>
           <span> Only in Ludhiana</span>
@@ -60,7 +60,7 @@ const MarqueeComponent = () => {
 
         <div className={styles.marquee_spacer}></div>
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">free shipping</span>
           <span>on order above ₹750</span>
@@ -69,7 +69,7 @@ const MarqueeComponent = () => {
         <div className={styles.marquee_spacer}></div>
         
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">Delivering Fresh Cakes with Love — </span>
           <span> Only in Ludhiana</span>
@@ -77,7 +77,7 @@ const MarqueeComponent = () => {
 
         <div className={styles.marquee_spacer}></div>
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">free shipping</span>
           <span>on order above ₹750</span>
@@ -86,7 +86,7 @@ const MarqueeComponent = () => {
         <div className={styles.marquee_spacer}></div>
         
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">Delivering Fresh Cakes with Love — </span>
           <span> Only in Ludhiana</span>
@@ -94,7 +94,7 @@ const MarqueeComponent = () => {
 
         <div className={styles.marquee_spacer}></div>
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">free shipping</span>
           <span>on order above ₹750</span>
@@ -103,7 +103,7 @@ const MarqueeComponent = () => {
         <div className={styles.marquee_spacer}></div>
         
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">Delivering Fresh Cakes with Love — </span>
           <span> Only in Ludhiana</span>
@@ -111,7 +111,7 @@ const MarqueeComponent = () => {
 
         <div className={styles.marquee_spacer}></div>
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">free shipping</span>
           <span>on order above ₹750</span>
@@ -120,7 +120,7 @@ const MarqueeComponent = () => {
         <div className={styles.marquee_spacer}></div>
         
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">Delivering Fresh Cakes with Love — </span>
           <span> Only in Ludhiana</span>
@@ -128,7 +128,7 @@ const MarqueeComponent = () => {
 
         <div className={styles.marquee_spacer}></div>
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">free shipping</span>
           <span>on order above ₹750</span>
@@ -137,7 +137,7 @@ const MarqueeComponent = () => {
         <div className={styles.marquee_spacer}></div>
         
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">Delivering Fresh Cakes with Love — </span>
           <span> Only in Ludhiana</span>
@@ -145,7 +145,7 @@ const MarqueeComponent = () => {
 
         <div className={styles.marquee_spacer}></div>
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">free shipping</span>
           <span>on order above ₹750</span>
@@ -154,7 +154,7 @@ const MarqueeComponent = () => {
         <div className={styles.marquee_spacer}></div>
         
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">Delivering Fresh Cakes with Love — </span>
           <span> Only in Ludhiana</span>
@@ -162,7 +162,7 @@ const MarqueeComponent = () => {
 
         <div className={styles.marquee_spacer}></div>
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">free shipping</span>
           <span>on order above ₹750</span>
@@ -171,7 +171,7 @@ const MarqueeComponent = () => {
         <div className={styles.marquee_spacer}></div>
         
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">Delivering Fresh Cakes with Love — </span>
           <span> Only in Ludhiana</span>
@@ -179,7 +179,7 @@ const MarqueeComponent = () => {
 
         <div className={styles.marquee_spacer}></div>
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">free shipping</span>
           <span>on order above ₹750</span>
@@ -188,7 +188,7 @@ const MarqueeComponent = () => {
         <div className={styles.marquee_spacer}></div>
         
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">Delivering Fresh Cakes with Love — </span>
           <span> Only in Ludhiana</span>
@@ -196,7 +196,7 @@ const MarqueeComponent = () => {
 
         <div className={styles.marquee_spacer}></div>
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">free shipping</span>
           <span>on order above ₹750</span>
@@ -205,7 +205,7 @@ const MarqueeComponent = () => {
         <div className={styles.marquee_spacer}></div>
         
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">Delivering Fresh Cakes with Love — </span>
           <span> Only in Ludhiana</span>
@@ -213,7 +213,7 @@ const MarqueeComponent = () => {
 
         <div className={styles.marquee_spacer}></div>
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">free shipping</span>
           <span>on order above ₹750</span>
@@ -222,7 +222,7 @@ const MarqueeComponent = () => {
         <div className={styles.marquee_spacer}></div>
         
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">Delivering Fresh Cakes with Love — </span>
           <span> Only in Ludhiana</span>
@@ -230,7 +230,7 @@ const MarqueeComponent = () => {
 
         <div className={styles.marquee_spacer}></div>
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">free shipping</span>
           <span>on order above ₹750</span>
@@ -239,7 +239,7 @@ const MarqueeComponent = () => {
         <div className={styles.marquee_spacer}></div>
         
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">Delivering Fresh Cakes with Love — </span>
           <span> Only in Ludhiana</span>
@@ -247,7 +247,7 @@ const MarqueeComponent = () => {
 
         <div className={styles.marquee_spacer}></div>
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">free shipping</span>
           <span>on order above ₹750</span>
@@ -256,7 +256,7 @@ const MarqueeComponent = () => {
         <div className={styles.marquee_spacer}></div>
         
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">Delivering Fresh Cakes with Love — </span>
           <span> Only in Ludhiana</span>
@@ -264,7 +264,7 @@ const MarqueeComponent = () => {
 
         <div className={styles.marquee_spacer}></div>
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">free shipping</span>
           <span>on order above ₹750</span>
@@ -273,7 +273,7 @@ const MarqueeComponent = () => {
         <div className={styles.marquee_spacer}></div>
         
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">Delivering Fresh Cakes with Love — </span>
           <span> Only in Ludhiana</span>
@@ -281,7 +281,7 @@ const MarqueeComponent = () => {
 
         <div className={styles.marquee_spacer}></div>
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">free shipping</span>
           <span>on order above ₹750</span>
@@ -290,7 +290,7 @@ const MarqueeComponent = () => {
         <div className={styles.marquee_spacer}></div>
         
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">Delivering Fresh Cakes with Love — </span>
           <span> Only in Ludhiana</span>
@@ -298,7 +298,7 @@ const MarqueeComponent = () => {
 
         <div className={styles.marquee_spacer}></div>
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">free shipping</span>
           <span>on order above ₹750</span>
@@ -307,7 +307,7 @@ const MarqueeComponent = () => {
         <div className={styles.marquee_spacer}></div>
         
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">Delivering Fresh Cakes with Love — </span>
           <span> Only in Ludhiana</span>
@@ -315,7 +315,7 @@ const MarqueeComponent = () => {
 
         <div className={styles.marquee_spacer}></div>
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">free shipping</span>
           <span>on order above ₹750</span>
@@ -324,7 +324,7 @@ const MarqueeComponent = () => {
         <div className={styles.marquee_spacer}></div>
         
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">Delivering Fresh Cakes with Love — </span>
           <span> Only in Ludhiana</span>
@@ -332,7 +332,7 @@ const MarqueeComponent = () => {
 
         <div className={styles.marquee_spacer}></div>
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">free shipping</span>
           <span>on order above ₹750</span>
@@ -341,7 +341,7 @@ const MarqueeComponent = () => {
         <div className={styles.marquee_spacer}></div>
         
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">Delivering Fresh Cakes with Love — </span>
           <span> Only in Ludhiana</span>
@@ -349,7 +349,7 @@ const MarqueeComponent = () => {
 
         <div className={styles.marquee_spacer}></div>
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">free shipping</span>
           <span>on order above ₹750</span>
@@ -358,7 +358,7 @@ const MarqueeComponent = () => {
         <div className={styles.marquee_spacer}></div>
         
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">Delivering Fresh Cakes with Love — </span>
           <span> Only in Ludhiana</span>
@@ -366,7 +366,7 @@ const MarqueeComponent = () => {
 
         <div className={styles.marquee_spacer}></div>
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">free shipping</span>
           <span>on order above ₹750</span>
@@ -375,7 +375,7 @@ const MarqueeComponent = () => {
         <div className={styles.marquee_spacer}></div>
         
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">Delivering Fresh Cakes with Love — </span>
           <span> Only in Ludhiana</span>
@@ -383,7 +383,7 @@ const MarqueeComponent = () => {
 
         <div className={styles.marquee_spacer}></div>
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">free shipping</span>
           <span>on order above ₹750</span>
@@ -392,7 +392,7 @@ const MarqueeComponent = () => {
         <div className={styles.marquee_spacer}></div>
         
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">Delivering Fresh Cakes with Love — </span>
           <span> Only in Ludhiana</span>
@@ -400,7 +400,7 @@ const MarqueeComponent = () => {
 
         <div className={styles.marquee_spacer}></div>
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">free shipping</span>
           <span>on order above ₹750</span>
@@ -409,7 +409,7 @@ const MarqueeComponent = () => {
         <div className={styles.marquee_spacer}></div>
         
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">Delivering Fresh Cakes with Love — </span>
           <span> Only in Ludhiana</span>
@@ -417,7 +417,7 @@ const MarqueeComponent = () => {
 
         <div className={styles.marquee_spacer}></div>
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">free shipping</span>
           <span>on order above ₹750</span>
@@ -426,7 +426,7 @@ const MarqueeComponent = () => {
         <div className={styles.marquee_spacer}></div>
         
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">Delivering Fresh Cakes with Love — </span>
           <span> Only in Ludhiana</span>
@@ -434,7 +434,7 @@ const MarqueeComponent = () => {
 
         <div className={styles.marquee_spacer}></div>
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">free shipping</span>
           <span>on order above ₹750</span>
@@ -443,7 +443,7 @@ const MarqueeComponent = () => {
         <div className={styles.marquee_spacer}></div>
         
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">Delivering Fresh Cakes with Love — </span>
           <span> Only in Ludhiana</span>
@@ -451,7 +451,7 @@ const MarqueeComponent = () => {
 
         <div className={styles.marquee_spacer}></div>
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">free shipping</span>
           <span>on order above ₹750</span>
@@ -460,7 +460,7 @@ const MarqueeComponent = () => {
         <div className={styles.marquee_spacer}></div>
         
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">Delivering Fresh Cakes with Love — </span>
           <span> Only in Ludhiana</span>
@@ -468,7 +468,7 @@ const MarqueeComponent = () => {
 
         <div className={styles.marquee_spacer}></div>
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">free shipping</span>
           <span>on order above ₹750</span>
@@ -477,7 +477,7 @@ const MarqueeComponent = () => {
         <div className={styles.marquee_spacer}></div>
         
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">Delivering Fresh Cakes with Love — </span>
           <span> Only in Ludhiana</span>
@@ -485,7 +485,7 @@ const MarqueeComponent = () => {
 
         <div className={styles.marquee_spacer}></div>
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">free shipping</span>
           <span>on order above ₹750</span>
@@ -494,7 +494,7 @@ const MarqueeComponent = () => {
         <div className={styles.marquee_spacer}></div>
         
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">Delivering Fresh Cakes with Love — </span>
           <span> Only in Ludhiana</span>
@@ -502,7 +502,7 @@ const MarqueeComponent = () => {
 
         <div className={styles.marquee_spacer}></div>
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">free shipping</span>
           <span>on order above ₹750</span>
@@ -511,7 +511,7 @@ const MarqueeComponent = () => {
         <div className={styles.marquee_spacer}></div>
         
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">Delivering Fresh Cakes with Love — </span>
           <span> Only in Ludhiana</span>
@@ -519,7 +519,7 @@ const MarqueeComponent = () => {
 
         <div className={styles.marquee_spacer}></div>
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">free shipping</span>
           <span>on order above ₹750</span>
@@ -528,7 +528,7 @@ const MarqueeComponent = () => {
         <div className={styles.marquee_spacer}></div>
         
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">Delivering Fresh Cakes with Love — </span>
           <span> Only in Ludhiana</span>
@@ -536,7 +536,7 @@ const MarqueeComponent = () => {
 
         <div className={styles.marquee_spacer}></div>
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">free shipping</span>
           <span>on order above ₹750</span>
@@ -545,7 +545,7 @@ const MarqueeComponent = () => {
         <div className={styles.marquee_spacer}></div>
         
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">Delivering Fresh Cakes with Love — </span>
           <span> Only in Ludhiana</span>
@@ -553,7 +553,7 @@ const MarqueeComponent = () => {
 
         <div className={styles.marquee_spacer}></div>
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">free shipping</span>
           <span>on order above ₹750</span>
@@ -562,7 +562,7 @@ const MarqueeComponent = () => {
         <div className={styles.marquee_spacer}></div>
         
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">Delivering Fresh Cakes with Love — </span>
           <span> Only in Ludhiana</span>
@@ -570,7 +570,7 @@ const MarqueeComponent = () => {
 
         <div className={styles.marquee_spacer}></div>
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">free shipping</span>
           <span>on order above ₹750</span>
@@ -579,7 +579,7 @@ const MarqueeComponent = () => {
         <div className={styles.marquee_spacer}></div>
         
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">Delivering Fresh Cakes with Love — </span>
           <span> Only in Ludhiana</span>
@@ -587,7 +587,7 @@ const MarqueeComponent = () => {
 
         <div className={styles.marquee_spacer}></div>
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">free shipping</span>
           <span>on order above ₹750</span>
@@ -596,7 +596,7 @@ const MarqueeComponent = () => {
         <div className={styles.marquee_spacer}></div>
         
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">Delivering Fresh Cakes with Love — </span>
           <span> Only in Ludhiana</span>
@@ -604,7 +604,7 @@ const MarqueeComponent = () => {
 
         <div className={styles.marquee_spacer}></div>
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">free shipping</span>
           <span>on order above ₹750</span>
@@ -613,7 +613,7 @@ const MarqueeComponent = () => {
         <div className={styles.marquee_spacer}></div>
         
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">Delivering Fresh Cakes with Love — </span>
           <span> Only in Ludhiana</span>
@@ -621,7 +621,7 @@ const MarqueeComponent = () => {
 
         <div className={styles.marquee_spacer}></div>
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">free shipping</span>
           <span>on order above ₹750</span>
@@ -630,7 +630,7 @@ const MarqueeComponent = () => {
         <div className={styles.marquee_spacer}></div>
         
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">Delivering Fresh Cakes with Love — </span>
           <span> Only in Ludhiana</span>
@@ -638,7 +638,7 @@ const MarqueeComponent = () => {
 
         <div className={styles.marquee_spacer}></div>
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">free shipping</span>
           <span>on order above ₹750</span>
@@ -647,7 +647,7 @@ const MarqueeComponent = () => {
         <div className={styles.marquee_spacer}></div>
         
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">Delivering Fresh Cakes with Love — </span>
           <span> Only in Ludhiana</span>
@@ -655,7 +655,7 @@ const MarqueeComponent = () => {
 
         <div className={styles.marquee_spacer}></div>
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">free shipping</span>
           <span>on order above ₹750</span>
@@ -664,7 +664,7 @@ const MarqueeComponent = () => {
         <div className={styles.marquee_spacer}></div>
         
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">Delivering Fresh Cakes with Love — </span>
           <span> Only in Ludhiana</span>
@@ -672,7 +672,7 @@ const MarqueeComponent = () => {
 
         <div className={styles.marquee_spacer}></div>
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">free shipping</span>
           <span>on order above ₹750</span>
@@ -681,7 +681,7 @@ const MarqueeComponent = () => {
         <div className={styles.marquee_spacer}></div>
         
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">Delivering Fresh Cakes with Love — </span>
           <span> Only in Ludhiana</span>
@@ -689,7 +689,7 @@ const MarqueeComponent = () => {
 
         <div className={styles.marquee_spacer}></div>
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">free shipping</span>
           <span>on order above ₹750</span>
@@ -698,7 +698,7 @@ const MarqueeComponent = () => {
         <div className={styles.marquee_spacer}></div>
         
         <div className={styles.marquee_item}>
-                    <span>🔴</span>
+                    <span >🔴</span>
 
           <span className="text-black">Delivering Fresh Cakes with Love — </span>
           <span> Only in Ludhiana</span>

@@ -127,9 +127,9 @@ function Homeproduct() {
               BEST SELLERS
             </div>
             <motion.div className="homeproduct_product_main_div"
-            initial={{ opacity: 0 , y: 100}}
-          whileInView={{ opacity: 1 , y: 0}}
-          transition={{ duration: 0.7 }}
+              initial={{ opacity: 0, y: 100 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
             >
               {products.slice(0, 4).map((product) => (
                 <div key={product.id} className="homeproduct_product_sub_div" >
@@ -142,9 +142,9 @@ function Homeproduct() {
                   >
                     <motion.img
                       key={hoveredProduct === product._id ? "main" : "thumb"}
-                       src={                                         hoveredProduct === product._id                                                 ? (product.image?.[1] ? product.image[1] : product.image?.[0] || product.thumbnail)
-                                                                        : product.thumbnail
-                                                                }
+                      src={hoveredProduct === product._id ? (product.image?.[1] ? product.image[1] : product.image?.[0] || product.thumbnail)
+                        : product.thumbnail
+                      }
                       alt={product.name}
                       onClick={() => handleNavigate(product._id)}
                       initial={{ opacity: 0 }}
