@@ -1,4 +1,4 @@
-.slider {
+/* .slider {
   position: relative;
   width: 96%;
   margin: auto;
@@ -17,7 +17,7 @@
 .image {
   width: 100%;
   height: 90vh;
-  /* object-fit: cover; */
+ 
   border-radius: 30px;
 
 }
@@ -28,14 +28,14 @@
   left: 50%;
   transform: translate(-50%, -50%);
   color: #4a2d16;
-  /* Adjust as per design */
+
   text-align: center;
 }
 
 .title {
   font-size: 2rem;
   font-family: 'Brush Script MT', cursive;
-  /* Similar to shown font */
+ 
 }
 
 .description {
@@ -67,10 +67,6 @@
   right: 10px;
 }
 
-.prevButton:hover,
-.nextButton:hover {
-  /* background: rgba(0, 0, 0, 0.8); */
-}
 
 .indicators {
   display: flex;
@@ -90,7 +86,7 @@
 
 .active {
   background-color: #4a2d16;
-  /* Adjust as per design */
+
 }
 @media(max-width: 500px) {
   .slider {
@@ -125,11 +121,106 @@
   .image {
     width: 100%;
     height: auto;
-
-    /* height: 50vh; */
-    /* height: 100%; */
     object-fit: cover;
     border-radius: 30px;
   }
 }
+ */
 
+
+ .slider {
+  position: relative;
+  width: 96%;
+  margin: auto;
+  overflow: hidden;
+  padding-top: 4vh;
+}
+
+.slideContainer {
+  position: relative;
+  width: 100%;
+  height: 95vh;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 30px;
+}
+
+.prevButton,
+.nextButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.prevButton {
+  left: 10px;
+}
+
+.nextButton {
+  right: 10px;
+}
+
+.indicators {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  gap: 5px;
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.indicator {
+  width: 10px;
+  height: 10px;
+  background-color: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.active {
+  background-color: #4a2d16;
+}
+
+@media(max-width: 500px) {
+  .slider {
+    padding-top: 11vh;
+  }
+
+  .slideContainer {
+    height: 80vh;
+  }
+
+  .prevButton,
+  .nextButton {
+    display: none;
+  }
+
+  .indicators {
+    gap: 10px;
+  }
+}
