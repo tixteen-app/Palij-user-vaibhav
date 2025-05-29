@@ -427,10 +427,10 @@ function ProductDetails() {
                 onMouseLeave={() => setIsHoveringImage(false)}
               >
                 <motion.div
-                initial={{ opacity: 0, scale: 0.5 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.9 }}
-                className={styles.desktopImg}>
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.9 }}
+                  className={styles.desktopImg}>
                   <ReactImageMagnify
                     {...{
                       smallImage: {
@@ -445,14 +445,12 @@ function ProductDetails() {
                         width: 2500,
                         height: 2500,
                         className: "largeZoom",
-                        style: {
-                          backgroundColor: "#000",
-                        }
+                      
                       },
                       enlargedImageContainerDimensions: {
                         width: "180%",
                         height: "130%",
-                        zIndex: 1000
+                        zIndex: 100000000000
                       },
                       shouldHideHintAfterFirstActivation: false
                     }}
@@ -488,12 +486,12 @@ function ProductDetails() {
                         className={`${styles.subImg1} ${actualIndex === selectedIndex ? styles.activeImage : ""}`}
                         onClick={() => handleImageClick(actualIndex)}
                       >
-                        <motion.img 
-                        initial={{ opacity: 0, scale: 0.5 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: index * 0.1 }}
-                        
-                        src={imgUrl} alt={`Product Image ${actualIndex + 1}`} />
+                        <motion.img
+                          initial={{ opacity: 0, scale: 0.5 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: index * 0.1 }}
+
+                          src={imgUrl} alt={`Product Image ${actualIndex + 1}`} />
                       </div>
                     );
                   })}
@@ -737,6 +735,7 @@ function ProductDetails() {
                   <motion.div
                     animate={{ rotate: activeAccordion === 0 ? 360 : 0 }}
                     transition={{ duration: 0.3 }}
+                    style={{ zIndex: 0 }}
                   >
                     {activeAccordion === 0 ? <ChevronUp /> : <ChevronDown />}
                   </motion.div>
@@ -795,7 +794,7 @@ function ProductDetails() {
                               initial={{ x: -10, opacity: 0 }}
                               animate={{ x: 0, opacity: 1 }}
                               transition={{ delay: index * 0.05 }}
-                              style={{listStyle:"none"}}
+                              style={{ listStyle: "none" }}
                             >
                               {instruction}
                             </motion.li>
@@ -842,7 +841,7 @@ function ProductDetails() {
                               initial={{ x: -10, opacity: 0 }}
                               animate={{ x: 0, opacity: 1 }}
                               transition={{ delay: index * 0.05 }}
-                              style={{listStyle:"none"}}
+                              style={{ listStyle: "none" }}
 
                             >
                               {info}

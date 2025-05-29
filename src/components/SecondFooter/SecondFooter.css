@@ -1,7 +1,9 @@
 .new_footer {
-    background-color: #fff;
+    /* background-color: #fff; */
     box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.05);
     padding: 30px 0 20px;
+     background: linear-gradient(184deg, #6ddbc5a8 0%, #66d2c0d1 76%, #73e8d2a8 100%) !important;
+
 }
 
 .new_footer_container {

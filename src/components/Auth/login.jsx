@@ -12,7 +12,6 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [Islogin, setIslogin] = useState(false);
-  console.log(Islogin);
 
 
   const handleSubmit = async (event) => {
