@@ -341,17 +341,13 @@ function Newnavbar() {
 				<div className='main_new_navbar_haldi_ram' >
 
 					<div className="wave-container">
-						<svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="wave-svg">
+						<svg viewBox="0 0 1200 80" preserveAspectRatio="none" className="wave-svg">
 							<path
 								d="M 0 120 0 60 Q 12 45 24 60 t 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 v60 z"
 								opacity="0.25"
 								className="wave-path"
 							/>
-							<path
-								d="M 0 120 0 50 Q 15 35 30 50 t 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 v70 z"
-								opacity="0.5"
-								className="wave-path"
-							/>
+							
 							<path
 								d="M 0 120 0 40 Q 20 25 40 40 t 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 v80 z"
 								className="wave-path"

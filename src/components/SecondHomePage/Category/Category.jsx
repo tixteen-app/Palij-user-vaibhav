@@ -47,8 +47,8 @@ const Category = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.9 }}
         className={styles.header}>
-        <h2>SHOP BY CATEGORY</h2>
-        <h2 style={{ cursor: "pointer" }} onClick={() => navigate("/product/all-products")}>
+        <h2 className={styles.title_text} >SHOP BY CATEGORY</h2>
+        <h2 className={styles.title_text} style={{ cursor: "pointer" }} onClick={() => navigate("/product/all-products")}>
           VIEW ALL <img src={assets.brownArrow} alt="" />
         </h2>
       </motion.div>

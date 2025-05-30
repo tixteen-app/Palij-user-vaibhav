@@ -3,6 +3,12 @@
   align-items: center;
   width: 100%;
 }
+.red_bullet {
+  color: red;
+  font-size: 44px !important;
+  line-height: 17px;
+}
+
 
 .marquee_item {
   display: flex;
