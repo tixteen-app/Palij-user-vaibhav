@@ -249,15 +249,12 @@
   border: 0;
   color: #fff;
   white-space: nowrap;
-  /* Prevent text wrapping */
   display: inline-block;
-  /* Keep the button dimensions flexible */
 }
 
 .addTocart {
   padding: 8px 26px;
   border-radius: 10px;
-  /* background: var(--redPink); */
   background: var(--shadebuttncolor);
 
   color: #fff;
@@ -269,9 +266,7 @@
 
 .cartIncDec {
   display: flex;
-  /* gap: 20px; */
   justify-content: space-around;
-  /* background: var(--redPink); */
   border: 1px solid var(--shadebuttncolor);
   align-items: center;
   padding: 0 5px;
