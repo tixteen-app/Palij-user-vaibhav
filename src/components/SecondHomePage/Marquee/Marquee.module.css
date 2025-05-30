@@ -12,7 +12,7 @@
 }
 
 .marquee_spacer {
-  width: 300px; /* Adjust this value to control the gap between messages */
+  width: 300px; 
 }
 
 .marquee_item {

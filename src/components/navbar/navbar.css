@@ -8,8 +8,8 @@
   /* padding: 0 50px; */
   margin-top: -8px;
   height: 135px;
-  background-color: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(20px);
+  /* background-color: rgba(255, 255, 255, 0.2); */
+  backdrop-filter: blur(0px);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   top: 0;
 }

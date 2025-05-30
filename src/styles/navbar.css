@@ -3,18 +3,27 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: white;
+    /* background: white; */
+    background: url('https://res.cloudinary.com/dh74mrqe0/image/upload/v1748520442/palji/zvqcj1utwhgzgpbzmaf9.png') no-repeat center center !important;
+    background-size: cover;
+    height: 100%;
 }
 
- .main_new_navbar_haldi_ram{
+ /* .main_new_navbar_haldi_ram{
     width: 100%; 
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* background: linear-gradient(0deg, #64C4B1 0%, #ffffff 100%); */
-    /* background: #64C4B1 ; */
      background: linear-gradient(184deg, #6ddbc5a8 0%, #66d2c0d1 76%, #73e8d2a8 100%) !important;
- }
+ } */
+  .main_new_navbar_haldi_ram{
+    width: 130%; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* background: url('https://res.cloudinary.com/dh74mrqe0/image/upload/v1748520442/palji/zvqcj1utwhgzgpbzmaf9.png') no-repeat center center; */
+    /* background-size: contain; */
+}
  .top_section_haldiram{
     display: flex;
     padding: 3px 100px;
