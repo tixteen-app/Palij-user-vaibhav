@@ -11,7 +11,7 @@ import {
 import NavSearchList from "../navSearchList/NavSearchList"
 import MarqueeComponent from "../SecondHomePage/Marquee/Marquee"
 import { FiShoppingBag } from "react-icons/fi"
-import {motion} from "framer-motion"
+import { motion } from "framer-motion"
 
 function Newnavbar() {
 	const [showNavbar, setShowNavbar] = useState(false)
@@ -333,19 +333,42 @@ function Newnavbar() {
 
 	return (
 		<>
-		<div className="new_nav_bottom_section_haldi_ram" >
-						<MarqueeComponent />
-					</div>
+			<div className="new_nav_bottom_section_haldi_ram" >
+				<MarqueeComponent />
+			</div>
 			<div className="main_div_new_haldi_ram">
-				
+
 				<div className='main_new_navbar_haldi_ram' >
+
+					<div className="wave-container">
+						<svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="wave-svg">
+							<path
+								d="M 0 120 0 60 Q 12 45 24 60 t 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 24 0 v60 z"
+								opacity="0.25"
+								className="wave-path"
+							/>
+							<path
+								d="M 0 120 0 50 Q 15 35 30 50 t 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 30 0 v70 z"
+								opacity="0.5"
+								className="wave-path"
+							/>
+							<path
+								d="M 0 120 0 40 Q 20 25 40 40 t 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 v80 z"
+								className="wave-path"
+							/>
+						</svg>
+					</div>
+
+
+
+
 					<div className="top_section_haldiram" >
 						<div className="left_section_new_nav_haldi_ram" >
 							<div className="center_logo_div_new_navbar" >
 								<motion.img
-								initial={{ scale: 0, opacity: 0 }}
-								animate={{ scale: 1, opacity: 1 }}
-								transition={{ duration: 1 }}
+									initial={{ scale: 0, opacity: 0 }}
+									animate={{ scale: 1, opacity: 1 }}
+									transition={{ duration: 1 }}
 									className="center-logo m-1"
 									src={assets.newlogo}
 									alt=""
@@ -439,9 +462,9 @@ function Newnavbar() {
 													className='nav_nav_cat_options'
 													onClick={() => handleCategoryClick(item.nav)}
 													style={{ cursor: "pointer" }}
-													// initial={{ opacity: 0 , scale: 0.2}}
-													// animate={{ opacity: 1, scale: 1 }}
-													// transition={{ duration: 0.1, delay: index * 0.1 }}
+												// initial={{ opacity: 0 , scale: 0.2}}
+												// animate={{ opacity: 1, scale: 1 }}
+												// transition={{ duration: 0.1, delay: index * 0.1 }}
 												>
 													{displayName}
 												</motion.div>
@@ -579,6 +602,27 @@ function Newnavbar() {
 						</div>
 					</div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 					{/* Mobile Menu */}
 					<div className={`mobile-menu ${moblieMenu ? 'open' : ''}`} ref={mobileMenuRef}>
 						<div className="mobile-top-section">
@@ -713,7 +757,7 @@ function Newnavbar() {
 						)}
 					</div>
 
-					
+
 				</div>
 			</div>
 		</>

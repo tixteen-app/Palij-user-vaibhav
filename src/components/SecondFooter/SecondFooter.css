@@ -81,7 +81,7 @@
 }
 
 .new_footer_links a {
-    color: #6d5c3f;
+    color: black;
     text-decoration: none;
     font-size: 15px;
     transition: color 0.3s ease;
@@ -118,7 +118,7 @@
 
 .new_footer_outlet p {
     font-size: 14px;
-    color: #6d5c3f;
+    color: black;
     line-height: 1.5;
     display: flex;
     align-items: flex-start;
@@ -157,7 +157,7 @@
 }
 
 .new_footer_contact_info span {
-    color: #6d5c3f;
+    color: black;
 }
 
 .new_footer_bottom {
@@ -166,7 +166,7 @@
     padding-top: 20px;
     text-align: center;
     font-size: 14px;
-    color: #8a7d68;
+    color: black;
     display: flex;
     justify-content: space-between;
 }

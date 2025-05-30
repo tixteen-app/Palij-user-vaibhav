@@ -58,7 +58,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-shadow: 0px 12px 27px 0px #0000001a;
+  /* box-shadow: 0px 12px 27px 0px #0000001a; */
+   border: 2px solid var(--newgreencolor);
 }
 .homeproduct_product_sub_div_for_all_prodcut {
   width: 100%;

@@ -39,9 +39,10 @@ a {
   --volite: #D73A38;
   --Tommay-font-1: 'Made Tommay Soft';
   /* --shadebuttncolor :  linear-gradient(135deg, #ff6b9e 0%, #ff8fab 100%); */
-  --shadebuttncolor :  linear-gradient(135deg, #EE5564 0%);
+  --shadebuttncolor :  #d73a38;
   --newshadedbacground : linear-gradient(180deg,  #fff,#6bb4a6f2) !important;
   --newredcolor:#D73A38;
+  --newgreencolor: #8de0d1;
 
 }
 
