@@ -146,7 +146,7 @@ const PaljiLogin = () => {
             <FaGoogle className="palji-google-icon" /> Sign in with Google
           </button>
 
-          <div className="palji-divider"><span>or</span></div>
+          <div className="palji-divider"><span>OR</span></div>
 
           {/* Form */}
           <form onSubmit={login} className="palji-form">

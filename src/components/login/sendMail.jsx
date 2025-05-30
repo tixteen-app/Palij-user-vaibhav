@@ -110,6 +110,7 @@ import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import './ForgotPassword.css';
 import { FaEnvelope } from 'react-icons/fa';
+import { assets } from '../../assets/assets';
 
 const ForgotPasswordForm = () => {
   const navigate = useNavigate();
@@ -157,7 +158,7 @@ const ForgotPasswordForm = () => {
         {/* Website Logo */}
         <div className="logo-container">
           <img
-            src="https://res.cloudinary.com/dtivafy25/image/upload/v1742203035/png_2_ohkc4l.png"
+            src={assets.newlogo}
             alt="Website Logo"
             className="website-logo"
           />

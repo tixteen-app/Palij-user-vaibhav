@@ -92,7 +92,7 @@
     font-weight: 600;
     padding: 12px;
     width: 100%;
-    border: 1px solid #e5087e;
+    border: 1px solid var(--shadebuttncolor);
     border-radius: 8px;
     cursor: pointer;
     margin-bottom: 20px;
@@ -104,7 +104,7 @@
   
   .palji-google-icon {
     margin-right: 10px;
-    color: #e5087e;
+    color: var(--shadebuttncolor);
     font-size: 16px;
   }
   
@@ -114,13 +114,12 @@
     justify-content: center;
     margin: 20px 0;
     color: #888;
-    font-size: 12px;
+    font-size: 15px;
     position: relative;
   }
   
   .palji-divider span {
     background-color: #fff6fa;
-    padding: 0 10px;
   }
   
   .palji-divider::before,
@@ -154,7 +153,7 @@
   
   .palji-signup-form input {
     padding: 12px;
-    border: 1px solid #e5087e;
+    border: 1px solid var(--shadebuttncolor);
     border-radius: 8px;
     font-size: 14px;
     background-color: #f5f7ff;
@@ -176,14 +175,14 @@
     right: 12px;
     top: 38%;
     transform: translateY(-50%);
-    color: #e5087e;
+    color: var(--shadebuttncolor);
     cursor: pointer;
   }
   
   .palji-button {
     padding: 14px 0;
-    /* background-color: #e5087e; */
-    background: var(--shadebuttncolor);
+    /* background-color: var(--shadebuttncolor); */
+    background: var(--shadebuttncolor) !important;
     color: #fff;
     font-size: 16px;
     font-weight: 600;
@@ -193,9 +192,9 @@
     transition: all 0.3s ease;
   }
   
-  .palji-button:hover {
+  /* .palji-button:hover {
     background-color: #d1076f;
-  }
+  } */
   
   .palji-login-link {
     margin-top: 20px;

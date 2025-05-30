@@ -104,7 +104,7 @@
 .palji-input-box input {
     width: 100%;
     padding: 12px 45px 12px 40px;
-    border: 1px solid #e5087e;
+    border: 1px solid var(--shadebuttncolor);
     border-radius: 8px;
     font-size: 14px;
     background: #ffffff;
@@ -115,13 +115,13 @@
 .palji-icon {
     position: absolute;
     left: 12px;
-    color: #e5087e;
+    color: var(--shadebuttncolor);
 }
 
 .palji-eye {
     position: absolute;
     right: 12px;
-    color: #e5087e;
+    color: var(--shadebuttncolor);
     cursor: pointer;
     transition: color 0.3s ease;
 }
@@ -148,7 +148,7 @@
 .palji-button {
     width: 100%;
     padding: 14px 0;
-    background-color: #e5087e;
+    background-color: var(--shadebuttncolor);
     color: #fff;
     font-size: 16px;
     font-weight: 600;
@@ -159,7 +159,7 @@
 }
 
 .palji-button:hover {
-    background-color: #e5087e;
+    background-color: var(--shadebuttncolor);
 }
 
 /* Footer */
@@ -171,7 +171,7 @@
 }
 
 .remember-me input[type="checkbox"] {
-    accent-color: #e5087e;
+    accent-color: var(--shadebuttncolor);
     /* Changes checkbox color to Palji Pink */
     width: 18px;
     height: 18px;
@@ -191,7 +191,7 @@
     width: 16px;
     height: 16px;
     border: 3px solid #fff;
-    border-top: 3px solid #e5087e;
+    border-top: 3px solid var(--shadebuttncolor);
     border-radius: 50%;
     animation: spin 1s linear infinite;
 }
@@ -238,7 +238,7 @@
     font-weight: 600;
     padding: 12px;
     width: 100%;
-    border: 1px solid #e5087e;
+    border: 1px solid var(--shadebuttncolor);
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -251,7 +251,7 @@
 
 .palji-google-icon {
     margin-right: 10px;
-    color: #e5087e;
+    color: var(--shadebuttncolor);
     font-size: 16px;
 }
 
@@ -299,13 +299,13 @@
 }
 
 .palji-create-account a {
-    color: #e5087e;
+    color: var(--shadebuttncolor);
     text-decoration: underline;
     font-weight: 600;
 }
 
 .palji-create-account a:hover {
-    color: #d1076f;
+    color: var(--shadebuttncolorhover);
 }
 
 

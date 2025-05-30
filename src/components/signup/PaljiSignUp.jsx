@@ -8,8 +8,9 @@ import { ToastContainer, toast } from "react-toastify"; // Import ToastContainer
 import "react-toastify/dist/ReactToastify.css"; // Import the CSS for the toast
 import { auth, provider } from "./config.js"; // Firebase auth config
 import { signInWithPopup } from "firebase/auth"; // Firebase Google Sign-In
+import  {assets} from "../../assets/assets.js"
 
-const PaljiSignUp = () => {
+const PaljiSignUp = () => { 
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -110,7 +111,7 @@ const PaljiSignUp = () => {
         <div className="palji-right">
           <div className="palji-logo-container">
             <img
-              src="https://res.cloudinary.com/dtivafy25/image/upload/v1742203035/png_2_ohkc4l.png"
+              src={assets.newlogo}
               alt="Palji Bakery Logo"
               className="palji-logo"
             />

@@ -38,8 +38,8 @@ a {
   --redPink: #EE5564;
   --volite: #D73A38;
   --Tommay-font-1: 'Made Tommay Soft';
-  /* --shadebuttncolor :  linear-gradient(135deg, #ff6b9e 0%, #ff8fab 100%); */
   --shadebuttncolor :  #d73a38;
+  --shadebuttncolorhover :  #b00805;
   --newshadedbacground : linear-gradient(180deg,  #fff,#6bb4a6f2) !important;
   --newredcolor:#D73A38;
   --newgreencolor: #8de0d1;
