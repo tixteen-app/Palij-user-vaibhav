@@ -741,7 +741,7 @@ function ProductDetails() {
                   </motion.div>
                 </motion.div>
                 <AnimatePresence
-                style={{zIndex: "-100px"}}
+                
                 >
                   {activeAccordion === 0 && (
                     <motion.div
