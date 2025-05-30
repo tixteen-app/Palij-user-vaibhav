@@ -326,6 +326,7 @@ function Newnavbar() {
 		localStorage.removeItem("token");
 		window.location.reload();
 	}
+
 	const handelloginclick = () => {
 		setOpenProfile(false);
 		navigate("/palji-login")
@@ -347,7 +348,7 @@ function Newnavbar() {
 								opacity="0.25"
 								className="wave-path"
 							/>
-							
+
 							<path
 								d="M 0 120 0 40 Q 20 25 40 40 t 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 40 0 v80 z"
 								className="wave-path"
@@ -483,14 +484,16 @@ function Newnavbar() {
 												/>
 											</div>
 											{input && (
+												<div style={{ position: "absolute" ,background:"black"}} >
 												<div className="search-list-result">
 													<NavSearchList
 														product={products}
 														clearSearchInput={clearSearchInput}
 														input={input}
 														isLoading={setsearchloading}
-													/>
+														/>
 												</div>
+														</div>
 											)}
 										</div>
 										<div className="right_cart_section_haldi_ram" >

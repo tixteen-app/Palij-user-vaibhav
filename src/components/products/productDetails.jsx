@@ -740,7 +740,9 @@ function ProductDetails() {
                     {activeAccordion === 0 ? <ChevronUp /> : <ChevronDown />}
                   </motion.div>
                 </motion.div>
-                <AnimatePresence>
+                <AnimatePresence
+                style={{zIndex: "-100px"}}
+                >
                   {activeAccordion === 0 && (
                     <motion.div
                       className={styles.accordionContent}
@@ -752,8 +754,9 @@ function ProductDetails() {
                         collapsed: { opacity: 0, height: 0 }
                       }}
                       transition={{ duration: 0.3, ease: "easeInOut" }}
+                      style={{zIndex: "-100px"}}
                     >
-                      <p>{product?.description}</p>
+                      <p style={{zIndex: "-100px"}} >{product?.description}</p>
                     </motion.div>
                   )}
                 </AnimatePresence>

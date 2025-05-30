@@ -52,8 +52,11 @@
     justify-content: center;
     background: linear-gradient(184deg, #6ddbc5a8 0%, #66d2c0d1 76%, #73e8d2a8 100%) !important;
     padding-bottom: 80px;
-    overflow: hidden; 
+    /* overflow: hidden;  */
 }
+
+
+
 
 .main_new_navbar_haldi_ram {
     position: relative;
@@ -62,7 +65,7 @@
     flex-direction: column;
     justify-content: center;
     background: linear-gradient(184deg, #6ddbc5a8 0%, #66d2c0d1 76%, #73e8d2a8 100%) !important;
-    padding-bottom: 40px; /* Add space for the wave */
+    padding-bottom: 40px; 
 }
 
 .main_div_new_haldi_ram {
@@ -99,6 +102,7 @@
   margin: auto;
   width: 100%;
 }
+
 .right_section_new_nav_haldi_ram {
   display: flex;
   flex-direction: column;
