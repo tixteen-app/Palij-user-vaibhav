@@ -52,7 +52,7 @@ function Checkout() {
 	} = useCoupon()
 
 	const [deleteLoading, setDeleteLoading] = useState(false);
-const [deleteAllLoading, setDeleteAllLoading] = useState(false);
+	const [deleteAllLoading, setDeleteAllLoading] = useState(false);
 
 
 
@@ -215,58 +215,7 @@ const [deleteAllLoading, setDeleteAllLoading] = useState(false);
 
 		}
 	};
-	// old working 
-	// useEffect(() => {
-	// 	const fetchCartItem = async () => {
-	// 		try {
-	// 			const response = await makeApi("/api/my-cart", "GET");
-	// 			// Set the cart items after fetching the data
-	// 			setCartItem(response.data);
 
-	// 			if (response?.data?.orderItems?.length > 0) {
-	// 				let totalGstAmount = 0;
-	// 				let totalAmountNoGST = 0
-
-	// 				// Loop through each item and calculate GST, accounting for quantity and custom tax percentage
-	// 				response.data.orderItems.forEach(item => {
-	// 					let finalPrice = item.size?.FinalPrice || 0;
-
-	// 					let gstPercentage = item.productId?.category?.tax; 
-
-	// 					let actualPrice = finalPrice / (1 + gstPercentage / 100);
-	// 					totalAmountNoGST += actualPrice * item.quantity;
-
-	// 					let gstAmount = finalPrice - actualPrice;
-
-	// 					gstAmount *= item.quantity;
-
-	// 					// Add the GST amount to the total GST amount
-	// 					totalGstAmount += gstAmount;
-	// 				});
-
-
-	// 				if (response.data.totalPrice < 500) {
-	// 					setDeliveryCharge(75)
-	// 					setFinalTotal(response.data.totalPrice + 75)
-	// 				} else {
-	// 					setDeliveryCharge(0)
-	// 					setFinalTotal(response.data.totalPrice)
-	// 				}
-
-	// 				// Store the total GST amount in state
-	// 				setCartTotalWithGST(totalGstAmount);
-	// 				setTotalAmountWithoutGST(totalAmountNoGST - response.data.couapnDiscount);
-	// 			}
-	// 		} catch (error) {
-	// 			console.error("Error fetching cart items:", error);
-	// 		}
-	// 	};
-
-	// 	fetchCartItem();
-	// }, []);
-
-
-	// deep seek
 
 	useEffect(() => {
 		const fetchpincode = async () => {
@@ -363,8 +312,8 @@ const [deleteAllLoading, setDeleteAllLoading] = useState(false);
 			taxprice: cartTotalWithGST,
 			CartId: cartItem._id,
 			taxableamount: totalAmountWithoutGST,
-			addedtax : cartTotalWithGST,
-			overalldiscount :  selectPaymentMethod === "Cash On Delivery" ? roundedDiscount : finaldiscount
+			addedtax: cartTotalWithGST,
+			overalldiscount: selectPaymentMethod === "Cash On Delivery" ? roundedDiscount : finaldiscount
 		};
 		if (selectPaymentMethod === "Razorpay") {
 			if (!availablePincodes.pincode.some(p => p.pincode == data.shippingAddress.pincode)) {
@@ -432,102 +381,78 @@ const [deleteAllLoading, setDeleteAllLoading] = useState(false);
 		setCurrentPage("PAYMENT");
 	};
 
-
-	// const handleDeleteClick = async (productId) => {
-	// 	try {
-	// 	  // Call API to delete product from the cart using cart item ID
-	// 	  await deleteproductFromCart(
-	// 		productId,
-	// 		setProductLoaders,
-	// 		setCartItems,
-	// 		fetchCart
-	// 	  );
-	  
-	// 	  // Refresh both cart states
-	// 	  await fetchCartItems();
-		  
-	// 	  // Also fetch the cart item data again to update totals
-	// 	  const response = await makeApi("/api/my-cart", "GET");
-	// 	  setCartItem(response.data);
-		  
-	// 	  setShowModal(false);
-	// 	} catch (error) {
-	// 	  console.error("Error deleting product from cart:", error);
-	// 	}
-	//   };
-
-	  const handleDeleteClick = async (item) => {
+	const handleDeleteClick = async (item) => {
 		try {
 			setDeleteLoading(true);
 
-		  // Call API to delete product from the cart using cart item ID
-		  await deleteproductFromCart(
-			item, // This should be the cart item ID
-			setProductLoaders,
-			setCartItems,
-			fetchCart
-		  );
-	  await fetchCartItem();
-		  // Refresh cart and check if empty
-		  const updatedCart = await fetchCartItems();
-		  setShowModal(false);
-		  const response = await makeApi("/api/my-cart", "GET");
-		  	  setCartItem(response.data);
-		  
-		  // If cart is empty, redirect to cart page
-		  if (response.data.orderItems.length === 0) {
-			navigate("/cart");
-			return;
-		  }
-	  
-		  // Check if there are still non-deliverable products
-		  const updatedNonDeliverables = getNonDeliverableProducts(selectedShippingAddress, updatedCart?.orderItems);
-		  
-		  if (updatedNonDeliverables.length === 0) {
+			// Call API to delete product from the cart using cart item ID
+			await deleteproductFromCart(
+				item, // This should be the cart item ID
+				setProductLoaders,
+				setCartItems,
+				fetchCart
+			);
+			await fetchCartItem();
+			// Refresh cart and check if empty
+			const updatedCart = await fetchCartItems();
 			setShowModal(false);
-		  } else {
-			setNonDeliverableProducts(updatedNonDeliverables);
-		  }
-		  
-		} catch (error) {
-		  console.error("Error deleting product from cart:", error);
-		}finally {
-			setDeleteLoading(false);
-		  }
-	  };
+			const response = await makeApi("/api/my-cart", "GET");
+			setCartItem(response.data);
 
-	  const handleRemoveAllClick = async () => {
+			// If cart is empty, redirect to cart page
+			if (response.data.orderItems.length === 0) {
+				navigate("/cart");
+				return;
+			}
+
+			// Check if there are still non-deliverable products
+			const updatedNonDeliverables = getNonDeliverableProducts(selectedShippingAddress, updatedCart?.orderItems);
+
+			if (updatedNonDeliverables.length === 0) {
+				setShowModal(false);
+			} else {
+				setNonDeliverableProducts(updatedNonDeliverables);
+			}
+
+		} catch (error) {
+			console.error("Error deleting product from cart:", error);
+		} finally {
+			setDeleteLoading(false);
+		}
+	};
+
+	const handleRemoveAllClick = async () => {
 		try {
 			setDeleteAllLoading(true);
-		  for (const item of nonDeliverableProducts) {
-			await deleteproductFromCart(
-			  item._id, // Use cart item ID instead of product ID
-			  setProductLoaders,
-			  setCartItems,
-			  fetchCart
-			);
-		  }
-	  await fetchCartItem();
-		  
-		  // Refresh both cart states
-		  await fetchCartItems();
-		  setShowModal(false);
-		  // Also fetch the cart item data again to update totals
-		  const response = await makeApi("/api/my-cart", "GET");
-		  setCartItem(response.data);
+			for (const item of nonDeliverableProducts) {
+				await deleteproductFromCart(
+					item._id, // Use cart item ID instead of product ID
+					setProductLoaders,
+					setCartItems,
+					fetchCart
+				);
+			}
+			await fetchCartItem();
 
-		  if (response.data.orderItems.length === 0) {
-			navigate("/cart");
-			return;
-		  }
-		  
-		  setShowModal(false);
+			// Refresh both cart states
+			await fetchCartItems();
+			setShowModal(false);
+			// Also fetch the cart item data again to update totals
+			const response = await makeApi("/api/my-cart", "GET");
+			setCartItem(response.data);
+
+			if (response.data.orderItems.length === 0) {
+				navigate("/cart");
+				return;
+			}
+
+			setShowModal(false);
 		} catch (error) {
-		  console.error("Error removing products:", error);
-		}finally {
+			console.error("Error removing products:", error);
+		} finally {
 			setDeleteAllLoading(false);
-		  }
-	  };
+		}
+	};
 
 
 	// Razopay
@@ -580,13 +505,13 @@ const [deleteAllLoading, setDeleteAllLoading] = useState(false);
 			alert("Razorpay SDK failed to load");
 			return;
 		}
-			// check payment method 
-			const roundValue = (value) => {
-				return selectPaymentMethod === "Cash On Delivery" ? Math.round(value) : value;
-			}
-	
-			const finaldiscount = cartItem?.totalPriceWithoutDiscount - cartItem?.totalPrice
-			const roundedDiscount = roundValue(finaldiscount);
+		// check payment method 
+		const roundValue = (value) => {
+			return selectPaymentMethod === "Cash On Delivery" ? Math.round(value) : value;
+		}
+
+		const finaldiscount = cartItem?.totalPriceWithoutDiscount - cartItem?.totalPrice
+		const roundedDiscount = roundValue(finaldiscount);
 
 		const options = {
 			key: "rzp_test_DaA1MMEW2IUUYe",
@@ -594,7 +519,7 @@ const [deleteAllLoading, setDeleteAllLoading] = useState(false);
 			currency: "INR",
 			amount: amount,
 			name: "USER ",
-			description: "Test Transaction",
+			description: "Palji backery Transaction",
 			image: "http://localhost:5173/src/assets/logo.png",
 			order_id: orderId,
 			handler: function (response) {
@@ -612,8 +537,8 @@ const [deleteAllLoading, setDeleteAllLoading] = useState(false);
 					paymentMethod: selectPaymentMethod,
 					CartId: cartItem._id,
 					taxableamount: totalAmountWithoutGST,
-					addedtax : cartTotalWithGST,
-					overalldiscount :  selectPaymentMethod === "Cash On Delivery" ? roundedDiscount : finaldiscount 
+					addedtax: cartTotalWithGST,
+					overalldiscount: selectPaymentMethod === "Cash On Delivery" ? roundedDiscount : finaldiscount
 				};
 				submitOrder(data, setLoading, setOrderPlaced, navigate, deliverycharge)
 
@@ -627,6 +552,11 @@ const [deleteAllLoading, setDeleteAllLoading] = useState(false);
 			theme: {
 				color: "#EE5564", // Customize Razorpay theme color
 			},
+			modal: {
+				ondismiss: function () {
+					window.location.reload();
+				}
+			}
 		};
 
 		const paymentObject = new window.Razorpay(options);
@@ -673,8 +603,8 @@ const [deleteAllLoading, setDeleteAllLoading] = useState(false);
 					paymentMethod: selectPaymentMethod,
 					CartId: cartItem._id,
 					taxableamount: totalAmountWithoutGST,
-					addedtax : cartTotalWithGST,
-					overalldiscount :  selectPaymentMethod === "Cash On Delivery" ? roundedDiscount : finaldiscount
+					addedtax: cartTotalWithGST,
+					overalldiscount: selectPaymentMethod === "Cash On Delivery" ? roundedDiscount : finaldiscount
 				};
 				submitOrderforlocal(data, setLoading, setOrderPlaced, navigate, deliverycharge);
 			},
@@ -686,6 +616,11 @@ const [deleteAllLoading, setDeleteAllLoading] = useState(false);
 			theme: {
 				color: "#EE5564", // Customize Razorpay theme color
 			},
+			modal: {
+				ondismiss: function () {
+					window.location.reload();
+				}
+			}
 		};
 
 		const paymentObject = new window.Razorpay(options);
@@ -702,8 +637,8 @@ const [deleteAllLoading, setDeleteAllLoading] = useState(false);
 			console.log(error)
 		}
 	}
-	
-	
+
+
 	useEffect(() => {
 		fetchCartItem();
 	}, []);
@@ -722,146 +657,82 @@ const [deleteAllLoading, setDeleteAllLoading] = useState(false);
 				draggable
 				pauseOnHover
 			/>
-{showModal && (
-  <div className={styles.popupOverlay}>
-    <div className={styles.popupContent}>
-      <div className={styles.popupHeader}>
-        <h4 className={styles.popupTitle}>UNAVAILABLE FOR DELIVERY</h4>
-        <p className={styles.popupSubtitle}>The following item(s) are not deliverable to the selected address:</p>
-      </div>
-      
-      <div className={styles.popupScrollContainer}>
-        <ul className={styles.popupList}>
-          {nonDeliverableProducts.map((item, index) => (
-            <li key={index} className={styles.popupItem}>
-              <div className={styles.popupImageName}>
-                <div className={styles.popupImagethumbnail}>
-                  <img
-                    src={item.productId.thumbnail}
-                    alt={item.productId.name}
-                    className={styles.popupThumbnail}
-                    loading="lazy"
-                  />
-                </div>
-                <div className={styles.popupproductdetails}>
-                  <h5 className={styles.productName}>{item.productId.name}</h5>
-                  <p className={styles.productPrice}>Price: ₹{item.singleProductPrice}</p>
-                </div>
-              </div>
-              <div className={styles.remove}>
-                <button 
-                  onClick={() => handleDeleteClick(item._id)}
-                  disabled={deleteLoading}
-                  className={styles.removeButton}
-                >
-                  {deleteLoading ? (
-                    <span className={styles.loadingText}>Removing...</span>
-                  ) : (
-                    <>
-                      <span className={styles.removeText}>Remove</span>
-                      <span className={styles.removeIcon}>×</span>
-                    </>
-                  )}
-                </button>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
+			{showModal && (
+				<div className={styles.popupOverlay}>
+					<div className={styles.popupContent}>
+						<div className={styles.popupHeader}>
+							<h4 className={styles.popupTitle}>UNAVAILABLE FOR DELIVERY</h4>
+							<p className={styles.popupSubtitle}>The following item(s) are not deliverable to the selected address:</p>
+						</div>
 
-      <div className={styles.popupButtonscart}>
-        <button
-          className={styles.popupButtonforremoveall}
-          onClick={!deleteAllLoading ? handleRemoveAllClick : undefined}
-          disabled={deleteAllLoading}
-        >
-          {deleteAllLoading ? (
-            <span className={styles.loadingText}>Removing All...</span>
-          ) : (
-            'Remove All'
-          )}
-        </button>
-        <button
-          className={styles.closepopupButton}
-          onClick={() => setShowModal(false)}
-          disabled={deleteLoading || deleteAllLoading}
-        >
-          Close
-        </button>
-      </div>
+						<div className={styles.popupScrollContainer}>
+							<ul className={styles.popupList}>
+								{nonDeliverableProducts.map((item, index) => (
+									<li key={index} className={styles.popupItem}>
+										<div className={styles.popupImageName}>
+											<div className={styles.popupImagethumbnail}>
+												<img
+													src={item.productId.thumbnail}
+													alt={item.productId.name}
+													className={styles.popupThumbnail}
+													loading="lazy"
+												/>
+											</div>
+											<div className={styles.popupproductdetails}>
+												<h5 className={styles.productName}>{item.productId.name}</h5>
+												<p className={styles.productPrice}>Price: ₹{item.singleProductPrice}</p>
+											</div>
+										</div>
+										<div className={styles.remove}>
+											<button
+												onClick={() => handleDeleteClick(item._id)}
+												disabled={deleteLoading}
+												className={styles.removeButton}
+											>
+												{deleteLoading ? (
+													<span className={styles.loadingText}>Removing...</span>
+												) : (
+													<>
+														<span className={styles.removeText}>Remove</span>
+														<span className={styles.removeIcon}>×</span>
+													</>
+												)}
+											</button>
+										</div>
+									</li>
+								))}
+							</ul>
+						</div>
 
-      {(deleteLoading || deleteAllLoading) && (
-        <div className={styles.modalLoader}>
-          <div className={styles.loader}></div>
-        </div>
-      )}
-    </div>
-  </div>
-)}
-{/* {showModal && (
-  <div className={styles.popupOverlay}>
-    <div className={styles.popupContent}>
-      <h4> UNAVAILABLE FOR DELIVERY </h4>
-      <p>The following item(s) are not deliverable to the selected address:</p>
-      <ul className={styles.popupList}>
-        {nonDeliverableProducts.map((item, index) => (
-          <li key={index} className={styles.popupItem}>
-            <div className={styles.popupImageName}>
-              <div className={styles.popupImagethumbnail}>
-                <img
-                  src={item.productId.thumbnail}
-                  alt={item.productId.name}
-                  className={styles.popupThumbnail}
-                />
-              </div>
-              <div className={styles.popupproductdetails}>
-                <div>{item.productId.name}</div>
-                <div>Price: ₹{item.singleProductPrice}</div>
-              </div>
-            </div>
-            <div>
-              <div className={styles.remove}>
-                <button 
-                  onClick={() => handleDeleteClick(item._id)}
-                  disabled={deleteLoading}
-                >
-                  {deleteLoading ? "Removing.." : "Remove"}
-                </button>
-              </div>
-            </div>
-          </li>
-        ))}
-      </ul>
-      <div className={styles.popupButtonscart}>
-        <div
-          className={styles.popupButtonforremovealldiv}
-          onClick={!deleteAllLoading ? handleRemoveAllClick : undefined}
-        >
-          <button
-            className={styles.popupButtonforremoveall}
-            disabled={deleteAllLoading}
-          >
-            {deleteAllLoading ? "Removing All.." : "Remove All"}
-          </button>
-        </div>
-        <div className={styles.popupButtonforremovealldiv}>
-          <button
-            className={styles.closepopupButton}
-            onClick={() => setShowModal(false)}
-            disabled={deleteLoading || deleteAllLoading}
-          >
-            Close
-          </button>
-        </div>
-      </div>
-      {(deleteLoading || deleteAllLoading) && (
-        <div className={styles.modalLoader}>
-          <div className={styles.loader}></div>
-        </div>
-      )}
-    </div>
-  </div>
-)} */}
+						<div className={styles.popupButtonscart}>
+							<button
+								className={styles.popupButtonforremoveall}
+								onClick={!deleteAllLoading ? handleRemoveAllClick : undefined}
+								disabled={deleteAllLoading}
+							>
+								{deleteAllLoading ? (
+									<span className={styles.loadingText}>Removing All...</span>
+								) : (
+									'Remove All'
+								)}
+							</button>
+							<button
+								className={styles.closepopupButton}
+								onClick={() => setShowModal(false)}
+								disabled={deleteLoading || deleteAllLoading}
+							>
+								Close
+							</button>
+						</div>
+
+						{(deleteLoading || deleteAllLoading) && (
+							<div className={styles.modalLoader}>
+								<div className={styles.loader}></div>
+							</div>
+						)}
+					</div>
+				</div>
+			)}
 
 			{orderPlaced && (
 				<div className="success-gif-container">

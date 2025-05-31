@@ -253,14 +253,11 @@
   background: var(--shadebuttncolor);
   color: white;
   width: 100%;
-  /* border: 1px solid rgb(0, 0, 0); */
   transition: all 0.5s ease;
 }
 
 .process_to_check:hover {
-  background-color: #ffffff;
-  /* color: rgb(0, 0, 0); */
-  /* border: 1px solid rgb(0, 0, 0); */
+  background-color: var(--shadebuttncolorhover);
 }
 @media (max-width:550px) {
   .process_to_check{

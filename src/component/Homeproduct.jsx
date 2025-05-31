@@ -124,7 +124,7 @@ function Homeproduct() {
           <div className="homeproduct_container_main_div" >
             {/* top heading */}
             <div className="homeproduct_top_heading_div" >
-              BEST SELLERS
+              Best Sellers
             </div>
             <motion.div className="homeproduct_product_main_div"
               initial={{ opacity: 0, y: 100 }}

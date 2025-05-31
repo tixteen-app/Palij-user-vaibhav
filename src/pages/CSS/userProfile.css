@@ -718,7 +718,7 @@
 .new_home_page_change-profile-btn {
   background: none;
   border: none;
-  color: #ec4899;
+  color: var(--shadebuttncolor);
   font-size: 0.75rem;
   margin-top: 0.25rem;
   display: flex;

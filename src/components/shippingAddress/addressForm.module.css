@@ -206,7 +206,7 @@
 }
 
 .saveAddressBtn:hover {
-  background-color: #c5076d;
+  background-color: var(--shadebuttncolorhover);
 }
 
 /* Responsive styles */
