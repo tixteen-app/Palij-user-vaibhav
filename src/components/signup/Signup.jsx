@@ -119,7 +119,7 @@ const PaljiLogin = () => {
         <div className="palji-left">
           <div className="palji-overlay">
             <h2>Palji Bakery</h2>
-            <p>Serving Sweetness Since 1985</p>
+            <p>Serving Sweetness Since 1933</p>
           </div>
         </div>
 
