@@ -3,9 +3,8 @@
 
 import { usePDF } from "react-to-pdf";
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router";
+import { useParams } from "react-router";
 import "./CSS/taxinvoice.css";
-import logo from "../assets/favicon.svg";
 import  {assets} from "../assets/assets";
 import { makeApi } from "../api/callApi";
 
@@ -172,9 +171,9 @@ export default function Taxinvoice() {
 
   const renderInvoiceContent = (isPDF = false) => {
     return (
-      <div className={`invoice-card  ${isPDF ? 'pdf-version' : ''}`}>
+      <div className={`invoice-card  ${isPDF ? 'pdf-version' : ''}`} style={{marginTop:"0px"}}>
         {/* Print Button - Hidden when printing */}
-        {/* <div className="print-button-container">
+        <div className="print-button-container">
           <div onClick={handlePrint} className="print-button">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -194,7 +193,7 @@ export default function Taxinvoice() {
             </svg>
             Print Invoice
           </div>
-        </div> */}
+        </div>
 
         {/* Invoice Header */}
         <div className="invoice-header">

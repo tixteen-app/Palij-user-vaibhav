@@ -1,9 +1,7 @@
 
 
-/* Invoice container */
 .invoice-container {
   background-color: white;
-  /* min-height: 100vh; */
   padding: 1rem;
   max-height: 10vh;
 }
@@ -182,6 +180,8 @@
 /* Address section */
 .address-section {
   padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
   /* display: grid;/ */
   /* grid-template-columns: 1fr; */
   gap: 1.5rem;
@@ -194,7 +194,7 @@
 }
 
 .address-box {
-  border: 1px solid #e2e8f0;
+  /* border: 1px solid #e2e8f0; */
   border-radius: 0.375rem;
   padding: 1rem;
 }
@@ -450,10 +450,19 @@
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
+    .print-button-container {
+    display: none;
+  }
 
   .invoice-card {
     box-shadow: none;
     border: none;
+  }
+   .invoice-card {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
   }
 }
 
