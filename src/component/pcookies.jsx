@@ -41,7 +41,8 @@ function Pcookies() {
                     `/api/get-all-products-by-category/${categoryId}`,
                     "GET"
                 );
-                setProducts(response.data.products);
+                const reversedProducts = response.data.products.reverse();
+                setProducts(reversedProducts);
             }
         } catch (error) {
             console.log(error);
