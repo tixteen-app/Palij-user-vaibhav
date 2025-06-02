@@ -10,7 +10,7 @@ const MarqueeComponent = () => {
           {/* <img src={assets.dotPoint} alt="dotpoint" /> */}
           <span className={styles.red_bullet}>•</span>
           <span className="text-black">free shipping</span>
-          <span>on order above ₹750</span>
+          <span>in india on order above ₹750</span>
         </div>
         
         <div className={styles.marquee_spacer}></div>
@@ -29,7 +29,7 @@ const MarqueeComponent = () => {
           <span className={styles.red_bullet}>•</span>
 
           <span className="text-black">free shipping</span>
-          <span>on order above ₹750</span>
+          <span>in india on order above ₹750</span>
         </div>
         
         <div className={styles.marquee_spacer}></div>
@@ -46,7 +46,7 @@ const MarqueeComponent = () => {
                     <span className={styles.red_bullet}>•</span>
 
           <span className="text-black">free shipping</span>
-          <span>on order above ₹750</span>
+          <span>in india on order above ₹750</span>
         </div>
         
         <div className={styles.marquee_spacer}></div>
@@ -63,7 +63,7 @@ const MarqueeComponent = () => {
                     <span className={styles.red_bullet}>•</span>
 
           <span className="text-black">free shipping</span>
-          <span>on order above ₹750</span>
+          <span>in india on order above ₹750</span>
         </div>
         
         <div className={styles.marquee_spacer}></div>
@@ -80,7 +80,7 @@ const MarqueeComponent = () => {
                     <span className={styles.red_bullet}>•</span>
 
           <span className="text-black">free shipping</span>
-          <span>on order above ₹750</span>
+          <span>in india on order above ₹750</span>
         </div>
         
         <div className={styles.marquee_spacer}></div>
@@ -97,7 +97,7 @@ const MarqueeComponent = () => {
                     <span className={styles.red_bullet}>•</span>
 
           <span className="text-black">free shipping</span>
-          <span>on order above ₹750</span>
+          <span>in india on order above ₹750</span>
         </div>
         
         <div className={styles.marquee_spacer}></div>
@@ -114,7 +114,7 @@ const MarqueeComponent = () => {
                     <span className={styles.red_bullet}>•</span>
 
           <span className="text-black">free shipping</span>
-          <span>on order above ₹750</span>
+          <span>in india on order above ₹750</span>
         </div>
         
         <div className={styles.marquee_spacer}></div>
@@ -131,7 +131,7 @@ const MarqueeComponent = () => {
                     <span className={styles.red_bullet}>•</span>
 
           <span className="text-black">free shipping</span>
-          <span>on order above ₹750</span>
+          <span>in india on order above ₹750</span>
         </div>
         
         <div className={styles.marquee_spacer}></div>
@@ -148,7 +148,7 @@ const MarqueeComponent = () => {
                     <span className={styles.red_bullet}>•</span>
 
           <span className="text-black">free shipping</span>
-          <span>on order above ₹750</span>
+          <span>in india on order above ₹750</span>
         </div>
         
         <div className={styles.marquee_spacer}></div>
@@ -165,7 +165,7 @@ const MarqueeComponent = () => {
                     <span className={styles.red_bullet}>•</span>
 
           <span className="text-black">free shipping</span>
-          <span>on order above ₹750</span>
+          <span>in india on order above ₹750</span>
         </div>
         
         <div className={styles.marquee_spacer}></div>
@@ -182,7 +182,7 @@ const MarqueeComponent = () => {
                     <span className={styles.red_bullet}>•</span>
 
           <span className="text-black">free shipping</span>
-          <span>on order above ₹750</span>
+          <span>in india on order above ₹750</span>
         </div>
         
         <div className={styles.marquee_spacer}></div>
@@ -199,7 +199,7 @@ const MarqueeComponent = () => {
                     <span className={styles.red_bullet}>•</span>
 
           <span className="text-black">free shipping</span>
-          <span>on order above ₹750</span>
+          <span>in india on order above ₹750</span>
         </div>
         
         <div className={styles.marquee_spacer}></div>
@@ -216,7 +216,7 @@ const MarqueeComponent = () => {
                     <span className={styles.red_bullet}>•</span>
 
           <span className="text-black">free shipping</span>
-          <span>on order above ₹750</span>
+          <span>in india on order above ₹750</span>
         </div>
         
         <div className={styles.marquee_spacer}></div>
@@ -233,7 +233,7 @@ const MarqueeComponent = () => {
                     <span className={styles.red_bullet}>•</span>
 
           <span className="text-black">free shipping</span>
-          <span>on order above ₹750</span>
+          <span>in india on order above ₹750</span>
         </div>
         
         <div className={styles.marquee_spacer}></div>
@@ -250,7 +250,7 @@ const MarqueeComponent = () => {
                     <span className={styles.red_bullet}>•</span>
 
           <span className="text-black">free shipping</span>
-          <span>on order above ₹750</span>
+          <span>in india on order above ₹750</span>
         </div>
         
         <div className={styles.marquee_spacer}></div>
@@ -267,7 +267,7 @@ const MarqueeComponent = () => {
                     <span className={styles.red_bullet}>•</span>
 
           <span className="text-black">free shipping</span>
-          <span>on order above ₹750</span>
+          <span>in india on order above ₹750</span>
         </div>
         
         <div className={styles.marquee_spacer}></div>
@@ -284,7 +284,7 @@ const MarqueeComponent = () => {
                     <span className={styles.red_bullet}>•</span>
 
           <span className="text-black">free shipping</span>
-          <span>on order above ₹750</span>
+          <span>in india on order above ₹750</span>
         </div>
         
         <div className={styles.marquee_spacer}></div>
@@ -301,7 +301,7 @@ const MarqueeComponent = () => {
                     <span className={styles.red_bullet}>•</span>
 
           <span className="text-black">free shipping</span>
-          <span>on order above ₹750</span>
+          <span>in india on order above ₹750</span>
         </div>
         
         <div className={styles.marquee_spacer}></div>
@@ -318,7 +318,7 @@ const MarqueeComponent = () => {
                     <span className={styles.red_bullet}>•</span>
 
           <span className="text-black">free shipping</span>
-          <span>on order above ₹750</span>
+          <span>in india on order above ₹750</span>
         </div>
         
         <div className={styles.marquee_spacer}></div>
@@ -335,7 +335,7 @@ const MarqueeComponent = () => {
                     <span className={styles.red_bullet}>•</span>
 
           <span className="text-black">free shipping</span>
-          <span>on order above ₹750</span>
+          <span>in india on order above ₹750</span>
         </div>
         
         <div className={styles.marquee_spacer}></div>
@@ -352,7 +352,7 @@ const MarqueeComponent = () => {
                     <span className={styles.red_bullet}>•</span>
 
           <span className="text-black">free shipping</span>
-          <span>on order above ₹750</span>
+          <span>in india on order above ₹750</span>
         </div>
         
         <div className={styles.marquee_spacer}></div>
@@ -369,7 +369,7 @@ const MarqueeComponent = () => {
                     <span className={styles.red_bullet}>•</span>
 
           <span className="text-black">free shipping</span>
-          <span>on order above ₹750</span>
+          <span>in india on order above ₹750</span>
         </div>
         
         <div className={styles.marquee_spacer}></div>
@@ -386,7 +386,7 @@ const MarqueeComponent = () => {
                     <span className={styles.red_bullet}>•</span>
 
           <span className="text-black">free shipping</span>
-          <span>on order above ₹750</span>
+          <span>in india on order above ₹750</span>
         </div>
         
         <div className={styles.marquee_spacer}></div>
@@ -403,7 +403,7 @@ const MarqueeComponent = () => {
                     <span className={styles.red_bullet}>•</span>
 
           <span className="text-black">free shipping</span>
-          <span>on order above ₹750</span>
+          <span>in india on order above ₹750</span>
         </div>
         
         <div className={styles.marquee_spacer}></div>
@@ -420,7 +420,7 @@ const MarqueeComponent = () => {
                     <span className={styles.red_bullet}>•</span>
 
           <span className="text-black">free shipping</span>
-          <span>on order above ₹750</span>
+          <span>in india on order above ₹750</span>
         </div>
         
         <div className={styles.marquee_spacer}></div>
@@ -437,7 +437,7 @@ const MarqueeComponent = () => {
                     <span className={styles.red_bullet}>•</span>
 
           <span className="text-black">free shipping</span>
-          <span>on order above ₹750</span>
+          <span>in india on order above ₹750</span>
         </div>
         
         <div className={styles.marquee_spacer}></div>
@@ -454,7 +454,7 @@ const MarqueeComponent = () => {
                     <span className={styles.red_bullet}>•</span>
 
           <span className="text-black">free shipping</span>
-          <span>on order above ₹750</span>
+          <span>in india on order above ₹750</span>
         </div>
         
         <div className={styles.marquee_spacer}></div>
@@ -471,7 +471,7 @@ const MarqueeComponent = () => {
                     <span className={styles.red_bullet}>•</span>
 
           <span className="text-black">free shipping</span>
-          <span>on order above ₹750</span>
+          <span>in india on order above ₹750</span>
         </div>
         
         <div className={styles.marquee_spacer}></div>
@@ -488,7 +488,7 @@ const MarqueeComponent = () => {
                     <span className={styles.red_bullet}>•</span>
 
           <span className="text-black">free shipping</span>
-          <span>on order above ₹750</span>
+          <span>in india on order above ₹750</span>
         </div>
         
         <div className={styles.marquee_spacer}></div>
@@ -505,7 +505,7 @@ const MarqueeComponent = () => {
                     <span className={styles.red_bullet}>•</span>
 
           <span className="text-black">free shipping</span>
-          <span>on order above ₹750</span>
+          <span>in india on order above ₹750</span>
         </div>
         
         <div className={styles.marquee_spacer}></div>
@@ -522,7 +522,7 @@ const MarqueeComponent = () => {
                     <span className={styles.red_bullet}>•</span>
 
           <span className="text-black">free shipping</span>
-          <span>on order above ₹750</span>
+          <span>in india on order above ₹750</span>
         </div>
         
         <div className={styles.marquee_spacer}></div>
@@ -539,7 +539,7 @@ const MarqueeComponent = () => {
                     <span className={styles.red_bullet}>•</span>
 
           <span className="text-black">free shipping</span>
-          <span>on order above ₹750</span>
+          <span>in india on order above ₹750</span>
         </div>
         
         <div className={styles.marquee_spacer}></div>
@@ -556,7 +556,7 @@ const MarqueeComponent = () => {
                     <span className={styles.red_bullet}>•</span>
 
           <span className="text-black">free shipping</span>
-          <span>on order above ₹750</span>
+          <span>in india on order above ₹750</span>
         </div>
         
         <div className={styles.marquee_spacer}></div>
@@ -573,7 +573,7 @@ const MarqueeComponent = () => {
                     <span className={styles.red_bullet}>•</span>
 
           <span className="text-black">free shipping</span>
-          <span>on order above ₹750</span>
+          <span>in india on order above ₹750</span>
         </div>
         
         <div className={styles.marquee_spacer}></div>
@@ -590,7 +590,7 @@ const MarqueeComponent = () => {
                     <span className={styles.red_bullet}>•</span>
 
           <span className="text-black">free shipping</span>
-          <span>on order above ₹750</span>
+          <span>in india on order above ₹750</span>
         </div>
         
         <div className={styles.marquee_spacer}></div>
@@ -607,7 +607,7 @@ const MarqueeComponent = () => {
                     <span className={styles.red_bullet}>•</span>
 
           <span className="text-black">free shipping</span>
-          <span>on order above ₹750</span>
+          <span>in india on order above ₹750</span>
         </div>
         
         <div className={styles.marquee_spacer}></div>
@@ -624,7 +624,7 @@ const MarqueeComponent = () => {
                     <span className={styles.red_bullet}>•</span>
 
           <span className="text-black">free shipping</span>
-          <span>on order above ₹750</span>
+          <span>in india on order above ₹750</span>
         </div>
         
         <div className={styles.marquee_spacer}></div>
@@ -641,7 +641,7 @@ const MarqueeComponent = () => {
                     <span className={styles.red_bullet}>•</span>
 
           <span className="text-black">free shipping</span>
-          <span>on order above ₹750</span>
+          <span>in india on order above ₹750</span>
         </div>
         
         <div className={styles.marquee_spacer}></div>
@@ -658,7 +658,7 @@ const MarqueeComponent = () => {
                     <span className={styles.red_bullet}>•</span>
 
           <span className="text-black">free shipping</span>
-          <span>on order above ₹750</span>
+          <span>in india on order above ₹750</span>
         </div>
         
         <div className={styles.marquee_spacer}></div>
@@ -675,7 +675,7 @@ const MarqueeComponent = () => {
                     <span className={styles.red_bullet}>•</span>
 
           <span className="text-black">free shipping</span>
-          <span>on order above ₹750</span>
+          <span>in india on order above ₹750</span>
         </div>
         
         <div className={styles.marquee_spacer}></div>
@@ -692,7 +692,7 @@ const MarqueeComponent = () => {
                     <span className={styles.red_bullet}>•</span>
 
           <span className="text-black">free shipping</span>
-          <span>on order above ₹750</span>
+          <span>in india on order above ₹750</span>
         </div>
         
         <div className={styles.marquee_spacer}></div>
