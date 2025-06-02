@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import "./App.css";
 import Navbar from "./components/navbar/Navbar";
-import Home from "./components/home/Home";
 import { Route, Routes, useLocation } from "react-router";
 import AboutUs from "./components/aboutus/AboutUs";
 import Contact from "./components/contact/Contact";
@@ -28,9 +27,6 @@ import AddressForm from "./components/shippingAddress/AddressForm.jsx";
 import AddShippingAddress from "./components/addressCheckout/ShippingAddress.jsx";
 import AddBillingAddress from "./components/addressCheckout/BillingAddress.jsx";
 import TermsConditions from "./components/termsConditions/TermsConditions.jsx";
-import NewHome from "./components/NewHome/NewHome.jsx";
-import NewFooter from "./components/footer/NewFooter/NewFooter.jsx";
-import NewProductPage from "./components/NewProductPage/NewProductPage.jsx";
 // import Product from "./pages/products.jsx";
 import PrivacyPolicy from "./PrivacyPolicy/PrivacyPolicy.jsx";
 import ShippingProcess from "./components/ShippingProcess/ShippingProcess.jsx";

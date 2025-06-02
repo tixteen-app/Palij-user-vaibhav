@@ -1,173 +1,53 @@
-/* 
-.myOrders {
-  width: 100%;
+/* Action buttons container */
+.actionButtons {
   display: flex;
-  flex-direction: column;
   gap: 10px;
-}
-
-.heading {
-  font-size: 2.5rem;
-  margin-bottom: 30px;
-  text-align: center;
-  color: #333;
-}
-
-.loader {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 200px;
-}
-
-.noOrders {
-  text-align: center;
-  font-size: 1.2rem;
-  color: #666;
-  padding: 40px;
-  background-color: #f8f8f8;
-  border-radius: 8px;
-}
-
-.orderList {
-  display: grid;
-  gap: 30px;
-}
-
-.orderCard {
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: transform 0.3s ease;
-}
-
-.orderCard:hover {
-  transform: translateY(-5px);
-}
-
-.orderHeader {
-  background-color: #f0f0f0;
-  padding: 15px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   flex-wrap: wrap;
-  gap: 10px;
 }
 
-.orderId {
-  font-weight: bold;
-  color: var(--redPink);
-}
-
-.orderDate {
-  color: #666;
-}
-
-.orderStatus {
-  font-weight: bold;
-  padding: 5px 10px;
-  border-radius: 20px;
-  font-size: 0.9rem;
-}
-
-.pending {
-  background-color: #ffeeba;
-  color: #856404;
-}
-
-.processing {
-  background-color: #b8daff;
-  color: #004085;
-}
-
-.shipped {
-  background-color: #c3e6cb;
-  color: #155724;
-}
-
-.delivered {
-  background-color: #d4edda;
-  color: #155724;
-}
-
-.orderItems {
-  padding: 20px;
-  max-height: 400px;
-  overflow-y: scroll;
-}
-
-.orderItem {
-  display: flex;
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #eee;
-}
-
-.orderItem:last-child {
-  margin-bottom: 0;
-  padding-bottom: 0;
-  border-bottom: none;
-}
-
-.productImage {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  margin-right: 20px;
-  border-radius: 8px;
-}
-
-.productInfo {
-  flex: 1;
-}
-
-.productInfo h3 {
-  margin: 0 0 10px;
-  font-size: 1.1rem;
-  color: #333;
-}
-
-.productInfo p {
-  margin: 5px 0;
-  font-size: 0.9rem;
-  color: #666;
-}
-
-.itemPrice {
-  font-weight: bold;
-  color: #28a745;
-}
-
-.orderFooter {
-  background-color: #f9f9f9;
-  padding: 15px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.orderTotal {
-  font-weight: bold;
-  font-size: 1.1rem;
-  color: #28a745;
-}
-
-.viewButton {
-  background-color: var(--redPink);
+/* Track button */
+.trackButton {
+  background-color: #3498db;
   color: white;
-  padding: 8px 15px;
+  padding: 8px 20px;
   border-radius: 20px;
   text-decoration: none;
   font-size: 0.9rem;
-  transition: background-color 0.3s ease;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: none;
+  cursor: pointer;
 }
 
-.viewButton:hover {
-  background-color: #f03f51;
+.trackButton:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
 }
- */
+
+/* Cancel button */
+.cancelButton {
+  background-color: #e74c3c;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.cancelButton:hover {
+  background-color: #c0392b;
+  transform: translateY(-2px);
+}
 
  .myOrders {
   width: 100%;
