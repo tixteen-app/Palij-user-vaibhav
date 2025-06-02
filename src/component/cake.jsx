@@ -41,7 +41,9 @@ function Cake() {
                     `/api/get-all-products-by-category/${categoryId}`,
                     "GET"
                 );
-                setProducts(response.data.products);
+                const reversedProducts = response.data.products.reverse();
+                setProducts(reversedProducts);
+
             }
         } catch (error) {
             console.log(error);
@@ -110,12 +112,12 @@ function Cake() {
 
     const countProductsWithSameId = (productId) => {
         if (!completeCart?.orderItems) return 0;
-    
+
         return completeCart.orderItems.reduce((count, item) => {
-          return item.productId._id === productId ? count + 1 : count;
+            return item.productId._id === productId ? count + 1 : count;
         }, 0);
-      };
-    
+    };
+
 
     return (
         <>
@@ -130,7 +132,7 @@ function Cake() {
                         <div className="homeproduct_top_heading_div homeproduct_top_heading_div_for_Savory" >
                             <div>Cake</div>
                             <div>
-                                <div className="homeproduct_top_heading_div_viewall" onClick={handleCategoryClick}>VIEW ALL <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" className="bi bi-arrow-right homeproduct_top_heading_div_viewall_arrow" viewBox="0 0 16 16">
+                                <div className="homeproduct_top_heading_div_viewall" onClick={handleCategoryClick}>VIEW ALL <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi bi-arrow-right homeproduct_top_heading_div_viewall_arrow" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
                                 </svg>
                                 </div>
@@ -140,10 +142,10 @@ function Cake() {
                         <div className="homeproduct_product_main_div" >
                             {products.slice(0, 4).map((product) => (
                                 <motion.div
-                                initial={{ opacity: 0 , y: 100}}
-          whileInView={{ opacity: 1 , y: 0}}
-          transition={{ duration: 0.7 }}
-                                 key={product.id} className="homeproduct_product_sub_div" >
+                                    initial={{ opacity: 0, y: 100 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.7 }}
+                                    key={product.id} className="homeproduct_product_sub_div" >
                                     {/* image */}
                                     <motion.div
                                         className="homeproduct_product_div_image"
@@ -153,9 +155,9 @@ function Cake() {
                                     >
                                         <motion.img
                                             key={hoveredProduct === product._id ? "main" : "thumb"}
-                                             src={                                         hoveredProduct === product._id                                                 ? (product.image?.[1] ? product.image[1] : product.image?.[0] || product.thumbnail)
-                                                                        : product.thumbnail
-                                                                }
+                                            src={hoveredProduct === product._id ? (product.image?.[1] ? product.image[1] : product.image?.[0] || product.thumbnail)
+                                                : product.thumbnail
+                                            }
                                             alt={product.name}
                                             onClick={() => handleNavigate(product._id)}
                                             initial={{ opacity: 0 }}
@@ -244,14 +246,14 @@ function Cake() {
                                                             <div>
                                                                 {/* {cartItems.find(cartItem => cartItem.productId === product._id && cartItem.size === product.size[0]._id)?.quantity || 0} */}
                                                                 {
-                                                                                    countProductsWithSameId(product._id) > 1 ? (
-                                                                                        <>{countProductsWithSameId(product._id)}</>
-                                                                                    ) : (
-                                                                                        <>
-                                                                                            {cartItems.find(cartItem => cartItem.productId === product._id && cartItem.size === product.size[0]._id)?.quantity || 0}
-                                                                                        </>
-                                                                                    )
-                                                                                }
+                                                                    countProductsWithSameId(product._id) > 1 ? (
+                                                                        <>{countProductsWithSameId(product._id)}</>
+                                                                    ) : (
+                                                                        <>
+                                                                            {cartItems.find(cartItem => cartItem.productId === product._id && cartItem.size === product.size[0]._id)?.quantity || 0}
+                                                                        </>
+                                                                    )
+                                                                }
                                                             </div>
                                                         )}
                                                     </div>
