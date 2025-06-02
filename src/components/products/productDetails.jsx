@@ -896,7 +896,7 @@ function ProductDetails() {
                 <div className={styles.nutritionContainer}>
                   <h2 className={styles.title2}>NUTRITIONAL INFORMATION Per 100g <br />
                     <span>Approximate Composition</span></h2>
-                  <hr />
+                  {/* <hr style={{zIndex: "-100px"}} /> */}
                   <div className={styles.nutritionGrid}>
                     <div className={styles.header}>
                       <span>Nutritional Facts</span>
