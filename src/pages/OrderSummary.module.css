@@ -86,7 +86,7 @@
 
 
 .invoiceButton{
-  background-color: var(--redPink);
+  background-color: var(--shadebuttncolor);
   border: none;
   color: #fff;
   padding: 10px 20px;

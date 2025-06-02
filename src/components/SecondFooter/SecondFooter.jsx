@@ -63,10 +63,10 @@ const Footer = () => {
               <motion.ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="/product/all-products">Products</a></li>
-                <li><a href="/contact"></a> Contact </li>
-                <li><a href="/contact"></a> About Us </li>
                 <li><a href="/shipping-policy">Shipping Policy</a></li>
                 <li><a href="/terms-conditions">Terms & Conditions</a></li>
+                <li><a href="/contact">Contact</a>  </li>
+                <li><a href="/contact">About Us</a>  </li>
               </motion.ul>
             </div>
 

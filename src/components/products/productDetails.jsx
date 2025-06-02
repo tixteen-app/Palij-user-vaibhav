@@ -517,7 +517,7 @@ function ProductDetails() {
                 <div className={styles.priceDetails}>
                   <div className={styles.priceFlexCol}>
                     <div className={styles.dicountinprecentage}>
-                      <h4>₹{selectedSize?.FinalPrice.toFixed(2)}</h4>
+                      <h4>₹{selectedSize?.FinalPrice?.toFixed(2)}</h4>
                       {selectedSize?.price > selectedSize?.FinalPrice &&
                         <span style={{ color: 'red', marginLeft: '15px' }}>
                           -{calculateDiscountPercentage(selectedSize?.price, selectedSize?.FinalPrice)}%
