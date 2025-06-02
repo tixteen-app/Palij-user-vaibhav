@@ -283,6 +283,8 @@ import { useNavigate } from 'react-router-dom';
 import { makeApi } from "../../api/callApi";
 import { ToastContainer, toast } from "react-toastify";
 import { FaArrowLeft, FaEye, FaEyeSlash } from 'react-icons/fa';
+import { assets } from '../../assets/assets';
+
 
 const OtpVerification = () => {
   const navigate = useNavigate();
@@ -407,7 +409,7 @@ const OtpVerification = () => {
 
           <div className="otp-logo-container">
             <img
-              src="https://res.cloudinary.com/dtivafy25/image/upload/v1742203035/png_2_ohkc4l.png"
+              src={assets.newlogo}
               alt="Logo"
               className="otp-logo"
             />
