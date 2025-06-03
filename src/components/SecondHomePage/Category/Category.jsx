@@ -8,25 +8,27 @@ const categories = [
     img: assets.category1,
     name: "Cookies",
     // color: "#64C4B1",
-    // nav: "65fc0c45d3cadabee3443e54"
+    nav: "65fc0c45d3cadabee3443e54"
   },
   {
     img: assets.category2,
-    name: "Savouries",
+    name: "Cakes",
+    nav: "67b451f7ec3a4e4a3bbe5633"
+
     // color: "#D73A38",
-    // nav: "65f3c6ee7fd052885f56d587"
   },
   {
     img: assets.category3,
     name: "Gift Hampers",
     // color: "#64C4B1",
-    // nav: "65f3c6cf7fd052885f56d584"
+    nav: "65f3c6cf7fd052885f56d584"
   },
   {
     img: assets.category4,
-    name: "Cakes",
+    name: "Savouries",
     // color: "#D73A38",
-    // nav: "67b451f7ec3a4e4a3bbe5633"
+    nav: "65f3c6ee7fd052885f56d587"
+
   },
 ]
 
