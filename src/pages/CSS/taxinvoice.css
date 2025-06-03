@@ -458,6 +458,9 @@
 }
 
 @media print {
+  .button-section{
+    display: none !important;
+  }
   /* Reset margins and padding for printing */
   body, html {
     margin: 0 !important;

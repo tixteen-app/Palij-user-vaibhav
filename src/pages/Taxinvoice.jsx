@@ -934,18 +934,18 @@ export default function Taxinvoice() {
   const totalPrice = taxDetails.finalTotal;
   const discount = totalPriceWithoutDiscount - totalPrice;
 
-const { toPDF, targetRef } = usePDF({
-  filename: `Invoice_${orderSummary?.invoiceId}.pdf`,
-  page: {
-    margin: 5, // Reduce PDF margins
-    format: 'a4',
-    orientation: 'portrait'
-  },
-  overrides: {
-    // Ensure PDF matches print output
-    scale: 0.9
-  }
-});
+  const { toPDF, targetRef } = usePDF({
+    filename: `Invoice_${orderSummary?.invoiceId}.pdf`,
+    page: {
+      margin: 5, // Reduce PDF margins
+      format: 'a4',
+      orientation: 'portrait'
+    },
+    overrides: {
+      // Ensure PDF matches print output
+      scale: 0.9
+    }
+  });
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -995,10 +995,10 @@ const { toPDF, targetRef } = usePDF({
     }
   };
 
-const handlePrint = () => {
-  // Create a style element with forced single-page settings
-  const printStyle = document.createElement('style');
-  printStyle.innerHTML = `
+  const handlePrint = () => {
+    // Create a style element with forced single-page settings
+    const printStyle = document.createElement('style');
+    printStyle.innerHTML = `
     @page {
       size: A4;
       margin: 5mm;
@@ -1021,15 +1021,15 @@ const handlePrint = () => {
       }
     }
   `;
-  document.head.appendChild(printStyle);
+    document.head.appendChild(printStyle);
 
-  window.print();
+    window.print();
 
-  // Clean up after printing
-  setTimeout(() => {
-    document.head.removeChild(printStyle);
-  }, 1000);
-};
+    // Clean up after printing
+    setTimeout(() => {
+      document.head.removeChild(printStyle);
+    }, 1000);
+  };
   return (
     <>
       <div className="invoice-wrapper">
@@ -1048,17 +1048,17 @@ const handlePrint = () => {
           <div className="invoice-header">
             <div className="header-gradient">
               <div className="invoice-info invoice-details-row">
-  <div className="logo">
-    <img src={assets.newlogo} alt="Palji Bakery Logo" className="main_logo_img" />
-  </div>
-  <div className="company-details">
-    <h2>PALJI BAKERY</h2>
-    <p>46V, Main Hambran Rd, Mavir Vihar, Dev Nagar</p>
-    <p>Ludhiana, Punjab 141027</p>
-    <p>Phone: +91 7901706000 | Email: paljibakery@gmail.com</p>
-    <p>GSTIN: 03AABCP1234Z1ZX | PAN: AABCP1234Z</p>
-  </div>
-</div>
+                <div className="logo">
+                  <img src={assets.newlogo} alt="Palji Bakery Logo" className="main_logo_img" />
+                </div>
+                <div className="company-details">
+                  <h2>PALJI BAKERY</h2>
+                  <p>46V, Main Hambran Rd, Mavir Vihar, Dev Nagar</p>
+                  <p>Ludhiana, Punjab 141027</p>
+                  <p>Phone: +91 7901706000 | Email: paljibakery@gmail.com</p>
+                  <p>GSTIN: 03AABCP1234Z1ZX | PAN: AABCP1234Z</p>
+                </div>
+              </div>
             </div>
             <div className="invoice-title">
               <h2>TAX INVOICE</h2>
@@ -1138,77 +1138,77 @@ const handlePrint = () => {
             </div>
           </div> */}
           {/* Invoice Details and Other Details - Side by Side */}
-<div className="invoice-details-row ">
-  <div className="details-section card">
-    <h6 className="section-title">Invoice Details</h6>
-    <div className="table_data_invoice">
-      <div>Invoice No:</div>
-      <div className="highlight">{orderSummary?.invoiceId}</div>
-    </div>
-    <div className="table_data_invoice">
-      <div>Invoice Date:</div>
-      <div>{formatDate(orderSummary?.createdAt)}</div>
-    </div>
-    <div className="table_data_invoice">
-      <div>Order No:</div>
-      <div className="highlight">{orderSummary?.orderId}</div>
-    </div>
-  </div>
+          <div className="invoice-details-row ">
+            <div className="details-section card">
+              <h6 className="section-title">Invoice Details</h6>
+              <div className="table_data_invoice">
+                <div>Invoice No:</div>
+                <div className="highlight">{orderSummary?.invoiceId}</div>
+              </div>
+              <div className="table_data_invoice">
+                <div>Invoice Date:</div>
+                <div>{formatDate(orderSummary?.createdAt)}</div>
+              </div>
+              <div className="table_data_invoice">
+                <div>Order No:</div>
+                <div className="highlight">{orderSummary?.orderId}</div>
+              </div>
+            </div>
 
-  <div className="details-section card">
-    <h6 className="section-title">Other Details</h6>
-    <div className="table_data_invoice">
-      <div>Payment Method:</div>
-      <div className="payment-method">{orderSummary?.paymentMethod}</div>
-    </div>
-    <div className="table_data_invoice">
-      <div>Place of Supply:</div>
-      <div>{orderSummary?.shippingAddress?.state || "N/A"}</div>
-    </div>
-    <div className="table_data_invoice">
-      <div>Nature of Supply:</div>
-      <div>Goods</div>
-    </div>
-  </div>
-</div>
+            <div className="details-section card">
+              <h6 className="section-title">Other Details</h6>
+              <div className="table_data_invoice">
+                <div>Payment Method:</div>
+                <div className="payment-method">{orderSummary?.paymentMethod}</div>
+              </div>
+              <div className="table_data_invoice">
+                <div>Place of Supply:</div>
+                <div>{orderSummary?.shippingAddress?.state || "N/A"}</div>
+              </div>
+              <div className="table_data_invoice">
+                <div>Nature of Supply:</div>
+                <div>Goods</div>
+              </div>
+            </div>
+          </div>
 
-{/* Billed To and Shipped To - Side by Side */}
-<div className="invoice-details-row">
-  <div className="details-section card">
-    <h6 className="section-title">Billed To</h6>
-    <div className="table_data_invoice">
-      <div>Name:</div>
-      <div className="customer-name">
-        {orderSummary?.userId?.firstName} {orderSummary?.userId?.lastName}
-      </div>
-    </div>
-    <div className="table_data_invoice">
-      <div>Email:</div>
-      <div>{orderSummary?.userId?.email}</div>
-    </div>
-    <div className="table_data_invoice">
-      <div>Phone:</div>
-      <div>{orderSummary?.shippingAddress?.phonenumber || "N/A"}</div>
-    </div>
-  </div>
+          {/* Billed To and Shipped To - Side by Side */}
+          <div className="invoice-details-row">
+            <div className="details-section card">
+              <h6 className="section-title">Billed To</h6>
+              <div className="table_data_invoice">
+                <div>Name:</div>
+                <div className="customer-name">
+                  {orderSummary?.userId?.firstName} {orderSummary?.userId?.lastName}
+                </div>
+              </div>
+              <div className="table_data_invoice">
+                <div>Email:</div>
+                <div>{orderSummary?.userId?.email}</div>
+              </div>
+              <div className="table_data_invoice">
+                <div>Phone:</div>
+                <div>{orderSummary?.shippingAddress?.phonenumber || "N/A"}</div>
+              </div>
+            </div>
 
-  <div className="details-section card">
-    <h6 className="section-title">Shipped To</h6>
-    <div className="table_data_invoice">
-      <div>Name:</div>
-      <div className="customer-name">
-        {orderSummary?.shippingAddress?.firstname} {orderSummary?.shippingAddress?.lastname}
-      </div>
-    </div>
-    <div className="table_data_invoice">
-      <div>Address:</div>
-      <div className="shipping-address">
-        {orderSummary?.shippingAddress?.address}, {orderSummary?.shippingAddress?.city},
-        {orderSummary?.shippingAddress?.state} - {orderSummary?.shippingAddress?.pincode}
-      </div>
-    </div>
-  </div>
-</div>
+            <div className="details-section card">
+              <h6 className="section-title">Shipped To</h6>
+              <div className="table_data_invoice">
+                <div>Name:</div>
+                <div className="customer-name">
+                  {orderSummary?.shippingAddress?.firstname} {orderSummary?.shippingAddress?.lastname}
+                </div>
+              </div>
+              <div className="table_data_invoice">
+                <div>Address:</div>
+                <div className="shipping-address">
+                  {orderSummary?.shippingAddress?.address}, {orderSummary?.shippingAddress?.city},
+                  {orderSummary?.shippingAddress?.state} - {orderSummary?.shippingAddress?.pincode}
+                </div>
+              </div>
+            </div>
+          </div>
 
           {/* Order Items Table */}
           <div className="invoice-table-container">
