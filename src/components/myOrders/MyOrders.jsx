@@ -9,6 +9,9 @@
 //     const [loading, setLoading] = useState(false);
 //     const [orders, setOrders] = useState([]);
 //     const [shiprocketOrders, setShiprocketOrders] = useState([]);
+//     const [showConfirmDialog, setShowConfirmDialog] = useState(false);
+//     const [orderToCancel, setOrderToCancel] = useState(null);
+//     const [errorMessage, setErrorMessage] = useState(null);
 
 //     useEffect(() => {
 //         const fetchOrders = async () => {
@@ -44,19 +47,51 @@
 //         return "processing";
 //     };  
 
-//     const handleCancelOrder = async (orderId) => {
+//     const handleCancelClick = (orderId) => {
+//         setOrderToCancel(orderId);
+//         setShowConfirmDialog(true);
+//     };
+
+//     const handleCancelOrder = async () => {
 //         try {
-//             if (window.confirm("Are you sure you want to cancel this order?")) {
-//                 // await makeApi(`/api/cancel-order/${orderId}`, "POST");
-//                 await makeApi(`/api/shiprocket/cancel-order-by-id/${id}`, "POST");
-//                 // Refresh orders after cancellation
-//                 const response = await makeApi("/api/get-my-second-order", "GET");
-//                 setOrders(response.data.secondorders);
-//             }
+//             setLoading(true);
+//             await makeApi(`/api/shiprocket/cancel-order-by-id/${orderToCancel}`, "POST");
+            
+//             // Update the local state to reflect the cancellation
+//             setOrders(prevOrders => 
+//                 prevOrders.map(order => 
+//                     order._id === orderToCancel || order.shiprocketOrderId === orderToCancel
+//                         ? { ...order, status: "Cancelled" }
+//                         : order
+//                 )
+//             );
+            
+//             // Also update shiprocket orders if needed
+//             setShiprocketOrders(prevShipOrders => 
+//                 prevShipOrders.map(order => 
+//                     order.id === orderToCancel
+//                         ? { ...order, status: "Cancelled" }
+//                         : order
+//                 )
+//             );
+            
 //         } catch (error) {
 //             console.error("Error cancelling order:", error);
-//             alert("Failed to cancel order. Please try again.");
+//             setErrorMessage("Failed to cancel order. Please try again.");
+//         } finally {
+//             setLoading(false);
+//             setShowConfirmDialog(false);
+//             setOrderToCancel(null);
 //         }
+//     };
+
+//     const closeConfirmDialog = () => {
+//         setShowConfirmDialog(false);
+//         setOrderToCancel(null);
+//     };
+
+//     const closeErrorPopup = () => {
+//         setErrorMessage(null);
 //     };
 
 //     const canCancelOrder = (status) => {
@@ -150,17 +185,63 @@
                                        
 //                                         {canCancelOrder(status) && (
 //                                             <button 
-//                                                 onClick={() => handleCancelOrder(order.shiprocketOrderId)}
+//                                                 onClick={() => handleCancelClick(order.shiprocketOrderId || order._id)}
 //                                                 className={styles.cancelButton}
 //                                             >
 //                                                 <FiX /> Cancel
 //                                             </button>
 //                                         )}
 //                                     </div>
-//                                 </div>
+//                                 </div> 
 //                             </div>
 //                         );
 //                     })}
+//                 </div>
+//             )}
+
+//             {/* Confirmation Dialog */}
+//             {showConfirmDialog && (
+//                 <div className="confirmation-dialog">
+//                     <div className="dialog-content">
+//                         <h2>Confirm Cancellation</h2>
+//                         <p>Are you sure you want to cancel this order?</p>
+//                         <div className="dialog-buttons_both">
+//                             <button 
+//                                 onClick={handleCancelOrder} 
+//                                 className="confirm-button" 
+//                                 style={{ background: 'var(--shadebuttncolor)' }}
+//                                 disabled={loading}
+//                             >
+//                                 {loading ? 'Processing...' : 'Confirm'}
+//                             </button>
+//                             <button 
+//                                 onClick={closeConfirmDialog} 
+//                                 className="cancel-button"
+//                                 disabled={loading}
+//                             >
+//                                 Cancel
+//                             </button>
+//                         </div>
+//                     </div>
+//                 </div>
+//             )}
+
+//             {/* Error Popup */}
+//             {errorMessage && (
+//                 <div className="confirmation-dialog">
+//                     <div className="dialog-content">
+//                         <h2>Error</h2>
+//                         <p>{errorMessage}</p>
+//                         <div className="dialog-buttons_both">
+//                             <button 
+//                                 onClick={closeErrorPopup} 
+//                                 className="confirm-button" 
+//                                 style={{ background: 'var(--shadebuttncolor)' }}
+//                             >
+//                                 OK
+//                             </button>
+//                         </div>
+//                     </div>
 //                 </div>
 //             )}
 //         </div>
@@ -183,22 +264,26 @@ const MyOrders = () => {
     const [showConfirmDialog, setShowConfirmDialog] = useState(false);
     const [orderToCancel, setOrderToCancel] = useState(null);
     const [errorMessage, setErrorMessage] = useState(null);
+    const [cancelling, setCancelling] = useState(false);
+
+    const fetchAllOrders = async () => {
+        try {
+            setLoading(true);
+            const [shipResponse, localResponse] = await Promise.all([
+                makeApi("/api/shiprocket/get-orders-by-user-id", "GET"),
+                makeApi("/api/get-my-second-order", "GET")
+            ]);
+            setShiprocketOrders(shipResponse.data.data);
+            setOrders(localResponse.data.secondorders);
+        } catch (error) {
+            console.error("Error fetching orders:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     useEffect(() => {
-        const fetchOrders = async () => {
-            try {
-                setLoading(true);
-                const shipResponse = await makeApi("/api/shiprocket/get-orders-by-user-id", "GET");
-                const response = await makeApi("/api/get-my-second-order", "GET");
-                setShiprocketOrders(shipResponse.data.data);
-                setOrders(response.data.secondorders);
-            } catch (error) {
-                console.error("Error fetching orders:", error);
-            } finally {
-                setLoading(false);
-            }
-        };
-        fetchOrders(); 
+        fetchAllOrders();
     }, []);
 
     const getOrderStatus = (orderId) => {
@@ -218,39 +303,31 @@ const MyOrders = () => {
         return "processing";
     };  
 
-    const handleCancelClick = (orderId) => {
-        setOrderToCancel(orderId);
+    const handleCancelClick = (orderId, hasShiprocketId) => {
+        setOrderToCancel({ id: orderId, hasShiprocketId });
         setShowConfirmDialog(true);
     };
 
     const handleCancelOrder = async () => {
         try {
-            setLoading(true);
-            await makeApi(`/api/shiprocket/cancel-order-by-id/${orderToCancel}`, "POST");
+            setCancelling(true);
             
-            // Update the local state to reflect the cancellation
-            setOrders(prevOrders => 
-                prevOrders.map(order => 
-                    order._id === orderToCancel || order.shiprocketOrderId === orderToCancel
-                        ? { ...order, status: "Cancelled" }
-                        : order
-                )
-            );
+            if (orderToCancel.hasShiprocketId) {
+                // Cancel Shiprocket order
+                await makeApi(`/api/shiprocket/cancel-order-by-id/${orderToCancel.id}`, "POST");
+            } else {
+                // Cancel local order
+                await makeApi(`/api/update-second-order-by-id/${orderToCancel.id}`, "PUT", { status: "Canceled" });
+            }
             
-            // Also update shiprocket orders if needed
-            setShiprocketOrders(prevShipOrders => 
-                prevShipOrders.map(order => 
-                    order.id === orderToCancel
-                        ? { ...order, status: "Cancelled" }
-                        : order
-                )
-            );
+            // Refresh both order lists
+            await fetchAllOrders();
             
         } catch (error) {
             console.error("Error cancelling order:", error);
             setErrorMessage("Failed to cancel order. Please try again.");
         } finally {
-            setLoading(false);
+            setCancelling(false);
             setShowConfirmDialog(false);
             setOrderToCancel(null);
         }
@@ -299,6 +376,7 @@ const MyOrders = () => {
                             getOrderStatus(order.shiprocketOrderId) : 
                             getOrderStatus(order._id);
                         const statusColor = getStatusColor(status);
+                        const hasShiprocketId = !!order.shiprocketOrderId;
                         
                         return (
                             <div key={order._id} className={styles.orderCard}>
@@ -356,10 +434,14 @@ const MyOrders = () => {
                                        
                                         {canCancelOrder(status) && (
                                             <button 
-                                                onClick={() => handleCancelClick(order.shiprocketOrderId || order._id)}
+                                                onClick={() => handleCancelClick(
+                                                    hasShiprocketId ? order.shiprocketOrderId : order._id, 
+                                                    hasShiprocketId
+                                                )}
                                                 className={styles.cancelButton}
+                                                disabled={cancelling}
                                             >
-                                                <FiX /> Cancel
+                                                <FiX /> {cancelling && orderToCancel?.id === (hasShiprocketId ? order.shiprocketOrderId : order._id) ? 'Cancelling...' : 'Cancel'}
                                             </button>
                                         )}
                                     </div>
@@ -381,14 +463,14 @@ const MyOrders = () => {
                                 onClick={handleCancelOrder} 
                                 className="confirm-button" 
                                 style={{ background: 'var(--shadebuttncolor)' }}
-                                disabled={loading}
+                                disabled={cancelling}
                             >
-                                {loading ? 'Processing...' : 'Confirm'}
+                                {cancelling ? 'Processing...' : 'Confirm'}
                             </button>
                             <button 
                                 onClick={closeConfirmDialog} 
                                 className="cancel-button"
-                                disabled={loading}
+                                disabled={cancelling}
                             >
                                 Cancel
                             </button>
